@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		A93548A31DAB96100077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A21DAB96100077E85C /* BaseModel.m */; };
 		A93548A61DAB96330077E85C /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A51DAB96330077E85C /* BaseView.m */; };
 		A93548A91DAB96560077E85C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A81DAB96560077E85C /* BaseViewController.m */; };
 		A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AB1DAB966C0077E85C /* BaseUtils.m */; };
 		A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AE1DAB967C0077E85C /* BaseCategories.m */; };
+		A93548B31DAB974C0077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548B21DAB974C0077E85C /* BaseModel.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
 		A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A942CEB41DAB44140049805A /* Foundation+Log.m */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
@@ -24,8 +24,6 @@
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
 		A93548A01DAB95E10077E85C /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
-		A93548A11DAB96100077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = BaseModel.h; path = ../../../../../BaseModel.h; sourceTree = "<group>"; };
-		A93548A21DAB96100077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = BaseModel.m; path = ../../../../../BaseModel.m; sourceTree = "<group>"; };
 		A93548A41DAB96330077E85C /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		A93548A51DAB96330077E85C /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		A93548A71DAB96560077E85C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
@@ -34,6 +32,8 @@
 		A93548AB1DAB966C0077E85C /* BaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUtils.m; sourceTree = "<group>"; };
 		A93548AD1DAB967C0077E85C /* BaseCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCategories.h; sourceTree = "<group>"; };
 		A93548AE1DAB967C0077E85C /* BaseCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCategories.m; sourceTree = "<group>"; };
+		A93548B11DAB974C0077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
+		A93548B21DAB974C0077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -65,6 +65,15 @@
 			path = Domains;
 			sourceTree = "<group>";
 		};
+		A93548B01DAB973B0077E85C /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				A93548B11DAB974C0077E85C /* BaseModel.h */,
+				A93548B21DAB974C0077E85C /* BaseModel.m */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		A9411B231DAA3DA200B69967 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -81,16 +90,6 @@
 				A93548A81DAB96560077E85C /* BaseViewController.m */,
 			);
 			path = Controllers;
-			sourceTree = "<group>";
-		};
-		A9411B281DAA3E6E00B69967 /* Models */ = {
-			isa = PBXGroup;
-			children = (
-				A93548A11DAB96100077E85C /* BaseModel.h */,
-				A93548A21DAB96100077E85C /* BaseModel.m */,
-			);
-			name = Models;
-			path = Controllers/Models;
 			sourceTree = "<group>";
 		};
 		A9411B291DAA3E7B00B69967 /* Views */ = {
@@ -149,9 +148,9 @@
 		A9BBAD5D1DAA336000BAF4D1 /* PlamExam */ = {
 			isa = PBXGroup;
 			children = (
-				A935489F1DAB95E10077E85C /* Domains */,
 				A9411B231DAA3DA200B69967 /* Application */,
-				A9411B281DAA3E6E00B69967 /* Models */,
+				A935489F1DAB95E10077E85C /* Domains */,
+				A93548B01DAB973B0077E85C /* Models */,
 				A9411B291DAA3E7B00B69967 /* Views */,
 				A9411B271DAA3E6900B69967 /* Controllers */,
 				A9411B2B1DAA3F8E00B69967 /* Utils */,
@@ -322,11 +321,11 @@
 			files = (
 				A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
+				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
 				A93548A91DAB96560077E85C /* BaseViewController.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */,
 				A93548A61DAB96330077E85C /* BaseView.m in Sources */,
-				A93548A31DAB96100077E85C /* BaseModel.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
