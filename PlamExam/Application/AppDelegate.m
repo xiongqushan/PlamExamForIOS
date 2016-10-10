@@ -17,8 +17,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    NSArray *arr = @[@"测试",@"好的"];
-    NSLog(@"%@",arr);
+
     return YES;
 }
 

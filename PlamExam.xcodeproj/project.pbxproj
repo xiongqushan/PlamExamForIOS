@@ -18,6 +18,7 @@
 /* Begin PBXFileReference section */
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
+		A935489E1DAB94D20077E85C /* Define.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -97,6 +98,7 @@
 		A942CEB61DAB76760049805A /* Domains */ = {
 			isa = PBXGroup;
 			children = (
+				A935489E1DAB94D20077E85C /* Define.h */,
 			);
 			name = Domains;
 			path = Application/Domains;
@@ -169,6 +171,7 @@
 				A9BBAD591DAA336000BAF4D1 /* Resources */,
 				4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */,
 				133B1087669CD82C5E477FD9 /* [CP] Copy Pods Resources */,
+				1E58E4B4AAE4E5EEF426E528 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -239,6 +242,21 @@
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		1E58E4B4AAE4E5EEF426E528 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-frameworks.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
 		4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */ = {
