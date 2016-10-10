@@ -12,9 +12,12 @@
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
 		A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */; };
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
+		FD46ED38168FED9D2479E42A /* libPods-PlamExam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -23,6 +26,7 @@
 		A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A9BBAD6D1DAA336000BAF4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9BBAD6F1DAA336000BAF4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -30,6 +34,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				FD46ED38168FED9D2479E42A /* libPods-PlamExam.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -84,6 +89,7 @@
 		A9411B2C1DAA409500B69967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -102,6 +108,7 @@
 				A9BBAD5D1DAA336000BAF4D1 /* PlamExam */,
 				A9BBAD5C1DAA336000BAF4D1 /* Products */,
 				A9411B2C1DAA409500B69967 /* Frameworks */,
+				C0BA741FCF30D1D01E636D4E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -140,6 +147,15 @@
 			name = "Supporting Files";
 			sourceTree = "<group>";
 		};
+		C0BA741FCF30D1D01E636D4E /* Pods */ = {
+			isa = PBXGroup;
+			children = (
+				FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */,
+				45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */,
+			);
+			name = Pods;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -147,9 +163,12 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9BBAD721DAA336000BAF4D1 /* Build configuration list for PBXNativeTarget "PlamExam" */;
 			buildPhases = (
+				BBBA77826330F7FD448CBDA4 /* [CP] Check Pods Manifest.lock */,
 				A9BBAD571DAA336000BAF4D1 /* Sources */,
 				A9BBAD581DAA336000BAF4D1 /* Frameworks */,
 				A9BBAD591DAA336000BAF4D1 /* Resources */,
+				4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */,
+				133B1087669CD82C5E477FD9 /* [CP] Copy Pods Resources */,
 			);
 			buildRules = (
 			);
@@ -205,6 +224,54 @@
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXResourcesBuildPhase section */
+
+/* Begin PBXShellScriptBuildPhase section */
+		133B1087669CD82C5E477FD9 /* [CP] Copy Pods Resources */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Copy Pods Resources";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-resources.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBBA77826330F7FD448CBDA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
+/* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
 		A9BBAD571DAA336000BAF4D1 /* Sources */ = {
@@ -323,6 +390,7 @@
 		};
 		A9BBAD731DAA336000BAF4D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
@@ -335,6 +403,7 @@
 		};
 		A9BBAD741DAA336000BAF4D1 /* Release */ = {
 			isa = XCBuildConfiguration;
+			baseConfigurationReference = 45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
