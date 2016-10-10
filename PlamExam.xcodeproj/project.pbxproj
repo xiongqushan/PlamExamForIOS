@@ -116,8 +116,8 @@
 		A9BBAD5D1DAA336000BAF4D1 /* PlamExam */ = {
 			isa = PBXGroup;
 			children = (
-				A942CEB61DAB76760049805A /* Domains */,
 				A9411B231DAA3DA200B69967 /* Application */,
+				A942CEB61DAB76760049805A /* Domains */,
 				A9411B281DAA3E6E00B69967 /* Models */,
 				A9411B291DAA3E7B00B69967 /* Views */,
 				A9411B271DAA3E6900B69967 /* Controllers */,
