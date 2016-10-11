@@ -1,0 +1,19 @@
+//
+//  PlamExam-Prefix.pch
+//  PlamExam
+//
+//  Created by 熊伟 on 2016/10/10.
+//  Copyright © 2016年 guokai. All rights reserved.
+//
+
+#ifndef PlamExam_Prefix_h
+#define PlamExam_Prefix_h
+
+#define Distribution 1      //正式环境1 测试环境0
+#if Distribution==1
+#define BaseURLStr @""
+#else
+#define BaseURLStr @""
+#endif
+
+#endif /* PlamExam_Prefix_h */

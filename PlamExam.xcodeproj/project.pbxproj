@@ -12,6 +12,9 @@
 		A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AB1DAB966C0077E85C /* BaseUtils.m */; };
 		A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AE1DAB967C0077E85C /* BaseCategories.m */; };
 		A93548B31DAB974C0077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548B21DAB974C0077E85C /* BaseModel.m */; };
+		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
+		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
+		A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E31DAC9B260077E85C /* HttpRequestResult.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
 		A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A942CEB41DAB44140049805A /* Foundation+Log.m */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
@@ -34,6 +37,13 @@
 		A93548AE1DAB967C0077E85C /* BaseCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCategories.m; sourceTree = "<group>"; };
 		A93548B11DAB974C0077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		A93548B21DAB974C0077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
+		A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
+		A93548DC1DAC9B170077E85C /* AFNetworkingProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingProxy.h; sourceTree = "<group>"; };
+		A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingProxy.m; sourceTree = "<group>"; };
+		A93548DE1DAC9B170077E85C /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		A93548DF1DAC9B170077E85C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		A93548E21DAC9B260077E85C /* HttpRequestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestResult.h; sourceTree = "<group>"; };
+		A93548E31DAC9B260077E85C /* HttpRequestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestResult.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -60,6 +70,8 @@
 		A935489F1DAB95E10077E85C /* Domains */ = {
 			isa = PBXGroup;
 			children = (
+				A93548E21DAC9B260077E85C /* HttpRequestResult.h */,
+				A93548E31DAC9B260077E85C /* HttpRequestResult.m */,
 				A93548A01DAB95E10077E85C /* Define.h */,
 			);
 			path = Domains;
@@ -113,6 +125,10 @@
 		A9411B2B1DAA3F8E00B69967 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
+				A93548DC1DAC9B170077E85C /* AFNetworkingProxy.h */,
+				A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */,
+				A93548DE1DAC9B170077E85C /* HttpHelper.h */,
+				A93548DF1DAC9B170077E85C /* HttpHelper.m */,
 				A93548AA1DAB966C0077E85C /* BaseUtils.h */,
 				A93548AB1DAB966C0077E85C /* BaseUtils.m */,
 			);
@@ -163,6 +179,7 @@
 		A9BBAD5E1DAA336000BAF4D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */,
 				A942CEB41DAB44140049805A /* Foundation+Log.m */,
 				A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */,
 				A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */,
@@ -320,10 +337,13 @@
 			buildActionMask = 2147483647;
 			files = (
 				A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */,
+				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
+				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
 				A93548A91DAB96560077E85C /* BaseViewController.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
+				A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */,
 				A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */,
 				A93548A61DAB96330077E85C /* BaseView.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
@@ -440,6 +460,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PlamExam/PlamExam-Prefix.pch";
 				INFOPLIST_FILE = PlamExam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
@@ -453,6 +474,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
+				GCC_PREFIX_HEADER = "$(SRCROOT)/PlamExam/PlamExam-Prefix.pch";
 				INFOPLIST_FILE = PlamExam/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
