@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "HttpRequestResult.h"
 @interface RequestGlobalResult<__covariant T> : NSObject
-    @property (assign,nonatomic) NSInteger HttpStatus;
-    @property(assign,nonatomic) BOOL IsHttpSuccess;
-    @property(strong,nonatomic) NSString *HttpMessage;
-    @property(strong,nonatomic) T Data;
+
+@property (assign,nonatomic) NSInteger HttpStatus;
+@property(assign,nonatomic) BOOL IsHttpSuccess;
+@property(strong,nonatomic) NSString *HttpMessage;
+@property(strong,nonatomic) T Data;
+
 @end

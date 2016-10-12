@@ -7,6 +7,8 @@
 //
 
 #import "AppDelegate.h"
+#import "BaseModel.h"
+#import "BaseViewController.h"
 
 @interface AppDelegate ()
 
@@ -18,8 +20,13 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    NSDictionary *param = @{@"value":@"",@"version":@""};
     
+    [BaseModel requestTestData:param resultBlock:^(TestModel *testArr, NSString *message) {
+        NSLog(@"_______name:%@  ______title:%@  ______content:%@",testArr.name,testArr.title,testArr.content);
+    }];
     
+    self.window.rootViewController = [[BaseViewController alloc] init];
     [self.window makeKeyAndVisible];
     return YES;
 }

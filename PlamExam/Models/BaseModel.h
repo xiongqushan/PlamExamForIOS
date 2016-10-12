@@ -7,7 +7,10 @@
 //
 
 #import <Foundation/Foundation.h>
+#import "TestModel.h"
 
 @interface BaseModel : NSObject
+
++ (void)requestTestData:(NSDictionary *)param resultBlock:(void(^)(TestModel *testArr, NSString *message))resultBlock;
 
 @end

@@ -40,22 +40,22 @@
     
     [networkingProxy POST:path parameters:params progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         HttpRequestResult *requestResult=[[HttpRequestResult alloc] init];
-        requestResult.HttpStatus= [[responseObject objectForKey:@"code"] integerValue];
-        NSDictionary *jsonDic = [responseObject objectForKey:@"data"];
-        if (requestResult.HttpStatus >=200 && requestResult.HttpStatus<300){
+        requestResult.HttpStatus= [[responseObject objectForKey:@"Code"] integerValue];
+        NSDictionary *jsonDic = [responseObject objectForKey:@"Data"];
+        if (requestResult.HttpStatus >=1 && requestResult.HttpStatus<300){
             requestResult.IsHttpSuccess=true;
             requestResult.HttpResult=[ApiGlobalData yy_modelWithDictionary:jsonDic];
         }
         else if (requestResult.HttpStatus >=400 && requestResult.HttpStatus<500)
         {
-            requestResult.HttpMessage = [responseObject objectForKey:@"msg"];
+            requestResult.HttpMessage = [responseObject objectForKey:@"Message"];
         }
         else if (requestResult.HttpStatus >=500 && requestResult.HttpStatus<600)
         {
             requestResult.HttpMessage = @"服务器出错了，请稍候再试";
         }
         else{
-            requestResult.HttpMessage  = [NSString stringWithFormat:@"未知的错误%@",[responseObject objectForKey:@"msg"]];
+            requestResult.HttpMessage  = [NSString stringWithFormat:@"未知的错误%@",[responseObject objectForKey:@"Message"]];
         }
         callbackDelegate(requestResult);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {

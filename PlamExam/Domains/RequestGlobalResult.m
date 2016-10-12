@@ -13,7 +13,8 @@
 -(id)initWithObject:(HttpRequestResult*)data{
     self=[super init];
     if(self){
-        [T ]
+       
     }
+    return self;
 }
 @end
