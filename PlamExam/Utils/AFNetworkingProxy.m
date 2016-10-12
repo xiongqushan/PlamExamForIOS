@@ -11,9 +11,7 @@
 @implementation AFNetworkingProxy
 static AFNetworkingProxy *networkingProxy;
 
-+(nonnull AFNetworkingProxy *)shareInstance{
-    static dispatch_once_t onceToken;
-    dispatch_once(&onceToken,^{
++(nonnull AFNetworkingProxy *)createInstance{
 #if __IPHONE_OS_VERSION_MAX_ALLOWED > __IPHONE_8_0
         NSURL *baseURL = [NSURL URLWithString:[BaseURLStr stringByAddingPercentEncodingWithAllowedCharacters:[NSCharacterSet URLQueryAllowedCharacterSet]]];
 #else
@@ -34,8 +32,7 @@ static AFNetworkingProxy *networkingProxy;
         networkingProxy = [[self alloc]initWithBaseURL:baseURL sessionConfiguration:sessionConfigure];
         networkingProxy.requestSerializer = requestSerializer;
         networkingProxy.responseSerializer = respondSerializer;
-    });
-    return networkingProxy;
+        return networkingProxy;
 }
 
 @end
