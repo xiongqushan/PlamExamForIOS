@@ -12,8 +12,12 @@
 #define Distribution 1      //正式环境1 测试环境0
 #if Distribution==1
 #define BaseURLStr @""
+#define HttpBasicKey @"ZAPPKey"
+#define ApiSecret @"1!2@3#4$5%6^"
 #else
 #define BaseURLStr @""
+#define HttpBasicKey @"ZAPPKey"
+#define ApiSecret @"1!2@3#4$5%6^"
 #endif
 
 #endif /* PlamExam_Prefix_h */

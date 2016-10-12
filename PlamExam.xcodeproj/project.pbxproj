@@ -7,10 +7,11 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
+		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
+		A5C66BE41DADA3C30049B275 /* RequestGlobalResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE31DADA3C30049B275 /* RequestGlobalResult.m */; };
 		A93548A61DAB96330077E85C /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A51DAB96330077E85C /* BaseView.m */; };
 		A93548A91DAB96560077E85C /* BaseViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A81DAB96560077E85C /* BaseViewController.m */; };
-		A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AB1DAB966C0077E85C /* BaseUtils.m */; };
-		A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548AE1DAB967C0077E85C /* BaseCategories.m */; };
 		A93548B31DAB974C0077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548B21DAB974C0077E85C /* BaseModel.m */; };
 		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
 		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
@@ -27,15 +28,16 @@
 /* Begin PBXFileReference section */
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
-		A93548A01DAB95E10077E85C /* Define.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Define.h; sourceTree = "<group>"; };
+		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
+		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
+		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
+		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
+		A5C66BE21DADA3C30049B275 /* RequestGlobalResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RequestGlobalResult.h; sourceTree = "<group>"; };
+		A5C66BE31DADA3C30049B275 /* RequestGlobalResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RequestGlobalResult.m; sourceTree = "<group>"; };
 		A93548A41DAB96330077E85C /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
 		A93548A51DAB96330077E85C /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		A93548A71DAB96560077E85C /* BaseViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseViewController.h; sourceTree = "<group>"; };
 		A93548A81DAB96560077E85C /* BaseViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseViewController.m; sourceTree = "<group>"; };
-		A93548AA1DAB966C0077E85C /* BaseUtils.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseUtils.h; sourceTree = "<group>"; };
-		A93548AB1DAB966C0077E85C /* BaseUtils.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseUtils.m; sourceTree = "<group>"; };
-		A93548AD1DAB967C0077E85C /* BaseCategories.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseCategories.h; sourceTree = "<group>"; };
-		A93548AE1DAB967C0077E85C /* BaseCategories.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseCategories.m; sourceTree = "<group>"; };
 		A93548B11DAB974C0077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		A93548B21DAB974C0077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
@@ -75,7 +77,8 @@
 			children = (
 				A93548E21DAC9B260077E85C /* HttpRequestResult.h */,
 				A93548E31DAC9B260077E85C /* HttpRequestResult.m */,
-				A93548A01DAB95E10077E85C /* Define.h */,
+				A5C66BE21DADA3C30049B275 /* RequestGlobalResult.h */,
+				A5C66BE31DADA3C30049B275 /* RequestGlobalResult.m */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -121,8 +124,10 @@
 		A9411B2A1DAA3F8200B69967 /* Categories */ = {
 			isa = PBXGroup;
 			children = (
-				A93548AD1DAB967C0077E85C /* BaseCategories.h */,
-				A93548AE1DAB967C0077E85C /* BaseCategories.m */,
+				A5C66BDC1DAD40240049B275 /* NSString+Util.h */,
+				A5C66BDD1DAD40240049B275 /* NSString+Util.m */,
+				A5C66BDF1DAD40980049B275 /* NSData+Util.h */,
+				A5C66BE01DAD40980049B275 /* NSData+Util.m */,
 			);
 			path = Categories;
 			sourceTree = "<group>";
@@ -134,8 +139,6 @@
 				A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */,
 				A93548DE1DAC9B170077E85C /* HttpHelper.h */,
 				A93548DF1DAC9B170077E85C /* HttpHelper.m */,
-				A93548AA1DAB966C0077E85C /* BaseUtils.h */,
-				A93548AB1DAB966C0077E85C /* BaseUtils.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -341,16 +344,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */,
 				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
 				A93548E71DACB3AF0077E85C /* RPServer.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
+				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
+				A5C66BE41DADA3C30049B275 /* RequestGlobalResult.m in Sources */,
 				A93548A91DAB96560077E85C /* BaseViewController.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */,
-				A93548AF1DAB967C0077E85C /* BaseCategories.m in Sources */,
+				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
 				A93548A61DAB96330077E85C /* BaseView.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
 			);

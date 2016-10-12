@@ -9,5 +9,5 @@
 #import <Foundation/Foundation.h>
 #import <AFNetworking/AFNetworking.h>
 @interface AFNetworkingProxy : AFHTTPSessionManager
-+(nonnull AFNetworkingProxy*)shareInstance;
++(nonnull AFNetworkingProxy*)createInstance;
 @end
