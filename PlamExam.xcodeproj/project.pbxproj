@@ -15,6 +15,7 @@
 		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
 		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
 		A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E31DAC9B260077E85C /* HttpRequestResult.m */; };
+		A93548E71DACB3AF0077E85C /* RPServer.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E61DACB3AF0077E85C /* RPServer.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
 		A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A942CEB41DAB44140049805A /* Foundation+Log.m */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
@@ -44,6 +45,8 @@
 		A93548DF1DAC9B170077E85C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		A93548E21DAC9B260077E85C /* HttpRequestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestResult.h; sourceTree = "<group>"; };
 		A93548E31DAC9B260077E85C /* HttpRequestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestResult.m; sourceTree = "<group>"; };
+		A93548E51DACB3AF0077E85C /* RPServer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RPServer.h; sourceTree = "<group>"; };
+		A93548E61DACB3AF0077E85C /* RPServer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RPServer.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
@@ -91,6 +94,8 @@
 			children = (
 				A9411B241DAA3DB800B69967 /* AppDelegate.h */,
 				A9411B251DAA3DB800B69967 /* AppDelegate.m */,
+				A93548E51DACB3AF0077E85C /* RPServer.h */,
+				A93548E61DACB3AF0077E85C /* RPServer.m */,
 			);
 			path = Application;
 			sourceTree = "<group>";
@@ -338,6 +343,7 @@
 			files = (
 				A93548AC1DAB966C0077E85C /* BaseUtils.m in Sources */,
 				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
+				A93548E71DACB3AF0077E85C /* RPServer.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
 				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
