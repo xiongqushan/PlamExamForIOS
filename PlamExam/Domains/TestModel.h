@@ -9,8 +9,10 @@
 #import <Foundation/Foundation.h>
 
 @interface TestModel : NSObject
-@property (nonatomic, copy) NSString *name;
-@property (nonatomic, copy) NSString *title;
-@property (nonatomic, copy) NSString *content;
+@property (nonatomic, copy) NSString *ID;
+@property (nonatomic, strong) NSArray *Arrs;
+//@property (nonatomic, copy) NSString *name;
+//@property (nonatomic, copy) NSString *title;
+//@property (nonatomic, copy) NSString *content;
 
 @end

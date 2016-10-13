@@ -8,9 +8,13 @@
 
 #import <Foundation/Foundation.h>
 #import "TestModel.h"
+#import "HttpRequestResult.h"
+#import "HttpHelper.h"
 
 @interface BaseModel : NSObject
 
-+ (void)requestTestData:(NSDictionary *)param resultBlock:(void(^)(TestModel *testArr, NSString *message))resultBlock;
+//+ (void)requestTestData:(NSDictionary *)param resultBlock:(void(^)(TestModel *testArr, NSString *message))resultBlock;
+
++ (void)requestTestData1:(NSDictionary *)param resultBlock:(void (^)(HttpRequestResult<TestModel*> * httpResult))resultBlock;
 
 @end

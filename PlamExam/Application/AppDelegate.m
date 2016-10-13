@@ -9,6 +9,7 @@
 #import "AppDelegate.h"
 #import "BaseModel.h"
 #import "BaseViewController.h"
+#import <YYModel.h>
 
 @interface AppDelegate ()
 
@@ -20,10 +21,14 @@
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    NSDictionary *param = @{@"value":@"",@"version":@""};
+    NSDictionary *param = @{@"ID":@"1",@"Arrs":@[@"12而是",@"23‘",@"34’‘’"]};
+
+//    [BaseModel requestTestData:param resultBlock:^(TestModel *testArr, NSString *message) {
+//        NSLog(@"_______name:%@  ______title:%@  ______content:%@",testArr.name,testArr.title,testArr.content);
+//    }];
     
-    [BaseModel requestTestData:param resultBlock:^(TestModel *testArr, NSString *message) {
-        NSLog(@"_______name:%@  ______title:%@  ______content:%@",testArr.name,testArr.title,testArr.content);
+    [BaseModel requestTestData1:param resultBlock:^(HttpRequestResult<TestModel *> *httpResult) {
+        
     }];
     
     self.window.rootViewController = [[BaseViewController alloc] init];

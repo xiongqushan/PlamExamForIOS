@@ -10,9 +10,15 @@
 
 @implementation HttpRequestResult
 
+
 @end
 
 
 @implementation ApiGlobalData
+
++ (NSDictionary *)modelCustomPropertyMapper {
+    
+    return @{@"Result":@"Data"};
+}
 
 @end

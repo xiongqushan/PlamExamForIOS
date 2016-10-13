@@ -9,6 +9,7 @@
 #ifndef PlamExam_Prefix_h
 #define PlamExam_Prefix_h
 
+//HZ.WebAPI
 #define Distribution 1      //正式环境1 测试环境0
 #if Distribution==1
 #define BaseURLStr @"http://hz3bn04d2:8070/api/V2/"
