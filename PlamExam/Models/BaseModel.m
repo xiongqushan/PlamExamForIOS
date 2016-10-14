@@ -42,8 +42,10 @@
         HttpRequestResult<TestModel*>* result=httpRequestResult;
         if(httpRequestResult.IsHttpSuccess){
             result.Data=[TestModel yy_modelWithJSON:httpRequestResult.HttpResult.Result];
+        }else {
+            resultBlock(result);
         }
-        resultBlock(result);
+        
         
     }];
 }

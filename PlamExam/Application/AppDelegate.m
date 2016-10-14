@@ -8,8 +8,13 @@
 
 #import "AppDelegate.h"
 #import "BaseModel.h"
-#import "BaseViewController.h"
+#import "HZTabBarController.h"
+#import "LoginViewController.h"
+#import "UIColor+Utils.h"
 #import <YYModel.h>
+#import "UserManager.h"
+#import "CommonUtil.h"
+#import "TestModel.h"
 
 @interface AppDelegate ()
 
@@ -17,21 +22,50 @@
 
 @implementation AppDelegate
 
+- (void)setUpControlUI {
+    /**************** 控件外观设置 *******************/
+    [[UIApplication sharedApplication] setStatusBarStyle:UIStatusBarStyleLightContent];
+    [[UIApplication sharedApplication] setStatusBarHidden:NO];
+    
+    NSDictionary *navBarTitleTextAttributes = @{NSForegroundColorAttributeName:[UIColor whiteColor],NSFontAttributeName:[UIFont boldSystemFontOfSize:18]};
+    [[UINavigationBar appearance] setTitleTextAttributes:navBarTitleTextAttributes];
+    [[UINavigationBar appearance] setBarTintColor:[UIColor navigationBarColor]];
+    [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
+    
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor tabBarColor]} forState:UIControlStateSelected];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} forState:UIControlStateNormal];
+    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar_background"]];
+}
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     // Override point for customization after application launch.
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    NSDictionary *param = @{@"ID":@"1",@"Arrs":@[@"12而是",@"23‘",@"34’‘’"]};
-
-//    [BaseModel requestTestData:param resultBlock:^(TestModel *testArr, NSString *message) {
-//        NSLog(@"_______name:%@  ______title:%@  ______content:%@",testArr.name,testArr.title,testArr.content);
-//    }];
+    [self setUpControlUI];
     
-    [BaseModel requestTestData1:param resultBlock:^(HttpRequestResult<TestModel *> *httpResult) {
-        
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+    NSDictionary *param = @{@"Mobile":@"18301718531"};
+    NSDictionary *param2 = @{@"ID":@"1",@"Arrs":@[@"1",@"1",@"对方会卡死"]};
+    
+    [BaseModel requestTestData1:param2 resultBlock:^(HttpRequestResult<TestModel *> *httpResult) {
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                //成功
+                TestModel *model = httpResult.Data;
+                NSLog(@"________%@",model);
+            }else {
+                //失败
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
     }];
     
-    self.window.rootViewController = [[BaseViewController alloc] init];
+    UIViewController *rootVc = [[HZTabBarController alloc] init];
+    if (![UserManager isLogin]) {
+        rootVc = [[LoginViewController alloc] init];
+    }
+    self.window.rootViewController = rootVc;
+    
     [self.window makeKeyAndVisible];
     return YES;
 }

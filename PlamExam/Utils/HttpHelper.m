@@ -45,10 +45,11 @@
     //将认证信息添加到请求头
     [networkingProxy.requestSerializer setValue:signString forHTTPHeaderField:@"Authorization"];
     
+    NSLog(@"_______path:%@",path);
     [networkingProxy POST:path parameters:postDic progress:nil success:^(NSURLSessionDataTask * _Nonnull task, id  _Nullable responseObject) {
         HttpRequestResult *requestResult=[[HttpRequestResult alloc] init];
         requestResult.HttpStatus=200;
-        requestResult.IsHttpSuccess=true;
+        requestResult.IsHttpSuccess = YES;
         requestResult.HttpResult=[ApiGlobalData yy_modelWithJSON:responseObject];
         /*
         requestResult.HttpStatus= [[responseObject objectForKey:@"Code"] integerValue];
@@ -73,6 +74,7 @@
         
         HttpRequestResult *requestResult=[[HttpRequestResult alloc] init];
         requestResult.HttpStatus=0;
+        requestResult.IsHttpSuccess = NO;
         requestResult.HttpMessage=@"服务器出错了，请稍候再试";
         callbackDelegate(requestResult);
     }];
