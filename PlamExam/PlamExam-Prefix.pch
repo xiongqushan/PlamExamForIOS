@@ -9,15 +9,18 @@
 #ifndef PlamExam_Prefix_h
 #define PlamExam_Prefix_h
 
+//本机  http://hz3bn04d2/ZSTJ/api/V3/
+//发布  http://hz3bn04d2:8070/api/V3/
+
 //HZ.WebAPI
 #define Distribution 1  //正式环境1 测试环境0
 
 #if Distribution==1
-#define BaseURLStr @"http://hz3bn04d2:8070/api/V2/"
+#define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #else
-#define BaseURLStr @"http://hz3bn04d2:8070/api/V2/"
+#define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif

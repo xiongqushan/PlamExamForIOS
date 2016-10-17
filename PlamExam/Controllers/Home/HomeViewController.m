@@ -116,14 +116,16 @@
     return kSectionItemH + kItemSpace*2 + kInformationBtnH;;
 }
 
+#pragma mark -- ClickEvent
+
 - (void)itemTap:(UITapGestureRecognizer *)tap {
     UIView *tempView = tap.view;
     if (tempView.tag == kSectionItemTag) {
         //体检报告
     }else if (tempView.tag == kSectionItemTag + 1) {
         //健康咨询
-        ConsulationViewController *consulation = [[ConsulationViewController alloc] init];
-        [self.navigationController pushViewController:consulation animated:YES];
+//        ConsulationViewController *consulation = [[ConsulationViewController alloc] init];
+//        [self.navigationController pushViewController:consulation animated:YES];
     }
 }
 

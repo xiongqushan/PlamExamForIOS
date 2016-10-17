@@ -15,6 +15,9 @@
 #import "UserManager.h"
 #import "CommonUtil.h"
 #import "TestModel.h"
+#import "iflyMSC/IFlyMSC.h"
+
+#define kIflyAppId @"5800754f" //讯飞AppId
 
 @interface AppDelegate ()
 
@@ -38,27 +41,17 @@
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
-    // Override point for customization after application launch.
+    
+    //配置控件外观
     [self setUpControlUI];
     
-    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    NSDictionary *param = @{@"Mobile":@"18301718531"};
-    NSDictionary *param2 = @{@"ID":@"1",@"Arrs":@[@"1",@"1",@"对方会卡死"]};
+    /**************** 配置讯飞初始化 *******************/
+    NSString *initString = [[NSString alloc] initWithFormat:@"appid=%@",kIflyAppId];
+    [IFlySpeechUtility createUtility:initString];
     
-    [BaseModel requestTestData1:param2 resultBlock:^(HttpRequestResult<TestModel *> *httpResult) {
-        if (httpResult.IsHttpSuccess) {
-            if (httpResult.HttpResult.Code == 1) {
-                //成功
-                TestModel *model = httpResult.Data;
-                NSLog(@"________%@",model);
-            }else {
-                //失败
-                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
-            }
-        }else {
-            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-        }
-    }];
+    /**************** 初始化根视图 *******************/
+    self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
+
     
     UIViewController *rootVc = [[HZTabBarController alloc] init];
     if (![UserManager isLogin]) {

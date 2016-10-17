@@ -15,7 +15,9 @@
 {
     
     NSArray *keys = [dict allKeys];
-    NSArray *keySort = [keys sortedArrayUsingSelector:@selector(compare:)];
+    NSArray *keySort=[keys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
+        return [obj1 compare:obj2 options:NSNumericSearch];
+    }];
     
     NSMutableString *jsonStr = [[NSMutableString alloc]initWithString:@"{"];
     

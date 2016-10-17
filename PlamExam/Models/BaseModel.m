@@ -6,7 +6,7 @@
 //  Copyright © 2016年 guokai. All rights reserved.
 //
 
-#define kRequestUrl @"Values/PostBB"
+#define kRequestUrl @"System2/SMS"
 
 #import "BaseModel.h"
 #import <YYModel/YYModel.h>
@@ -39,9 +39,10 @@
     
     [HttpHelper Post:kRequestUrl withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
-        HttpRequestResult<TestModel*>* result=httpRequestResult;
+        HttpRequestResult<TestModel*> *result=httpRequestResult;
         if(httpRequestResult.IsHttpSuccess){
-            result.Data=[TestModel yy_modelWithJSON:httpRequestResult.HttpResult.Result];
+            
+            result.Data = [TestModel yy_modelWithDictionary:httpRequestResult.HttpResult.Result];
         }else {
             resultBlock(result);
         }
