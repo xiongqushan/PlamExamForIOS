@@ -46,6 +46,8 @@
     ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明"];
     LabelItem *label = [LabelItem itemWithTitle:@"清理缓存"];
     GroupItem *group2 = [[GroupItem alloc] init];
+    group2.items = @[arrow4, label];
+    [self.dataArr addObject:group2];
     
 }
 
