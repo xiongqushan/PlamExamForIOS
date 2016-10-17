@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
-		A93548A61DAB96330077E85C /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A51DAB96330077E85C /* BaseView.m */; };
 		A93548B31DAB974C0077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548B21DAB974C0077E85C /* BaseModel.m */; };
 		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
 		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
@@ -45,8 +44,6 @@
 		A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549701DAFAA040077E85C /* NSTimer+Addition.m */; };
 		A93549751DB0780A0077E85C /* InformationCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549731DB0780A0077E85C /* InformationCell.m */; };
 		A93549761DB0780A0077E85C /* InformationCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93549741DB0780A0077E85C /* InformationCell.xib */; };
-		A935497D1DB089AC0077E85C /* ConsulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A935497B1DB089AC0077E85C /* ConsulationViewController.m */; };
-		A935497E1DB089AD0077E85C /* ConsulationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A935497C1DB089AC0077E85C /* ConsulationViewController.xib */; };
 		A93549821DB0A5920077E85C /* UserManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549811DB0A5920077E85C /* UserManager.m */; };
 		A93549851DB0A8890077E85C /* UserModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549841DB0A8890077E85C /* UserModel.m */; };
 		A93549871DB0B21E0077E85C /* iflyMSC.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93549861DB0B21E0077E85C /* iflyMSC.framework */; };
@@ -61,13 +58,24 @@
 		A93549991DB0B2D40077E85C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93549981DB0B2D40077E85C /* AddressBook.framework */; };
 		A935499B1DB0B2DE0077E85C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A935499A1DB0B2DE0077E85C /* QuartzCore.framework */; };
 		A935499D1DB0B2E70077E85C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A935499C1DB0B2E70077E85C /* CoreGraphics.framework */; };
-		A93549AB1DB0B5020077E85C /* ConsultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549AA1DB0B5020077E85C /* ConsultViewController.m */; };
+		A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60C81DB4CD970024180F /* ConsulationViewController.m */; };
+		A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60C91DB4CD970024180F /* ConsulationViewController.xib */; };
+		A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60CB1DB4CD970024180F /* ConsultViewController.m */; };
+		A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60D51DB4CE6B0024180F /* DoctorReplyCell.m */; };
+		A93C60D81DB4CE6B0024180F /* DoctorReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60D61DB4CE6B0024180F /* DoctorReplyCell.xib */; };
+		A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60DD1DB4CEA40024180F /* UserTextCell.m */; };
+		A93C60E01DB4CEA40024180F /* UserTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60DE1DB4CEA40024180F /* UserTextCell.xib */; };
+		A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60E21DB4D3980024180F /* InformationViewController.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
 		A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A942CEB41DAB44140049805A /* Foundation+Log.m */; };
 		A9610D481DB109D60062CE93 /* ZSType.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D471DB109D60062CE93 /* ZSType.m */; };
+		A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D761DB491100062CE93 /* DoctorInfoView.m */; };
+		A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9610D781DB491270062CE93 /* DoctorInfoView.xib */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
 		A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */; };
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
+		A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CD81DB4EFA500034DA5 /* ChatModel.m */; };
+		A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDB1DB4F05200034DA5 /* ChatData.m */; };
 		A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A721DB0DD70000BEDF4 /* User.m */; };
 		A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */; };
 		A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A841DB0E930000BEDF4 /* edit_voiceinput@3x.png */; };
@@ -84,8 +92,6 @@
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
 		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
-		A93548A41DAB96330077E85C /* BaseView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseView.h; sourceTree = "<group>"; };
-		A93548A51DAB96330077E85C /* BaseView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseView.m; sourceTree = "<group>"; };
 		A93548B11DAB974C0077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
 		A93548B21DAB974C0077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
@@ -154,9 +160,6 @@
 		A93549721DB0780A0077E85C /* InformationCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationCell.h; sourceTree = "<group>"; };
 		A93549731DB0780A0077E85C /* InformationCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationCell.m; sourceTree = "<group>"; };
 		A93549741DB0780A0077E85C /* InformationCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InformationCell.xib; sourceTree = "<group>"; };
-		A935497A1DB089AC0077E85C /* ConsulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationViewController.h; sourceTree = "<group>"; };
-		A935497B1DB089AC0077E85C /* ConsulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationViewController.m; sourceTree = "<group>"; };
-		A935497C1DB089AC0077E85C /* ConsulationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsulationViewController.xib; sourceTree = "<group>"; };
 		A93549801DB0A5920077E85C /* UserManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserManager.h; sourceTree = "<group>"; };
 		A93549811DB0A5920077E85C /* UserManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserManager.m; sourceTree = "<group>"; };
 		A93549831DB0A8890077E85C /* UserModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserModel.h; sourceTree = "<group>"; };
@@ -173,18 +176,36 @@
 		A93549981DB0B2D40077E85C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A935499A1DB0B2DE0077E85C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A935499C1DB0B2E70077E85C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A93549A91DB0B5020077E85C /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
-		A93549AA1DB0B5020077E85C /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
+		A93C60C71DB4CD970024180F /* ConsulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationViewController.h; sourceTree = "<group>"; };
+		A93C60C81DB4CD970024180F /* ConsulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationViewController.m; sourceTree = "<group>"; };
+		A93C60C91DB4CD970024180F /* ConsulationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsulationViewController.xib; sourceTree = "<group>"; };
+		A93C60CA1DB4CD970024180F /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
+		A93C60CB1DB4CD970024180F /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
+		A93C60D41DB4CE6B0024180F /* DoctorReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorReplyCell.h; sourceTree = "<group>"; };
+		A93C60D51DB4CE6B0024180F /* DoctorReplyCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorReplyCell.m; sourceTree = "<group>"; };
+		A93C60D61DB4CE6B0024180F /* DoctorReplyCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorReplyCell.xib; sourceTree = "<group>"; };
+		A93C60DC1DB4CEA40024180F /* UserTextCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = UserTextCell.h; sourceTree = "<group>"; };
+		A93C60DD1DB4CEA40024180F /* UserTextCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = UserTextCell.m; sourceTree = "<group>"; };
+		A93C60DE1DB4CEA40024180F /* UserTextCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = UserTextCell.xib; sourceTree = "<group>"; };
+		A93C60E11DB4D3980024180F /* InformationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InformationViewController.h; sourceTree = "<group>"; };
+		A93C60E21DB4D3980024180F /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		A9610D461DB109D60062CE93 /* ZSType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSType.h; sourceTree = "<group>"; };
 		A9610D471DB109D60062CE93 /* ZSType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSType.m; sourceTree = "<group>"; };
+		A9610D751DB491100062CE93 /* DoctorInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoView.h; sourceTree = "<group>"; };
+		A9610D761DB491100062CE93 /* DoctorInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorInfoView.m; sourceTree = "<group>"; };
+		A9610D781DB491270062CE93 /* DoctorInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorInfoView.xib; sourceTree = "<group>"; };
 		A9BBAD5B1DAA336000BAF4D1 /* PlamExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlamExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BBAD5F1DAA336000BAF4D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A9BBAD6D1DAA336000BAF4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9BBAD6F1DAA336000BAF4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9C92CD71DB4EFA500034DA5 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
+		A9C92CD81DB4EFA500034DA5 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
+		A9C92CDA1DB4F05200034DA5 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
+		A9C92CDB1DB4F05200034DA5 /* ChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatData.m; sourceTree = "<group>"; };
 		A9DB5A711DB0DD70000BEDF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A9DB5A721DB0DD70000BEDF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_voiceinput@2x.png"; sourceTree = "<group>"; };
@@ -231,6 +252,8 @@
 				A93548E91DAE01CF0077E85C /* TestModel.m */,
 				A9DB5A711DB0DD70000BEDF4 /* User.h */,
 				A9DB5A721DB0DD70000BEDF4 /* User.m */,
+				A9C92CDA1DB4F05200034DA5 /* ChatData.h */,
+				A9C92CDB1DB4F05200034DA5 /* ChatData.m */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -242,6 +265,8 @@
 				A93548B21DAB974C0077E85C /* BaseModel.m */,
 				A93549831DB0A8890077E85C /* UserModel.h */,
 				A93549841DB0A8890077E85C /* UserModel.m */,
+				A9C92CD71DB4EFA500034DA5 /* ChatModel.h */,
+				A9C92CD81DB4EFA500034DA5 /* ChatModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -274,20 +299,10 @@
 			children = (
 				A935490C1DAF193D0077E85C /* HomeViewController.h */,
 				A935490D1DAF193D0077E85C /* HomeViewController.m */,
-				A935497A1DB089AC0077E85C /* ConsulationViewController.h */,
-				A935497B1DB089AC0077E85C /* ConsulationViewController.m */,
-				A935497C1DB089AC0077E85C /* ConsulationViewController.xib */,
+				A93C60E11DB4D3980024180F /* InformationViewController.h */,
+				A93C60E21DB4D3980024180F /* InformationViewController.m */,
 			);
 			path = Home;
-			sourceTree = "<group>";
-		};
-		A935490A1DAF18CF0077E85C /* Information */ = {
-			isa = PBXGroup;
-			children = (
-				A93549A91DB0B5020077E85C /* ConsultViewController.h */,
-				A93549AA1DB0B5020077E85C /* ConsultViewController.m */,
-			);
-			path = Information;
 			sourceTree = "<group>";
 		};
 		A935490B1DAF18CF0077E85C /* Personal Center */ = {
@@ -389,6 +404,18 @@
 			path = Manager;
 			sourceTree = "<group>";
 		};
+		A93C60C61DB4CD970024180F /* Consult */ = {
+			isa = PBXGroup;
+			children = (
+				A93C60CA1DB4CD970024180F /* ConsultViewController.h */,
+				A93C60CB1DB4CD970024180F /* ConsultViewController.m */,
+				A93C60C71DB4CD970024180F /* ConsulationViewController.h */,
+				A93C60C81DB4CD970024180F /* ConsulationViewController.m */,
+				A93C60C91DB4CD970024180F /* ConsulationViewController.xib */,
+			);
+			path = Consult;
+			sourceTree = "<group>";
+		};
 		A9411B231DAA3DA200B69967 /* Application */ = {
 			isa = PBXGroup;
 			children = (
@@ -404,7 +431,7 @@
 				A93548FF1DAF14CF0077E85C /* Main */,
 				A93548F91DAF140C0077E85C /* Login */,
 				A93549091DAF18C60077E85C /* Home */,
-				A935490A1DAF18CF0077E85C /* Information */,
+				A93C60C61DB4CD970024180F /* Consult */,
 				A935490B1DAF18CF0077E85C /* Personal Center */,
 			);
 			path = Controllers;
@@ -413,11 +440,10 @@
 		A9411B291DAA3E7B00B69967 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9610D741DB491100062CE93 /* ConsulationView */,
 				A9DB5A821DB0E930000BEDF4 /* HZRecognizer */,
 				A935496B1DAFA8430077E85C /* HomeView */,
 				A93549571DAF86260077E85C /* PersonalView */,
-				A93548A41DAB96330077E85C /* BaseView.h */,
-				A93548A51DAB96330077E85C /* BaseView.m */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -476,6 +502,22 @@
 				22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A9610D741DB491100062CE93 /* ConsulationView */ = {
+			isa = PBXGroup;
+			children = (
+				A9610D751DB491100062CE93 /* DoctorInfoView.h */,
+				A9610D761DB491100062CE93 /* DoctorInfoView.m */,
+				A9610D781DB491270062CE93 /* DoctorInfoView.xib */,
+				A93C60D41DB4CE6B0024180F /* DoctorReplyCell.h */,
+				A93C60D51DB4CE6B0024180F /* DoctorReplyCell.m */,
+				A93C60D61DB4CE6B0024180F /* DoctorReplyCell.xib */,
+				A93C60DC1DB4CEA40024180F /* UserTextCell.h */,
+				A93C60DD1DB4CEA40024180F /* UserTextCell.m */,
+				A93C60DE1DB4CEA40024180F /* UserTextCell.xib */,
+			);
+			path = ConsulationView;
 			sourceTree = "<group>";
 		};
 		A9BBAD521DAA336000BAF4D1 = {
@@ -612,15 +654,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */,
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
 				A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */,
-				A935497E1DB089AD0077E85C /* ConsulationViewController.xib in Resources */,
 				A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */,
 				A935496A1DAF9D340077E85C /* IconCell.xib in Resources */,
+				A93C60E01DB4CEA40024180F /* UserTextCell.xib in Resources */,
+				A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */,
 				A935492A1DAF37890077E85C /* LoginViewController.xib in Resources */,
 				A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */,
 				A935495C1DAF866D0077E85C /* HeaderView.xib in Resources */,
 				A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */,
+				A93C60D81DB4CE6B0024180F /* DoctorReplyCell.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -694,17 +739,22 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A93548EA1DAE01CF0077E85C /* TestModel.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
+				A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */,
 				A93549691DAF9D340077E85C /* IconCell.m in Sources */,
 				A93549171DAF1CEE0077E85C /* BaseViewController.m in Sources */,
 				A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */,
 				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
 				A93548F31DAE50EB0077E85C /* CommonUtil.m in Sources */,
+				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
+				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
+				A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
@@ -712,12 +762,11 @@
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
+				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
 				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
-				A935497D1DB089AC0077E85C /* ConsulationViewController.m in Sources */,
-				A93549AB1DB0B5020077E85C /* ConsultViewController.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,
 				A93549541DAF72140077E85C /* SwitchItem.m in Sources */,
@@ -732,9 +781,10 @@
 				A935496E1DAFA8610077E85C /* ADScrollView.m in Sources */,
 				A935491D1DAF2A7F0077E85C /* UIView+Utils.m in Sources */,
 				A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */,
+				A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */,
 				A935494F1DAF72140077E85C /* ArrowItem.m in Sources */,
+				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
 				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
-				A93548A61DAB96330077E85C /* BaseView.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A935494E1DAF72140077E85C /* BaseSettingViewController.m in Sources */,
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,

@@ -20,19 +20,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"系统设置";
-    
-    UIButton *loginOut = [UIButton buttonWithType:UIButtonTypeCustom];
-    loginOut.frame = CGRectMake(100, 100, kScreenSizeWidth - 200, 30);
-    [loginOut setTitle:@"退出" forState:UIControlStateNormal];
-    [loginOut setTitleColor:[UIColor redColor] forState:UIControlStateNormal];
-    [loginOut addTarget:self action:@selector(loginOut) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:loginOut];
-}
+    [self createItemData];
 
-- (void)loginOut {
-    [UserManager clearUserInfo];
-    LoginViewController *login = [[LoginViewController alloc] init];
-    [self presentViewController:login animated:YES completion:nil];
 }
 
 - (void) createItemData {
@@ -49,6 +38,23 @@
     group2.items = @[arrow4, label];
     [self.dataArr addObject:group2];
     
+    LabelItem *label2 = [[LabelItem alloc] init];
+    label2.titleText = @"退出登录";
+    GroupItem *group3 = [[GroupItem alloc] init];
+    group3.items = @[label2];
+    [self.dataArr addObject:group3];
+    
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    if (indexPath.section == 2) {
+        //退出登录
+        [UserManager clearUserInfo];
+        LoginViewController *login = [[LoginViewController alloc] init];
+        [self presentViewController:login animated:YES completion:nil];
+    }
 }
 
 - (void)didReceiveMemoryWarning {

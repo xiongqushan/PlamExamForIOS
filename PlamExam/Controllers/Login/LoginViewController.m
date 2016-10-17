@@ -14,6 +14,7 @@
 #import "UserManager.h"
 #import "UserModel.h"
 #import <YYModel.h>
+#import <MBProgressHUD.h>
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -34,7 +35,11 @@
         return;
     }
     
+    MBProgressHUD *hud = [CommonUtil createHUD];
+    
     [UserModel requestVerifyCode:self.phoneTextField.text CallbackDelegate:^(HttpRequestResult<NSString *> *httpResult) {
+        [hud hideAnimated:YES];
+        
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
                 NSLog(@"______%@",httpResult.Data);
@@ -58,8 +63,11 @@
         return;
     }
    // [UserManager saveUserInfo];
+    MBProgressHUD *hud = [CommonUtil createHUD];
     
     [UserModel requestLoginData:self.phoneTextField.text verifyCode:self.verCodeTextField.text callback:^(HttpRequestResult<User *> *httpResult) {
+        [hud hideAnimated:YES];
+        
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
                 

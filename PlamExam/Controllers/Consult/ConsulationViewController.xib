@@ -8,11 +8,14 @@
     <objects>
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConsulationViewController">
             <connections>
+                <outlet property="placeholderLabel" destination="xGC-eg-2Rf" id="W7o-Gx-sDU"/>
                 <outlet property="reportBtn" destination="uaz-nA-ROQ" id="sEQ-cK-vnb"/>
                 <outlet property="sendBtn" destination="rQA-EL-i11" id="YzO-6L-3Hw"/>
                 <outlet property="tableView" destination="XeQ-Fm-9YD" id="Qhn-4e-oV4"/>
                 <outlet property="textView" destination="x7D-1s-VeF" id="2Sq-22-lhu"/>
                 <outlet property="toolBar" destination="JCu-zq-4pZ" id="NwY-nf-lyZ"/>
+                <outlet property="toolBarBottomConstraint" destination="h5j-SJ-2uK" id="4Ed-oN-XEg"/>
+                <outlet property="toolBarHeightConstraint" destination="NV2-dQ-vxj" id="oBr-Wv-s0c"/>
                 <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
                 <outlet property="voiceBtn" destination="jRH-c0-cT7" id="5qJ-df-sC5"/>
             </connections>
@@ -31,6 +34,9 @@
                             </constraints>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                            <connections>
+                                <outlet property="delegate" destination="-1" id="SzM-pM-86b"/>
+                            </connections>
                         </textView>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="jRH-c0-cT7">
                             <constraints>
@@ -38,6 +44,9 @@
                                 <constraint firstAttribute="width" constant="30" id="ka0-OL-jMb"/>
                             </constraints>
                             <state key="normal" image="voice"/>
+                            <connections>
+                                <action selector="voiceBtnClick:" destination="-1" eventType="touchUpInside" id="cWK-r0-6G9"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="uaz-nA-ROQ">
                             <constraints>
@@ -45,6 +54,9 @@
                                 <constraint firstAttribute="width" constant="30" id="oSh-tv-dcN"/>
                             </constraints>
                             <state key="normal" image="expression"/>
+                            <connections>
+                                <action selector="reportBtnClick:" destination="-1" eventType="touchUpInside" id="wgv-Yd-1xh"/>
+                            </connections>
                         </button>
                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="rQA-EL-i11">
                             <constraints>
@@ -53,14 +65,22 @@
                             </constraints>
                             <state key="normal" image="voice"/>
                         </button>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入咨询内容:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGC-eg-2Rf">
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <color key="textColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                            <nil key="highlightedColor"/>
+                        </label>
                     </subviews>
-                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <constraints>
                         <constraint firstItem="jRH-c0-cT7" firstAttribute="leading" secondItem="JCu-zq-4pZ" secondAttribute="leading" constant="10" id="0c5-GX-NMP"/>
                         <constraint firstAttribute="bottom" secondItem="jRH-c0-cT7" secondAttribute="bottom" constant="8" id="C9X-Ux-H7f"/>
                         <constraint firstItem="uaz-nA-ROQ" firstAttribute="leading" secondItem="x7D-1s-VeF" secondAttribute="trailing" constant="10" id="Dsu-XC-EvT"/>
+                        <constraint firstItem="xGC-eg-2Rf" firstAttribute="top" secondItem="JCu-zq-4pZ" secondAttribute="top" constant="13" id="H7B-82-Rzs"/>
                         <constraint firstAttribute="height" constant="46" id="NV2-dQ-vxj"/>
+                        <constraint firstItem="xGC-eg-2Rf" firstAttribute="leading" secondItem="jRH-c0-cT7" secondAttribute="trailing" constant="15" id="P0o-Ic-VAj"/>
                         <constraint firstItem="uaz-nA-ROQ" firstAttribute="leading" secondItem="x7D-1s-VeF" secondAttribute="trailing" constant="10" id="Q0S-6U-gYC"/>
+                        <constraint firstItem="x7D-1s-VeF" firstAttribute="top" secondItem="JCu-zq-4pZ" secondAttribute="top" constant="5" id="Vob-ih-aQF"/>
                         <constraint firstItem="rQA-EL-i11" firstAttribute="leading" secondItem="uaz-nA-ROQ" secondAttribute="trailing" constant="10" id="XPb-pl-ee6"/>
                         <constraint firstAttribute="bottom" secondItem="x7D-1s-VeF" secondAttribute="bottom" constant="5" id="ZsE-vP-xC4"/>
                         <constraint firstAttribute="trailing" secondItem="rQA-EL-i11" secondAttribute="trailing" constant="10" id="ZvZ-sG-uql"/>

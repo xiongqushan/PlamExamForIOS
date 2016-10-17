@@ -11,6 +11,7 @@
 #import "HZRecognizer.h"
 #import "HZRecognizerView.h"
 
+
 #define BXInputH (kScreenSizeWidth > 375 ? 210 : 200)
 @interface ConsultViewController ()
 
@@ -25,7 +26,12 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    //创建测试语音识别测试
+   // [self createTest];
+    
+}
+
+- (void)createTest {
     UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
     btn.frame = CGRectMake(100, 100, 80, 50);
     [btn setTitle:@"测试" forState:UIControlStateNormal];
@@ -40,7 +46,6 @@
     _recognizer = [[HZRecognizerView alloc] initWithFrame:CGRectMake(0, 200, kScreenSizeWidth, BXInputH)];
     _recognizer.backgroundColor = [UIColor whiteColor];
     [self.view addSubview:_recognizer];
-    
 }
 
 - (void)btnClick {
@@ -49,14 +54,14 @@
     
     if (_isRecogning) {
         
-        [_recognizer starRecognizerResult:^(NSString *result) {
+        [_recognizer starRecognizerResult:^(NSString *result, NSString *errorDesc) {
             _textView.text = result;
         }];
     }else {
         [_recognizer stopRecognizer];
     }
-
 }
+
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

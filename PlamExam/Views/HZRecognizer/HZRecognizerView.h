@@ -10,7 +10,7 @@
 
 @interface HZRecognizerView : UIView
 
-- (void)starRecognizerResult:(void(^)(NSString *result))onResult;
+- (void)starRecognizerResult:(void(^)(NSString *result, NSString *errorDesc))onResult;
 
 - (void)stopRecognizer;
 

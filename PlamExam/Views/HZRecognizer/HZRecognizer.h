@@ -15,11 +15,11 @@
     IFlySpeechRecognizer *_iFlySpeechRecognizer;
 }
 
-@property (nonatomic, copy)void(^onResult)(NSString *result);
+@property (nonatomic, copy)void(^onResult)(NSString *result, NSString *errorDesc);
 
 + (instancetype)shareManager;
 
-- (void)starRecognizerResult:(void(^)(NSString *result))onResult;
+- (void)starRecognizerResult:(void(^)(NSString *result, NSString *errorDesc))onResult;
 
 - (void)stopRecognizer;
 
