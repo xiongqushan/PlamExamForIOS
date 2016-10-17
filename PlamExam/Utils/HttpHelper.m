@@ -52,7 +52,22 @@
         HttpRequestResult *requestResult=[[HttpRequestResult alloc] init];
         requestResult.HttpStatus=200;
         requestResult.IsHttpSuccess = YES;
-        requestResult.HttpResult=[ApiGlobalData yy_modelWithJSON:responseObject];
+        ApiGlobalData *apiGlobalData=[[ApiGlobalData alloc] init];
+        apiGlobalData.Code=[[responseObject objectForKey:@"Code"] integerValue];
+        apiGlobalData.Message=(NSString*)[responseObject objectForKey:@"Message"];
+        id data=[responseObject objectForKey:@"Data"];
+        NSString *dataString=nil;
+        if([data isKindOfClass:[NSDictionary class]]){
+            dataString= [(NSDictionary*)data yy_modelToJSONString];
+        }
+        else if([data isKindOfClass:[NSArray class]]){
+            dataString= [(NSArray*)data yy_modelToJSONString];
+        }
+        else{
+            dataString=data;
+        }
+        apiGlobalData.Result=dataString;
+        requestResult.HttpResult=apiGlobalData;
         /*
         requestResult.HttpStatus= [[responseObject objectForKey:@"Code"] integerValue];
         NSDictionary *jsonDic = [responseObject objectForKey:@"Data"];
