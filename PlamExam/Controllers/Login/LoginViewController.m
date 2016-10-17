@@ -12,6 +12,8 @@
 #import "CommonUtil.h"
 #import "HZTabBarController.h"
 #import "UserManager.h"
+#import "UserModel.h"
+#import <YYModel.h>
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -32,7 +34,20 @@
         return;
     }
     
-    [self.verCodeBtn startWithTime:30 title:@"获取验证码" countDownTitle:@"重新获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+    [UserModel requestVerifyCode:self.phoneTextField.text CallbackDelegate:^(HttpRequestResult<NSString *> *httpResult) {
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                NSLog(@"______%@",httpResult.Data);
+                [self.verCodeBtn startWithTime:30 title:@"获取验证码" countDownTitle:@"重新获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
+    }];
+    
+
     
 }
 
@@ -42,10 +57,25 @@
         [CommonUtil showHUDWithTitle:@"请输入验证码"];
         return;
     }
-    [UserManager saveUserInfo];
+   // [UserManager saveUserInfo];
     
-    HZTabBarController *tabBar = [[HZTabBarController alloc] init];
-    [self presentViewController:tabBar animated:NO completion:nil];
+    [UserModel requestLoginData:self.phoneTextField.text verifyCode:self.verCodeTextField.text callback:^(HttpRequestResult<User *> *httpResult) {
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                
+                User *user = httpResult.Data;
+                [UserManager saveUserInfo:user];
+                
+                HZTabBarController *tabBar = [[HZTabBarController alloc] init];
+                [self presentViewController:tabBar animated:NO completion:nil];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
+    }];
+    
 }
 
 - (void)viewDidLoad {

@@ -11,7 +11,7 @@
 @interface ApiGlobalData : NSObject
 @property(assign,nonatomic) NSInteger Code;
 @property(strong,nonatomic) NSString *Message;
-@property(strong,nonatomic) NSDictionary *Result;
+@property(strong,nonatomic) NSString *Result;
 @end
 
 

@@ -22,7 +22,7 @@ static AFNetworkingProxy *networkingProxy;
         
         //请求序列化
         AFJSONRequestSerializer *requestSerializer = [AFJSONRequestSerializer serializer];
-        requestSerializer.timeoutInterval = 15;
+        requestSerializer.timeoutInterval = 180;
         requestSerializer.stringEncoding = NSUTF8StringEncoding;
         
         //响应序列化

@@ -18,7 +18,7 @@
      withDelegate:(void (^)(HttpRequestResult *httpRequestResult))callbackDelegate{
     
     NSMutableDictionary *postDic=[[NSMutableDictionary alloc] initWithDictionary:params];
-    [postDic setValue:[NSString stringWithFormat:@"%ld",(NSInteger)[[NSDate date] timeIntervalSince1970]*1000] forKey:@"timespan"];
+    [postDic setValue:[NSString stringWithFormat:@"%ld",(NSInteger)[[NSDate date] timeIntervalSince1970]] forKey:@"timespan"];
     
     AFNetworkingProxy *networkingProxy=[AFNetworkingProxy createInstance];
     NSMutableDictionary *signDic=[[NSMutableDictionary alloc] initWithDictionary:postDic];
@@ -37,6 +37,8 @@
     NSString *signString = [sortDic yy_modelToJSONString];*/
     
     NSString *signString =[CommonUtil JSONStringWithSortDictionary:signDic];
+    NSLog(@"______signStr:%@",signString);
+
     signString=[signString lowercaseString];
     signString=[signString md532BitLower];
     signString=[NSString stringWithFormat:@"%@:%@",HttpBasicKey,signString];
@@ -72,10 +74,19 @@
         callbackDelegate(requestResult);
     } failure:^(NSURLSessionDataTask * _Nullable task, NSError * _Nonnull error) {
         
+        NSHTTPURLResponse *response = (NSHTTPURLResponse *)task.response;
+        NSInteger statusCode = response.statusCode;
+        
+        NSString *errResponse = [[NSString alloc] initWithData:(NSData *)error.userInfo[AFNetworkingOperationFailingURLResponseDataErrorKey] encoding:NSUTF8StringEncoding];
+        
+        //http://hz3bn04d2:8070/api/V3/System/SMS
+        
+        NSString *errorMessage = error.userInfo[@"NSLocalizedDescription"];
         HttpRequestResult *requestResult=[[HttpRequestResult alloc] init];
-        requestResult.HttpStatus=0;
+        requestResult.HttpStatus=statusCode;
         requestResult.IsHttpSuccess = NO;
-        requestResult.HttpMessage=@"服务器出错了，请稍候再试";
+     //   requestResult.HttpMessage=@"服务器出错了，请稍候再试";
+        requestResult.HttpMessage = errorMessage;
         callbackDelegate(requestResult);
     }];
     

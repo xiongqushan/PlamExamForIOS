@@ -9,7 +9,7 @@
 #import "HZTabBarController.h"
 #import "HZNavigationController.h"
 #import "HomeViewController.h"
-#import "InformationViewController.h"
+#import "ConsultViewController.h"
 #import "PersonalViewController.h"
 
 @interface HZTabBarController ()
@@ -24,8 +24,8 @@
     HomeViewController *home = [[HomeViewController alloc] init];
     [self setUpOneChildViewController:home image:[UIImage imageNamed:@"home"] selectedImage:[[UIImage imageNamed:@"home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"首页"];
     
-    InformationViewController *information = [[InformationViewController alloc] init];
-    [self setUpOneChildViewController:information image:[UIImage imageNamed:@"consulation"] selectedImage:[[UIImage imageNamed:@"consulation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"咨询"];
+    ConsultViewController *consulat = [[ConsultViewController alloc] init];
+    [self setUpOneChildViewController:consulat image:[UIImage imageNamed:@"consulation"] selectedImage:[[UIImage imageNamed:@"consulation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"咨询"];
     
     PersonalViewController *personal = [[PersonalViewController alloc] init];
     [self setUpOneChildViewController:personal image:[UIImage imageNamed:@"main"] selectedImage:[[UIImage imageNamed:@"main_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"我的"];
