@@ -48,16 +48,23 @@
 
 + (void)showHUDWithTitle:(NSString *)title {
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
-    //    MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithWindow:window];
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:window];
     HUD.userInteractionEnabled = NO;
-    HUD.detailsLabel.font = [UIFont boldSystemFontOfSize:16];
+    HUD.detailsLabelFont=[UIFont boldSystemFontOfSize:16];
+    [window addSubview:HUD];
+    [HUD showAnimated:YES whileExecutingBlock:nil];
+    HUD.mode = MBProgressHUDModeText;
+    HUD.removeFromSuperViewOnHide = YES;
+    HUD.detailsLabelText=title;
+    [HUD hide:YES afterDelay:1];
+    
+    /*HUD.detailsLabel.font = [UIFont boldSystemFontOfSize:16];
     [window addSubview:HUD];
     [HUD showAnimated:YES];
     HUD.mode = MBProgressHUDModeText;
     HUD.removeFromSuperViewOnHide = YES;
     HUD.label.text = title;
-    [HUD hideAnimated:YES afterDelay:1];
+    [HUD hideAnimated:YES afterDelay:1];*/
 }
 
 //传入最大宽度 得到高度

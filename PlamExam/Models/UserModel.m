@@ -26,7 +26,7 @@
         if(httpRequestResult.IsHttpSuccess){
            // result.Data =[[ZSIntType alloc] initWithValue:(int)httpRequestResult.HttpResult.Result];
            // result.Data = []
-            result.Data = [NSString stringWithFormat:@"%ld",httpRequestResult.HttpResult.Code];
+            result.Data = httpRequestResult.HttpResult.Result;
             callBack(result);
         }else {
             callBack(result);
