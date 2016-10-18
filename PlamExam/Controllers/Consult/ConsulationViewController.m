@@ -17,6 +17,7 @@
 #import "DoctorReplyCell.h"
 #import "ChatModel.h"
 #import "ChatData.h"
+#import "ReportListViewController.h"
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -32,6 +33,7 @@
 
 @property (nonatomic, strong) UIView *doctorInfoView;   //健管师简介View
 @property (nonatomic, strong) HZRecognizerView *recordView;    //语音识别View
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @property (nonatomic, assign) CGFloat previousTextViewHeight;
 @property (nonatomic, assign) CGFloat contentOffsetY;
@@ -71,19 +73,8 @@
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
     [self.textView setRound];
-    
     //获取聊天记录
-    [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<ChatData *> *httpResult) {
-        if (httpResult.IsHttpSuccess) {
-            if (httpResult.HttpResult.Code == 1) {
-                NSLog(@"_____%@",httpResult.Data.description);
-            }else {
-                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
-            }
-        }else {
-            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-        }
-    }];
+    [self loadChatData];
     
     DoctorInfoView *infoView = [[[NSBundle mainBundle] loadNibNamed:@"DoctorInfoView" owner:self options:nil] lastObject];
     infoView.frame = self.doctorInfoView.bounds;
@@ -92,8 +83,6 @@
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DoctorReplyCell" bundle:nil] forCellReuseIdentifier:@"DoctorReplyCell"];
     
-    [self scrollToBottom:NO];
-    
     //监听键盘弹出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
     //监听键盘收起
@@ -101,6 +90,28 @@
     
 }
 
+//获取聊天记录
+- (void)loadChatData {
+    self.dataArr = [NSMutableArray array];
+    
+    [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<NSMutableArray *> *httpResult) {
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                NSLog(@"_____%@",httpResult.Data.description);
+                self.dataArr = httpResult.Data;
+                [self.tableView reloadData];
+                [self scrollToBottom:NO];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
+    }];
+}
+
+#pragma mark -- 监听键盘的触发事件
+//当键盘将要显示
 - (void)kbWillShow:(NSNotification *)note {
     
     self.voiceBtn.selected = NO;
@@ -133,6 +144,7 @@
 
 }
 
+//当键盘收起
 - (void)kbWillHide:(NSNotification *)nodte {
     
     self.toolBarBottomConstraint.constant = 0;
@@ -143,23 +155,23 @@
 
 //滑动tableView到底部
 - (void)scrollToBottom:(BOOL)animated {
-//    
-//    if (self.dataArr.count == 0) {
-//        return;
-//    }
     
-    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:20 - 1 inSection:0];
+    if (self.dataArr.count == 0) {
+        return;
+    }
+    NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataArr.count - 1 inSection:0];
     [self.tableView scrollToRowAtIndexPath:indexPath atScrollPosition:UITableViewScrollPositionBottom animated:animated];
 }
 
 #pragma mark -- UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 20;
+    return self.dataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
-    cell.textLabel.text = [NSString stringWithFormat:@"测试数据，第%ld行",indexPath.row];
+    ChatData *model = self.dataArr[indexPath.row];
+    cell.textLabel.text = [NSString stringWithFormat:@"%@，第%ld行",model.Content,indexPath.row];
     return cell;
 }
 
@@ -295,6 +307,19 @@ if (scrollView == self.tableView) {
 //        }
 //    }];
     
+    [ChatModel sendMessageWithAccountId:@"sample string 1" type:2 consultContent:@"sapmle string 3" appendInfo:@"sample string 4" consultDate:@"2016-10-17T19:30:51.1970415+08:00" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
+
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                NSLog(@"_____%@",httpResult.Data.description);
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
+    }];
+    
 }
 
 #pragma mark -- UITextViewDelegate
@@ -344,18 +369,6 @@ if (scrollView == self.tableView) {
         }
     }
     
-    //2.监听send事件  判断最后一个字符串是不是换行符
-    //    if ([textView.text hasSuffix:@"\n"]) {
-    //        [self sendText:textView.text];
-    //        //清空textView的文字
-    //        textView.text = nil;
-    //        [textView setContentInset:UIEdgeInsetsMake(0, 0, 0, 0)];
-    //
-    //        //发送时textView的高度为33
-    //        textViewH = minHeight;
-    //        [textView scrollRangeToVisible:textView.selectedRange];
-    //    }
-    
     //3.调整整个InputToolBar的高度
     self.toolBarHeightConstraint.constant = 5 + 5 + textViewH;
     CGFloat changeH = textViewH - self.previousTextViewHeight;
@@ -392,7 +405,9 @@ if (scrollView == self.tableView) {
 #pragma mark -- 点击事件
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
+    ReportListViewController *reportList = [[ReportListViewController alloc] init];
     
+    [self.navigationController pushViewController:reportList animated:YES];
 }
 
 //语音识别按钮被点击

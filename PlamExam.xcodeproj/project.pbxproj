@@ -9,11 +9,9 @@
 /* Begin PBXBuildFile section */
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
-		A93548B31DAB974C0077E85C /* BaseModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548B21DAB974C0077E85C /* BaseModel.m */; };
 		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
 		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
 		A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E31DAC9B260077E85C /* HttpRequestResult.m */; };
-		A93548EA1DAE01CF0077E85C /* TestModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E91DAE01CF0077E85C /* TestModel.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
 		A93548F31DAE50EB0077E85C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548F21DAE50EB0077E85C /* CommonUtil.m */; };
 		A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549041DAF15FF0077E85C /* HZTabBarController.m */; };
@@ -76,6 +74,7 @@
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
 		A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CD81DB4EFA500034DA5 /* ChatModel.m */; };
 		A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDB1DB4F05200034DA5 /* ChatData.m */; };
+		A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */; };
 		A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A721DB0DD70000BEDF4 /* User.m */; };
 		A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */; };
 		A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A841DB0E930000BEDF4 /* edit_voiceinput@3x.png */; };
@@ -92,8 +91,6 @@
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
 		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
-		A93548B11DAB974C0077E85C /* BaseModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseModel.h; sourceTree = "<group>"; };
-		A93548B21DAB974C0077E85C /* BaseModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BaseModel.m; sourceTree = "<group>"; };
 		A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
 		A93548DC1DAC9B170077E85C /* AFNetworkingProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingProxy.h; sourceTree = "<group>"; };
 		A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingProxy.m; sourceTree = "<group>"; };
@@ -101,8 +98,6 @@
 		A93548DF1DAC9B170077E85C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		A93548E21DAC9B260077E85C /* HttpRequestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestResult.h; sourceTree = "<group>"; };
 		A93548E31DAC9B260077E85C /* HttpRequestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestResult.m; sourceTree = "<group>"; };
-		A93548E81DAE01CF0077E85C /* TestModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TestModel.h; sourceTree = "<group>"; };
-		A93548E91DAE01CF0077E85C /* TestModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TestModel.m; sourceTree = "<group>"; };
 		A93548EE1DAE50450077E85C /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		A93548EF1DAE50450077E85C /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
 		A93548F11DAE50EB0077E85C /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
@@ -206,6 +201,8 @@
 		A9C92CD81DB4EFA500034DA5 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		A9C92CDA1DB4F05200034DA5 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
 		A9C92CDB1DB4F05200034DA5 /* ChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatData.m; sourceTree = "<group>"; };
+		A9C92CDD1DB5BD7A00034DA5 /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
+		A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
 		A9DB5A711DB0DD70000BEDF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A9DB5A721DB0DD70000BEDF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_voiceinput@2x.png"; sourceTree = "<group>"; };
@@ -248,8 +245,6 @@
 			children = (
 				A93548E21DAC9B260077E85C /* HttpRequestResult.h */,
 				A93548E31DAC9B260077E85C /* HttpRequestResult.m */,
-				A93548E81DAE01CF0077E85C /* TestModel.h */,
-				A93548E91DAE01CF0077E85C /* TestModel.m */,
 				A9DB5A711DB0DD70000BEDF4 /* User.h */,
 				A9DB5A721DB0DD70000BEDF4 /* User.m */,
 				A9C92CDA1DB4F05200034DA5 /* ChatData.h */,
@@ -261,8 +256,6 @@
 		A93548B01DAB973B0077E85C /* Models */ = {
 			isa = PBXGroup;
 			children = (
-				A93548B11DAB974C0077E85C /* BaseModel.h */,
-				A93548B21DAB974C0077E85C /* BaseModel.m */,
 				A93549831DB0A8890077E85C /* UserModel.h */,
 				A93549841DB0A8890077E85C /* UserModel.m */,
 				A9C92CD71DB4EFA500034DA5 /* ChatModel.h */,
@@ -412,6 +405,8 @@
 				A93C60C71DB4CD970024180F /* ConsulationViewController.h */,
 				A93C60C81DB4CD970024180F /* ConsulationViewController.m */,
 				A93C60C91DB4CD970024180F /* ConsulationViewController.xib */,
+				A9C92CDD1DB5BD7A00034DA5 /* ReportListViewController.h */,
+				A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -740,7 +735,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
-				A93548EA1DAE01CF0077E85C /* TestModel.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
 				A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */,
@@ -750,6 +744,7 @@
 				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
 				A93548F31DAE50EB0077E85C /* CommonUtil.m in Sources */,
+				A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */,
 				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
@@ -765,7 +760,6 @@
 				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
 				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
-				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,

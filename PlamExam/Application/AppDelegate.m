@@ -7,14 +7,12 @@
 //
 
 #import "AppDelegate.h"
-#import "BaseModel.h"
 #import "HZTabBarController.h"
 #import "LoginViewController.h"
 #import "UIColor+Utils.h"
 #import <YYModel.h>
 #import "UserManager.h"
 #import "CommonUtil.h"
-#import "TestModel.h"
 #import "iflyMSC/IFlyMSC.h"
 
 #define kIflyAppId @"5800754f" //讯飞AppId

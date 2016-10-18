@@ -35,4 +35,7 @@
 //显示一个只带有标题的提示框，并1秒之后自动消失
 + (void)showHUDWithTitle:(NSString *)title;
 
+//判断字符串是否为空字符串
++ (BOOL)isBlankString:(NSString *)string;
+
 @end

@@ -13,7 +13,9 @@
 @interface ChatModel : NSObject
 
 //获取聊天记录
-+ (void)requestChatDataWithAccountId:(NSString *)accountId callBackBlock:(void(^)(HttpRequestResult<ChatData *> *httpResult))callBack;
++ (void)requestChatDataWithAccountId:(NSString *)accountId callBackBlock:(void(^)(HttpRequestResult<NSMutableArray *> *httpResult))callBack;
 
+//发送消息
++ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo consultDate:(NSString *)date callBackBlock:(void(^)(HttpRequestResult<NSString *> *httpResult))callBack;
 
 @end
