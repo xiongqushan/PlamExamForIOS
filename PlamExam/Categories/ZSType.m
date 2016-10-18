@@ -9,7 +9,7 @@
 #import "ZSType.h"
 
 @implementation ZSIntType
-- (instancetype) initWithValue:(int)value{
+- (instancetype) initWithValue:(NSInteger)value{
     self = [super init];
     if (self)
     {

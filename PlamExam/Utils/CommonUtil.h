@@ -38,4 +38,5 @@
 //判断字符串是否为空字符串
 + (BOOL)isBlankString:(NSString *)string;
 
++(NSString *)getGuid;
 @end
