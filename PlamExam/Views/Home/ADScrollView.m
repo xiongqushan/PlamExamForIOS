@@ -8,6 +8,7 @@
 
 #import "ADScrollView.h"
 #import "NSTimer+Addition.h"
+#import <UIImageView+WebCache.h>
 
 @interface ADScrollView() <UIScrollViewDelegate>
 
@@ -21,9 +22,11 @@
 @end
 
 @implementation ADScrollView
-
+{
+    UIImageView *_imageView;
+}
 static double timerInterval;
--(instancetype)initWithCustom:(CGRect)frame ImageNames:(NSArray*)imageViews TimeInterval:(double)interval{
+-(instancetype)initWithCustom:(CGRect)frame ImageNames:(NSArray*)imageViews TimeInterval:(double)interval isNetWork:(BOOL)isNetwork{
     if (self=[super initWithFrame:frame]) {
         self.scrollView=[[UIScrollView alloc] initWithFrame:self.bounds];
         self.scrollView.autoresizingMask=UIViewAutoresizingFlexibleWidth;
@@ -35,7 +38,14 @@ static double timerInterval;
         self.scrollView.delegate=self;
         self.totalImages=[[NSMutableArray alloc] init];
         for(int i=0;i<imageViews.count;i++){
-            UIImageView *imageView=[imageViews objectAtIndex:i];
+            UIImageView *imageView = [[UIImageView alloc] init];
+            if (isNetwork) {
+                [imageView sd_setImageWithURL:[NSURL URLWithString:imageViews[i]] placeholderImage:nil];
+            }else {
+                imageView = [imageViews objectAtIndex:i];
+            }
+            
+            
             //imageView.contentMode=UIViewContentModeScaleAspectFit;
             [self.totalImages addObject:imageView];
         }

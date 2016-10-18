@@ -23,23 +23,19 @@
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVe-tm-wtp">
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="rsQ-h9-OV6"/>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="kBa-Eb-Mgw">
                                 <rect key="contentStretch" x="0.0" y="0.0" width="1" height="0.0"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <nil key="highlightedColor"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                <color key="textColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                <color key="highlightedColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                 <size key="shadowOffset" width="0.0" height="0.0"/>
                             </label>
                         </subviews>
+                        <color key="backgroundColor" red="0.4823529411764706" green="0.74901960784313726" blue="0.96862745098039216" alpha="1" colorSpace="calibratedRGB"/>
                         <constraints>
-                            <constraint firstItem="rsQ-h9-OV6" firstAttribute="top" secondItem="MVe-tm-wtp" secondAttribute="top" id="6gc-eU-0zp"/>
-                            <constraint firstAttribute="trailing" secondItem="kBa-Eb-Mgw" secondAttribute="trailing" constant="15" id="F3B-Mp-Qid"/>
-                            <constraint firstAttribute="trailing" secondItem="rsQ-h9-OV6" secondAttribute="trailing" id="S9H-Hi-Gaz"/>
-                            <constraint firstItem="rsQ-h9-OV6" firstAttribute="leading" secondItem="MVe-tm-wtp" secondAttribute="leading" id="iBC-tY-048"/>
-                            <constraint firstAttribute="bottom" secondItem="rsQ-h9-OV6" secondAttribute="bottom" id="nKc-yG-zOm"/>
+                            <constraint firstAttribute="trailing" secondItem="kBa-Eb-Mgw" secondAttribute="trailing" constant="10" id="F3B-Mp-Qid"/>
                             <constraint firstItem="kBa-Eb-Mgw" firstAttribute="top" secondItem="MVe-tm-wtp" secondAttribute="top" constant="10" id="qZ5-vf-EMw"/>
-                            <constraint firstItem="kBa-Eb-Mgw" firstAttribute="leading" secondItem="MVe-tm-wtp" secondAttribute="leading" constant="15" id="zKz-Vq-h7b"/>
+                            <constraint firstItem="kBa-Eb-Mgw" firstAttribute="leading" secondItem="MVe-tm-wtp" secondAttribute="leading" constant="10" id="zKz-Vq-h7b"/>
                         </constraints>
                     </view>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="UeS-yX-meK">
@@ -50,18 +46,19 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="UeS-yX-meK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="97g-9a-2zO"/>
-                    <constraint firstAttribute="trailing" secondItem="MVe-tm-wtp" secondAttribute="trailing" constant="188.5" id="Npw-hx-V7C"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MVe-tm-wtp" secondAttribute="trailing" constant="77" id="Npw-hx-V7C"/>
                     <constraint firstItem="UeS-yX-meK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="RZA-BN-i1J"/>
                     <constraint firstItem="MVe-tm-wtp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Sg9-em-qL1"/>
-                    <constraint firstItem="MVe-tm-wtp" firstAttribute="leading" secondItem="Ic7-Hh-zJX" secondAttribute="trailing" constant="8" id="dJz-To-oyu"/>
-                    <constraint firstItem="Ic7-Hh-zJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="8" id="djq-Zg-eZx"/>
+                    <constraint firstItem="MVe-tm-wtp" firstAttribute="leading" secondItem="Ic7-Hh-zJX" secondAttribute="trailing" constant="15" id="dJz-To-oyu"/>
+                    <constraint firstItem="Ic7-Hh-zJX" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="12" id="djq-Zg-eZx"/>
                     <constraint firstItem="Ic7-Hh-zJX" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="gWI-bq-7Bl"/>
                     <constraint firstAttribute="bottom" secondItem="MVe-tm-wtp" secondAttribute="bottom" constant="16.5" id="iry-Zc-TG4"/>
-                    <constraint firstItem="MVe-tm-wtp" firstAttribute="leading" secondItem="Ic7-Hh-zJX" secondAttribute="trailing" constant="8" id="qc6-qa-w0J"/>
+                    <constraint firstItem="MVe-tm-wtp" firstAttribute="leading" secondItem="Ic7-Hh-zJX" secondAttribute="trailing" constant="15" id="qc6-qa-w0J"/>
                 </constraints>
             </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <connections>
-                <outlet property="backImageView" destination="rsQ-h9-OV6" id="09F-f9-pLO"/>
+                <outlet property="chatBgView" destination="MVe-tm-wtp" id="4xn-gU-cBE"/>
                 <outlet property="contentLabel" destination="kBa-Eb-Mgw" id="HqS-Z9-pxg"/>
                 <outlet property="dateLabel" destination="UeS-yX-meK" id="2Nf-5T-GPv"/>
                 <outlet property="iconImageView" destination="Ic7-Hh-zJX" id="ryB-SI-Oxj"/>

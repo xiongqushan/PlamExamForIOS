@@ -50,11 +50,11 @@
     /**************** 初始化根视图 *******************/
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
-    
     UIViewController *rootVc = [[HZTabBarController alloc] init];
     if (![UserManager isLogin]) {
         rootVc = [[LoginViewController alloc] init];
     }
+    
     self.window.rootViewController = rootVc;
     
     [self.window makeKeyAndVisible];

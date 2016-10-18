@@ -39,4 +39,8 @@
     return kSetRGBColor(0, 160, 236);
 }
 
++ (UIColor *)dividerColor {
+    return kSetRGBColor(221, 221, 221);
+}
+
 @end

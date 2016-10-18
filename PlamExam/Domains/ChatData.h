@@ -13,9 +13,11 @@
 @property (nonatomic, copy) NSString *AccountId;
 @property (nonatomic, copy) NSString *DoctorId;
 @property (nonatomic, copy) NSString *Type;
-@property (nonatomic, copy) NSString *SourceType;
+@property (nonatomic, copy) NSString *SourceType;  // 1.用户   2.健管师
 @property (nonatomic, copy) NSString *AppendInfo;
 @property (nonatomic, copy) NSString *Content;
 @property (nonatomic, copy) NSString *Date;
+
+@property (nonatomic, assign) CGFloat cellHeight;
 
 @end

@@ -29,6 +29,8 @@
     
     PersonalViewController *personal = [[PersonalViewController alloc] init];
     [self setUpOneChildViewController:personal image:[UIImage imageNamed:@"main"] selectedImage:[[UIImage imageNamed:@"main_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"我的"];
+    
+    
 }
 
 - (void)setUpOneChildViewController:(UIViewController *)vc image:(UIImage *)image selectedImage:(UIImage *)selectedImage title:(NSString *)title {
@@ -36,6 +38,14 @@
     HZNavigationController *nav = [[HZNavigationController alloc] initWithRootViewController:vc];
     [nav.tabBarItem setImage:image];
     [nav.tabBarItem setSelectedImage:selectedImage];
+    
+//    if ([vc isKindOfClass:[ConsultViewController class]]) {
+//        
+//       // nav.tabBarItem.badgeFrame = CGRectMake(10, 5, 5, 5);
+//        nav.tabBarItem.badgeCenterOffset = CGPointMake(0, 0);
+//        nav.tabBarItem.badgeBgColor = [UIColor redColor];
+//        [nav.tabBarItem showBadgeWithStyle:WBadgeStyleNew value:0 animationType:WBadgeAnimTypeShake];
+//    }
     
     vc.title = title;
     [self addChildViewController:nav];

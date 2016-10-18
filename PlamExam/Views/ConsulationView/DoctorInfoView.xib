@@ -9,32 +9,32 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="DoctorInfoView">
-            <rect key="frame" x="0.0" y="0.0" width="375" height="90"/>
+            <rect key="frame" x="0.0" y="0.0" width="375" height="100"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES"/>
             <subviews>
                 <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="MAt-qL-RSK">
                     <constraints>
-                        <constraint firstAttribute="height" constant="50" id="5Ke-Za-noF"/>
-                        <constraint firstAttribute="width" constant="50" id="Jtu-9Q-akg"/>
+                        <constraint firstAttribute="height" constant="60" id="5Ke-Za-noF"/>
+                        <constraint firstAttribute="width" constant="60" id="Jtu-9Q-akg"/>
                     </constraints>
                 </imageView>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="殷丽丽" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="lxM-We-2yK">
-                    <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="15"/>
                     <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="全科医生，高级健康管理师" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="KHu-Rc-Ijq">
-                    <fontDescription key="fontDescription" type="system" pointSize="14"/>
-                    <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="calibratedRGB"/>
+                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                    <color key="textColor" red="0.59999999999999998" green="0.59999999999999998" blue="0.59999999999999998" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="工作日上班时间：9:00-17:30，节假日回复时间：72小时内，请耐心等待，感谢您的咨询！" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="CmC-gm-yP1">
                     <fontDescription key="fontDescription" type="system" pointSize="12"/>
-                    <color key="textColor" white="0.33333333333333331" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="健管师的回复内容仅作为建议，具体诊疗请前往医院进行" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwO-ur-zqI">
-                    <frame key="frameInset" minY="70" width="375" height="20"/>
+                    <frame key="frameInset" minY="80" width="375" height="20"/>
                     <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                     <color key="backgroundColor" red="0.91689055429864252" green="0.86388144762557451" blue="0.55890218387005586" alpha="1" colorSpace="calibratedRGB"/>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
@@ -45,14 +45,14 @@
             <color key="backgroundColor" red="0.98039215686274506" green="0.98039215686274506" blue="0.98039215686274506" alpha="1" colorSpace="calibratedRGB"/>
             <constraints>
                 <constraint firstItem="MAt-qL-RSK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="10" id="7Wc-wI-f7g"/>
-                <constraint firstItem="CmC-gm-yP1" firstAttribute="top" secondItem="KHu-Rc-Ijq" secondAttribute="bottom" constant="5" id="Eu2-NG-NxY"/>
-                <constraint firstItem="lxM-We-2yK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="8" id="F7B-4G-AAu"/>
-                <constraint firstAttribute="trailing" secondItem="CmC-gm-yP1" secondAttribute="trailing" constant="7" id="HKK-CY-nlI"/>
-                <constraint firstItem="lxM-We-2yK" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="15" id="hLO-Kw-tRA"/>
-                <constraint firstItem="KHu-Rc-Ijq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="11" id="jpQ-gK-qej"/>
-                <constraint firstItem="KHu-Rc-Ijq" firstAttribute="leading" secondItem="lxM-We-2yK" secondAttribute="trailing" constant="21" id="lH0-nv-mY4"/>
+                <constraint firstItem="CmC-gm-yP1" firstAttribute="top" secondItem="KHu-Rc-Ijq" secondAttribute="bottom" constant="7" id="Eu2-NG-NxY"/>
+                <constraint firstItem="lxM-We-2yK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="F7B-4G-AAu"/>
+                <constraint firstAttribute="trailing" secondItem="CmC-gm-yP1" secondAttribute="trailing" constant="12" id="HKK-CY-nlI"/>
+                <constraint firstItem="lxM-We-2yK" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="10" id="hLO-Kw-tRA"/>
+                <constraint firstItem="KHu-Rc-Ijq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="jpQ-gK-qej"/>
+                <constraint firstItem="KHu-Rc-Ijq" firstAttribute="leading" secondItem="lxM-We-2yK" secondAttribute="trailing" constant="10" id="lH0-nv-mY4"/>
                 <constraint firstItem="MAt-qL-RSK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="vbv-g9-GBD"/>
-                <constraint firstItem="CmC-gm-yP1" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="15" id="y9e-vE-fef"/>
+                <constraint firstItem="CmC-gm-yP1" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="10" id="y9e-vE-fef"/>
             </constraints>
             <nil key="simulatedStatusBarMetrics"/>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>

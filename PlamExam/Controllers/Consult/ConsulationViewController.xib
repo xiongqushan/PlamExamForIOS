@@ -28,10 +28,11 @@
                 <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="JCu-zq-4pZ">
                     <subviews>
                         <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="x7D-1s-VeF">
-                            <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                            <color key="backgroundColor" red="0.97254901960784312" green="0.97254901960784312" blue="0.97254901960784312" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <constraints>
                                 <constraint firstAttribute="height" constant="36" id="KEd-ny-lha"/>
                             </constraints>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             <fontDescription key="fontDescription" type="system" pointSize="14"/>
                             <textInputTraits key="textInputTraits" autocapitalizationType="sentences" returnKeyType="send"/>
                             <connections>
@@ -43,7 +44,7 @@
                                 <constraint firstAttribute="height" constant="30" id="SKx-kh-tth"/>
                                 <constraint firstAttribute="width" constant="30" id="ka0-OL-jMb"/>
                             </constraints>
-                            <state key="normal" image="voice"/>
+                            <state key="normal" image="语音"/>
                             <connections>
                                 <action selector="voiceBtnClick:" destination="-1" eventType="touchUpInside" id="cWK-r0-6G9"/>
                             </connections>
@@ -53,7 +54,7 @@
                                 <constraint firstAttribute="height" constant="30" id="Nxu-7N-ppf"/>
                                 <constraint firstAttribute="width" constant="30" id="oSh-tv-dcN"/>
                             </constraints>
-                            <state key="normal" image="expression"/>
+                            <state key="normal" image="查看体检报告"/>
                             <connections>
                                 <action selector="reportBtnClick:" destination="-1" eventType="touchUpInside" id="wgv-Yd-1xh"/>
                             </connections>
@@ -63,7 +64,7 @@
                                 <constraint firstAttribute="height" constant="30" id="DL1-Vt-Ndw"/>
                                 <constraint firstAttribute="width" constant="30" id="lXb-eA-pnR"/>
                             </constraints>
-                            <state key="normal" image="voice"/>
+                            <state key="normal" image="发送"/>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入咨询内容:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGC-eg-2Rf">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -71,7 +72,7 @@
                             <nil key="highlightedColor"/>
                         </label>
                     </subviews>
-                    <color key="backgroundColor" red="0.96078431369999995" green="0.96078431369999995" blue="0.96078431369999995" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <constraints>
                         <constraint firstItem="jRH-c0-cT7" firstAttribute="leading" secondItem="JCu-zq-4pZ" secondAttribute="leading" constant="10" id="0c5-GX-NMP"/>
                         <constraint firstAttribute="bottom" secondItem="jRH-c0-cT7" secondAttribute="bottom" constant="8" id="C9X-Ux-H7f"/>
@@ -112,7 +113,8 @@
         </view>
     </objects>
     <resources>
-        <image name="expression" width="50" height="50"/>
-        <image name="voice" width="50" height="50"/>
+        <image name="发送" width="58" height="58"/>
+        <image name="查看体检报告" width="58" height="58"/>
+        <image name="语音" width="58" height="58"/>
     </resources>
 </document>

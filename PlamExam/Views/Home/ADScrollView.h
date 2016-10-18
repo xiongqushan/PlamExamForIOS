@@ -8,14 +8,14 @@
 
 #import <UIKit/UIKit.h>
 
-@protocol ScrollViewItemDelegate<NSObject>
+@protocol ADScrollViewDelegate<NSObject>
 @required
 -(void)onItemClick:(NSInteger)index;
 @end
 
 @interface ADScrollView : UIScrollView
 
--(instancetype)initWithCustom:(CGRect)frame ImageNames:(NSArray*)imageNames TimeInterval:(double)interval;
+-(instancetype)initWithCustom:(CGRect)frame ImageNames:(NSArray*)imageNames TimeInterval:(double)interval isNetWork:(BOOL)isNetwork;
 
 - (void)hiddenPageControl;
 @end

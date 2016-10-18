@@ -12,7 +12,7 @@
 
 - (void)awakeFromNib {
     [super awakeFromNib];
-    [self.iconImageView setRoundWithRadius:25];
+    [self.iconImageView setRoundWithRadius:30];
     self.frame = CGRectMake(0, 64, kScreenSizeWidth, 70);
 }
 
