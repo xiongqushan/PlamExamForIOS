@@ -50,13 +50,13 @@
     UIWindow *window = [[UIApplication sharedApplication].windows lastObject];
     MBProgressHUD *HUD = [[MBProgressHUD alloc] initWithView:window];
     HUD.userInteractionEnabled = NO;
-    HUD.detailsLabel.font = [UIFont boldSystemFontOfSize:16];
+    HUD.detailsLabelFont = [UIFont boldSystemFontOfSize:16];
     [window addSubview:HUD];
-    [HUD showAnimated:YES];
+    [HUD show:YES];
     HUD.mode = MBProgressHUDModeText;
     HUD.removeFromSuperViewOnHide = YES;
-    HUD.detailsLabel.text = title;
-    [HUD hideAnimated:YES afterDelay:1];
+    HUD.detailsLabelText = title;
+    [HUD hide:YES afterDelay:1];
     
     /*HUD.detailsLabel.font = [UIFont boldSystemFontOfSize:16];
     [window addSubview:HUD];

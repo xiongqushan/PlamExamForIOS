@@ -25,7 +25,15 @@ typedef NS_ENUM(NSInteger, SZTitleViewStatus){
     SZTitleViewTopPageTitleAndControl,
 };
 
+@protocol SZCirculationImageViewDelegate <NSObject>
+
+- (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index;
+
+@end
+
 @interface SZCirculationImageView : UIView
+
+@property (nonatomic, assign) id<SZCirculationImageViewDelegate>delegate;
 
 /**
  *  图片填充模式
