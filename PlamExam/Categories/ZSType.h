@@ -10,8 +10,8 @@
 #import <UIKit/UIKit.h>
 
 @interface ZSIntType : NSObject
-@property(nonatomic,assign) int Value;
-- (instancetype) initWithValue:(int)value;
+@property(nonatomic,assign) NSInteger Value;
+- (instancetype) initWithValue:(NSInteger)value;
 @end
 
 @interface ZSBooleanType : NSObject

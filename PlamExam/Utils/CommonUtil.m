@@ -138,4 +138,12 @@
     return NO;
     
 }
+
++(NSString *)getGuid
+{
+    CFUUIDRef    uuidObj = CFUUIDCreate(nil);//create a new UUID
+    NSString    *uuidString = (__bridge_transfer NSString *)CFUUIDCreateString(nil, uuidObj);
+    CFRelease(uuidObj);
+    return uuidString ;
+}
 @end

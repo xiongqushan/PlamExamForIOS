@@ -10,6 +10,10 @@
 		3BB78772F8E5A88D581E8E26 /* libPods-PlamExam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E5736D42D7CCA81601A663 /* libPods-PlamExam.a */; };
 		A58908AF1DB4A80300A9659B /* ReportAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908AE1DB4A80200A9659B /* ReportAddViewController.m */; };
 		A58908B21DB4A82000A9659B /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908B11DB4A82000A9659B /* ReportListViewController.m */; };
+		A5A01E871DB6127F006C64E0 /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E861DB6127F006C64E0 /* DoctorModel.m */; };
+		A5A01E8A1DB61B90006C64E0 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E891DB61B90006C64E0 /* Doctor.m */; };
+		A5A01E8D1DB6418B006C64E0 /* BatchRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */; };
+		A5A01E901DB642CE006C64E0 /* HttpBatchRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
@@ -93,6 +97,14 @@
 		A58908AE1DB4A80200A9659B /* ReportAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAddViewController.m; sourceTree = "<group>"; };
 		A58908B01DB4A82000A9659B /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
 		A58908B11DB4A82000A9659B /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
+		A5A01E851DB6127F006C64E0 /* DoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorModel.h; sourceTree = "<group>"; };
+		A5A01E861DB6127F006C64E0 /* DoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorModel.m; sourceTree = "<group>"; };
+		A5A01E881DB61B90006C64E0 /* Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
+		A5A01E891DB61B90006C64E0 /* Doctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doctor.m; sourceTree = "<group>"; };
+		A5A01E8B1DB6418B006C64E0 /* BatchRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchRequestParam.h; sourceTree = "<group>"; };
+		A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchRequestParam.m; sourceTree = "<group>"; };
+		A5A01E8E1DB642CE006C64E0 /* HttpBatchRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpBatchRequestHelper.h; sourceTree = "<group>"; };
+		A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpBatchRequestHelper.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -269,6 +281,10 @@
 				A9DB5A721DB0DD70000BEDF4 /* User.m */,
 				A9C92CDA1DB4F05200034DA5 /* ChatData.h */,
 				A9C92CDB1DB4F05200034DA5 /* ChatData.m */,
+				A5A01E881DB61B90006C64E0 /* Doctor.h */,
+				A5A01E891DB61B90006C64E0 /* Doctor.m */,
+				A5A01E8B1DB6418B006C64E0 /* BatchRequestParam.h */,
+				A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -280,6 +296,8 @@
 				A93549841DB0A8890077E85C /* UserModel.m */,
 				A9C92CD71DB4EFA500034DA5 /* ChatModel.h */,
 				A9C92CD81DB4EFA500034DA5 /* ChatModel.m */,
+				A5A01E851DB6127F006C64E0 /* DoctorModel.h */,
+				A5A01E861DB6127F006C64E0 /* DoctorModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,6 +515,8 @@
 				A93548DF1DAC9B170077E85C /* HttpHelper.m */,
 				A93548F11DAE50EB0077E85C /* CommonUtil.h */,
 				A93548F21DAE50EB0077E85C /* CommonUtil.m */,
+				A5A01E8E1DB642CE006C64E0 /* HttpBatchRequestHelper.h */,
+				A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -751,6 +771,7 @@
 			files = (
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
+				A5A01E8D1DB6418B006C64E0 /* BatchRequestParam.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
 				A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */,
 				A93549691DAF9D340077E85C /* IconCell.m in Sources */,
@@ -765,6 +786,7 @@
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
 				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
 				A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */,
+				A5A01E871DB6127F006C64E0 /* DoctorModel.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
 				A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */,
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
@@ -792,6 +814,7 @@
 				A935496E1DAFA8610077E85C /* ADScrollView.m in Sources */,
 				A935491D1DAF2A7F0077E85C /* UIView+Utils.m in Sources */,
 				A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */,
+				A5A01E8A1DB61B90006C64E0 /* Doctor.m in Sources */,
 				A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */,
 				A935494F1DAF72140077E85C /* ArrowItem.m in Sources */,
 				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
@@ -802,6 +825,7 @@
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,
 				A93549141DAF19600077E85C /* PersonalViewController.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
+				A5A01E901DB642CE006C64E0 /* HttpBatchRequestHelper.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
