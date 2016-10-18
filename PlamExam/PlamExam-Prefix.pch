@@ -33,5 +33,6 @@
 #define kSetRGBColor(r,g,b) [UIColor colorWithRed:(r)/255.0f green:(g)/255.0f blue:(b)/255.0f alpha:1]
 
 #define kFontColor kSetRGBColor(51,51,51)
+#define kNavigationBarH 64
 
 #endif /* PlamExam_Prefix_h */

@@ -24,8 +24,7 @@
         HttpRequestResult<NSString *> *result = httpRequestResult;
         
         if(httpRequestResult.IsHttpSuccess){
-           // result.Data =[[ZSIntType alloc] initWithValue:(int)httpRequestResult.HttpResult.Result];
-           // result.Data = []
+
             result.Data = httpRequestResult.HttpResult.Result;
             callBack(result);
         }else {

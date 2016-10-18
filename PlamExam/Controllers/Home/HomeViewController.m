@@ -11,6 +11,7 @@
 #import "UIColor+Utils.h"
 #import "InformationCell.h"
 #import "ConsulationViewController.h"
+#import "InformationViewController.h"
 
 #define kAdViewH 180*kScreenSizeWidth/375
 #define kSectionItemW (kScreenSizeWidth - kItemSpace*3)/2.0
@@ -55,6 +56,7 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 
+#pragma mark -- UITableViewDelegate && UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 10;
 }
@@ -72,6 +74,14 @@
     return 75;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    InformationViewController *information = [[InformationViewController alloc] init];
+    
+    [self.navigationController pushViewController:information animated:YES];
+}
+
 //创建分区头视图view
 - (UIView *)setUpSectionHeaderView {
     CGFloat sectionViewH = kSectionItemH + kItemSpace*2 + kInformationBtnH;
@@ -81,7 +91,7 @@
     for (NSInteger i = 0; i < 2; i++) {
         UIImageView *itemView = [[UIImageView alloc] initWithFrame:CGRectMake(kItemSpace+i*(kItemSpace+kSectionItemW), kItemSpace, kSectionItemW, kSectionItemH)];
         itemView.backgroundColor = [UIColor whiteColor];
-        itemView.tag = kSectionItemTag + 1;
+        itemView.tag = kSectionItemTag + i;
         itemView.userInteractionEnabled = YES;
         [itemView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTap:)]];
         [sectionHeaderView addSubview:itemView];
@@ -124,8 +134,8 @@
         //体检报告
     }else if (tempView.tag == kSectionItemTag + 1) {
         //健康咨询
-//        ConsulationViewController *consulation = [[ConsulationViewController alloc] init];
-//        [self.navigationController pushViewController:consulation animated:YES];
+        ConsulationViewController *consulation = [[ConsulationViewController alloc] init];
+        [self.navigationController pushViewController:consulation animated:YES];
     }
 }
 

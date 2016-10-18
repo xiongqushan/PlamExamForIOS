@@ -64,10 +64,10 @@
             dataString= [(NSArray*)data yy_modelToJSONString];
         }
         else{
-            dataString=data;
+            dataString= [NSString stringWithFormat:@"%@",data];
         }
         apiGlobalData.Result=dataString;
-        requestResult.HttpResult=apiGlobalData;
+        requestResult.HttpResult = apiGlobalData;
         /*
         requestResult.HttpStatus= [[responseObject objectForKey:@"Code"] integerValue];
         NSDictionary *jsonDic = [responseObject objectForKey:@"Data"];

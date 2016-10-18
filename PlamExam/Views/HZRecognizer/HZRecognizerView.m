@@ -27,10 +27,14 @@
     return self;
 }
 
-- (void)starRecognizerResult:(void(^)(NSString *result))onResult {
+- (void)starRecognizerResult:(void(^)(NSString *result, NSString *desc))onResult {
     
-    [[HZRecognizer shareManager] starRecognizerResult:^(NSString *result) {
-        onResult(result);
+    [[HZRecognizer shareManager] starRecognizerResult:^(NSString *result, NSString *errorDesc) {
+
+        onResult(result, errorDesc);
+        if (errorDesc) {
+            return ;
+        }
     }];
     
     //执行动画
@@ -55,10 +59,13 @@
 
 - (void)stopRecognizer {
     
-    if ([[HZRecognizer shareManager] isRecognizing]) {
-        [_timer setFireDate:[NSDate distantFuture]]; //暂停定时器
-        [[HZRecognizer shareManager] stopRecognizer]; //停止语音识别
-    }
+    [_timer setFireDate:[NSDate distantFuture]]; //暂停定时器
+    [[HZRecognizer shareManager] stopRecognizer]; //停止语音识别
+    
+//    if ([[HZRecognizer shareManager] isRecognizing]) {
+//        [_timer setFireDate:[NSDate distantFuture]]; //暂停定时器
+//        [[HZRecognizer shareManager] stopRecognizer]; //停止语音识别
+//    }
 }
 
 //是否正在识别

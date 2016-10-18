@@ -7,6 +7,7 @@
 //
 
 #import "HZRecognizer.h"
+#import "CommonUtil.h"
 
 @implementation HZRecognizer
 {
@@ -25,7 +26,7 @@
     return manager;
 }
 
-- (void)starRecognizerResult:(void (^)(NSString *))onResult {
+- (void)starRecognizerResult:(void (^)(NSString *, NSString *))onResult {
     self.onResult = onResult;
     if (_iFlySpeechRecognizer == nil) {
         
@@ -93,21 +94,29 @@
     if ([resultStr hasPrefix:@"。"]) {
         return;
     }
-    self.onResult(resultStr);
+    self.onResult(resultStr,nil);
 }
 
 - (void)onError:(IFlySpeechError *)errorCode {
     //识别会话结束返回的代理
     //self.onResult(@"");
     
+    NSLog(@"_______code:%d  ______description:%@",errorCode.errorCode,errorCode.errorDesc);
+    if ([errorCode.errorDesc isEqualToString:@"没有网络"]) {
+        _isCancle = YES;
+       // [CommonUtil showHUDWithTitle:@"没有网络"];
+        self.onResult(@"", @"没有网络");
+        return;
+    }
+    
     if (_isCancle) {
-        self.onResult(@"");
+        self.onResult(@"",nil);
         return;
     }
     
     [_iFlySpeechRecognizer startListening];
     _isCancle = NO;
-    self.onResult(@"");
+    self.onResult(@"",nil);
 }
 
 @end

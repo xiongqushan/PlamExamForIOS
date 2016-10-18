@@ -5,5 +5,5 @@ pod 'AFNetworking', '~> 3.0'
 pod 'YYModel'
 pod 'SDWebImage', '~> 3.7.1'
 pod 'MJRefresh'
-pod 'MBProgressHUD','~> 1.0.0'
+pod 'MBProgressHUD'
 end
