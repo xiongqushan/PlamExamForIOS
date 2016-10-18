@@ -75,6 +75,7 @@
 		A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CD81DB4EFA500034DA5 /* ChatModel.m */; };
 		A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDB1DB4F05200034DA5 /* ChatData.m */; };
 		A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */; };
+		A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */; };
 		A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A721DB0DD70000BEDF4 /* User.m */; };
 		A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */; };
 		A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A841DB0E930000BEDF4 /* edit_voiceinput@3x.png */; };
@@ -203,6 +204,8 @@
 		A9C92CDB1DB4F05200034DA5 /* ChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatData.m; sourceTree = "<group>"; };
 		A9C92CDD1DB5BD7A00034DA5 /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
 		A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
+		A9C92CE11DB5C0AE00034DA5 /* ZLCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLCWebView.h; sourceTree = "<group>"; };
+		A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLCWebView.m; sourceTree = "<group>"; };
 		A9DB5A711DB0DD70000BEDF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A9DB5A721DB0DD70000BEDF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_voiceinput@2x.png"; sourceTree = "<group>"; };
@@ -378,6 +381,7 @@
 		A935496B1DAFA8430077E85C /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
+				A9C92CE01DB5C0AE00034DA5 /* ZLCWebView */,
 				A935496C1DAFA8610077E85C /* ADScrollView.h */,
 				A935496D1DAFA8610077E85C /* ADScrollView.m */,
 				A93549721DB0780A0077E85C /* InformationCell.h */,
@@ -560,6 +564,15 @@
 				A9BBAD5F1DAA336000BAF4D1 /* main.m */,
 			);
 			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		A9C92CE01DB5C0AE00034DA5 /* ZLCWebView */ = {
+			isa = PBXGroup;
+			children = (
+				A9C92CE11DB5C0AE00034DA5 /* ZLCWebView.h */,
+				A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */,
+			);
+			path = ZLCWebView;
 			sourceTree = "<group>";
 		};
 		A9DB5A821DB0E930000BEDF4 /* HZRecognizer */ = {
@@ -751,6 +764,7 @@
 				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
 				A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
+				A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */,
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
 				A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */,

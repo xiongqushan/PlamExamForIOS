@@ -9,6 +9,7 @@
 #import "InformationViewController.h"
 #import <WebKit/WebKit.h>
 #import "UIColor+Utils.h"
+#import "ZLCWebView.h"
 
 @interface InformationViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -22,24 +23,31 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self setUpWebView];   }
+    [self setUpWebView];
+}
 
 - (void)setUpWebView {
     
-    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-//    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-//        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
-//    });
-    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
+//    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
+////    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+////        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
+////    });
+//    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
+//
+//    webView.UIDelegate = self;
+//    webView.navigationDelegate = self;
+//    webView.backgroundColor = [UIColor whiteColor];
+//    webView.scrollView.backgroundColor = [UIColor grayColor];
+//    [self.view addSubview:webView];
+//    [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+//    
+//    self.wKWebView = webView;
+    ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
 
-    webView.UIDelegate = self;
-    webView.navigationDelegate = self;
-    webView.backgroundColor = [UIColor whiteColor];
-    webView.scrollView.backgroundColor = [UIColor grayColor];
-    [self.view addSubview:webView];
-    [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
+    [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
     
-    self.wKWebView = webView;
+    [self.view addSubview:webView];
+    
 }
 
 - (UIProgressView *)progressView {
