@@ -7,13 +7,15 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "ChatData.h"
 
 @interface DoctorReplyCell : UITableViewCell
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
-@property (weak, nonatomic) IBOutlet UIImageView *backImageView;
+@property (weak, nonatomic) IBOutlet UIView *chatBgView;
 @property (weak, nonatomic) IBOutlet UILabel *dateLabel;
 
-- (void)showData;
+- (void)showDataWithModel:(ChatData *)chatData;
+
 @end

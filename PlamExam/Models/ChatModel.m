@@ -36,9 +36,9 @@
             }
             httpRequestResult.Data = dataArr;
             callBack(result);
-        }else {
-            callBack(result);
         }
+        
+        callBack(result);
     }];
     
 }
@@ -54,9 +54,10 @@
         if (httpRequestResult.IsHttpSuccess) {
             result.Data = data;
             callBack(result);
-        }else {
-            callBack(result);
         }
+        
+        callBack(result);
+        
     }];
 }
 

@@ -7,39 +7,88 @@
 //
 
 #import "HomeViewController.h"
-#import "ADScrollView.h"
 #import "UIColor+Utils.h"
 #import "InformationCell.h"
 #import "ConsulationViewController.h"
 #import "InformationViewController.h"
+#import "WZLBadgeImport.h"
+#import "HomeModel.h"
+#import "CommonUtil.h"
+#import "AdScrollerViewData.h"
+#import "SZCirculationImageView.h"
 
-#define kAdViewH 180*kScreenSizeWidth/375
-#define kSectionItemW (kScreenSizeWidth - kItemSpace*3)/2.0
-#define kSectionItemH kSectionItemW
+#define kAdViewH 230*kScreenSizeWidth/375
+#define kSectionItemW kScreenSizeWidth/2.0
+#define kSectionItemH 132
 #define kInformationBtnH 40
-#define kItemSpace 15
+#define kItemSpace 10
 #define kSectionItemTag 101
+#define kBackColor kSetRGBColor(242, 242, 242)
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
+
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)UIView *adView;
+@property (nonatomic, strong) NSMutableArray *adDataArr;
+
 @end
 
 @implementation HomeViewController
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
+    //设置badgeView
+    UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
+    tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
+    [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
+    
+    [self loadAdScrollViewData];
     
     [self setUpHeadAdScrollView];
     [self setUpTableView];
+    
+}
+
+- (void)loadAdScrollViewData {
+    self.adDataArr = [NSMutableArray array];
+    [HomeModel requestADScrollViewDataWithDepartId:@"123" callBack:^(HttpRequestResult<NSMutableArray *> *httpResult) {
+        if (httpResult.IsHttpSuccess) {
+            if (httpResult.HttpResult.Code == 1) {
+                
+                [self.adDataArr addObjectsFromArray:httpResult.Data];
+                [self setUpHeadAdScrollView];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        }
+    }];
 }
 
 - (void)setUpHeadAdScrollView {
-    UIView *adView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
-    adView.backgroundColor = [UIColor grayColor];
-   // self.tableView.tableHeaderView = adView;
-    self.adView = adView;
+    
+    if (!self.adView) {
+        UIView *adView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
+        adView.backgroundColor = [UIColor whiteColor];
+        self.adView = adView;
+    }
+
+    if (self.adDataArr.count == 0) {
+        return;
+    }
+    
+    NSMutableArray *images = [NSMutableArray array];
+    for (AdScrollerViewData *data in self.adDataArr) {
+        [images addObject:data.ImageUrl];
+    }
+
+    SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
+    imageView.pauseTime = 3.0;
+    imageView.currentPageColor = [UIColor whiteColor];
+    [self.adView addSubview:imageView];
+    
 }
 
 - (void)setUpTableView {
@@ -86,16 +135,33 @@
 - (UIView *)setUpSectionHeaderView {
     CGFloat sectionViewH = kSectionItemH + kItemSpace*2 + kInformationBtnH;
     
+    NSArray *arr = @[@"体检报告",@"健康咨询"];
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, sectionViewH)];
-    sectionHeaderView.backgroundColor = [UIColor colorWithHex:0xf5f5f5 alpha:1];
+    sectionHeaderView.backgroundColor = kBackColor;
     for (NSInteger i = 0; i < 2; i++) {
-        UIImageView *itemView = [[UIImageView alloc] initWithFrame:CGRectMake(kItemSpace+i*(kItemSpace+kSectionItemW), kItemSpace, kSectionItemW, kSectionItemH)];
-        itemView.backgroundColor = [UIColor whiteColor];
-        itemView.tag = kSectionItemTag + i;
-        itemView.userInteractionEnabled = YES;
-        [itemView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTap:)]];
-        [sectionHeaderView addSubview:itemView];
+        
+        UIView *view = [[UIView alloc] initWithFrame:CGRectMake(i*kSectionItemW, kItemSpace, kSectionItemW, kSectionItemH)];
+        view.backgroundColor = [UIColor whiteColor];
+        view.tag = kSectionItemTag + i;
+        [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTap:)]];
+        
+        UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(view.bounds.size.width/2.0 - 24, 30, 48, 48)];
+        imageView.image = [UIImage imageNamed:arr[i]];
+        [view addSubview:imageView];
+        
+        UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(view.bounds.size.width/2.0 - 50, 30 + 48 +9, 100, 21)];
+        label.textColor = kFontColor;
+        label.text = arr[i];
+        label.textAlignment = NSTextAlignmentCenter;
+        [view addSubview:label];
+        
+        [sectionHeaderView addSubview:view];
     }
+    
+    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0.5, kSectionItemH - 20)];
+    label.center = CGPointMake(sectionHeaderView.center.x, sectionHeaderView.center.y - 20);
+    label.backgroundColor = [UIColor dividerColor];
+    [sectionHeaderView addSubview:label];
     
     UIButton *informationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     informationBtn.userInteractionEnabled = NO;

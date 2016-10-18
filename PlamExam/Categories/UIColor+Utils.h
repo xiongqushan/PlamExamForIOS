@@ -21,4 +21,7 @@
 
 + (UIColor *)tabBarColor;
 
+//分割线颜色
++ (UIColor *)dividerColor;
+
 @end

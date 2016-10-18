@@ -7,7 +7,7 @@
 //
 
 #define kRecordViewH (kScreenSizeWidth > 375 ? 210 :200)
-#define kDoctorFloatViewH 90
+#define kDoctorFloatViewH 100
 #define kToolBarH 46
 
 #import "ConsulationViewController.h"
@@ -15,6 +15,7 @@
 #import "HZRecognizerView.h"
 #import "CommonUtil.h"
 #import "DoctorReplyCell.h"
+#import "UserTextCell.h"
 #import "ChatModel.h"
 #import "ChatData.h"
 #import "ReportListViewController.h"
@@ -53,6 +54,7 @@
     if (!_doctorInfoView) {
         _doctorInfoView = [[UIView alloc] init];
         _doctorInfoView.frame = CGRectMake(0, kNavigationBarH, kScreenSizeWidth, kDoctorFloatViewH);
+        _doctorInfoView.backgroundColor = [UIColor redColor];
         [self.view addSubview:_doctorInfoView];
     }
     return _doctorInfoView;
@@ -80,8 +82,11 @@
     infoView.frame = self.doctorInfoView.bounds;
     [self.doctorInfoView addSubview:infoView];
     
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    self.tableView.backgroundColor = kSetRGBColor(242, 242, 242);
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DoctorReplyCell" bundle:nil] forCellReuseIdentifier:@"DoctorReplyCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserTextCell" bundle:nil] forCellReuseIdentifier:@"UserTextCell"];
     
     //监听键盘弹出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -99,6 +104,7 @@
             if (httpResult.HttpResult.Code == 1) {
                 NSLog(@"_____%@",httpResult.Data.description);
                 self.dataArr = httpResult.Data;
+                [self.dataArr addObjectsFromArray:httpResult.Data];
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
             }else {
@@ -166,13 +172,34 @@
 #pragma mark -- UITableViewDelegate
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return self.dataArr.count;
+   // return 0;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
-    ChatData *model = self.dataArr[indexPath.row];
-    cell.textLabel.text = [NSString stringWithFormat:@"%@，第%ld行",model.Content,indexPath.row];
-    return cell;
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+//    //ChatData *model = self.dataArr[indexPath.row];
+//    cell.textLabel.text = [NSString stringWithFormat:@"%@，第%ld行",@"测试数据",indexPath.row];
+//    return cell;
+    ChatData *chatData = self.dataArr[indexPath.row];
+    if ([chatData.SourceType integerValue] == 1) {
+        //用户发送的消息
+        UserTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTextCell"];
+        [cell showDataWithModel:chatData];
+        return cell;
+        
+    }else {
+        //健管师发送的消息
+        DoctorReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DoctorReplyCell"];
+        [cell showDataWithModel:chatData];
+        return cell;
+    }
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    
+    ChatData *chatData = self.dataArr[indexPath.row];
+    return chatData.cellHeight;
+ //   return 50;
 }
 
 #pragma mark --UIScrollerViewDelegate
@@ -201,36 +228,18 @@
 
 - (void)scrollViewDidEndDragging:(UIScrollView *)scrollView willDecelerate:(BOOL)decelerate{
 
-if (scrollView == self.tableView) {
-        CGPoint translation = [scrollView.panGestureRecognizer translationInView:scrollView.superview];
-        if (translation.y>0) {
+    if (scrollView == self.tableView) {
+            CGPoint translation = [scrollView.panGestureRecognizer translationInView:scrollView.superview];
+            if (translation.y>0) {
 
-            NSLog(@"______向下滑动，显示View");
-            [self showUserInfoView];
-        }else if(translation.y<0){
+                NSLog(@"______向下滑动，显示View");
+                [self showUserInfoView];
+            }else if(translation.y<0){
 
-            NSLog(@"______向上滑动，隐藏View");
-            [self hiddenUserInfoView];
-        }
-
-//滑动时，textView如果是第一响应者，取消
-//        if (self.textView.isFirstResponder) {
-//            [self.textView resignFirstResponder];
-//        }
-//
-//        [UIView animateWithDuration:0.25 animations:^{
-//            self.voiceView.frame = CGRectMake(0, kScreenSizeHeight, kScreenSizeWidth, kVoiceHeight);
-//
-//            self.view.transform = CGAffineTransformMakeTranslation(0, 0);
-//        }];
-//
-//        [UIView animateWithDuration:0.25 animations:^{
-//            self.toolBar.sd_layout.bottomSpaceToView(self.view,0);
-//            [self.toolBar updateLayout];
-//        }];
-
-
-}
+                NSLog(@"______向上滑动，隐藏View");
+                [self hiddenUserInfoView];
+            }
+    }
 }
 
 
@@ -238,14 +247,14 @@ if (scrollView == self.tableView) {
 - (void) hiddenUserInfoView {
     [UIView animateWithDuration:0.4 animations:^{
     CGRect frame = self.doctorInfoView.frame;
-    frame.origin.y = -6;
+    frame.origin.y = - (kDoctorFloatViewH - 20 - 64);
     self.doctorInfoView.frame = frame;
         
 
     //修改tableView的frame
     CGRect tableViewFrame = self.tableView.frame;
-    tableViewFrame.origin.y = kNavigationBarH;
-    tableViewFrame.size.height = kScreenSizeHeight - kToolBarH - kNavigationBarH;
+    tableViewFrame.origin.y = kNavigationBarH + 20;
+    tableViewFrame.size.height = kScreenSizeHeight - kToolBarH - kNavigationBarH -20;
     self.tableView.frame = tableViewFrame;
     }];
 

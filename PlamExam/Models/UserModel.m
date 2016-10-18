@@ -27,9 +27,10 @@
 
             result.Data = httpRequestResult.HttpResult.Result;
             callBack(result);
-        }else {
-            callBack(result);
         }
+        
+        callBack(result);
+        
     }];
 }
 
@@ -43,9 +44,10 @@
         if (httpRequestResult.IsHttpSuccess) {
             result.Data = [User yy_modelWithJSON:httpRequestResult.HttpResult.Result];
             callBack(result);
-        }else {
-            callBack(result);
         }
+        
+        callBack(result);
+
     }];
 }
 
