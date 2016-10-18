@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A58908AF1DB4A80300A9659B /* ReportAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908AE1DB4A80200A9659B /* ReportAddViewController.m */; };
+		A58908B21DB4A82000A9659B /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908B11DB4A82000A9659B /* ReportListViewController.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548A61DAB96330077E85C /* BaseView.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548A51DAB96330077E85C /* BaseView.m */; };
@@ -80,6 +82,10 @@
 /* Begin PBXFileReference section */
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
+		A58908AD1DB4A80200A9659B /* ReportAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAddViewController.h; sourceTree = "<group>"; };
+		A58908AE1DB4A80200A9659B /* ReportAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAddViewController.m; sourceTree = "<group>"; };
+		A58908B01DB4A82000A9659B /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
+		A58908B11DB4A82000A9659B /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -222,6 +228,17 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		A58908AC1DB4A78900A9659B /* Report */ = {
+			isa = PBXGroup;
+			children = (
+				A58908AD1DB4A80200A9659B /* ReportAddViewController.h */,
+				A58908AE1DB4A80200A9659B /* ReportAddViewController.m */,
+				A58908B01DB4A82000A9659B /* ReportListViewController.h */,
+				A58908B11DB4A82000A9659B /* ReportListViewController.m */,
+			);
+			path = Report;
+			sourceTree = "<group>";
+		};
 		A935489F1DAB95E10077E85C /* Domains */ = {
 			isa = PBXGroup;
 			children = (
@@ -401,6 +418,7 @@
 		A9411B271DAA3E6900B69967 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
+				A58908AC1DB4A78900A9659B /* Report */,
 				A93548FF1DAF14CF0077E85C /* Main */,
 				A93548F91DAF140C0077E85C /* Login */,
 				A93549091DAF18C60077E85C /* Home */,
@@ -712,6 +730,7 @@
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
+				A58908AF1DB4A80300A9659B /* ReportAddViewController.m in Sources */,
 				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548B31DAB974C0077E85C /* BaseModel.m in Sources */,
@@ -737,6 +756,7 @@
 				A93548A61DAB96330077E85C /* BaseView.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A935494E1DAF72140077E85C /* BaseSettingViewController.m in Sources */,
+				A58908B21DB4A82000A9659B /* ReportListViewController.m in Sources */,
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,
 				A93549141DAF19600077E85C /* PersonalViewController.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
