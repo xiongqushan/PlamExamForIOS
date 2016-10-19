@@ -25,7 +25,7 @@
 #define kSectionItemTag 101
 #define kBackColor kSetRGBColor(242, 242, 242)
 
-@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource>
+@interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, SZCirculationImageViewDelegate>
 
 @property (nonatomic, strong)UITableView *tableView;
 @property (nonatomic, strong)UIView *adView;
@@ -87,8 +87,13 @@
     SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
     imageView.pauseTime = 3.0;
     imageView.currentPageColor = [UIColor whiteColor];
+    imageView.delegate = self;
     [self.adView addSubview:imageView];
     
+}
+
+- (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
+    NSLog(@"_______%ld",index);
 }
 
 - (void)setUpTableView {

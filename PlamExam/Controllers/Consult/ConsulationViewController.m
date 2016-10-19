@@ -18,7 +18,6 @@
 #import "UserTextCell.h"
 #import "ChatModel.h"
 #import "ChatData.h"
-#import "ReportListViewController.h"
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -414,9 +413,9 @@
 #pragma mark -- 点击事件
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
-    ReportListViewController *reportList = [[ReportListViewController alloc] init];
-    
-    [self.navigationController pushViewController:reportList animated:YES];
+//    ReportListViewController *reportList = [[ReportListViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:reportList animated:YES];
 }
 
 //语音识别按钮被点击

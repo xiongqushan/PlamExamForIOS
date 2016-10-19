@@ -70,7 +70,6 @@
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
 		A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CD81DB4EFA500034DA5 /* ChatModel.m */; };
 		A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDB1DB4F05200034DA5 /* ChatData.m */; };
-		A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */; };
 		A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */; };
 		A9C92CE71DB5D5E000034DA5 /* HZBadgeView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CE61DB5D5E000034DA5 /* HZBadgeView.m */; };
 		A9C92D021DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CF61DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m */; };
@@ -205,8 +204,6 @@
 		A9C92CD81DB4EFA500034DA5 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		A9C92CDA1DB4F05200034DA5 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
 		A9C92CDB1DB4F05200034DA5 /* ChatData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatData.m; sourceTree = "<group>"; };
-		A9C92CDD1DB5BD7A00034DA5 /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
-		A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
 		A9C92CE11DB5C0AE00034DA5 /* ZLCWebView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZLCWebView.h; sourceTree = "<group>"; };
 		A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZLCWebView.m; sourceTree = "<group>"; };
 		A9C92CE51DB5D5E000034DA5 /* HZBadgeView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZBadgeView.h; sourceTree = "<group>"; };
@@ -457,8 +454,6 @@
 				A93C60C71DB4CD970024180F /* ConsulationViewController.h */,
 				A93C60C81DB4CD970024180F /* ConsulationViewController.m */,
 				A93C60C91DB4CD970024180F /* ConsulationViewController.xib */,
-				A9C92CDD1DB5BD7A00034DA5 /* ReportListViewController.h */,
-				A9C92CDE1DB5BD7A00034DA5 /* ReportListViewController.m */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -884,8 +879,7 @@
 				A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */,
 				A9C92CE71DB5D5E000034DA5 /* HZBadgeView.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
-				A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */,
-				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
+				A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */,				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
 				A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
