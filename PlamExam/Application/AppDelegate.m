@@ -51,7 +51,7 @@
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
 
     UIViewController *rootVc = [[HZTabBarController alloc] init];
-    if (![UserManager isLogin]) {
+    if (![[UserManager shareInstance] isLogin]) {
         rootVc = [[LoginViewController alloc] init];
     }
     

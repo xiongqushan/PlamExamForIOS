@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A5A01E931DB73FD4006C64E0 /* DoctorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E921DB73FD4006C64E0 /* DoctorManager.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
@@ -105,6 +106,8 @@
 /* Begin PBXFileReference section */
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
+		A5A01E911DB73FD4006C64E0 /* DoctorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorManager.h; sourceTree = "<group>"; };
+		A5A01E921DB73FD4006C64E0 /* DoctorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorManager.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -459,6 +462,8 @@
 				A93549811DB0A5920077E85C /* UserManager.m */,
 				A9C92D111DB6277A00034DA5 /* HomeAdManager.h */,
 				A9C92D121DB6277A00034DA5 /* HomeAdManager.m */,
+				A5A01E911DB73FD4006C64E0 /* DoctorManager.h */,
+				A5A01E921DB73FD4006C64E0 /* DoctorManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -959,6 +964,7 @@
 				A935494F1DAF72140077E85C /* ArrowItem.m in Sources */,
 				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
 				A9C92D2D1DB718DE00034DA5 /* CommentViewController.m in Sources */,
+				A5A01E931DB73FD4006C64E0 /* DoctorManager.m in Sources */,
 				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A9C92D021DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m in Sources */,

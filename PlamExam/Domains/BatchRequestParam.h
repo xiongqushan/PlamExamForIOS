@@ -8,12 +8,10 @@
 
 #import <Foundation/Foundation.h>
 
-typedef void(^CallbackDelegate)(HttpRequestResult *httpRequestResult);
-
 @interface BatchRequestParam : NSObject
 @property(nonatomic,strong)NSString* identity;
 @property(nonatomic,strong)NSString* path;
 @property(nonatomic,strong)NSDictionary* param;
-@property(nonatomic,copy)CallbackDelegate callbackDelegate;
-- (instancetype) initWithValue:(NSString*)path andParam:(NSDictionary*)param andCallback:(CallbackDelegate)callbackDelegate;
+@property(nonatomic,copy)HttpCallbackDelegate callbackDelegate;
+- (instancetype) initWithPath:(NSString*)path andParam:(NSDictionary*)param andCallback:(HttpCallbackDelegate)callbackDelegate;
 @end

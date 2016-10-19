@@ -18,3 +18,14 @@
     return self;
 }
 @end
+
+@implementation ZSBoolType
+- (instancetype) initWithValue:(BOOL)value{
+    self = [super init];
+    if (self)
+    {
+        self.Value=value;
+    }
+    return self;
+}
+@end

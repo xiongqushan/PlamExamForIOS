@@ -14,6 +14,7 @@
 - (instancetype) initWithValue:(NSInteger)value;
 @end
 
-@interface ZSBooleanType : NSObject
+@interface ZSBoolType : NSObject
 @property(nonatomic,assign) BOOL Value;
+- (instancetype) initWithValue:(BOOL)value;
 @end

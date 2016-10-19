@@ -9,5 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "BatchRequestParam.h"
 @interface HttpBatchRequestHelper : NSObject
--(void)batchPost:(NSArray<BatchRequestParam*>*) requestParams withBeforeRequest:(void (^)())beforeRequest withFinishRequest:(void (^)(BOOL))finishRequest;
+-(void)batchPost:(NSArray<BatchRequestParam*>*) requestParams withFinishRequest:(void (^)(BOOL isAllSuccess))finishRequest;
+
+-(void)batchPostForSyncCallback:(NSArray<BatchRequestParam*>*) requestParams withFinishRequest:(void (^)(BOOL isAllSuccess))finishRequest;
 @end

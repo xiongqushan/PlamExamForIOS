@@ -21,6 +21,7 @@
 @property(strong,nonatomic) NSString *HttpMessage;
 @property(strong,nonatomic) ApiGlobalData *HttpResult;
 @property(strong,nonatomic) T Data;
-
 @end
+
+typedef void(^HttpCallbackDelegate)(HttpRequestResult *httpRequestResult);
 

@@ -18,6 +18,8 @@
 #import "UserTextCell.h"
 #import "ChatModel.h"
 #import "ChatData.h"
+#import "DoctorManager.h"
+#import "UserManager.h"
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -73,6 +75,41 @@
     [super viewDidLoad];
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
+    NSString* accountId=[[UserManager shareInstance] getUserInfo].accountId;
+    if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
+        [ChatModel requestChatDataAndDoctorIdAndDoctorList:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+                if(httpRequestResult.IsHttpSuccess){
+                    
+                }
+            } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
+                if(httpRequestResult.IsHttpSuccess){
+                    [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+                }
+            } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
+                if(httpRequestResult.IsHttpSuccess){
+                    [[DoctorManager shareInstance] setDoctorList:httpRequestResult.Data];
+                }
+            } allFinishCallback:^(BOOL isAllSuccess) {
+        
+        }];
+    }
+    else if (![[DoctorManager shareInstance] existDoctorId]){
+        [ChatModel requestChatDataAndDoctorId:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            
+        } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
+            if(httpRequestResult.IsHttpSuccess){
+                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+            }
+        } allFinishCallback:^(BOOL isAllSuccess) {
+            
+        }];
+    }
+    else{
+        [ChatModel requestChatDataWithAccountId:accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            
+        }];
+    }
+    
     [self.textView setRound];
     //获取聊天记录
     [self loadChatData];
