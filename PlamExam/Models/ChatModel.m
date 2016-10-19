@@ -15,6 +15,7 @@
 #define kGetChatDataURL @"Consult/Chats"
 #define kSendMessageURL @"Consult/Send"
 #define kReplyMessageURL @"Consult/Reply"
+#define kCommentURL @"Consult/Comment"
 
 @implementation ChatModel
 
@@ -61,6 +62,16 @@
     }];
 }
 
-
++ (void)Comment:(NSString *)accountId score:(NSString*)score content:(NSString *)content callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> *))callBack {
+    NSDictionary *param = @{@"AccountId":accountId,@"Score":score,@"Content":content};
+    [HttpHelper Post:kCommentURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
+        HttpRequestResult<ZSBoolType *> *result = httpRequestResult;
+        if (httpRequestResult.IsHttpSuccess) {
+            result.Data = [[ZSBoolType alloc] initWithValue:[httpRequestResult.HttpResult.Result boolValue]];
+        }
+        callBack(result);
+        
+    }];
+}
 
 @end

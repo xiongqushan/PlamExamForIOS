@@ -18,4 +18,5 @@
 //发送消息
 + (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo consultDate:(NSString *)date callBackBlock:(void(^)(HttpRequestResult<NSString *> *httpResult))callBack;
 
++ (void)Comment:(NSString *)accountId score:(NSString*)score content:(NSString *)content callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> *))callBack;
 @end
