@@ -21,35 +21,27 @@ static DoctorManager *instance = nil;
     return instance;
 }
 
--(NSInteger) getCurrentDoctorId{
-    return instance.currentDoctorId;
-}
-
--(void) setCurrentDoctorId:(NSInteger)doctorId{
-    instance.currentDoctorId=doctorId;
-}
-
 -(void) clearDoctorId{
-    instance.currentDoctorId=-1;
+    self.currentDoctorId=0;
 }
 
 -(BOOL) existDoctorId{
-    return instance.currentDoctorId==-1;
+    return self.currentDoctorId>0;
 }
 
 -(NSArray<Doctor*>*)getDoctorList{
-    return instance.doctorList;
+    return self.doctors;
 }
 
 -(void)setDoctorList:(NSMutableArray<Doctor *> *)doctorList{
-    [instance.doctorList removeAllObjects];
+    [self.doctors removeAllObjects];
     for(Doctor* doctor in doctorList){
-        [instance.doctorList addObject:doctor];
+        [self.doctors addObject:doctor];
     }
 }
 
 -(BOOL)existDoctorList{
-    return instance.doctorList==nil || [instance.doctorList count]==0;
+    return self.doctors!=nil && [self.doctors count]>0;
 }
 
 @end
