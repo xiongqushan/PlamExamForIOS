@@ -12,13 +12,9 @@
 
 @property(nonatomic,assign)NSInteger currentDoctorId;
 
-@property(nonatomic,strong)NSMutableArray<Doctor*> *doctorList;
+@property(nonatomic,strong)NSMutableArray<Doctor*> *doctors;
 
 +(DoctorManager*)shareInstance;
-
--(NSInteger) getCurrentDoctorId;
-
--(void) setCurrentDoctorId:(NSInteger)doctorId;
 
 -(void) clearDoctorId;
 
