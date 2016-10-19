@@ -75,40 +75,7 @@
     [super viewDidLoad];
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
-    NSString* accountId=[[UserManager shareInstance] getUserInfo].accountId;
-    if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
-        [ChatModel requestChatDataAndDoctorIdAndDoctorList:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
-                if(httpRequestResult.IsHttpSuccess){
-                    
-                }
-            } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
-                if(httpRequestResult.IsHttpSuccess){
-                    [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
-                }
-            } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
-                if(httpRequestResult.IsHttpSuccess){
-                    [[DoctorManager shareInstance] setDoctorList:httpRequestResult.Data];
-                }
-            } allFinishCallback:^(BOOL isAllSuccess) {
-        
-        }];
-    }
-    else if (![[DoctorManager shareInstance] existDoctorId]){
-        [ChatModel requestChatDataAndDoctorId:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
-            
-        } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
-            if(httpRequestResult.IsHttpSuccess){
-                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
-            }
-        } allFinishCallback:^(BOOL isAllSuccess) {
-            
-        }];
-    }
-    else{
-        [ChatModel requestChatDataWithAccountId:accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
-            
-        }];
-    }
+
     
     [self.textView setRound];
     //获取聊天记录
@@ -135,21 +102,57 @@
 - (void)loadChatData {
     self.dataArr = [NSMutableArray array];
     
-    [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<NSMutableArray *> *httpResult) {
-        if (httpResult.IsHttpSuccess) {
-            if (httpResult.HttpResult.Code == 1) {
-                NSLog(@"_____%@",httpResult.Data.description);
-                self.dataArr = httpResult.Data;
-                [self.dataArr addObjectsFromArray:httpResult.Data];
-                [self.tableView reloadData];
-                [self scrollToBottom:NO];
-            }else {
-                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+//    [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<NSMutableArray *> *httpResult) {
+//        if (httpResult.IsHttpSuccess) {
+//            if (httpResult.HttpResult.Code == 1) {
+//                NSLog(@"_____%@",httpResult.Data.description);
+//                self.dataArr = httpResult.Data;
+//                [self.dataArr addObjectsFromArray:httpResult.Data];
+//                [self.tableView reloadData];
+//                [self scrollToBottom:NO];
+//            }else {
+//                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+//            }
+//        }else {
+//            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+//        }
+//    }];
+    
+    NSString* accountId=[[UserManager shareInstance] getUserInfo].accountId;
+    
+    if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
+        [ChatModel requestChatDataAndDoctorIdAndDoctorList:@"sample string 1" chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            if(httpRequestResult.IsHttpSuccess){
+                
             }
-        }else {
-            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-        }
-    }];
+        } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
+            if(httpRequestResult.IsHttpSuccess){
+                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+            }
+        } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
+            if(httpRequestResult.IsHttpSuccess){
+                [[DoctorManager shareInstance] setDoctorList:httpRequestResult.Data];
+            }
+        } allFinishCallback:^(BOOL isAllSuccess) {
+            
+        }];
+    }
+    else if (![[DoctorManager shareInstance] existDoctorId]){
+        [ChatModel requestChatDataAndDoctorId:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            
+        } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
+            if(httpRequestResult.IsHttpSuccess){
+                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+            }
+        } allFinishCallback:^(BOOL isAllSuccess) {
+            
+        }];
+    }
+    else{
+        [ChatModel requestChatDataWithAccountId:accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            
+        }];
+    }
 }
 
 #pragma mark -- 监听键盘的触发事件

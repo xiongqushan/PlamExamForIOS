@@ -30,11 +30,11 @@ static DoctorManager *instance = nil;
 }
 
 -(void) clearDoctorId{
-    instance.currentDoctorId=-1;
+    instance.currentDoctorId=0;
 }
 
 -(BOOL) existDoctorId{
-    return instance.currentDoctorId==-1;
+    return instance.currentDoctorId==0;
 }
 
 -(NSArray<Doctor*>*)getDoctorList{
