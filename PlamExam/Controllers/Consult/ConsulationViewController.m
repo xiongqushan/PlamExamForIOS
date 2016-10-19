@@ -279,47 +279,34 @@
 }
 
 #pragma mark -- 发送消息
-- (void)sendMessage:(NSString *)text {
-//    if ([HZUtils isBlankString:text]) {
-//        [HZUtils showHUDWithTitle:@"不能发送空白消息"];
-//        self.textView.text = @"";
-//        return;
-//    }
-//    HZUser *user = [Config getProfile];
-//    NSDate *date = [NSDate date];
-//    NSDateFormatter *dateFormatter = [[NSDateFormatter alloc] init];
-//    [dateFormatter setDateFormat:@"YYYY-MM-dd HH:mm:ss"];
-//    NSString *currentDate = [dateFormatter stringFromDate:date];
-//    
-//    NSDictionary *param = @{@"DoctorId":_infoModel.doctorID,@"ReDoctorId":user.doctorId,@"ReDoctorName":user.name,@"CustomerId":self.customId,@"ReplyContent":text,@"ReplyTime":currentDate};
-//    [ChartHttpRequest replyMessage:param completionBlock:^(ChartModel *model, NSString *message) {
-//        
-//        if (message) {
-//            // [HZUtils showHUDWithTitle:message];
-//        }else {
-//            
-//            [self.dataArr insertObject:model atIndex:0];
-//            
-//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataArr.count - 1 inSection:0];
-//            [_tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
-//            
-//            NSIndexPath *lastPath = [NSIndexPath indexPathForRow:self.dataArr.count - 1 inSection:0];
-//            [_tableView scrollToRowAtIndexPath:lastPath atScrollPosition:UITableViewScrollPositionBottom animated:YES];
-//            
-//            [[NSNotificationCenter defaultCenter] postNotificationName:@"ChangeListNotifi" object:nil];
-//            
-//            //回复成功
-//            _textView.text = @""; // 将textView内容清空
-//            _placeholderLabel.hidden = NO;
-//            [self textViewDidChange:_textView]; //将textView的高度恢复默认
-//        }
-//    }];
+- (void)sendMessage:(NSString *)text type:(NSInteger)type{
     
-    [ChatModel sendMessageWithAccountId:@"sample string 1" type:2 consultContent:@"sapmle string 3" appendInfo:@"sample string 4" consultDate:@"2016-10-17T19:30:51.1970415+08:00" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
+    if ([CommonUtil isBlankString:text]) {
+        [CommonUtil showHUDWithTitle:@"不能发送空白消息"];
+        self.textView.text = @"";
+        return;
+    }
+    
+    [ChatModel sendMessageWithAccountId:@"sample string 1" type:type consultContent:self.textView.text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
 
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
-                NSLog(@"_____%@",httpResult.Data.description);
+                NSLog(@"_____data:%@",httpResult.Data.description);
+                
+                ChatData *sendData = [[ChatData alloc] init];
+                sendData.SourceType = @"1";
+                sendData.Content = self.textView.text;
+                sendData.Type = [NSString stringWithFormat:@"%ld",type];
+                
+                [self.dataArr addObject:sendData];
+                NSIndexPath *indexPath = [NSIndexPath indexPathForRow:self.dataArr.count - 1 inSection:0];
+                [self.tableView insertRowsAtIndexPaths:@[indexPath] withRowAnimation:UITableViewRowAnimationNone];
+                [self scrollToBottom:YES];
+                
+                self.textView.text = @"";
+                _placeholderLabel.hidden = NO;
+                [self textViewDidChange:self.textView];
+                
             }else {
                 [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
             }
@@ -345,7 +332,7 @@
         //把textView的内容封装到model中，并添加到可变数组
         NSString *textStr = textView.text;
         
-        [self sendMessage:textStr];
+        [self sendMessage:textStr type:2];
         return NO;
     }
     
@@ -411,6 +398,11 @@
 
 
 #pragma mark -- 点击事件
+//评论按钮被点击  跳转
+- (IBAction)commentClick:(id)sender {
+
+}
+
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
 //    ReportListViewController *reportList = [[ReportListViewController alloc] init];

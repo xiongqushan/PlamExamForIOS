@@ -147,15 +147,8 @@
         = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imagesArray[self.index+1 <=self.imagesArray.count-1?self.index+1:0]]]];
     }
     
-    [self.centerImageView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tapClick:)]];
 }
 
-- (void)tapClick:(UITapGestureRecognizer *)tap {
-    
-    if ([self.delegate respondsToSelector:@selector(circulationImageView:didSelectIndex:)]) {
-        [self.delegate circulationImageView:self didSelectIndex:self.index];
-    }
-}
 
 - (NSURL *)pathToURL:(NSInteger)integer {
     
@@ -175,8 +168,13 @@
 - (void)clickImage:(UITapGestureRecognizer *)tap {
     
     [self closeTimer];
+    
     if (tap.state == UIGestureRecognizerStateEnded) {
         [self startTimer];
+    }
+    
+    if ([self.delegate respondsToSelector:@selector(circulationImageView:didSelectIndex:)]) {
+        [self.delegate circulationImageView:self didSelectIndex:self.index];
     }
 }
 

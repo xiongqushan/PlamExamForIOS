@@ -16,6 +16,6 @@
 + (void)requestChatDataWithAccountId:(NSString *)accountId callBackBlock:(void(^)(HttpRequestResult<NSMutableArray *> *httpResult))callBack;
 
 //发送消息
-+ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo consultDate:(NSString *)date callBackBlock:(void(^)(HttpRequestResult<NSString *> *httpResult))callBack;
++ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo callBackBlock:(void(^)(HttpRequestResult<NSString *> *httpResult))callBack;
 
 @end

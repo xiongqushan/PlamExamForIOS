@@ -87,6 +87,12 @@
 		A9C92D261DB7069600034DA5 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D201DB7069600034DA5 /* CommonUtil.m */; };
 		A9C92D271DB7069600034DA5 /* HttpBatchRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D221DB7069600034DA5 /* HttpBatchRequestHelper.m */; };
 		A9C92D281DB7069600034DA5 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D241DB7069600034DA5 /* HttpHelper.m */; };
+		A9C92D2D1DB718DE00034DA5 /* CommentViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D2B1DB718DE00034DA5 /* CommentViewController.m */; };
+		A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9C92D2C1DB718DE00034DA5 /* CommentViewController.xib */; };
+		A9C92D341DB71AAB00034DA5 /* HYBStarEvaluationView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D311DB71AAB00034DA5 /* HYBStarEvaluationView.m */; };
+		A9C92D351DB71AAB00034DA5 /* star_gray.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C92D321DB71AAB00034DA5 /* star_gray.png */; };
+		A9C92D361DB71AAB00034DA5 /* star_yellow.png in Resources */ = {isa = PBXBuildFile; fileRef = A9C92D331DB71AAB00034DA5 /* star_yellow.png */; };
+		A9C92D391DB7556300034DA5 /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D381DB7556300034DA5 /* ReportListViewController.m */; };
 		A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A721DB0DD70000BEDF4 /* User.m */; };
 		A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */; };
 		A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A841DB0E930000BEDF4 /* edit_voiceinput@3x.png */; };
@@ -241,6 +247,15 @@
 		A9C92D231DB7069600034DA5 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
 		A9C92D241DB7069600034DA5 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
 		A9C92D291DB706E800034DA5 /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
+		A9C92D2A1DB718DE00034DA5 /* CommentViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommentViewController.h; sourceTree = "<group>"; };
+		A9C92D2B1DB718DE00034DA5 /* CommentViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommentViewController.m; sourceTree = "<group>"; };
+		A9C92D2C1DB718DE00034DA5 /* CommentViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CommentViewController.xib; sourceTree = "<group>"; };
+		A9C92D301DB71AAB00034DA5 /* HYBStarEvaluationView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HYBStarEvaluationView.h; sourceTree = "<group>"; };
+		A9C92D311DB71AAB00034DA5 /* HYBStarEvaluationView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HYBStarEvaluationView.m; sourceTree = "<group>"; };
+		A9C92D321DB71AAB00034DA5 /* star_gray.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_gray.png; sourceTree = "<group>"; };
+		A9C92D331DB71AAB00034DA5 /* star_yellow.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = star_yellow.png; sourceTree = "<group>"; };
+		A9C92D371DB7556300034DA5 /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
+		A9C92D381DB7556300034DA5 /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
 		A9DB5A711DB0DD70000BEDF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A9DB5A721DB0DD70000BEDF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_voiceinput@2x.png"; sourceTree = "<group>"; };
@@ -339,6 +354,8 @@
 				A935490D1DAF193D0077E85C /* HomeViewController.m */,
 				A93C60E11DB4D3980024180F /* InformationViewController.h */,
 				A93C60E21DB4D3980024180F /* InformationViewController.m */,
+				A9C92D371DB7556300034DA5 /* ReportListViewController.h */,
+				A9C92D381DB7556300034DA5 /* ReportListViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -454,6 +471,9 @@
 				A93C60C71DB4CD970024180F /* ConsulationViewController.h */,
 				A93C60C81DB4CD970024180F /* ConsulationViewController.m */,
 				A93C60C91DB4CD970024180F /* ConsulationViewController.xib */,
+				A9C92D2A1DB718DE00034DA5 /* CommentViewController.h */,
+				A9C92D2B1DB718DE00034DA5 /* CommentViewController.m */,
+				A9C92D2C1DB718DE00034DA5 /* CommentViewController.xib */,
 			);
 			path = Consult;
 			sourceTree = "<group>";
@@ -482,6 +502,7 @@
 		A9411B291DAA3E7B00B69967 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A9C92D2F1DB71AAB00034DA5 /* HYBStarEvaluationView */,
 				A9C92CE41DB5D55000034DA5 /* CommonView */,
 				A9610D741DB491100062CE93 /* ConsulationView */,
 				A9DB5A821DB0E930000BEDF4 /* HZRecognizer */,
@@ -698,6 +719,17 @@
 			path = SZCirculationImageView;
 			sourceTree = "<group>";
 		};
+		A9C92D2F1DB71AAB00034DA5 /* HYBStarEvaluationView */ = {
+			isa = PBXGroup;
+			children = (
+				A9C92D301DB71AAB00034DA5 /* HYBStarEvaluationView.h */,
+				A9C92D311DB71AAB00034DA5 /* HYBStarEvaluationView.m */,
+				A9C92D321DB71AAB00034DA5 /* star_gray.png */,
+				A9C92D331DB71AAB00034DA5 /* star_yellow.png */,
+			);
+			path = HYBStarEvaluationView;
+			sourceTree = "<group>";
+		};
 		A9DB5A821DB0E930000BEDF4 /* HZRecognizer */ = {
 			isa = PBXGroup;
 			children = (
@@ -785,11 +817,14 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */,
 				A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */,
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
 				A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */,
 				A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */,
 				A935496A1DAF9D340077E85C /* IconCell.xib in Resources */,
+				A9C92D361DB71AAB00034DA5 /* star_yellow.png in Resources */,
+				A9C92D351DB71AAB00034DA5 /* star_gray.png in Resources */,
 				A93C60E01DB4CEA40024180F /* UserTextCell.xib in Resources */,
 				A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */,
 				A935492A1DAF37890077E85C /* LoginViewController.xib in Resources */,
@@ -879,12 +914,13 @@
 				A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */,
 				A9C92CE71DB5D5E000034DA5 /* HZBadgeView.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
-				A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */,				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
+				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
 				A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
 				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
 				A9C92D051DB5ED9500034DA5 /* UIView+WZLBadge.m in Sources */,
+				A9C92D391DB7556300034DA5 /* ReportListViewController.m in Sources */,
 				A9C92D091DB6028E00034DA5 /* HomeModel.m in Sources */,
 				A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
@@ -904,6 +940,7 @@
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,
 				A9C92D041DB5ED9500034DA5 /* CAAnimation+WAnimation.m in Sources */,
 				A93549541DAF72140077E85C /* SwitchItem.m in Sources */,
+				A9C92D341DB71AAB00034DA5 /* HYBStarEvaluationView.m in Sources */,
 				A93549531DAF72140077E85C /* SettingItem.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */,
@@ -921,6 +958,7 @@
 				A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */,
 				A935494F1DAF72140077E85C /* ArrowItem.m in Sources */,
 				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
+				A9C92D2D1DB718DE00034DA5 /* CommentViewController.m in Sources */,
 				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A9C92D021DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m in Sources */,

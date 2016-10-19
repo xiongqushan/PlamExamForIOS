@@ -26,7 +26,6 @@
         if(httpRequestResult.IsHttpSuccess){
 
             result.Data = httpRequestResult.HttpResult.Result;
-            callBack(result);
         }
         
         callBack(result);
@@ -43,9 +42,7 @@
         HttpRequestResult<User *> *result = httpRequestResult;
         if (httpRequestResult.IsHttpSuccess) {
             result.Data = [User yy_modelWithJSON:httpRequestResult.HttpResult.Result];
-            callBack(result);
         }
-        
         callBack(result);
 
     }];

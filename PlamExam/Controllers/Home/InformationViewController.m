@@ -44,7 +44,8 @@
 //    self.wKWebView = webView;
     ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
 
-    [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
+   // [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
+    [webView loadURLString:self.loadUrl];
     
     [self.view addSubview:webView];
     

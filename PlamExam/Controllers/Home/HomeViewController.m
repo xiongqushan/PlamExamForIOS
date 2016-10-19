@@ -16,6 +16,7 @@
 #import "CommonUtil.h"
 #import "AdScrollerViewData.h"
 #import "SZCirculationImageView.h"
+#import "ReportListViewController.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -92,8 +93,14 @@
     
 }
 
+#pragma mark -- SZCirculationImageViewDelegate
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
+    AdScrollerViewData *data = self.adDataArr[index];
+    
+    InformationViewController *information = [[InformationViewController alloc] init];
+    information.loadUrl = data.LinkUrl;
+    [self.navigationController pushViewController:information animated:YES];
 }
 
 - (void)setUpTableView {
@@ -203,6 +210,8 @@
     UIView *tempView = tap.view;
     if (tempView.tag == kSectionItemTag) {
         //体检报告
+        ReportListViewController *reportList = [[ReportListViewController alloc] init];
+        [self.navigationController pushViewController:reportList animated:YES];
     }else if (tempView.tag == kSectionItemTag + 1) {
         //健康咨询
         ConsulationViewController *consulation = [[ConsulationViewController alloc] init];

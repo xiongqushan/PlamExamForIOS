@@ -10,4 +10,6 @@
 
 @interface InformationViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *loadUrl;
+
 @end

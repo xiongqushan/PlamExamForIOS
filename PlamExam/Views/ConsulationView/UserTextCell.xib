@@ -22,8 +22,8 @@
                     </label>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="mRn-fe-hCQ">
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="KMJ-8p-QfP"/>
-                            <constraint firstAttribute="height" constant="50" id="beI-G0-Kwz"/>
+                            <constraint firstAttribute="width" constant="46" id="KMJ-8p-QfP"/>
+                            <constraint firstAttribute="height" constant="46" id="beI-G0-Kwz"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vRX-IR-Bos">
@@ -47,7 +47,7 @@
                     <constraint firstAttribute="bottom" secondItem="vRX-IR-Bos" secondAttribute="bottom" constant="17" id="B8l-kQ-reY"/>
                     <constraint firstAttribute="trailing" secondItem="mRn-fe-hCQ" secondAttribute="trailing" constant="12" id="Dm5-S8-WRG"/>
                     <constraint firstItem="vRX-IR-Bos" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="b3f-1C-iPN"/>
-                    <constraint firstItem="vRX-IR-Bos" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="77" id="d2a-rg-cEk"/>
+                    <constraint firstItem="vRX-IR-Bos" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="73" id="d2a-rg-cEk"/>
                     <constraint firstItem="mRn-fe-hCQ" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="jiW-H2-rKJ"/>
                     <constraint firstItem="iTN-ho-5rT" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="vpL-Mf-qlw"/>
                     <constraint firstItem="mRn-fe-hCQ" firstAttribute="leading" secondItem="vRX-IR-Bos" secondAttribute="trailing" constant="15" id="zY3-rT-CLp"/>

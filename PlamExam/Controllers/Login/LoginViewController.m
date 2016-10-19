@@ -92,9 +92,35 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    [self.logoImageView setRound];
-    [self.loginBtn setRound];
+    
+    self.view.backgroundColor = [UIColor whiteColor];
+    
+    //监听键盘显示通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
+    
+    //监听键盘收起的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillHiden:) name:UIKeyboardWillHideNotification object:nil];
 }
+
+- (void)kbWillShow:(NSNotification *)note {
+    
+    if (kScreenSizeWidth < 375) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.transform = CGAffineTransformMakeTranslation(0, -120);
+        }];
+    }
+
+}
+
+- (void)kbWillHiden:(NSNotification *)note {
+    
+    if (kScreenSizeWidth < 375) {
+        [UIView animateWithDuration:0.25 animations:^{
+            self.view.transform = CGAffineTransformMakeTranslation(0, 0);
+        }];
+    }
+}
+
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.phoneTextField resignFirstResponder];

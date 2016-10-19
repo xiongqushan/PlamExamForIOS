@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.iconImageView setRoundWithRadius:25];
+    [self.iconImageView setRoundWithRadius:23];
     [self.chatBgView setRound];
 }
 

@@ -98,6 +98,16 @@
                         <outlet property="delegate" destination="-1" id="Ga3-cd-3qg"/>
                     </connections>
                 </tableView>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="APp-5q-Qxq">
+                    <constraints>
+                        <constraint firstAttribute="height" constant="50" id="5sB-4U-VwL"/>
+                        <constraint firstAttribute="width" constant="50" id="XQW-vn-Ky2"/>
+                    </constraints>
+                    <state key="normal" title="Button" image="评价"/>
+                    <connections>
+                        <action selector="commentClick:" destination="-1" eventType="touchUpInside" id="vt0-ef-izN"/>
+                    </connections>
+                </button>
             </subviews>
             <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -105,8 +115,10 @@
                 <constraint firstItem="JCu-zq-4pZ" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="Atv-KU-6ab"/>
                 <constraint firstAttribute="trailing" secondItem="XeQ-Fm-9YD" secondAttribute="trailing" id="BXl-ae-j8i"/>
                 <constraint firstAttribute="trailing" secondItem="JCu-zq-4pZ" secondAttribute="trailing" id="E0a-1X-cOj"/>
+                <constraint firstItem="JCu-zq-4pZ" firstAttribute="top" secondItem="APp-5q-Qxq" secondAttribute="bottom" constant="10" id="Phi-OU-t4b"/>
                 <constraint firstAttribute="bottom" secondItem="JCu-zq-4pZ" secondAttribute="bottom" id="h5j-SJ-2uK"/>
                 <constraint firstItem="XeQ-Fm-9YD" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="hIE-nm-17X"/>
+                <constraint firstAttribute="trailing" secondItem="APp-5q-Qxq" secondAttribute="trailing" constant="10" id="kde-nD-LXj"/>
                 <constraint firstItem="JCu-zq-4pZ" firstAttribute="top" secondItem="XeQ-Fm-9YD" secondAttribute="bottom" id="vpj-9C-llt"/>
             </constraints>
             <point key="canvasLocation" x="33.5" y="53.5"/>
@@ -115,6 +127,7 @@
     <resources>
         <image name="发送" width="58" height="58"/>
         <image name="查看体检报告" width="58" height="58"/>
+        <image name="评价" width="98" height="98"/>
         <image name="语音" width="58" height="58"/>
     </resources>
 </document>

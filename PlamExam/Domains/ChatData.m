@@ -18,8 +18,8 @@
     if (!_cellHeight) {
         NSString *content = self.Content;
         
-        CGFloat height = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:content maxWidth:kScreenSizeWidth - 174];
-        _cellHeight = height + 63;
+        CGFloat height = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:content maxWidth:kScreenSizeWidth - 166];
+        _cellHeight = height + 62;
     }
     return _cellHeight;
 }

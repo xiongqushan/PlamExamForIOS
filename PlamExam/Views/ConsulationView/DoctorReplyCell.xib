@@ -17,8 +17,8 @@
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="Ic7-Hh-zJX">
                         <constraints>
-                            <constraint firstAttribute="width" constant="50" id="D0n-oI-eyb"/>
-                            <constraint firstAttribute="height" constant="50" id="K6E-OU-PhY"/>
+                            <constraint firstAttribute="width" constant="46" id="D0n-oI-eyb"/>
+                            <constraint firstAttribute="height" constant="46" id="K6E-OU-PhY"/>
                         </constraints>
                     </imageView>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="MVe-tm-wtp">
@@ -46,7 +46,7 @@
                 </subviews>
                 <constraints>
                     <constraint firstItem="UeS-yX-meK" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="97g-9a-2zO"/>
-                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MVe-tm-wtp" secondAttribute="trailing" constant="77" id="Npw-hx-V7C"/>
+                    <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="MVe-tm-wtp" secondAttribute="trailing" constant="73" id="Npw-hx-V7C"/>
                     <constraint firstItem="UeS-yX-meK" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="5" id="RZA-BN-i1J"/>
                     <constraint firstItem="MVe-tm-wtp" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="25" id="Sg9-em-qL1"/>
                     <constraint firstItem="MVe-tm-wtp" firstAttribute="leading" secondItem="Ic7-Hh-zJX" secondAttribute="trailing" constant="15" id="dJz-To-oyu"/>

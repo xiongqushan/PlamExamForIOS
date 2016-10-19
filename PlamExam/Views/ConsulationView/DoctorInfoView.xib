@@ -33,10 +33,11 @@
                     <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="健管师的回复内容仅作为建议，具体诊疗请前往医院进行" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwO-ur-zqI">
-                    <frame key="frameInset" minY="80" width="375" height="20"/>
-                    <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="健管师的回复内容仅作为建议，具体诊疗请前往医院进行" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="rwO-ur-zqI">
                     <color key="backgroundColor" red="0.91689055429864252" green="0.86388144762557451" blue="0.55890218387005586" alpha="1" colorSpace="calibratedRGB"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="20" id="O46-2U-Rhr"/>
+                    </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="11"/>
                     <color key="textColor" red="0.54699872737556565" green="0.36042090615468153" blue="0.11135907175617046" alpha="1" colorSpace="calibratedRGB"/>
                     <nil key="highlightedColor"/>
@@ -48,9 +49,12 @@
                 <constraint firstItem="CmC-gm-yP1" firstAttribute="top" secondItem="KHu-Rc-Ijq" secondAttribute="bottom" constant="7" id="Eu2-NG-NxY"/>
                 <constraint firstItem="lxM-We-2yK" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="15" id="F7B-4G-AAu"/>
                 <constraint firstAttribute="trailing" secondItem="CmC-gm-yP1" secondAttribute="trailing" constant="12" id="HKK-CY-nlI"/>
+                <constraint firstAttribute="bottom" secondItem="rwO-ur-zqI" secondAttribute="bottom" id="ZrH-r5-FJF"/>
                 <constraint firstItem="lxM-We-2yK" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="10" id="hLO-Kw-tRA"/>
                 <constraint firstItem="KHu-Rc-Ijq" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="19" id="jpQ-gK-qej"/>
+                <constraint firstItem="rwO-ur-zqI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="js8-6g-Llj"/>
                 <constraint firstItem="KHu-Rc-Ijq" firstAttribute="leading" secondItem="lxM-We-2yK" secondAttribute="trailing" constant="10" id="lH0-nv-mY4"/>
+                <constraint firstAttribute="trailing" secondItem="rwO-ur-zqI" secondAttribute="trailing" id="th0-ZI-6yy"/>
                 <constraint firstItem="MAt-qL-RSK" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" constant="15" id="vbv-g9-GBD"/>
                 <constraint firstItem="CmC-gm-yP1" firstAttribute="leading" secondItem="MAt-qL-RSK" secondAttribute="trailing" constant="10" id="y9e-vE-fef"/>
             </constraints>

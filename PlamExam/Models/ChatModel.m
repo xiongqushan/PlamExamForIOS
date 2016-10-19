@@ -35,7 +35,6 @@
                 [dataArr addObject:chat];
             }
             httpRequestResult.Data = dataArr;
-            callBack(result);
         }
         
         callBack(result);
@@ -44,8 +43,8 @@
 }
 
 //发送消息
-+ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo consultDate:(NSString *)date callBackBlock:(void (^)(HttpRequestResult<NSString *> *))callBack {
-    NSDictionary *param = @{@"accountId":accountId,@"type":@(type),@"consultContent":content,@"appendInfo":appendInfo,@"consultDate":date};
++ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo callBackBlock:(void (^)(HttpRequestResult<NSString *> *))callBack {
+    NSDictionary *param = @{@"accountId":accountId,@"type":@(type),@"consultContent":content,@"appendInfo":appendInfo};
     [HttpHelper Post:kSendMessageURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
         HttpRequestResult<NSString *> *result = httpRequestResult;
@@ -53,9 +52,7 @@
         
         if (httpRequestResult.IsHttpSuccess) {
             result.Data = data;
-            callBack(result);
         }
-        
         callBack(result);
         
     }];
