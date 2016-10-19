@@ -18,6 +18,9 @@
 #import "SZCirculationImageView.h"
 #import "ReportListViewController.h"
 #import <MJRefresh.h>
+#import "User.h"
+#import "UserManager.h"
+#import "Notice.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -54,19 +57,28 @@
 }
 
 - (void)loadAdScrollViewData {
-    self.adDataArr = [NSMutableArray array];
-    [HomeModel requestADScrollViewDataWithDepartId:@"123" callBack:^(HttpRequestResult<NSMutableArray *> *httpResult) {
-        if (httpResult.IsHttpSuccess) {
-            if (httpResult.HttpResult.Code == 1) {
-                
-                [self.adDataArr addObjectsFromArray:httpResult.Data];
-                [self setUpHeadAdScrollView];
-            }else {
-                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
-            }
-        }else {
-            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-        }
+//    self.adDataArr = [NSMutableArray array];
+//    [HomeModel requestADScrollViewDataWithDepartId:@"123" callBack:^(HttpRequestResult<NSMutableArray *> *httpResult) {
+//        if (httpResult.IsHttpSuccess) {
+//            if (httpResult.HttpResult.Code == 1) {
+//                
+//                [self.adDataArr addObjectsFromArray:httpResult.Data];
+//                [self setUpHeadAdScrollView];
+//            }else {
+//                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+//            }
+//        }else {
+//            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+//        }
+//    }];
+    
+    User* user=[[UserManager shareInstance] getUserInfo];
+    [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        
+    } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
+        
+    } allFinishCallback:^(BOOL isAllSuccess) {
+        
     }];
 }
 

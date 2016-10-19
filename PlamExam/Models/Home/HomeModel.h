@@ -9,13 +9,10 @@
 #import <Foundation/Foundation.h>
 #import "HttpRequestResult.h"
 #import "AdScrollerViewData.h"
-
+#import "Notice.h"
 @interface HomeModel : NSObject
 
 //获取广告滚动视图数据
-+ (void)requestADScrollViewDataWithDepartId:(NSString *)departId callBack:(void(^)(HttpRequestResult<NSMutableArray *> *httpResult))callBack;
-
-//获取资讯
-
++ (void)requestADAndNotice:(NSString*)accountId withDepartId:(NSString *)departId requestADcallBack:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))requestADcallBack requestNoticeCallback:(void (^)(HttpRequestResult<NSMutableArray<Notice*> *> *httpRequestResult))requestNoticeCallback allFinishCallback:(void (^)(BOOL isAllSuccess))allFinishCallBack;
 
 @end
