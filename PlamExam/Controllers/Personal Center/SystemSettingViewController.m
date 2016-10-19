@@ -51,7 +51,7 @@
     
     if (indexPath.section == 2) {
         //退出登录
-        [UserManager clearUserInfo];
+        [[UserManager shareInstance] clearUserInfo];
         LoginViewController *login = [[LoginViewController alloc] init];
         [self presentViewController:login animated:YES completion:nil];
     }

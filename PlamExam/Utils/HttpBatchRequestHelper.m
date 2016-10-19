@@ -11,22 +11,52 @@
 @implementation HttpBatchRequestHelper
 {
     NSMutableArray<NSString*> *loaddingRequests;
+    NSMutableDictionary<NSString*,HttpRequestResult*> *backResults;
 }
 
--(void)batchPost:(NSArray<BatchRequestParam*>*) requestParams withBeforeRequest:(void (^)())beforeRequest withFinishRequest:(void (^)(BOOL))finishRequest{
-    beforeRequest();
+-(void)batchPost:(NSArray<BatchRequestParam*>*) requestParams withFinishRequest:(void (^)(BOOL isAllSuccess))finishRequest{
     __block BOOL isAllSuccess=true;
     loaddingRequests=[[NSMutableArray<NSString*> alloc] init];
     for(BatchRequestParam *param in requestParams){
         [loaddingRequests addObject:param.identity];
         [HttpHelper Post:param.path withData:param.param withDelegate:^(HttpRequestResult *httpRequestResult) {
-            param.callbackDelegate(httpRequestResult);
+            [loaddingRequests removeObject:param.identity];
+            if(param){
+                param.callbackDelegate(httpRequestResult);
+            }
             if(!httpRequestResult.IsHttpSuccess){
                 isAllSuccess=false;
             }
-            [loaddingRequests removeObject:param.identity];
             if([loaddingRequests count]==0){
-                finishRequest(isAllSuccess);
+                if(finishRequest){
+                    finishRequest(isAllSuccess);
+                }
+            }
+        }];
+    }
+}
+
+-(void)batchPostForSyncCallback:(NSArray<BatchRequestParam*>*) requestParams withFinishRequest:(void (^)(BOOL isAllSuccess))finishRequest{
+    __block BOOL isAllSuccess=true;
+    loaddingRequests=[[NSMutableArray<NSString*> alloc] init];
+    backResults=[[NSMutableDictionary<NSString*,HttpRequestResult*> alloc] init];
+    for(BatchRequestParam *param in requestParams){
+        [loaddingRequests addObject:param.identity];
+        [HttpHelper Post:param.path withData:param.param withDelegate:^(HttpRequestResult *httpRequestResult) {
+            [loaddingRequests removeObject:param.identity];
+            if(!httpRequestResult.IsHttpSuccess){
+                isAllSuccess=false;
+            }
+            [backResults setValue:httpRequestResult forKey:param.identity];
+            if([loaddingRequests count]==0){
+                for(BatchRequestParam *p in requestParams){
+                    if(p.callbackDelegate){
+                        p.callbackDelegate(backResults[p.identity]);
+                    }
+                }
+                if(finishRequest){
+                    finishRequest(isAllSuccess);
+                }
             }
         }];
     }

@@ -11,10 +11,18 @@
 
 @interface UserManager : NSObject
 
-+ (void)saveUserInfo:(User *)user;
+@property(nonatomic,strong)User* userInfo;
 
-+ (void)clearUserInfo;
+@property(nonatomic,assign)NSInteger doctorId;
 
-+ (BOOL)isLogin;
++(UserManager*)shareInstance;
+
+- (void)saveUserInfo:(User *)user;
+
+- (User*)getUserInfo;
+
+- (void)clearUserInfo;
+
+- (BOOL)isLogin;
 
 @end
