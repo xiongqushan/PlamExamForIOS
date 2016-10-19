@@ -11,13 +11,7 @@
 
 @interface UserManager : NSObject
 
-@property(nonatomic,strong)User* userInfo;
-
-@property(nonatomic,assign)NSInteger doctorId;
-
 + (void)saveUserInfo:(User *)user;
-
-+ (User*)getUserInfo;
 
 + (void)clearUserInfo;
 

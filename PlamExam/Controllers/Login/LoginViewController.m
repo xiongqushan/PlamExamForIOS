@@ -38,7 +38,7 @@
     MBProgressHUD *hud = [CommonUtil createHUD];
     
     [UserModel requestVerifyCode:self.phoneTextField.text CallbackDelegate:^(HttpRequestResult<NSString *> *httpResult) {
-        [hud hideAnimated:YES];
+        [hud hide:YES];
         
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
@@ -66,7 +66,8 @@
     MBProgressHUD *hud = [CommonUtil createHUD];
     
     [UserModel requestLoginData:self.phoneTextField.text verifyCode:self.verCodeTextField.text callback:^(HttpRequestResult<User *> *httpResult) {
-        [hud hideAnimated:YES];
+        
+        [hud hide:YES];
         
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {

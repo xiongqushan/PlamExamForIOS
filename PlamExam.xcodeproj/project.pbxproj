@@ -7,20 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		3BB78772F8E5A88D581E8E26 /* libPods-PlamExam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 10E5736D42D7CCA81601A663 /* libPods-PlamExam.a */; };
-		A58908AF1DB4A80300A9659B /* ReportAddViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908AE1DB4A80200A9659B /* ReportAddViewController.m */; };
-		A58908B21DB4A82000A9659B /* ReportListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A58908B11DB4A82000A9659B /* ReportListViewController.m */; };
-		A5A01E871DB6127F006C64E0 /* DoctorModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E861DB6127F006C64E0 /* DoctorModel.m */; };
-		A5A01E8A1DB61B90006C64E0 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E891DB61B90006C64E0 /* Doctor.m */; };
-		A5A01E8D1DB6418B006C64E0 /* BatchRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */; };
-		A5A01E901DB642CE006C64E0 /* HttpBatchRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
-		A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */; };
-		A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548DF1DAC9B170077E85C /* HttpHelper.m */; };
-		A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548E31DAC9B260077E85C /* HttpRequestResult.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
-		A93548F31DAE50EB0077E85C /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548F21DAE50EB0077E85C /* CommonUtil.m */; };
 		A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549041DAF15FF0077E85C /* HZTabBarController.m */; };
 		A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549071DAF163F0077E85C /* HZNavigationController.m */; };
 		A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A935490D1DAF193D0077E85C /* HomeViewController.m */; };
@@ -92,43 +81,31 @@
 		A9C92D0C1DB6036600034DA5 /* AdScrollerViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D0B1DB6036600034DA5 /* AdScrollerViewData.m */; };
 		A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D0F1DB6114700034DA5 /* SZCirculationImageView.m */; };
 		A9C92D131DB6277A00034DA5 /* HomeAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D121DB6277A00034DA5 /* HomeAdManager.m */; };
+		A9C92D1A1DB7065900034DA5 /* BatchRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D151DB7065900034DA5 /* BatchRequestParam.m */; };
+		A9C92D1B1DB7065900034DA5 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D171DB7065900034DA5 /* Doctor.m */; };
+		A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D191DB7065900034DA5 /* HttpRequestResult.m */; };
+		A9C92D251DB7069600034DA5 /* AFNetworkingProxy.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D1E1DB7069600034DA5 /* AFNetworkingProxy.m */; };
+		A9C92D261DB7069600034DA5 /* CommonUtil.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D201DB7069600034DA5 /* CommonUtil.m */; };
+		A9C92D271DB7069600034DA5 /* HttpBatchRequestHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D221DB7069600034DA5 /* HttpBatchRequestHelper.m */; };
+		A9C92D281DB7069600034DA5 /* HttpHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D241DB7069600034DA5 /* HttpHelper.m */; };
 		A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A721DB0DD70000BEDF4 /* User.m */; };
 		A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */; };
 		A9DB5A8C1DB0E930000BEDF4 /* edit_voiceinput@3x.png in Resources */ = {isa = PBXBuildFile; fileRef = A9DB5A841DB0E930000BEDF4 /* edit_voiceinput@3x.png */; };
 		A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A861DB0E930000BEDF4 /* GFWaterView.m */; };
 		A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A881DB0E930000BEDF4 /* HZRecognizer.m */; };
 		A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A8A1DB0E930000BEDF4 /* HZRecognizerView.m */; };
+		FD46ED38168FED9D2479E42A /* libPods-PlamExam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		10E5736D42D7CCA81601A663 /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
-		A58908AD1DB4A80200A9659B /* ReportAddViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportAddViewController.h; sourceTree = "<group>"; };
-		A58908AE1DB4A80200A9659B /* ReportAddViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportAddViewController.m; sourceTree = "<group>"; };
-		A58908B01DB4A82000A9659B /* ReportListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListViewController.h; sourceTree = "<group>"; };
-		A58908B11DB4A82000A9659B /* ReportListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListViewController.m; sourceTree = "<group>"; };
-		A5A01E851DB6127F006C64E0 /* DoctorModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorModel.h; sourceTree = "<group>"; };
-		A5A01E861DB6127F006C64E0 /* DoctorModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorModel.m; sourceTree = "<group>"; };
-		A5A01E881DB61B90006C64E0 /* Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
-		A5A01E891DB61B90006C64E0 /* Doctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doctor.m; sourceTree = "<group>"; };
-		A5A01E8B1DB6418B006C64E0 /* BatchRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchRequestParam.h; sourceTree = "<group>"; };
-		A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchRequestParam.m; sourceTree = "<group>"; };
-		A5A01E8E1DB642CE006C64E0 /* HttpBatchRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpBatchRequestHelper.h; sourceTree = "<group>"; };
-		A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpBatchRequestHelper.m; sourceTree = "<group>"; };
+		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
+		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
 		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
-		A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
-		A93548DC1DAC9B170077E85C /* AFNetworkingProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingProxy.h; sourceTree = "<group>"; };
-		A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingProxy.m; sourceTree = "<group>"; };
-		A93548DE1DAC9B170077E85C /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
-		A93548DF1DAC9B170077E85C /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
-		A93548E21DAC9B260077E85C /* HttpRequestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestResult.h; sourceTree = "<group>"; };
-		A93548E31DAC9B260077E85C /* HttpRequestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestResult.m; sourceTree = "<group>"; };
 		A93548EE1DAE50450077E85C /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		A93548EF1DAE50450077E85C /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
-		A93548F11DAE50EB0077E85C /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
-		A93548F21DAE50EB0077E85C /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
 		A93549031DAF15FF0077E85C /* HZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZTabBarController.h; sourceTree = "<group>"; };
 		A93549041DAF15FF0077E85C /* HZTabBarController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZTabBarController.m; sourceTree = "<group>"; };
 		A93549061DAF163F0077E85C /* HZNavigationController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZNavigationController.h; sourceTree = "<group>"; };
@@ -252,6 +229,21 @@
 		A9C92D0F1DB6114700034DA5 /* SZCirculationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCirculationImageView.m; sourceTree = "<group>"; };
 		A9C92D111DB6277A00034DA5 /* HomeAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAdManager.h; sourceTree = "<group>"; };
 		A9C92D121DB6277A00034DA5 /* HomeAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAdManager.m; sourceTree = "<group>"; };
+		A9C92D141DB7065900034DA5 /* BatchRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchRequestParam.h; sourceTree = "<group>"; };
+		A9C92D151DB7065900034DA5 /* BatchRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchRequestParam.m; sourceTree = "<group>"; };
+		A9C92D161DB7065900034DA5 /* Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
+		A9C92D171DB7065900034DA5 /* Doctor.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = Doctor.m; sourceTree = "<group>"; };
+		A9C92D181DB7065900034DA5 /* HttpRequestResult.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpRequestResult.h; sourceTree = "<group>"; };
+		A9C92D191DB7065900034DA5 /* HttpRequestResult.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpRequestResult.m; sourceTree = "<group>"; };
+		A9C92D1D1DB7069600034DA5 /* AFNetworkingProxy.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AFNetworkingProxy.h; sourceTree = "<group>"; };
+		A9C92D1E1DB7069600034DA5 /* AFNetworkingProxy.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AFNetworkingProxy.m; sourceTree = "<group>"; };
+		A9C92D1F1DB7069600034DA5 /* CommonUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CommonUtil.h; sourceTree = "<group>"; };
+		A9C92D201DB7069600034DA5 /* CommonUtil.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CommonUtil.m; sourceTree = "<group>"; };
+		A9C92D211DB7069600034DA5 /* HttpBatchRequestHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpBatchRequestHelper.h; sourceTree = "<group>"; };
+		A9C92D221DB7069600034DA5 /* HttpBatchRequestHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpBatchRequestHelper.m; sourceTree = "<group>"; };
+		A9C92D231DB7069600034DA5 /* HttpHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HttpHelper.h; sourceTree = "<group>"; };
+		A9C92D241DB7069600034DA5 /* HttpHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HttpHelper.m; sourceTree = "<group>"; };
+		A9C92D291DB706E800034DA5 /* PlamExam-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "PlamExam-Prefix.pch"; sourceTree = "<group>"; };
 		A9DB5A711DB0DD70000BEDF4 /* User.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = User.h; sourceTree = "<group>"; };
 		A9DB5A721DB0DD70000BEDF4 /* User.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = User.m; sourceTree = "<group>"; };
 		A9DB5A831DB0E930000BEDF4 /* edit_voiceinput@2x.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = "edit_voiceinput@2x.png"; sourceTree = "<group>"; };
@@ -262,8 +254,7 @@
 		A9DB5A881DB0E930000BEDF4 /* HZRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRecognizer.m; sourceTree = "<group>"; };
 		A9DB5A891DB0E930000BEDF4 /* HZRecognizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZRecognizerView.h; sourceTree = "<group>"; };
 		A9DB5A8A1DB0E930000BEDF4 /* HZRecognizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRecognizerView.m; sourceTree = "<group>"; };
-		E6BFED44AEBDF6496243EC98 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
-		EC3E1DE814924A6051EBB979 /* Pods-PlamExam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.debug.xcconfig"; sourceTree = "<group>"; };
+		FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -283,37 +274,26 @@
 				A935498B1DB0B2730077E85C /* AVFoundation.framework in Frameworks */,
 				A93549891DB0B26A0077E85C /* libz.tbd in Frameworks */,
 				A93549871DB0B21E0077E85C /* iflyMSC.framework in Frameworks */,
-				3BB78772F8E5A88D581E8E26 /* libPods-PlamExam.a in Frameworks */,
+				FD46ED38168FED9D2479E42A /* libPods-PlamExam.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		A58908AC1DB4A78900A9659B /* Report */ = {
-			isa = PBXGroup;
-			children = (
-				A58908AD1DB4A80200A9659B /* ReportAddViewController.h */,
-				A58908AE1DB4A80200A9659B /* ReportAddViewController.m */,
-				A58908B01DB4A82000A9659B /* ReportListViewController.h */,
-				A58908B11DB4A82000A9659B /* ReportListViewController.m */,
-			);
-			path = Report;
-			sourceTree = "<group>";
-		};
 		A935489F1DAB95E10077E85C /* Domains */ = {
 			isa = PBXGroup;
 			children = (
-				A93548E21DAC9B260077E85C /* HttpRequestResult.h */,
-				A93548E31DAC9B260077E85C /* HttpRequestResult.m */,
+				A9C92D141DB7065900034DA5 /* BatchRequestParam.h */,
+				A9C92D151DB7065900034DA5 /* BatchRequestParam.m */,
+				A9C92D161DB7065900034DA5 /* Doctor.h */,
+				A9C92D171DB7065900034DA5 /* Doctor.m */,
+				A9C92D181DB7065900034DA5 /* HttpRequestResult.h */,
+				A9C92D191DB7065900034DA5 /* HttpRequestResult.m */,
 				A9DB5A711DB0DD70000BEDF4 /* User.h */,
 				A9DB5A721DB0DD70000BEDF4 /* User.m */,
 				A9C92CDA1DB4F05200034DA5 /* ChatData.h */,
 				A9C92CDB1DB4F05200034DA5 /* ChatData.m */,
-				A5A01E881DB61B90006C64E0 /* Doctor.h */,
-				A5A01E891DB61B90006C64E0 /* Doctor.m */,
-				A5A01E8B1DB6418B006C64E0 /* BatchRequestParam.h */,
-				A5A01E8C1DB6418B006C64E0 /* BatchRequestParam.m */,
 				A9C92D0A1DB6036600034DA5 /* AdScrollerViewData.h */,
 				A9C92D0B1DB6036600034DA5 /* AdScrollerViewData.m */,
 			);
@@ -328,8 +308,6 @@
 				A93549841DB0A8890077E85C /* UserModel.m */,
 				A9C92CD71DB4EFA500034DA5 /* ChatModel.h */,
 				A9C92CD81DB4EFA500034DA5 /* ChatModel.m */,
-				A5A01E851DB6127F006C64E0 /* DoctorModel.h */,
-				A5A01E861DB6127F006C64E0 /* DoctorModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -497,7 +475,6 @@
 		A9411B271DAA3E6900B69967 /* Controllers */ = {
 			isa = PBXGroup;
 			children = (
-				A58908AC1DB4A78900A9659B /* Report */,
 				A93548FF1DAF14CF0077E85C /* Main */,
 				A93548F91DAF140C0077E85C /* Login */,
 				A93549091DAF18C60077E85C /* Home */,
@@ -546,14 +523,14 @@
 		A9411B2B1DAA3F8E00B69967 /* Utils */ = {
 			isa = PBXGroup;
 			children = (
-				A93548DC1DAC9B170077E85C /* AFNetworkingProxy.h */,
-				A93548DD1DAC9B170077E85C /* AFNetworkingProxy.m */,
-				A93548DE1DAC9B170077E85C /* HttpHelper.h */,
-				A93548DF1DAC9B170077E85C /* HttpHelper.m */,
-				A93548F11DAE50EB0077E85C /* CommonUtil.h */,
-				A93548F21DAE50EB0077E85C /* CommonUtil.m */,
-				A5A01E8E1DB642CE006C64E0 /* HttpBatchRequestHelper.h */,
-				A5A01E8F1DB642CE006C64E0 /* HttpBatchRequestHelper.m */,
+				A9C92D1D1DB7069600034DA5 /* AFNetworkingProxy.h */,
+				A9C92D1E1DB7069600034DA5 /* AFNetworkingProxy.m */,
+				A9C92D1F1DB7069600034DA5 /* CommonUtil.h */,
+				A9C92D201DB7069600034DA5 /* CommonUtil.m */,
+				A9C92D211DB7069600034DA5 /* HttpBatchRequestHelper.h */,
+				A9C92D221DB7069600034DA5 /* HttpBatchRequestHelper.m */,
+				A9C92D231DB7069600034DA5 /* HttpHelper.h */,
+				A9C92D241DB7069600034DA5 /* HttpHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -573,7 +550,7 @@
 				A935498A1DB0B2730077E85C /* AVFoundation.framework */,
 				A93549881DB0B26A0077E85C /* libz.tbd */,
 				A93549861DB0B21E0077E85C /* iflyMSC.framework */,
-				10E5736D42D7CCA81601A663 /* libPods-PlamExam.a */,
+				22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -600,7 +577,7 @@
 				A9BBAD5D1DAA336000BAF4D1 /* PlamExam */,
 				A9BBAD5C1DAA336000BAF4D1 /* Products */,
 				A9411B2C1DAA409500B69967 /* Frameworks */,
-				D26538FD51C4078E2BACDEF1 /* Pods */,
+				C0BA741FCF30D1D01E636D4E /* Pods */,
 			);
 			sourceTree = "<group>";
 		};
@@ -631,7 +608,7 @@
 		A9BBAD5E1DAA336000BAF4D1 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				A93548DB1DAC9A730077E85C /* PlamExam-Prefix.pch */,
+				A9C92D291DB706E800034DA5 /* PlamExam-Prefix.pch */,
 				A942CEB41DAB44140049805A /* Foundation+Log.m */,
 				A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */,
 				A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */,
@@ -741,11 +718,11 @@
 			path = HZRecognizer;
 			sourceTree = "<group>";
 		};
-		D26538FD51C4078E2BACDEF1 /* Pods */ = {
+		C0BA741FCF30D1D01E636D4E /* Pods */ = {
 			isa = PBXGroup;
 			children = (
-				EC3E1DE814924A6051EBB979 /* Pods-PlamExam.debug.xcconfig */,
-				E6BFED44AEBDF6496243EC98 /* Pods-PlamExam.release.xcconfig */,
+				FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */,
+				45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */,
 			);
 			name = Pods;
 			sourceTree = "<group>";
@@ -757,12 +734,13 @@
 			isa = PBXNativeTarget;
 			buildConfigurationList = A9BBAD721DAA336000BAF4D1 /* Build configuration list for PBXNativeTarget "PlamExam" */;
 			buildPhases = (
-				A145C406D958A4FF3596E032 /* [CP] Check Pods Manifest.lock */,
+				BBBA77826330F7FD448CBDA4 /* [CP] Check Pods Manifest.lock */,
 				A9BBAD571DAA336000BAF4D1 /* Sources */,
 				A9BBAD581DAA336000BAF4D1 /* Frameworks */,
 				A9BBAD591DAA336000BAF4D1 /* Resources */,
-				8685453EB44F8E5D6F51A11C /* [CP] Embed Pods Frameworks */,
-				D1D45EAB0A69DE8020A4658B /* [CP] Copy Pods Resources */,
+				4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */,
+				133B1087669CD82C5E477FD9 /* [CP] Copy Pods Resources */,
+				1E58E4B4AAE4E5EEF426E528 /* Embed Pods Frameworks */,
 			);
 			buildRules = (
 			);
@@ -830,37 +808,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXShellScriptBuildPhase section */
-		8685453EB44F8E5D6F51A11C /* [CP] Embed Pods Frameworks */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Embed Pods Frameworks";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-frameworks.sh\"\n";
-			showEnvVarsInLog = 0;
-		};
-		A145C406D958A4FF3596E032 /* [CP] Check Pods Manifest.lock */ = {
-			isa = PBXShellScriptBuildPhase;
-			buildActionMask = 2147483647;
-			files = (
-			);
-			inputPaths = (
-			);
-			name = "[CP] Check Pods Manifest.lock";
-			outputPaths = (
-			);
-			runOnlyForDeploymentPostprocessing = 0;
-			shellPath = /bin/sh;
-			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
-			showEnvVarsInLog = 0;
-		};
-		D1D45EAB0A69DE8020A4658B /* [CP] Copy Pods Resources */ = {
+		133B1087669CD82C5E477FD9 /* [CP] Copy Pods Resources */ = {
 			isa = PBXShellScriptBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -875,6 +823,51 @@
 			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-resources.sh\"\n";
 			showEnvVarsInLog = 0;
 		};
+		1E58E4B4AAE4E5EEF426E528 /* Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		4306A6D2B486EF9C6284BC79 /* [CP] Embed Pods Frameworks */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Embed Pods Frameworks";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "\"${SRCROOT}/Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam-frameworks.sh\"\n";
+			showEnvVarsInLog = 0;
+		};
+		BBBA77826330F7FD448CBDA4 /* [CP] Check Pods Manifest.lock */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			name = "[CP] Check Pods Manifest.lock";
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "diff \"${PODS_ROOT}/../Podfile.lock\" \"${PODS_ROOT}/Manifest.lock\" > /dev/null\nif [[ $? != 0 ]] ; then\n    cat << EOM\nerror: The sandbox is not in sync with the Podfile.lock. Run 'pod install' or update your CocoaPods installation.\nEOM\n    exit 1\nfi\n";
+			showEnvVarsInLog = 0;
+		};
 /* End PBXShellScriptBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
@@ -884,25 +877,22 @@
 			files = (
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
-				A5A01E8D1DB6418B006C64E0 /* BatchRequestParam.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
 				A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */,
 				A93549691DAF9D340077E85C /* IconCell.m in Sources */,
 				A93549171DAF1CEE0077E85C /* BaseViewController.m in Sources */,
 				A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */,
-				A93548E11DAC9B170077E85C /* HttpHelper.m in Sources */,
 				A9C92CE71DB5D5E000034DA5 /* HZBadgeView.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
-				A93548F31DAE50EB0077E85C /* CommonUtil.m in Sources */,
 				A9C92CDF1DB5BD7A00034DA5 /* ReportListViewController.m in Sources */,
 				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
+				A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
 				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
 				A9C92D051DB5ED9500034DA5 /* UIView+WZLBadge.m in Sources */,
 				A9C92D091DB6028E00034DA5 /* HomeModel.m in Sources */,
 				A93C60DF1DB4CEA40024180F /* UserTextCell.m in Sources */,
-				A5A01E871DB6127F006C64E0 /* DoctorModel.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
 				A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */,
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
@@ -910,11 +900,10 @@
 				A9C92D131DB6277A00034DA5 /* HomeAdManager.m in Sources */,
 				A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */,
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
+				A9C92D1A1DB7065900034DA5 /* BatchRequestParam.m in Sources */,
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
-				A58908AF1DB4A80300A9659B /* ReportAddViewController.m in Sources */,
 				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
-				A93548E01DAC9B170077E85C /* AFNetworkingProxy.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
@@ -924,16 +913,15 @@
 				A93549531DAF72140077E85C /* SettingItem.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */,
-				A93548E41DAC9B260077E85C /* HttpRequestResult.m in Sources */,
 				A93549501DAF72140077E85C /* GroupItem.m in Sources */,
 				A93549851DB0A8890077E85C /* UserModel.m in Sources */,
+				A9C92D281DB7069600034DA5 /* HttpHelper.m in Sources */,
 				A93549621DAF8E0E0077E85C /* SystemSettingViewController.m in Sources */,
 				A9610D481DB109D60062CE93 /* ZSType.m in Sources */,
 				A935496E1DAFA8610077E85C /* ADScrollView.m in Sources */,
 				A935491D1DAF2A7F0077E85C /* UIView+Utils.m in Sources */,
 				A9C92D031DB5ED9500034DA5 /* UITabBarItem+WZLBadge.m in Sources */,
-				A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */,\
-				A5A01E8A1DB61B90006C64E0 /* Doctor.m in Sources */,
+				A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */,
 				A9C92D0C1DB6036600034DA5 /* AdScrollerViewData.m in Sources */,
 				A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */,
 				A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */,
@@ -942,12 +930,14 @@
 				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A9C92D021DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
+				A9C92D271DB7069600034DA5 /* HttpBatchRequestHelper.m in Sources */,
 				A935494E1DAF72140077E85C /* BaseSettingViewController.m in Sources */,
-				A58908B21DB4A82000A9659B /* ReportListViewController.m in Sources */,
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,
+				A9C92D1B1DB7065900034DA5 /* Doctor.m in Sources */,
 				A93549141DAF19600077E85C /* PersonalViewController.m in Sources */,
+				A9C92D261DB7069600034DA5 /* CommonUtil.m in Sources */,
 				A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */,
-				A5A01E901DB642CE006C64E0 /* HttpBatchRequestHelper.m in Sources */,
+				A9C92D251DB7069600034DA5 /* AFNetworkingProxy.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1057,7 +1047,7 @@
 		};
 		A9BBAD731DAA336000BAF4D1 /* Debug */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = EC3E1DE814924A6051EBB979 /* Pods-PlamExam.debug.xcconfig */;
+			baseConfigurationReference = FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
@@ -1077,7 +1067,7 @@
 		};
 		A9BBAD741DAA336000BAF4D1 /* Release */ = {
 			isa = XCBuildConfiguration;
-			baseConfigurationReference = E6BFED44AEBDF6496243EC98 /* Pods-PlamExam.release.xcconfig */;
+			baseConfigurationReference = 45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				DEVELOPMENT_TEAM = T5NFTEJZU4;

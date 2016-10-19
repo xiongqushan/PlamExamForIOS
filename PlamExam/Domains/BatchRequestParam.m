@@ -10,9 +10,10 @@
 #import "CommonUtil.h"
 @implementation BatchRequestParam
 - (instancetype) initWithValue:(NSString*)path andParam:(NSDictionary*)param andCallback:(CallbackDelegate)callbackDelegate{
-    self.identity=CommonUtil.getGuid();
+    self.identity=[CommonUtil getGuid];
     self.path=path;
     self.param=param;
     self.callbackDelegate=callbackDelegate;
+    return self;
 }
 @end
