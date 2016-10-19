@@ -22,6 +22,7 @@ static DoctorManager *instance = nil;
 }
 
 -(void) clearDoctorId{
+
     self.currentDoctorId=0;
 }
 
