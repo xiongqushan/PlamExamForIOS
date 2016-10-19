@@ -44,4 +44,25 @@ static DoctorManager *instance = nil;
     return self.doctors!=nil && [self.doctors count]>0;
 }
 
+-(Doctor*)getCurrentDoctor{
+    if([self existDoctorId] && [self existDoctorList]){
+        for (Doctor *doctor in self.doctors) {
+            if(doctor.Id==self.currentDoctorId){
+                return doctor;
+            }
+        }
+    }
+    return nil;
+}
+
+-(Doctor*)getDoctor:(NSInteger)doctorId{
+    if([self existDoctorList]){
+        for (Doctor *doctor in self.doctors) {
+            if(doctor.Id==doctorId){
+                return doctor;
+            }
+        }
+    }
+    return nil;
+}
 @end

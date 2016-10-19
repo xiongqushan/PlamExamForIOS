@@ -26,4 +26,7 @@
 
 -(BOOL)existDoctorList;
 
+-(Doctor*)getCurrentDoctor;
+
+-(Doctor*)getDoctor:(NSInteger)doctorId;
 @end
