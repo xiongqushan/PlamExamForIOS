@@ -20,6 +20,7 @@
 #import "ChatData.h"
 #import "DoctorManager.h"
 #import "UserManager.h"
+#import "CommentViewController.h"
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -123,7 +124,9 @@
     if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
         [ChatModel requestChatDataAndDoctorIdAndDoctorList:@"sample string 1" chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
             if(httpRequestResult.IsHttpSuccess){
-                
+                [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+                [self.tableView reloadData];
+                [self scrollToBottom:NO];
             }
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
             if(httpRequestResult.IsHttpSuccess){
@@ -440,7 +443,9 @@
 #pragma mark -- 点击事件
 //评论按钮被点击  跳转
 - (IBAction)commentClick:(id)sender {
-
+    CommentViewController *comment = [[CommentViewController alloc] init];
+    
+    [self.navigationController pushViewController:comment animated:YES];
 }
 
 //体检报告按钮被点击

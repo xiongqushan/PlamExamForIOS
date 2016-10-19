@@ -7,16 +7,60 @@
 //
 
 #import "CommentViewController.h"
+#import "HYBStarEvaluationView.h"
 
-@interface CommentViewController ()
+#define kCommentTagH 
+
+@interface CommentViewController () <DidChangedStarDelegate>
+
+@property (weak, nonatomic) IBOutlet UIView *doctorInfoView;
+@property (weak, nonatomic) IBOutlet UIView *starView;
+@property (weak, nonatomic) IBOutlet UIView *commentTagsView;
+@property (weak, nonatomic) IBOutlet UITextView *textView;
+@property (weak, nonatomic) IBOutlet UIButton *submitBtn;
+
+@property (nonatomic, strong) HYBStarEvaluationView *HYBStarView;
 
 @end
 
 @implementation CommentViewController
 
+- (IBAction)submitComment:(id)sender {
+    
+}
+
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view from its nib.
+    
+    [self initUI];
+}
+
+- (void)initUI {
+    
+    HYBStarEvaluationView *starView = [[HYBStarEvaluationView alloc] initWithFrame:CGRectMake(0, 0, 175, 30) numberOfStars:5 isVariable:YES];
+    starView.actualScore = 5;
+    starView.fullScore = 5;
+    starView.delegate = self;
+    _HYBStarView = starView;
+    [self.starView addSubview:starView];
+    
+    
+//    for (NSInteger i = 0; i < 2; i++) {
+//        for (NSInteger j = 0; j < 2; j++) {
+//            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+//            btn.frame = CGRectMake(<#CGFloat x#>, <#CGFloat y#>, <#CGFloat width#>, <#CGFloat height#>)
+//        }
+//    }
+    
+}
+
+
+- (void)didChangeStar {
+    NSLog(@"这次星级为: %f",_HYBStarView.actualScore);
+}
+
+- (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
+    NSLog(@"这次星级为: %f",_HYBStarView.actualScore);
 }
 
 - (void)didReceiveMemoryWarning {
@@ -24,14 +68,5 @@
     // Dispose of any resources that can be recreated.
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end

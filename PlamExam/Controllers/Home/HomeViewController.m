@@ -17,6 +17,7 @@
 #import "AdScrollerViewData.h"
 #import "SZCirculationImageView.h"
 #import "ReportListViewController.h"
+#import <MJRefresh.h>
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -28,8 +29,9 @@
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, SZCirculationImageViewDelegate>
 
-@property (nonatomic, strong)UITableView *tableView;
-@property (nonatomic, strong)UIView *adView;
+@property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *adView;
+@property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSMutableArray *adDataArr;
 
 @end
@@ -70,10 +72,16 @@
 
 - (void)setUpHeadAdScrollView {
     
-    if (!self.adView) {
-        UIView *adView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
-        adView.backgroundColor = [UIColor whiteColor];
-        self.adView = adView;
+    if (!self.tableHeaderView) {
+        
+        _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
+        _tableHeaderView.backgroundColor = [UIColor whiteColor];
+        
+        self.adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, _tableHeaderView.bounds.size.width - 20, _tableHeaderView.bounds.size.height - 20)];
+        self.adView.backgroundColor = [UIColor whiteColor];
+        [self.tableHeaderView addSubview:self.adView];
+        self.tableHeaderView.backgroundColor = [UIColor grayColor];
+
     }
 
     if (self.adDataArr.count == 0) {
@@ -93,6 +101,20 @@
     
 }
 
+- (void)setUpTableView {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64 - 49) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    self.tableView.showsVerticalScrollIndicator = NO;
+    self.tableView.tableHeaderView = self.tableHeaderView;
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
+}
+
 #pragma mark -- SZCirculationImageViewDelegate
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
@@ -101,20 +123,6 @@
     InformationViewController *information = [[InformationViewController alloc] init];
     information.loadUrl = data.LinkUrl;
     [self.navigationController pushViewController:information animated:YES];
-}
-
-- (void)setUpTableView {
-    self.automaticallyAdjustsScrollViewInsets = NO;
-    
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64 - 49) style:UITableViewStylePlain];
-    self.tableView.delegate = self;
-    self.tableView.dataSource = self;
-    self.tableView.showsVerticalScrollIndicator = NO;
-    self.tableView.tableHeaderView = self.adView;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
-    [self.view addSubview:self.tableView];
-    
-    [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
