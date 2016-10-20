@@ -8,6 +8,10 @@
 
 /* Begin PBXBuildFile section */
 		A5A01E931DB73FD4006C64E0 /* DoctorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E921DB73FD4006C64E0 /* DoctorManager.m */; };
+		A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E981DB79AF4006C64E0 /* ReportSimple.m */; };
+		A5A01E9C1DB79BA4006C64E0 /* ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */; };
+		A5A01E9F1DB7A04E006C64E0 /* ReportBatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */; };
+		A5A01EA31DB7A4AF006C64E0 /* ReportInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
@@ -109,6 +113,14 @@
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
 		A5A01E911DB73FD4006C64E0 /* DoctorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorManager.h; sourceTree = "<group>"; };
 		A5A01E921DB73FD4006C64E0 /* DoctorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorManager.m; sourceTree = "<group>"; };
+		A5A01E971DB79AF4006C64E0 /* ReportSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSimple.h; sourceTree = "<group>"; };
+		A5A01E981DB79AF4006C64E0 /* ReportSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportSimple.m; sourceTree = "<group>"; };
+		A5A01E9A1DB79BA4006C64E0 /* ReportModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportModel.h; sourceTree = "<group>"; };
+		A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportModel.m; sourceTree = "<group>"; };
+		A5A01E9D1DB7A04E006C64E0 /* ReportBatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportBatch.h; sourceTree = "<group>"; };
+		A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportBatch.m; sourceTree = "<group>"; };
+		A5A01EA11DB7A4AF006C64E0 /* ReportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportInfo.h; sourceTree = "<group>"; };
+		A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportInfo.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -316,6 +328,12 @@
 				A9C92CDB1DB4F05200034DA5 /* ChatData.m */,
 				A9C92D0A1DB6036600034DA5 /* AdScrollerViewData.h */,
 				A9C92D0B1DB6036600034DA5 /* AdScrollerViewData.m */,
+				A5A01E971DB79AF4006C64E0 /* ReportSimple.h */,
+				A5A01E981DB79AF4006C64E0 /* ReportSimple.m */,
+				A5A01E9D1DB7A04E006C64E0 /* ReportBatch.h */,
+				A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */,
+				A5A01EA11DB7A4AF006C64E0 /* ReportInfo.h */,
+				A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -328,6 +346,8 @@
 				A93549841DB0A8890077E85C /* UserModel.m */,
 				A9C92CD71DB4EFA500034DA5 /* ChatModel.h */,
 				A9C92CD81DB4EFA500034DA5 /* ChatModel.m */,
+				A5A01E9A1DB79BA4006C64E0 /* ReportModel.h */,
+				A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -946,6 +966,7 @@
 				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
+				A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,
 				A9C92D041DB5ED9500034DA5 /* CAAnimation+WAnimation.m in Sources */,
@@ -955,6 +976,7 @@
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */,
 				A93549501DAF72140077E85C /* GroupItem.m in Sources */,
+				A5A01E9C1DB79BA4006C64E0 /* ReportModel.m in Sources */,
 				A93549851DB0A8890077E85C /* UserModel.m in Sources */,
 				A9C92D281DB7069600034DA5 /* HttpHelper.m in Sources */,
 				A93549621DAF8E0E0077E85C /* SystemSettingViewController.m in Sources */,
@@ -970,11 +992,13 @@
 				A9C92D3F1DB797C500034DA5 /* Notice.m in Sources */,
 				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
 				A9C92D2D1DB718DE00034DA5 /* CommentViewController.m in Sources */,
+				A5A01EA31DB7A4AF006C64E0 /* ReportInfo.m in Sources */,
 				A5A01E931DB73FD4006C64E0 /* DoctorManager.m in Sources */,
 				A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */,
 				A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */,
 				A9C92D021DB5ED9500034DA5 /* UIBarButtonItem+WZLBadge.m in Sources */,
 				A9C92D271DB7069600034DA5 /* HttpBatchRequestHelper.m in Sources */,
+				A5A01E9F1DB7A04E006C64E0 /* ReportBatch.m in Sources */,
 				A935494E1DAF72140077E85C /* BaseSettingViewController.m in Sources */,
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,
 				A9C92D1B1DB7065900034DA5 /* Doctor.m in Sources */,
