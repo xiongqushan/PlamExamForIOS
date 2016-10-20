@@ -9,5 +9,8 @@
 #import "ReportBatch.h"
 
 @implementation ReportBatch
-
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"Reports":[ReportSimple class]
+             };
+}
 @end
