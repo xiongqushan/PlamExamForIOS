@@ -21,8 +21,7 @@ static ReportManager *instance = nil;
     return instance;
 }
 
-//如果服务端没有取到体检报告，传入长度为0的空集合
-- (void)saveUserInfo:(NSArray<ReportSimple*> *)reports {
+-(void)setReportList:(NSArray<ReportSimple *> *)reports{
     if(reports==nil){
         return;
     }
@@ -35,7 +34,7 @@ static ReportManager *instance = nil;
     [userDefaults synchronize];
 }
 
--(NSMutableArray<ReportSimple*>*)getReportList{
+-(NSMutableArray<ReportSimple *> *)getReportList{
     if(instance.reports==nil){
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString * str = [userDefaults objectForKey:kReportListKey];

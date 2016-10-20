@@ -20,7 +20,7 @@
     
     [HttpHelper Post:kReportListUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<NSMutableArray<ReportSimple*> *> *result = httpRequestResult;
-        if(httpRequestResult.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             NSMutableArray<ReportSimple*> *dataArr = [NSMutableArray array];
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             for (NSDictionary *dict in arr) {
@@ -39,7 +39,7 @@
     
     [HttpHelper Post:kAddReportUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ReportBatch *> *result = httpRequestResult;
-        if(httpRequestResult.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             result.Data = [ReportBatch yy_modelWithJSON:result.HttpResult.Result];
         }
         callBack(result);
@@ -47,12 +47,12 @@
     }];
 }
 
-+(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode withMobile:(NSString*)mobile callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack{
++(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack{
     
     NSDictionary *params=@{@"WorkNo":workNo,@"CheckUnitCode":checkUnitCode};
     [HttpHelper Post:kReportDetailUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ReportInfo *> *result = httpRequestResult;
-        if(httpRequestResult.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             result.Data = [ReportInfo yy_modelWithJSON:result.HttpResult.Result];
         }
         callBack(result);

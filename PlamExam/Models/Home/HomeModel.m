@@ -25,7 +25,7 @@
         
         HttpCallbackDelegate getADCallback=^(HttpRequestResult *httpRequestResult) {
             HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *result=httpRequestResult;
-            if(result.IsHttpSuccess){
+            if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
                 NSMutableArray<AdScrollerViewData*> *dataArr = [NSMutableArray array];
                 NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
                 for (NSDictionary *dict in arr) {
@@ -41,7 +41,7 @@
         
         HttpCallbackDelegate getNoticeCallback=^(HttpRequestResult *httpRequestResult) {
             HttpRequestResult<NSMutableArray<Notice*> *> *result=httpRequestResult;
-            if(result.IsHttpSuccess){
+            if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
                 NSMutableArray<Notice*> *dataArr = [NSMutableArray array];
                 NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
                 for (NSDictionary *dict in arr) {

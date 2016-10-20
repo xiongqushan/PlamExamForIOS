@@ -11,6 +11,7 @@
 
 #import "ZSType.h"
 #import "HttpRequestResult.h"
+#import "Foundation+Log.m"
 
 //本机  http://hz3bn04d2/ZSTJ/api/V3/
 //发布  http://hz3bn04d2:8070/api/V3/

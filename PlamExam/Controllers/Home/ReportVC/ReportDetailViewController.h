@@ -10,7 +10,6 @@
 
 @interface ReportDetailViewController : BaseViewController
 
-@property (nonatomic, copy) NSString *workNo;
-@property (nonatomic, copy) NSString *checkUnitCode;
+@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @end

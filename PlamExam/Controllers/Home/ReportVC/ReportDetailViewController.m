@@ -7,7 +7,7 @@
 //
 
 #import "ReportDetailViewController.h"
-#import "ReportModel.h"
+#import "ReportView.h"
 
 @interface ReportDetailViewController ()
 
@@ -17,17 +17,10 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
     
-    [self loadReportDetailData];
-}
-
-- (void)loadReportDetailData {
-    [ReportModel requestDetail:self.workNo withName:self.checkUnitCode withMobile:@"" callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
-//        if (httpRequestResult) {
-//            <#statements#>
-//        }
-    }];
+    ReportView *reportView = [[ReportView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, kScreenSizeHeight - 64 - 40)];
+    reportView.dataArr = self.dataArr;
+    [self.view addSubview:reportView];
 }
 
 - (void)didReceiveMemoryWarning {

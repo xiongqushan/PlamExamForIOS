@@ -11,7 +11,7 @@
 #import "User.h"
 #import "UserManager.h"
 #import "CommonUtil.h"
-
+#import "ReportManager.h"
 @interface AddReportViewController ()
 @property (weak, nonatomic) IBOutlet UITextField *phoneNumTextField;
 @property (weak, nonatomic) IBOutlet UITextField *nameTextField;
@@ -39,17 +39,17 @@
     MBProgressHUD *hud = [CommonUtil createHUD];
     [ReportModel addReport:_user.accountId withName:self.nameTextField.text withMobile:self.phoneNumTextField.text callBackBlock:^(HttpRequestResult<ReportBatch *> *httpRequestResult) {
         [hud hide:YES];
-        
-        NSString *errorMessage = [CommonUtil networkIsSuccess:httpRequestResult];
-        if (!errorMessage) {
+        if(httpRequestResult.IsSuccess){
+            [[ReportManager shareInstance] setReportList:httpRequestResult.Data.Reports];
             if (self.reloadReportList) {
-                self.reloadReportList();
+                self.reloadReportList(httpRequestResult.Data.Reports);
             }
             [CommonUtil showHUDWithTitle:@"添加成功"];
-            [self.navigationController popViewControllerAnimated:YES];
-        }else {
-            [CommonUtil showHUDWithTitle:errorMessage];
         }
+        else{
+            [CommonUtil showHUDWithTitle:httpRequestResult.HttpMessage];
+        }
+        
     }];
 }
 

@@ -13,7 +13,8 @@
 #import "CommonUtil.h"
 #import "ReportSimple.h"
 #import "AddReportViewController.h"
-#import "ReportDetailViewController.h"
+#import "ReportViewController.h"
+#import "ReportManager.h"
 
 @interface ReportListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -37,17 +38,21 @@
 
 - (void)addReport {
     AddReportViewController *addReport = [[AddReportViewController alloc] init];
-    addReport.reloadReportList = ^(){
-        [self loadReportData];
+    addReport.reloadReportList = ^(NSArray<ReportSimple*>* reports){
+        self.dataArr = [NSMutableArray arrayWithArray:reports];
+        [self.tableView reloadData];
     };
-    
     [self.navigationController pushViewController:addReport animated:YES];
 }
 
 - (void)loadReportData {
+    if([[ReportManager shareInstance] exist]){
+        self.dataArr = [NSMutableArray arrayWithArray:[[ReportManager shareInstance] getReportList]];
+        [self.tableView reloadData];
+        return;
+    }
     
     MBProgressHUD *hud = [CommonUtil createHUD];
-    
     User *user = [[UserManager shareInstance] getUserInfo];
     [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
         [hud hide:YES];
@@ -115,7 +120,11 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
-    
+    ReportSimple *report = self.dataArr[indexPath.row];
+    ReportViewController *detail = [[ReportViewController alloc] init];
+    detail.workNo = report.WorkNo;
+    detail.checkUnitCode = report.CheckUnitCode;
+    [self.navigationController pushViewController:detail animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -31,7 +31,7 @@
         NSString * data = httpRequestResult.HttpResult.Result;
         NSMutableArray<ChatData*> *dataArr = [NSMutableArray array];
         
-        if (httpRequestResult.IsHttpSuccess) {
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:[data dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             for (NSDictionary *dict in arr) {
                 ChatData *chat = [ChatData yy_modelWithDictionary:dict];
@@ -49,7 +49,7 @@
     
     HttpCallbackDelegate getChatDataCallback=^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<NSMutableArray<ChatData*> *> *result=httpRequestResult;
-        if(result.IsHttpSuccess){
+        if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             NSMutableArray<ChatData*> *dataArr = [NSMutableArray array];
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             for (NSDictionary *dict in arr) {
@@ -65,7 +65,7 @@
     
     HttpCallbackDelegate getDoctorIdCallback=^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ZSIntType *> *result=httpRequestResult;
-        if(result.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             result.Data=[[ZSIntType alloc] initWithValue:[result.HttpResult.Result integerValue]];
         }
         if(requestDoctorIdCallBack){
@@ -86,7 +86,7 @@
     
     HttpCallbackDelegate getChatDataCallback=^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<NSMutableArray<ChatData*> *> *result=httpRequestResult;
-        if(result.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             NSMutableArray<ChatData*> *dataArr = [NSMutableArray array];
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             for (NSDictionary *dict in arr) {
@@ -102,7 +102,7 @@
     
     HttpCallbackDelegate getDoctorIdCallback=^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ZSIntType *> *result=httpRequestResult;
-        if(result.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             result.Data=[[ZSIntType alloc] initWithValue:[result.HttpResult.Result integerValue]];
         }
         if(requestDoctorIdCallBack){
@@ -112,7 +112,7 @@
     
     HttpCallbackDelegate getDoctorListCallback=^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<NSMutableArray<Doctor*> *> *result=httpRequestResult;
-        if(result.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             NSMutableArray<Doctor*> *dataArr = [NSMutableArray array];
             NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
             for (NSDictionary *dict in arr) {
@@ -156,9 +156,8 @@
     [HttpHelper Post:kSendMessageURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
         HttpRequestResult<NSString *> *result = httpRequestResult;
-        NSString *data = httpRequestResult.HttpResult.Result;
-        
-        if (httpRequestResult.IsHttpSuccess) {
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
+            NSString *data = httpRequestResult.HttpResult.Result;
             result.Data = data;
         }
         callBack(result);
@@ -171,7 +170,7 @@
     NSDictionary *param = @{@"AccountId":accountId,@"Score":score,@"Content":content};
     [HttpHelper Post:kCommentURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ZSBoolType *> *result = httpRequestResult;
-        if (httpRequestResult.IsHttpSuccess) {
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
             result.Data = [[ZSBoolType alloc] initWithValue:[httpRequestResult.HttpResult.Result boolValue]];
         }
         callBack(result);

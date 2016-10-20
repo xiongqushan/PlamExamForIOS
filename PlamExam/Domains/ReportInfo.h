@@ -34,6 +34,7 @@
 @property(nonatomic,strong) NSMutableArray<CheckResult*> *CheckResults;
 @end
 
+//汇总
 @interface GeneralSummary : NSObject
 @property(nonatomic,strong) NSString *SummaryName;
 @property(nonatomic,strong) NSString *SummaryCode;
@@ -45,6 +46,7 @@
 @property(nonatomic,strong) NSString *SummaryAdvice;
 @end
 
+//
 @interface GeneralAdvice : NSObject
 @property(nonatomic,strong) NSString *AdviceCode;
 @property(nonatomic,strong) NSString *AdviceName;
