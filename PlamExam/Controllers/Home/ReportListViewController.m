@@ -13,7 +13,7 @@
 #import "CommonUtil.h"
 #import "ReportSimple.h"
 #import "AddReportViewController.h"
-
+#import "ReportManager.h"
 @interface ReportListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
@@ -36,17 +36,21 @@
 
 - (void)addReport {
     AddReportViewController *addReport = [[AddReportViewController alloc] init];
-    addReport.reloadReportList = ^(){
-        [self loadReportData];
+    addReport.reloadReportList = ^(NSArray<ReportSimple*>* reports){
+        self.dataArr = [NSMutableArray arrayWithArray:reports];
+        [self.tableView reloadData];
     };
-    
     [self.navigationController pushViewController:addReport animated:YES];
 }
 
 - (void)loadReportData {
+    if([[ReportManager shareInstance] exist]){
+        self.dataArr = [NSMutableArray arrayWithArray:[[ReportManager shareInstance] reports]];
+        [self.tableView reloadData];
+        return;
+    }
     
     MBProgressHUD *hud = [CommonUtil createHUD];
-    
     User *user = [[UserManager shareInstance] getUserInfo];
     [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
         [hud hide:YES];

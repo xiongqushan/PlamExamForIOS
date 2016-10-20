@@ -7,8 +7,8 @@
 //
 
 #import "BaseViewController.h"
-
-typedef void(^ReloadReportListBlock)();
+#import "ReportSimple.h"
+typedef void(^ReloadReportListBlock)(NSArray<ReportSimple*>*);
 
 @interface AddReportViewController : BaseViewController
 

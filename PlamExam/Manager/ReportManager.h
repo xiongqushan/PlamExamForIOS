@@ -14,10 +14,7 @@
 
 +(ReportManager*)shareInstance;
 
-//如果服务端没有取到体检报告，传入长度为0的空集合
-- (void)saveUserInfo:(NSArray<ReportSimple*> *)reports ;
-
--(NSMutableArray<ReportSimple*>*)getReportList;
+-(void)setReportList:(NSArray<ReportSimple *> *)reports;
 
 -(BOOL)exist;
 
