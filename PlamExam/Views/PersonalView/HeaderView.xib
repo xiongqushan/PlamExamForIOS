@@ -9,35 +9,41 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
         <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
         <view contentMode="scaleToFill" id="iN0-l3-epB" customClass="HeaderView">
-            <rect key="frame" x="0.0" y="0.0" width="600" height="165"/>
+            <rect key="frame" x="0.0" y="0.0" width="600" height="242"/>
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
-                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="倩倩" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBI-nk-Ord">
+                <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="headerBg" translatesAutoresizingMaskIntoConstraints="NO" id="PAR-Bz-iyI"/>
+                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="张三三" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="EBI-nk-Ord">
                     <fontDescription key="fontDescription" type="boldSystem" pointSize="18"/>
                     <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                     <nil key="highlightedColor"/>
                 </label>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="yYV-BJ-dMv">
                     <constraints>
-                        <constraint firstAttribute="height" constant="80" id="AKa-if-bFQ"/>
-                        <constraint firstAttribute="width" constant="80" id="hmg-Ss-fVV"/>
+                        <constraint firstAttribute="width" constant="100" id="79C-0G-DAP"/>
+                        <constraint firstAttribute="height" constant="100" id="8lP-Ut-ap8"/>
                     </constraints>
                     <state key="normal" backgroundImage="default"/>
                 </button>
             </subviews>
             <color key="backgroundColor" red="0.53102753219999999" green="0.84896956160000003" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
-                <constraint firstItem="EBI-nk-Ord" firstAttribute="centerX" secondItem="yYV-BJ-dMv" secondAttribute="centerX" id="2Pd-04-hAY"/>
-                <constraint firstItem="yYV-BJ-dMv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="ahj-kX-8rT"/>
-                <constraint firstItem="EBI-nk-Ord" firstAttribute="top" secondItem="yYV-BJ-dMv" secondAttribute="bottom" constant="8" id="bUi-8h-xoZ"/>
-                <constraint firstItem="EBI-nk-Ord" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="uTt-iU-eq7"/>
-                <constraint firstAttribute="bottom" secondItem="EBI-nk-Ord" secondAttribute="bottom" constant="13" id="wcl-uC-Fjc"/>
+                <constraint firstItem="EBI-nk-Ord" firstAttribute="centerX" secondItem="yYV-BJ-dMv" secondAttribute="centerX" id="M4r-vI-AIh"/>
+                <constraint firstItem="PAR-Bz-iyI" firstAttribute="leading" secondItem="iN0-l3-epB" secondAttribute="leading" id="PAK-TL-KdR"/>
+                <constraint firstAttribute="bottom" secondItem="PAR-Bz-iyI" secondAttribute="bottom" id="Wu9-qH-zEC"/>
+                <constraint firstAttribute="trailing" secondItem="PAR-Bz-iyI" secondAttribute="trailing" id="XyK-S8-mQU"/>
+                <constraint firstItem="yYV-BJ-dMv" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="iUB-Ov-Bgc"/>
+                <constraint firstItem="PAR-Bz-iyI" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" id="kag-qd-Ebj"/>
+                <constraint firstItem="yYV-BJ-dMv" firstAttribute="top" secondItem="iN0-l3-epB" secondAttribute="top" constant="60" id="oe0-ue-y0s"/>
+                <constraint firstItem="EBI-nk-Ord" firstAttribute="top" secondItem="yYV-BJ-dMv" secondAttribute="bottom" constant="17" id="pJm-vh-OfW"/>
+                <constraint firstItem="EBI-nk-Ord" firstAttribute="centerX" secondItem="iN0-l3-epB" secondAttribute="centerX" id="qKF-q3-Ehk"/>
             </constraints>
             <freeformSimulatedSizeMetrics key="simulatedDestinationMetrics"/>
             <connections>
+                <outlet property="bgImageView" destination="PAR-Bz-iyI" id="fR1-Zr-Amj"/>
                 <outlet property="iconBtn" destination="yYV-BJ-dMv" id="mMg-zD-f6H"/>
-                <outlet property="iconHeight" destination="AKa-if-bFQ" id="Fdy-5v-d1H"/>
-                <outlet property="iconWidth" destination="hmg-Ss-fVV" id="S4s-I8-8XE"/>
+                <outlet property="iconHeight" destination="8lP-Ut-ap8" id="hd8-V5-lET"/>
+                <outlet property="iconWidth" destination="79C-0G-DAP" id="Bqq-1W-O4x"/>
                 <outlet property="nameLabel" destination="EBI-nk-Ord" id="fFx-90-vsl"/>
             </connections>
             <point key="canvasLocation" x="461" y="292"/>
@@ -45,5 +51,6 @@
     </objects>
     <resources>
         <image name="default" width="270" height="270"/>
+        <image name="headerBg" width="375" height="242"/>
     </resources>
 </document>

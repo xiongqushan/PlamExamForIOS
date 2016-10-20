@@ -12,6 +12,7 @@
 
 @property (weak, nonatomic) IBOutlet UIButton *iconBtn;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
+@property (weak, nonatomic) IBOutlet UIImageView *bgImageView;
 
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconHeight;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *iconWidth;

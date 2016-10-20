@@ -34,7 +34,7 @@ static ReportManager *instance = nil;
     [userDefaults synchronize];
 }
 
--(NSMutableArray<ReportSimple *> *)reports{
+-(NSMutableArray<ReportSimple *> *)getReportList{
     if(instance.reports==nil){
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
         NSString * str = [userDefaults objectForKey:kReportListKey];
@@ -47,7 +47,7 @@ static ReportManager *instance = nil;
 }
 
 -(BOOL)exist{
-    return [self reports]!=nil;
+    return [self getReportList]!=nil;
 }
 
 -(void)clear{

@@ -14,11 +14,13 @@
 #import "UserInfoViewController.h"
 #import "SystemSettingViewController.h"
 #import "SampleRepportViewController.h"
+#import "UserManager.h"
+#import "User.h"
 
-#define MaxIconWH  80.0  //用户头像最大的尺寸
+#define MaxIconWH  100.0  //用户头像最大的尺寸
 #define MinIconWH  30.0  // 用户头像最小的头像
-#define maxScrollOff 165
-#define kHeaderViewH 165
+#define maxScrollOff 242
+#define kHeaderViewH 242
 
 @interface PersonalViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -41,23 +43,19 @@
 }
 
 - (void)createItemData {
-    ArrowItem *arrow = [ArrowItem itemWithTitle:@"个人资料" withImage:[UIImage imageNamed:@"person_data"]];
+    ArrowItem *arrow = [ArrowItem itemWithTitle:@"个人资料" withImage:[UIImage imageNamed:@"personal"]];
     arrow.destVcClass = [UserInfoViewController class];
-    GroupItem *group = [[GroupItem alloc] init];
-    group.items = @[arrow];
-    [self.dataArr addObject:group];
-    
+
     ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"系统设置" withImage:[UIImage imageNamed:@"setting"]];
     arrow2.destVcClass = [SystemSettingViewController class];
-    GroupItem *group2 = [[GroupItem alloc] init];
-    group2.items = @[arrow2];
-    [self.dataArr addObject:group2];
     
-    ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"报告示例" withImage:[UIImage imageNamed:@"setting"]];
+    ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"报告示例" withImage:[UIImage imageNamed:@"report"]];
     arrow3.destVcClass = [SampleRepportViewController class];
-    GroupItem *group3 = [[GroupItem alloc] init];
-    group3.items = @[arrow3];
-    [self.dataArr addObject:group3];
+    
+    GroupItem *group = [[GroupItem alloc] init];
+    group.items = @[arrow, arrow2, arrow3];
+    [self.dataArr addObject:group];
+    
 }
 
 - (void)setUpBaseUI {
@@ -69,8 +67,9 @@
     HeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil] lastObject];
     headerView.backgroundColor = [UIColor navigationBarColor];
     headerView.frame = CGRectMake(0, -kHeaderViewH - 10, kScreenSizeWidth, kHeaderViewH - 10);
-    [headerView.iconBtn setRoundWithRadius:40];
+    [headerView.iconBtn setRoundWithRadius:50];
     [headerView.iconBtn addTarget:self action:@selector(iconClick) forControlEvents:UIControlEventTouchUpInside];
+    headerView.nameLabel.text = [[UserManager shareInstance] getUserInfo].realName;
     _headerView = headerView;
     [self.tableView insertSubview:headerView atIndex:0];
     
@@ -85,7 +84,7 @@
     _headerView.frame = CGRectMake(0, updateY, kScreenSizeWidth, - updateY);
     
     updateY += kHeaderViewH;
-    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(165 - 64);
+    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(kHeaderViewH - 64);
     CGFloat yuanW = MAX(MinIconWH, MaxIconWH - reduceW);
     
     _headerView.iconBtn.layer.cornerRadius = yuanW/2.0;

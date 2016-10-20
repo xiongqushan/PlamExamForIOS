@@ -16,6 +16,8 @@
 
 -(void)setReportList:(NSArray<ReportSimple *> *)reports;
 
+-(NSMutableArray<ReportSimple *> *)getReportList;
+
 -(BOOL)exist;
 
 -(void)clear;

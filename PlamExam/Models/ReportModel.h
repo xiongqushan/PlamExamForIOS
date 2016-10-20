@@ -16,5 +16,5 @@
 
 +(void)addReport:(NSString*)accountId withName:(NSString*)realName withMobile:(NSString*)mobile callBackBlock:(void (^)(HttpRequestResult<ReportBatch *> *httpRequestResult))callBack;
 
-+(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode withMobile:(NSString*)mobile callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack;
++(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack;
 @end
