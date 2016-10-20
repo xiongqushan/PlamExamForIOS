@@ -12,6 +12,18 @@
 
 @end
 
+@implementation CheckItem
+
+@end
+
+@implementation GeneralSummary
+
+@end
+
+@implementation GeneralAdvice
+
+@end
+
 @implementation ReportInfo
 
 @end
