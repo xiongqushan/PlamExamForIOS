@@ -15,7 +15,7 @@
              @"accountId":@"AccountId",
              @"realName":@"RealName",
              @"mobile":@"Mobile",
-             @"departId":@"DepartId",
+             @"departId":@"DepartCode",
              @"departName":@"DepartName"};
 }
 

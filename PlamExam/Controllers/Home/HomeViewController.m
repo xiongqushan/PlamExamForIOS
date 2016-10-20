@@ -25,7 +25,7 @@
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
 #define kSectionItemH 132
-#define kInformationBtnH 40
+#define kInformationViewH 40
 #define kItemSpace 10
 #define kSectionItemTag 101
 #define kBackColor kSetRGBColor(242, 242, 242)
@@ -74,7 +74,17 @@
     
     User* user=[[UserManager shareInstance] getUserInfo];
     [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
-        
+        if (httpRequestResult.IsHttpSuccess) {
+            if (httpRequestResult.HttpResult.Code == 1) {
+
+                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
+                [self setUpHeadAdScrollView];
+            }else {
+                [CommonUtil showHUDWithTitle:httpRequestResult.HttpResult.Message];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:httpRequestResult.HttpMessage];
+        }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
         
     } allFinishCallback:^(BOOL isAllSuccess) {
@@ -84,33 +94,34 @@
 
 - (void)setUpHeadAdScrollView {
     
+    //只创建一次 因为页面初始化和网络请求完成时都调用了该方法
     if (!self.tableHeaderView) {
-        
+
         _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
         _tableHeaderView.backgroundColor = [UIColor whiteColor];
         
         self.adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, _tableHeaderView.bounds.size.width - 20, _tableHeaderView.bounds.size.height - 20)];
-        self.adView.backgroundColor = [UIColor whiteColor];
+        self.adView.backgroundColor = [UIColor lightGrayColor];
         [self.tableHeaderView addSubview:self.adView];
-        self.tableHeaderView.backgroundColor = [UIColor grayColor];
-
+        
     }
 
     if (self.adDataArr.count == 0) {
-        return;
+        //
+        
+    } else {
+        
+        NSMutableArray *images = [NSMutableArray array];
+        for (AdScrollerViewData *data in self.adDataArr) {
+            [images addObject:data.ImageUrl];
+        }
+        
+        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
+        imageView.pauseTime = 3.0;
+        imageView.currentPageColor = [UIColor whiteColor];
+        imageView.delegate = self;
+        [self.adView addSubview:imageView];
     }
-    
-    NSMutableArray *images = [NSMutableArray array];
-    for (AdScrollerViewData *data in self.adDataArr) {
-        [images addObject:data.ImageUrl];
-    }
-
-    SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
-    imageView.pauseTime = 3.0;
-    imageView.currentPageColor = [UIColor whiteColor];
-    imageView.delegate = self;
-    [self.adView addSubview:imageView];
-    
 }
 
 - (void)setUpTableView {
@@ -165,7 +176,7 @@
 
 //创建分区头视图view
 - (UIView *)setUpSectionHeaderView {
-    CGFloat sectionViewH = kSectionItemH + kItemSpace*2 + kInformationBtnH;
+    CGFloat sectionViewH = kSectionItemH + kItemSpace*2 + kInformationViewH;
     
     NSArray *arr = @[@"体检报告",@"健康咨询"];
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, sectionViewH)];
@@ -190,27 +201,31 @@
         [sectionHeaderView addSubview:view];
     }
     
+    //添加体检报告  健康咨询之间的分割线
     UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 0.5, kSectionItemH - 20)];
     label.center = CGPointMake(sectionHeaderView.center.x, sectionHeaderView.center.y - 20);
     label.backgroundColor = [UIColor dividerColor];
     [sectionHeaderView addSubview:label];
     
-    UIButton *informationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    informationBtn.userInteractionEnabled = NO;
-    informationBtn.backgroundColor = [UIColor whiteColor];
-    informationBtn.frame = CGRectMake(0, kSectionItemH + kItemSpace*2, sectionHeaderView.bounds.size.width, kInformationBtnH);
-    [informationBtn setImage:[UIImage imageNamed:@"about"] forState:UIControlStateNormal];
-    [informationBtn setTitle:@"资讯" forState:UIControlStateNormal];
-    [informationBtn setTitleColor:[UIColor grayColor] forState:UIControlStateNormal];
-    informationBtn.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
-    [informationBtn setTitleEdgeInsets:UIEdgeInsetsMake(0, 5, 0, 0)];
-    [informationBtn setContentEdgeInsets:UIEdgeInsetsMake(0, kItemSpace, 0, 0)];
-    //添加分割线
-//    [informationBtn.layer setBorderColor:[UIColor lightGrayColor].CGColor];
-//    [informationBtn.layer setBorderWidth:0.5];
-//    [informationBtn.layer setMasksToBounds:YES];
-    [sectionHeaderView addSubview:informationBtn];
+    //添加资讯头视图界面
+    UIView *informationView = [[UIView alloc] initWithFrame:CGRectMake(0, kSectionItemH + kItemSpace*2, sectionHeaderView.bounds.size.width, kInformationViewH)];
+    informationView.backgroundColor = [UIColor whiteColor];
     
+    UILabel *leftLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 10, 3, kInformationViewH - 20)];
+    leftLabel.backgroundColor = kSetRGBColor(242, 83, 83);
+    [informationView addSubview:leftLabel];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(28, 5, 100, 30)];
+    titleLabel.text = @"每日资讯";
+    titleLabel.textColor = kSetRGBColor(51, 51, 51);
+    [informationView addSubview:titleLabel];
+    
+    UIButton *informationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    informationBtn.frame = CGRectMake(informationView.bounds.size.width - 15 - 16, 10, 16, 20);
+    [informationBtn setImage:[UIImage imageNamed:@"资讯更多"] forState:UIControlStateNormal];
+    [informationView addSubview:informationBtn];
+    
+    [sectionHeaderView addSubview:informationView];
     return sectionHeaderView;
 }
 
@@ -221,7 +236,7 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
-    return kSectionItemH + kItemSpace*2 + kInformationBtnH;;
+    return kSectionItemH + kItemSpace*2 + kInformationViewH;;
 }
 
 #pragma mark -- ClickEvent

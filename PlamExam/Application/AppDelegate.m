@@ -34,7 +34,7 @@
     [[UINavigationBar appearance] setTintColor:[UIColor whiteColor]];
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor tabBarColor]} forState:UIControlStateSelected];
-    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:13]} forState:UIControlStateNormal];
+    [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]} forState:UIControlStateNormal];
     [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar_background"]];
 }
 

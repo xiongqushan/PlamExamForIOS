@@ -25,10 +25,10 @@
     [self setUpOneChildViewController:home image:[UIImage imageNamed:@"home"] selectedImage:[[UIImage imageNamed:@"home_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"首页"];
     
     ConsultViewController *consulat = [[ConsultViewController alloc] init];
-    [self setUpOneChildViewController:consulat image:[UIImage imageNamed:@"consulation"] selectedImage:[[UIImage imageNamed:@"consulation_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"咨询"];
+    [self setUpOneChildViewController:consulat image:[UIImage imageNamed:@"consulat"] selectedImage:[[UIImage imageNamed:@"consulat_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"咨询"];
     
     PersonalViewController *personal = [[PersonalViewController alloc] init];
-    [self setUpOneChildViewController:personal image:[UIImage imageNamed:@"main"] selectedImage:[[UIImage imageNamed:@"main_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"我的"];
+    [self setUpOneChildViewController:personal image:[UIImage imageNamed:@"mine"] selectedImage:[[UIImage imageNamed:@"mine_selected"] imageWithRenderingMode:UIImageRenderingModeAlwaysOriginal] title:@"我的"];
     
     
 }
