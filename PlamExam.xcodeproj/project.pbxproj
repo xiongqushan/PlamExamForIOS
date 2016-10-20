@@ -13,6 +13,9 @@
 		A5A01E9F1DB7A04E006C64E0 /* ReportBatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */; };
 		A5A01EA31DB7A4AF006C64E0 /* ReportInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */; };
 		A5A01EA61DB86945006C64E0 /* ReportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA51DB86945006C64E0 /* ReportManager.m */; };
+		A5A01EA91DB8A888006C64E0 /* NewsSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA81DB8A888006C64E0 /* NewsSimple.m */; };
+		A5A01EAC1DB8AC0C006C64E0 /* NewsInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EAB1DB8AC0C006C64E0 /* NewsInfo.m */; };
+		A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EAE1DB8AF31006C64E0 /* NewsModel.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
@@ -126,6 +129,12 @@
 		A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportInfo.m; sourceTree = "<group>"; };
 		A5A01EA41DB86945006C64E0 /* ReportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportManager.h; sourceTree = "<group>"; };
 		A5A01EA51DB86945006C64E0 /* ReportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportManager.m; sourceTree = "<group>"; };
+		A5A01EA71DB8A888006C64E0 /* NewsSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsSimple.h; sourceTree = "<group>"; };
+		A5A01EA81DB8A888006C64E0 /* NewsSimple.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsSimple.m; sourceTree = "<group>"; };
+		A5A01EAA1DB8AC0C006C64E0 /* NewsInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsInfo.h; sourceTree = "<group>"; };
+		A5A01EAB1DB8AC0C006C64E0 /* NewsInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsInfo.m; sourceTree = "<group>"; };
+		A5A01EAD1DB8AF31006C64E0 /* NewsModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsModel.h; sourceTree = "<group>"; };
+		A5A01EAE1DB8AF31006C64E0 /* NewsModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsModel.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -342,6 +351,10 @@
 				A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */,
 				A5A01EA11DB7A4AF006C64E0 /* ReportInfo.h */,
 				A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */,
+				A5A01EA71DB8A888006C64E0 /* NewsSimple.h */,
+				A5A01EA81DB8A888006C64E0 /* NewsSimple.m */,
+				A5A01EAA1DB8AC0C006C64E0 /* NewsInfo.h */,
+				A5A01EAB1DB8AC0C006C64E0 /* NewsInfo.m */,
 			);
 			path = Domains;
 			sourceTree = "<group>";
@@ -356,6 +369,8 @@
 				A9C92CD81DB4EFA500034DA5 /* ChatModel.m */,
 				A5A01E9A1DB79BA4006C64E0 /* ReportModel.h */,
 				A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */,
+				A5A01EAD1DB8AF31006C64E0 /* NewsModel.h */,
+				A5A01EAE1DB8AF31006C64E0 /* NewsModel.m */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -949,6 +964,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */,
 				A9ED1F011DB86D82003C1F00 /* AddReportViewController.m in Sources */,
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
@@ -979,6 +995,7 @@
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
 				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
+				A5A01EA91DB8A888006C64E0 /* NewsSimple.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
 				A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */,
@@ -1016,6 +1033,7 @@
 				A9C92D271DB7069600034DA5 /* HttpBatchRequestHelper.m in Sources */,
 				A5A01E9F1DB7A04E006C64E0 /* ReportBatch.m in Sources */,
 				A935494E1DAF72140077E85C /* BaseSettingViewController.m in Sources */,
+				A5A01EAC1DB8AC0C006C64E0 /* NewsInfo.m in Sources */,
 				A93549521DAF72140077E85C /* LabelItem.m in Sources */,
 				A9C92D1B1DB7065900034DA5 /* Doctor.m in Sources */,
 				A93549141DAF19600077E85C /* PersonalViewController.m in Sources */,
