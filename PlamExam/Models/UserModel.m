@@ -23,7 +23,7 @@
         
         HttpRequestResult<NSString *> *result = httpRequestResult;
         
-        if(httpRequestResult.IsHttpSuccess){
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
 
             result.Data = httpRequestResult.HttpResult.Result;
         }
@@ -40,7 +40,7 @@
     [HttpHelper Post:kRegisterLogin withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
         HttpRequestResult<User *> *result = httpRequestResult;
-        if (httpRequestResult.IsHttpSuccess) {
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
             result.Data = [User yy_modelWithJSON:httpRequestResult.HttpResult.Result];
         }
         callBack(result);

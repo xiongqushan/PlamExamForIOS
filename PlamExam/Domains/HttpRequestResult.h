@@ -20,6 +20,8 @@
 @property(assign,nonatomic) BOOL IsHttpSuccess;
 @property(strong,nonatomic) NSString *HttpMessage;
 @property(strong,nonatomic) ApiGlobalData *HttpResult;
+@property(assign,nonatomic) BOOL IsSuccess;
+@property(strong,nonatomic) NSString *Message;
 @property(strong,nonatomic) T Data;
 @end
 

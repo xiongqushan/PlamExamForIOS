@@ -10,7 +10,19 @@
 
 @implementation HttpRequestResult
 
+- (BOOL)IsSuccess {
+    if(!self.IsHttpSuccess){
+        return false;
+    }
+    return self.HttpResult.Code>0;
+}
 
+-(NSString *)Message{
+    if(self.IsHttpSuccess && self.HttpResult.Code<0){
+        return self.HttpResult.Message;
+    }
+    return self.HttpMessage;
+}
 @end
 
 

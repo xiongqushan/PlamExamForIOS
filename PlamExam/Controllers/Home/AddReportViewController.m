@@ -50,6 +50,15 @@
         }else {
             [CommonUtil showHUDWithTitle:errorMessage];
         }
+        
+        if(httpRequestResult.IsHttpSuccess){
+            
+            
+        }
+        else{
+            [CommonUtil showHUDWithTitle:httpRequestResult.HttpMessage];
+        }
+        
     }];
 }
 
