@@ -13,7 +13,10 @@
 @end
 
 @implementation CheckItem
-
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"CheckResults":[CheckResult class]
+             };
+}
 @end
 
 @implementation GeneralSummary
@@ -25,6 +28,13 @@
 @end
 
 @implementation ReportInfo
+
++ (NSDictionary *)modelContainerPropertyGenericClass {
+    return @{@"CheckItems":[CheckItem class],
+             @"GeneralSummarys":[GeneralSummary class],
+             @"GeneralAdvices":[GeneralAdvice class]
+             };
+}
 
 @end
 

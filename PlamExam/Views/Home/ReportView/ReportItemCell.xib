@@ -39,6 +39,7 @@
                 <constraints>
                     <constraint firstItem="IUq-E9-uNu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="7" id="AeO-K1-JAL"/>
                     <constraint firstAttribute="trailing" secondItem="IUq-E9-uNu" secondAttribute="trailing" constant="15" id="Lhd-ff-06k"/>
+                    <constraint firstItem="IUq-E9-uNu" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="S13-7b-QJL" secondAttribute="trailing" constant="15" id="LqW-ka-pWZ"/>
                     <constraint firstAttribute="trailing" secondItem="0tW-oa-CGc" secondAttribute="trailing" constant="15" id="QM0-13-njg"/>
                     <constraint firstAttribute="bottom" secondItem="0tW-oa-CGc" secondAttribute="bottom" constant="6" id="TVZ-yV-F3L"/>
                     <constraint firstItem="S13-7b-QJL" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="Yqn-aS-b5f"/>

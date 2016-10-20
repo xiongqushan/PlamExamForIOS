@@ -31,7 +31,7 @@
 @property(nonatomic,strong) NSString *SalePrice;
 @property(nonatomic,assign) NSInteger CheckStateID;
 @property(nonatomic,strong) NSString *CheckUserName;
-@property(nonatomic,strong) NSMutableArray<CheckResult*> *CheckResults;
+@property(nonatomic,strong) NSArray<CheckResult*> *CheckResults;
 @end
 
 //汇总

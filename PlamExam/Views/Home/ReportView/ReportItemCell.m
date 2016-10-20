@@ -22,7 +22,7 @@
 }
 
 - (void)showDataWithModel:(CheckResult *)result {
-    self.titleLabel.text = result.CheckIndexCode;
+    self.titleLabel.text = result.CheckIndexName;
     self.valueLabel.text = result.ResultValue;
     self.refLabel.text = result.TextRef;
     self.unitLabel.text = result.Unit;

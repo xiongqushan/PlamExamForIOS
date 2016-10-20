@@ -65,7 +65,7 @@
 
 - (void)setUpTableView {
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
-    self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+   // self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self addSubview:self.tableView];
@@ -87,42 +87,42 @@
 
 }
 
-#pragma mark -- 浮动按钮被点击
-- (void)floatBtnClick:(UIButton *)btn {
-    
-    _isShowLeftView = !_isShowLeftView;
-    if (_isShowLeftView) {
-        //显示左侧列表
-        //获取tableView的偏移量
-        CGPoint offset = self.tableView.contentOffset;
-        NSIndexPath *tableViewIndexPath = [self.tableView indexPathForRowAtPoint:offset];
-        NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:tableViewIndexPath.section inSection:0];
-        [self.leftTableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
-
-        [UIView animateWithDuration:0.25 animations:^{
-            self.tableView.frame = CGRectMake(kleftViewWidth, 0, self.bounds.size.width, self.bounds.size.height);
-            btn.transform = CGAffineTransformRotate(btn.transform, -M_PI_4);
-        }];
-        
-        [self.tableView addGestureRecognizer: _tap];
-        
-    }else {
-        [UIView animateWithDuration:0.25 animations:^{
-            self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-            btn.transform = CGAffineTransformRotate(btn.transform, M_PI_4);
-        }];
-        [self.tableView removeGestureRecognizer:_tap];
-    }
-}
-
-- (void)tableViewClick {
-    _isShowLeftView = NO;
-    [UIView animateWithDuration:0.25 animations:^{
-        self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-        _floatBtn.transform = CGAffineTransformRotate(_floatBtn.transform, M_PI_4);
-    }];
-    [self.tableView removeGestureRecognizer:_tap];
-}
+//#pragma mark -- 浮动按钮被点击
+//- (void)floatBtnClick:(UIButton *)btn {
+//    
+//    _isShowLeftView = !_isShowLeftView;
+//    if (_isShowLeftView) {
+//        //显示左侧列表
+//        //获取tableView的偏移量
+//        CGPoint offset = self.tableView.contentOffset;
+//        NSIndexPath *tableViewIndexPath = [self.tableView indexPathForRowAtPoint:offset];
+//        NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:tableViewIndexPath.section inSection:0];
+//        [self.leftTableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
+//
+//        [UIView animateWithDuration:0.25 animations:^{
+//            self.tableView.frame = CGRectMake(kleftViewWidth, 0, self.bounds.size.width, self.bounds.size.height);
+//            btn.transform = CGAffineTransformRotate(btn.transform, -M_PI_4);
+//        }];
+//        
+//        [self.tableView addGestureRecognizer: _tap];
+//        
+//    }else {
+//        [UIView animateWithDuration:0.25 animations:^{
+//            self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+//            btn.transform = CGAffineTransformRotate(btn.transform, M_PI_4);
+//        }];
+//        [self.tableView removeGestureRecognizer:_tap];
+//    }
+//}
+//
+//- (void)tableViewClick {
+//    _isShowLeftView = NO;
+//    [UIView animateWithDuration:0.25 animations:^{
+//        self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
+//        _floatBtn.transform = CGAffineTransformRotate(_floatBtn.transform, M_PI_4);
+//    }];
+//    [self.tableView removeGestureRecognizer:_tap];
+//}
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {

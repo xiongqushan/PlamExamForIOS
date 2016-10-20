@@ -53,6 +53,7 @@
     [HttpHelper Post:kReportDetailUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ReportInfo *> *result = httpRequestResult;
         if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
+            
             result.Data = [ReportInfo yy_modelWithJSON:result.HttpResult.Result];
         }
         callBack(result);

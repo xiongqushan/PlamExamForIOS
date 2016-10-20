@@ -40,6 +40,7 @@
     
     [ReportModel requestDetail:self.workNo withName:self.checkUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess) {
+            
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
             [self setUpBaseUI];
         }else {
