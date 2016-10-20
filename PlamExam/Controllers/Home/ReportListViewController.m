@@ -7,8 +7,17 @@
 //
 
 #import "ReportListViewController.h"
+#import "ReportModel.h"
+#import "User.h"
+#import "UserManager.h"
+#import "CommonUtil.h"
+#import "ReportSimple.h"
+#import "AddReportViewController.h"
 
-@interface ReportListViewController ()
+@interface ReportListViewController ()<UITableViewDelegate, UITableViewDataSource>
+
+@property (nonatomic, strong) NSMutableArray *dataArr;
+@property (nonatomic, strong) UITableView *tableView;
 
 @end
 
@@ -16,7 +25,81 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    self.navigationItem.title = @"体检报告";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加报告" style:UIBarButtonItemStylePlain target:self action:@selector(addReport)];
+    
+    [self loadReportData];
+    [self setUpTableView];
+
+}
+
+
+- (void)addReport {
+    AddReportViewController *addReport = [[AddReportViewController alloc] init];
+    addReport.reloadReportList = ^(){
+        [self loadReportData];
+    };
+    
+    [self.navigationController pushViewController:addReport animated:YES];
+}
+
+- (void)loadReportData {
+    
+    MBProgressHUD *hud = [CommonUtil createHUD];
+    
+    User *user = [[UserManager shareInstance] getUserInfo];
+    [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
+        [hud hide:YES];
+        NSString *errorMessage = [CommonUtil networkIsSuccess:httpRequestResult];
+        if (!errorMessage) {
+            NSLog(@"——————————success");
+           // [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+            self.dataArr = [NSMutableArray arrayWithArray:httpRequestResult.Data];
+            [self.tableView reloadData];
+            
+        }else {
+            [CommonUtil showHUDWithTitle:errorMessage];
+        }
+
+    }];
+}
+
+- (void) setUpTableView {
+    
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64) style:UITableViewStylePlain];
+    self.tableView.delegate = self;
+    self.tableView.dataSource = self;
+    [self.view addSubview:self.tableView];
+    
+    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
+    
+}
+
+- (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+    return self.dataArr.count;
+}
+
+- (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
+    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+    
+    ReportSimple *report = self.dataArr[indexPath.row];
+    
+    cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@  机构:%@",report.CustomerName,report.ReportName];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDate];
+    
+    return cell;
+}
+
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    
+    
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 60;
 }
 
 - (void)didReceiveMemoryWarning {

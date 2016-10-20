@@ -146,4 +146,20 @@
     CFRelease(uuidObj);
     return uuidString ;
 }
+
+// 返回值错误信息等于nil成功
++ (NSString *)networkIsSuccess:(HttpRequestResult *)httpResult {
+    
+    if (httpResult.IsHttpSuccess) {
+        if (httpResult.HttpResult.Code == 1) {
+            return nil;
+        }else {
+          //  [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
+            return httpResult.HttpResult.Message;
+        }
+    }else {
+       // [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
+        return httpResult.HttpMessage;
+    }
+}
 @end

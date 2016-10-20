@@ -105,6 +105,8 @@
 		A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A861DB0E930000BEDF4 /* GFWaterView.m */; };
 		A9DB5A8E1DB0E930000BEDF4 /* HZRecognizer.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A881DB0E930000BEDF4 /* HZRecognizer.m */; };
 		A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9DB5A8A1DB0E930000BEDF4 /* HZRecognizerView.m */; };
+		A9ED1F011DB86D82003C1F00 /* AddReportViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9ED1EFF1DB86D82003C1F00 /* AddReportViewController.m */; };
+		A9ED1F021DB86D82003C1F00 /* AddReportViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9ED1F001DB86D82003C1F00 /* AddReportViewController.xib */; };
 		FD46ED38168FED9D2479E42A /* libPods-PlamExam.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */; };
 /* End PBXBuildFile section */
 
@@ -284,6 +286,9 @@
 		A9DB5A881DB0E930000BEDF4 /* HZRecognizer.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRecognizer.m; sourceTree = "<group>"; };
 		A9DB5A891DB0E930000BEDF4 /* HZRecognizerView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZRecognizerView.h; sourceTree = "<group>"; };
 		A9DB5A8A1DB0E930000BEDF4 /* HZRecognizerView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZRecognizerView.m; sourceTree = "<group>"; };
+		A9ED1EFE1DB86D82003C1F00 /* AddReportViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AddReportViewController.h; sourceTree = "<group>"; };
+		A9ED1EFF1DB86D82003C1F00 /* AddReportViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AddReportViewController.m; sourceTree = "<group>"; };
+		A9ED1F001DB86D82003C1F00 /* AddReportViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = AddReportViewController.xib; sourceTree = "<group>"; };
 		FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.debug.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.debug.xcconfig"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -384,6 +389,9 @@
 				A93C60E21DB4D3980024180F /* InformationViewController.m */,
 				A9C92D371DB7556300034DA5 /* ReportListViewController.h */,
 				A9C92D381DB7556300034DA5 /* ReportListViewController.m */,
+				A9ED1EFE1DB86D82003C1F00 /* AddReportViewController.h */,
+				A9ED1EFF1DB86D82003C1F00 /* AddReportViewController.m */,
+				A9ED1F001DB86D82003C1F00 /* AddReportViewController.xib */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -847,6 +855,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9ED1F021DB86D82003C1F00 /* AddReportViewController.xib in Resources */,
 				A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */,
 				A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */,
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
@@ -935,6 +944,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A9ED1F011DB86D82003C1F00 /* AddReportViewController.m in Sources */,
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,

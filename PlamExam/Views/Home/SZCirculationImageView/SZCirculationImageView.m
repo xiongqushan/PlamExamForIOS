@@ -61,7 +61,7 @@
 
 - (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles {
     
-    NSAssert(array.count > 2, @"图片的数量不能少于3张");
+ //   NSAssert(array.count > 2, @"图片的数量不能少于3张");
     if (titles != nil || titles.count > 0) {
         NSAssert(array.count == titles.count, @"图片和名称数组数量不对应");
     }

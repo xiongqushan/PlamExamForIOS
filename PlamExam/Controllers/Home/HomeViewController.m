@@ -50,78 +50,29 @@
     [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
     
     [self loadAdScrollViewData];
-    
-    [self setUpHeadAdScrollView];
     [self setUpTableView];
-    
 }
 
-- (void)loadAdScrollViewData {
-//    self.adDataArr = [NSMutableArray array];
-//    [HomeModel requestADScrollViewDataWithDepartId:@"123" callBack:^(HttpRequestResult<NSMutableArray *> *httpResult) {
-//        if (httpResult.IsHttpSuccess) {
-//            if (httpResult.HttpResult.Code == 1) {
-//                
-//                [self.adDataArr addObjectsFromArray:httpResult.Data];
-//                [self setUpHeadAdScrollView];
-//            }else {
-//                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
-//            }
-//        }else {
-//            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-//        }
-//    }];
+- (UIView *)tableHeaderView {
     
-    User* user=[[UserManager shareInstance] getUserInfo];
-    [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
-        if (httpRequestResult.IsHttpSuccess) {
-            if (httpRequestResult.HttpResult.Code == 1) {
-
-                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
-                [self setUpHeadAdScrollView];
-            }else {
-                [CommonUtil showHUDWithTitle:httpRequestResult.HttpResult.Message];
-            }
-        }else {
-            [CommonUtil showHUDWithTitle:httpRequestResult.HttpMessage];
-        }
-    } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
-        
-    } allFinishCallback:^(BOOL isAllSuccess) {
-        
-    }];
-}
-
-- (void)setUpHeadAdScrollView {
-    
-    //只创建一次 因为页面初始化和网络请求完成时都调用了该方法
-    if (!self.tableHeaderView) {
-
+    if (!_tableHeaderView) {
         _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
         _tableHeaderView.backgroundColor = [UIColor whiteColor];
         
-        self.adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, _tableHeaderView.bounds.size.width - 20, _tableHeaderView.bounds.size.height - 20)];
-        self.adView.backgroundColor = [UIColor lightGrayColor];
-        [self.tableHeaderView addSubview:self.adView];
-        
+        [_tableHeaderView addSubview:self.adView];
     }
+    return _tableHeaderView;
+}
 
-    if (self.adDataArr.count == 0) {
-        //
+- (UIView *)adView {
+    
+    if (!_adView) {
         
-    } else {
+        _adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.tableHeaderView.bounds.size.width - 20, self.tableHeaderView.bounds.size.height - 20)];
+        _adView.backgroundColor = [UIColor lightGrayColor];
         
-        NSMutableArray *images = [NSMutableArray array];
-        for (AdScrollerViewData *data in self.adDataArr) {
-            [images addObject:data.ImageUrl];
-        }
-        
-        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
-        imageView.pauseTime = 3.0;
-        imageView.currentPageColor = [UIColor whiteColor];
-        imageView.delegate = self;
-        [self.adView addSubview:imageView];
     }
+    return _adView;
 }
 
 - (void)setUpTableView {
@@ -136,6 +87,57 @@
     [self.view addSubview:self.tableView];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
+}
+
+- (void)loadAdScrollViewData {
+    
+    User* user=[[UserManager shareInstance] getUserInfo];
+    
+    [HomeModel requestADAndNotice:user.accountId withDepartId:@"123" requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        
+        NSString *errorMessage = [CommonUtil networkIsSuccess:httpRequestResult];
+        if (!errorMessage) {
+            if (httpRequestResult.Data.count != 0) {
+                
+                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
+                [self setUpHeadAdScrollViewIsInternet:YES];
+            }else {
+                [self setUpHeadAdScrollViewIsInternet:NO];
+            }
+        }else {
+            [CommonUtil showHUDWithTitle:errorMessage];
+        }
+    } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
+        
+    } allFinishCallback:^(BOOL isAllSuccess) {
+        
+    }];
+}
+
+- (void)setUpHeadAdScrollViewIsInternet:(BOOL)isInternet {
+    
+    if (isInternet) {
+        //网络请求
+        NSMutableArray *images = [NSMutableArray array];
+        for (AdScrollerViewData *data in self.adDataArr) {
+            [images addObject:data.ImageUrl];
+        }
+
+        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
+        imageView.pauseTime = 3.0;
+        imageView.currentPageColor = [UIColor whiteColor];
+        imageView.delegate = self;
+        [self.adView addSubview:imageView];
+        
+    }else {
+        //本地请求
+        NSArray *images = @[@"未加载图1"];
+        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageNamesArray:images];
+        imageView.pauseTime = 3.0;
+        imageView.currentPageColor = [UIColor whiteColor];
+        imageView.delegate = self;
+        [self.adView addSubview:imageView];
+    }
 }
 
 #pragma mark -- SZCirculationImageViewDelegate

@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "UIView+Utils.h"
+#import <MBProgressHUD.h>
 
 @interface BaseViewController : UIViewController
 

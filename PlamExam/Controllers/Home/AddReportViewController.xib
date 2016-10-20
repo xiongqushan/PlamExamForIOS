@@ -1,0 +1,85 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="AddReportViewController">
+            <connections>
+                <outlet property="addReportBtn" destination="nFj-Ss-YyL" id="C44-4b-KUX"/>
+                <outlet property="nameTextField" destination="0NP-Qu-4Ah" id="3oz-pP-pvs"/>
+                <outlet property="phoneNumTextField" destination="v2Y-bq-E9D" id="ELU-o5-kU8"/>
+                <outlet property="view" destination="i5M-Pr-FkT" id="sfx-zR-JGt"/>
+            </connections>
+        </placeholder>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <view clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="i5M-Pr-FkT">
+            <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
+            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+            <subviews>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="hsZ-lP-zp5">
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入手机号" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="v2Y-bq-E9D">
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="v2Y-bq-E9D" firstAttribute="top" secondItem="hsZ-lP-zp5" secondAttribute="top" constant="10" id="1pc-IA-1aA"/>
+                        <constraint firstAttribute="bottom" secondItem="v2Y-bq-E9D" secondAttribute="bottom" constant="10" id="3gE-7x-ZpC"/>
+                        <constraint firstItem="v2Y-bq-E9D" firstAttribute="leading" secondItem="hsZ-lP-zp5" secondAttribute="leading" constant="10" id="6iM-s3-Ukf"/>
+                        <constraint firstAttribute="height" constant="50" id="fgb-2P-nkA"/>
+                        <constraint firstAttribute="trailing" secondItem="v2Y-bq-E9D" secondAttribute="trailing" constant="10" id="nQc-el-kIG"/>
+                    </constraints>
+                </view>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="fT1-uX-LaM">
+                    <subviews>
+                        <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="请输入体检报告真实姓名" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="0NP-Qu-4Ah">
+                            <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                            <textInputTraits key="textInputTraits"/>
+                        </textField>
+                    </subviews>
+                    <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="0NP-Qu-4Ah" firstAttribute="leading" secondItem="fT1-uX-LaM" secondAttribute="leading" constant="10" id="19b-2F-sza"/>
+                        <constraint firstAttribute="bottom" secondItem="0NP-Qu-4Ah" secondAttribute="bottom" constant="10" id="Egz-L9-5Co"/>
+                        <constraint firstAttribute="height" constant="50" id="NpB-on-Nab"/>
+                        <constraint firstAttribute="trailing" secondItem="0NP-Qu-4Ah" secondAttribute="trailing" constant="10" id="SYJ-Qs-w3W"/>
+                        <constraint firstItem="0NP-Qu-4Ah" firstAttribute="top" secondItem="fT1-uX-LaM" secondAttribute="top" constant="10" id="vaR-Mm-9Xq"/>
+                    </constraints>
+                </view>
+                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="nFj-Ss-YyL">
+                    <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstAttribute="height" constant="40" id="xsA-pc-If4"/>
+                    </constraints>
+                    <fontDescription key="fontDescription" type="system" pointSize="18"/>
+                    <state key="normal" title="确定">
+                        <color key="titleColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </state>
+                    <connections>
+                        <action selector="addReport:" destination="-1" eventType="touchUpInside" id="OZO-nO-ftK"/>
+                    </connections>
+                </button>
+            </subviews>
+            <color key="backgroundColor" red="0.96078431372549022" green="0.96078431372549022" blue="0.96078431372549022" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <constraints>
+                <constraint firstAttribute="trailing" secondItem="hsZ-lP-zp5" secondAttribute="trailing" id="9Ue-zv-yQd"/>
+                <constraint firstItem="nFj-Ss-YyL" firstAttribute="top" secondItem="fT1-uX-LaM" secondAttribute="bottom" constant="21" id="BHX-qC-tz8"/>
+                <constraint firstItem="hsZ-lP-zp5" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="74" id="GZO-Rj-YsE"/>
+                <constraint firstItem="fT1-uX-LaM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="TWw-8y-BW9"/>
+                <constraint firstItem="nFj-Ss-YyL" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="64" id="X9l-Xd-Gcs"/>
+                <constraint firstAttribute="trailing" secondItem="fT1-uX-LaM" secondAttribute="trailing" id="Xrh-aD-Hpx"/>
+                <constraint firstItem="fT1-uX-LaM" firstAttribute="top" secondItem="hsZ-lP-zp5" secondAttribute="bottom" constant="10" id="fYe-y7-29u"/>
+                <constraint firstAttribute="trailing" secondItem="nFj-Ss-YyL" secondAttribute="trailing" constant="64" id="kKP-1j-2a9"/>
+                <constraint firstItem="hsZ-lP-zp5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="lVL-pY-yIT"/>
+            </constraints>
+            <point key="canvasLocation" x="33.5" y="53.5"/>
+        </view>
+    </objects>
+</document>

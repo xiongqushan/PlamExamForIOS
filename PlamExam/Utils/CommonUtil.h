@@ -8,6 +8,7 @@
 
 #import <Foundation/Foundation.h>
 #import <MBProgressHUD.h>
+#import "HttpRequestResult.h"
 
 @interface CommonUtil : NSObject
 
@@ -39,4 +40,8 @@
 + (BOOL)isBlankString:(NSString *)string;
 
 +(NSString *)getGuid;
+
+//判断网络请求是否成功
++ (NSString *)networkIsSuccess:(HttpRequestResult *)httpResult;
+
 @end
