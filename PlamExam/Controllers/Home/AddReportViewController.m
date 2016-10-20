@@ -45,9 +45,10 @@
                 self.reloadReportList(httpRequestResult.Data.Reports);
             }
             [CommonUtil showHUDWithTitle:@"添加成功"];
+             [self.navigationController popViewControllerAnimated:YES];
         }
         else{
-            [CommonUtil showHUDWithTitle:httpRequestResult.HttpMessage];
+            [CommonUtil showHUDWithTitle:httpRequestResult.Message];
         }
         
     }];

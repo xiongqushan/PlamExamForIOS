@@ -81,9 +81,11 @@
     view.backgroundColor = [UIColor whiteColor];
     
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.frame = CGRectMake(0, 0, 200, 40);
     addBtn.center = view.center;
     [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
     [addBtn setBackgroundColor:[UIColor grayColor]];
+    [addBtn addTarget:self action:@selector(addReport) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:addBtn];
     
     [self.view addSubview:view];

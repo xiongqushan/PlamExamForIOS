@@ -21,6 +21,7 @@
 #import "DoctorManager.h"
 #import "UserManager.h"
 #import "CommentViewController.h"
+#import "ReportListViewController.h"
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -123,18 +124,28 @@
     
     if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
         [ChatModel requestChatDataAndDoctorIdAndDoctorList:@"sample string 1" chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
-            if(httpRequestResult.IsHttpSuccess){
+            //获取聊天记录
+            if (httpRequestResult.IsSuccess) {
                 [self.dataArr addObjectsFromArray:httpRequestResult.Data];
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
+            }else {
+                [CommonUtil showHUDWithTitle:httpRequestResult.Message];
             }
+            
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
-            if(httpRequestResult.IsHttpSuccess){
-                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+            //获取健管师Id
+            if (httpRequestResult.IsSuccess) {
+                
+            }else {
+                
             }
         } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
-            if(httpRequestResult.IsHttpSuccess){
-                [[DoctorManager shareInstance] setDoctorList:httpRequestResult.Data];
+            
+            if (httpRequestResult.IsSuccess) {
+                
+            }else {
+            
             }
         } allFinishCallback:^(BOOL isAllSuccess) {
             
@@ -450,9 +461,9 @@
 
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
-//    ReportListViewController *reportList = [[ReportListViewController alloc] init];
-//    
-//    [self.navigationController pushViewController:reportList animated:YES];
+    ReportListViewController *reportList = [[ReportListViewController alloc] init];
+    
+    [self.navigationController pushViewController:reportList animated:YES];
 }
 
 //语音识别按钮被点击
