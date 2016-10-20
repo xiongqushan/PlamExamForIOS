@@ -17,14 +17,25 @@
 //发布  http://hz3bn04d2:8070/api/V3/
 
 //HZ.WebAPI
-#define Distribution 1  //远程1   本机0
+#define Distribution 3
 
-#if Distribution==1
+#if Distribution==1 //gao debugger
 #define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
-#else
+#endif
+#if Distribution==2 //gao publish
 #define BaseURLStr @"http://hz3bn04d2/ZSTJ/api/V3/"
+#define HttpBasicKey @"HZ_PME_API_V1"
+#define ApiSecret @"1!2@3#4$5%6^"
+#endif
+#if Distribution==3 //liu publish
+#define BaseURLStr @"http://hzdjl89j92:9955/api/V3/"
+#define HttpBasicKey @"HZ_PME_API_V1"
+#define ApiSecret @"1!2@3#4$5%6^"
+#endif
+#if Distribution==4 //liu debugger
+#define BaseURLStr @"http://hzdjl89j92:25007/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif
