@@ -48,6 +48,7 @@
 }
 
 +(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode withMobile:(NSString*)mobile callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack{
+    
     NSDictionary *params=@{@"WorkNo":workNo,@"CheckUnitCode":checkUnitCode};
     [HttpHelper Post:kReportDetailUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
         HttpRequestResult<ReportInfo *> *result = httpRequestResult;

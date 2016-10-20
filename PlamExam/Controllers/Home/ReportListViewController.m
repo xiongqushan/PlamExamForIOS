@@ -13,6 +13,7 @@
 #import "CommonUtil.h"
 #import "ReportSimple.h"
 #import "AddReportViewController.h"
+#import "ReportDetailViewController.h"
 
 @interface ReportListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -54,14 +55,33 @@
         if (!errorMessage) {
             NSLog(@"——————————success");
            // [self.dataArr addObjectsFromArray:httpRequestResult.Data];
-            self.dataArr = [NSMutableArray arrayWithArray:httpRequestResult.Data];
-            [self.tableView reloadData];
-            
+            if (httpRequestResult.Data.count == 0) {
+                //显示添加体检报告界面
+                [self showAddReportView];
+                
+            }else {
+                self.dataArr = [NSMutableArray arrayWithArray:httpRequestResult.Data];
+                [self.tableView reloadData];
+            }
+
         }else {
             [CommonUtil showHUDWithTitle:errorMessage];
         }
 
     }];
+}
+
+- (void)showAddReportView {
+    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
+    view.backgroundColor = [UIColor whiteColor];
+    
+    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    addBtn.center = view.center;
+    [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
+    [addBtn setBackgroundColor:[UIColor grayColor]];
+    [view addSubview:addBtn];
+    
+    [self.view addSubview:view];
 }
 
 - (void) setUpTableView {

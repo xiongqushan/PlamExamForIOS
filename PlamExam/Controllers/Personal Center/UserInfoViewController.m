@@ -28,25 +28,21 @@
 - (void)createItemsData {
     
     SettingItem *set = [SettingItem itemWithTitle:nil];
-    GroupItem *group0 = [[GroupItem alloc] init];
-    group0.items = @[set];
-    [self.dataArr addObject:group0];
-    
     LabelItem *label = [LabelItem itemWithTitle:@"姓名" subTitle:@"倩倩" withImage:nil];
     LabelItem *label2 = [LabelItem itemWithTitle:@"手机号" subTitle:@"15601818531" withImage:nil];
     GroupItem *group = [[GroupItem alloc] init];
-    group.items = @[label,label2];
+    group.items = @[set,label,label2];
     [self.dataArr addObject:group];
     
-    ArrowItem *arrow = [ArrowItem itemWithTitle:@"实名认证"];
+    LabelItem *label3 = [LabelItem itemWithTitle:@"实名认证" subTitle:@"未认证" withImage:nil];
     GroupItem *group2 = [[GroupItem alloc] init];
-    group2.items = @[arrow];
+    group2.items = @[label3];
     [self.dataArr addObject:group2];
     
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
+    if (indexPath.section == 0 && indexPath.row == 0) {
         static NSString *cellId = @"IconCell";
         IconCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
         if (!cell) {
@@ -65,11 +61,12 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    if (indexPath.section == 0) {
-        return 70;
-    }else {
-        return 44;
-    }
+//    if (indexPath.section == 0) {
+//        return 50;
+//    }else {
+//        return 44;
+//    }
+    return 50;
 }
 
 - (void)didReceiveMemoryWarning {

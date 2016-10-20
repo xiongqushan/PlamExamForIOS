@@ -10,6 +10,8 @@
 #import "UserManager.h"
 #import "LoginViewController.h"
 #import "BaseSetting.h"
+#import "User.h"
+#import "UserManager.h"
 
 @interface SystemSettingViewController ()
 
@@ -25,12 +27,19 @@
 }
 
 - (void) createItemData {
+    User *user = [[UserManager shareInstance] getUserInfo];
+    
+    LabelItem *label0 = [LabelItem itemWithTitle:@"手机号码" subTitle:user.mobile withImage:nil];
+    GroupItem *group0 = [[GroupItem alloc] init];
+    group0.items = @[label0];
+    [self.dataArr addObject:group0];
+    
     ArrowItem *arrow1 = [ArrowItem itemWithTitle:@"关于我们"];
     ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"意见反馈"];
     ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新"];
-    GroupItem *group = [[GroupItem alloc] init];
-    group.items = @[arrow1,arrow2,arrow3];
-    [self.dataArr addObject:group];
+    GroupItem *group1 = [[GroupItem alloc] init];
+    group1.items = @[arrow1,arrow2,arrow3];
+    [self.dataArr addObject:group1];
     
     ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明"];
     LabelItem *label = [LabelItem itemWithTitle:@"清理缓存"];

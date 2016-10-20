@@ -30,7 +30,7 @@
 
 - (UIImageView *)arrowView {
     if (_arrowView == nil) {
-        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"common_icon_arrow"]];
+        UIImageView *arrowView = [[UIImageView alloc] initWithImage:[UIImage imageNamed:@"push"]];
         _arrowView = arrowView;
     }
     return _arrowView;
@@ -73,9 +73,13 @@
 }
 
 - (void)setUpData {
+    self.textLabel.textColor = kSetRGBColor(51, 51, 51);
+    self.detailTextLabel.textColor = kSetRGBColor(153, 153, 153);
+    
     self.textLabel.text = _item.title;
    // self.textLabel.font = [UIFont systemFontOfSize:14];
     self.detailTextLabel.text = _item.subTitle;
+    
     self.imageView.image = _item.titleImage;
     
 }

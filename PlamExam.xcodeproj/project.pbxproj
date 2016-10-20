@@ -67,6 +67,7 @@
 		A93C60E01DB4CEA40024180F /* UserTextCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60DE1DB4CEA40024180F /* UserTextCell.xib */; };
 		A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60E21DB4D3980024180F /* InformationViewController.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
+		A941E5201DB8A28200ABB050 /* ReportDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A941E51F1DB8A28200ABB050 /* ReportDetailViewController.m */; };
 		A942CEB51DAB44140049805A /* Foundation+Log.m in Sources */ = {isa = PBXBuildFile; fileRef = A942CEB41DAB44140049805A /* Foundation+Log.m */; };
 		A9610D481DB109D60062CE93 /* ZSType.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D471DB109D60062CE93 /* ZSType.m */; };
 		A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D761DB491100062CE93 /* DoctorInfoView.m */; };
@@ -216,6 +217,8 @@
 		A93C60E21DB4D3980024180F /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A941E51E1DB8A28200ABB050 /* ReportDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportDetailViewController.h; sourceTree = "<group>"; };
+		A941E51F1DB8A28200ABB050 /* ReportDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportDetailViewController.m; sourceTree = "<group>"; };
 		A942CEB41DAB44140049805A /* Foundation+Log.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "Foundation+Log.m"; sourceTree = "<group>"; };
 		A9610D461DB109D60062CE93 /* ZSType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSType.h; sourceTree = "<group>"; };
 		A9610D471DB109D60062CE93 /* ZSType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSType.m; sourceTree = "<group>"; };
@@ -395,6 +398,8 @@
 				A9ED1EFE1DB86D82003C1F00 /* AddReportViewController.h */,
 				A9ED1EFF1DB86D82003C1F00 /* AddReportViewController.m */,
 				A9ED1F001DB86D82003C1F00 /* AddReportViewController.xib */,
+				A941E51E1DB8A28200ABB050 /* ReportDetailViewController.h */,
+				A941E51F1DB8A28200ABB050 /* ReportDetailViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -1004,6 +1009,7 @@
 				A9C92D0C1DB6036600034DA5 /* AdScrollerViewData.m in Sources */,
 				A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */,
 				A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */,
+				A941E5201DB8A28200ABB050 /* ReportDetailViewController.m in Sources */,
 				A935494F1DAF72140077E85C /* ArrowItem.m in Sources */,
 				A9C92D3F1DB797C500034DA5 /* Notice.m in Sources */,
 				A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */,
