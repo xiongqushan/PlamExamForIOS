@@ -12,6 +12,7 @@
 		A5A01E9C1DB79BA4006C64E0 /* ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */; };
 		A5A01E9F1DB7A04E006C64E0 /* ReportBatch.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */; };
 		A5A01EA31DB7A4AF006C64E0 /* ReportInfo.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */; };
+		A5A01EA61DB86945006C64E0 /* ReportManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EA51DB86945006C64E0 /* ReportManager.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
@@ -123,6 +124,8 @@
 		A5A01E9E1DB7A04E006C64E0 /* ReportBatch.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportBatch.m; sourceTree = "<group>"; };
 		A5A01EA11DB7A4AF006C64E0 /* ReportInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportInfo.h; sourceTree = "<group>"; };
 		A5A01EA21DB7A4AF006C64E0 /* ReportInfo.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportInfo.m; sourceTree = "<group>"; };
+		A5A01EA41DB86945006C64E0 /* ReportManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportManager.h; sourceTree = "<group>"; };
+		A5A01EA51DB86945006C64E0 /* ReportManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportManager.m; sourceTree = "<group>"; };
 		A5C66BDC1DAD40240049B275 /* NSString+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSString+Util.h"; sourceTree = "<group>"; };
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
@@ -497,6 +500,8 @@
 				A9C92D121DB6277A00034DA5 /* HomeAdManager.m */,
 				A5A01E911DB73FD4006C64E0 /* DoctorManager.h */,
 				A5A01E921DB73FD4006C64E0 /* DoctorManager.m */,
+				A5A01EA41DB86945006C64E0 /* ReportManager.h */,
+				A5A01EA51DB86945006C64E0 /* ReportManager.m */,
 			);
 			path = Manager;
 			sourceTree = "<group>";
@@ -978,6 +983,7 @@
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
 				A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
+				A5A01EA61DB86945006C64E0 /* ReportManager.m in Sources */,
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,
 				A9C92D041DB5ED9500034DA5 /* CAAnimation+WAnimation.m in Sources */,
 				A93549541DAF72140077E85C /* SwitchItem.m in Sources */,

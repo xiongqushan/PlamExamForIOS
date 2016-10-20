@@ -12,6 +12,7 @@
 
 #define kReportListUrl @"Report/Reports"
 #define kAddReportUrl @"Report/Add"
+#define kReportDetailUrl @"Report/ReportInfo"
 @implementation ReportModel
 
 +(void)requestReportList:(NSString*)accountId callBackBlock:(void (^)(HttpRequestResult<NSMutableArray<ReportSimple*> *> *httpRequestResult))callBack{
@@ -46,5 +47,16 @@
     }];
 }
 
++(void)requestDetail:(NSString*)workNo withName:(NSString*)checkUnitCode withMobile:(NSString*)mobile callBackBlock:(void (^)(HttpRequestResult<ReportInfo *> *httpRequestResult))callBack{
+    NSDictionary *params=@{@"WorkNo":workNo,@"CheckUnitCode":checkUnitCode};
+    [HttpHelper Post:kReportDetailUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
+        HttpRequestResult<ReportInfo *> *result = httpRequestResult;
+        if(httpRequestResult.IsHttpSuccess){
+            result.Data = [ReportInfo yy_modelWithJSON:result.HttpResult.Result];
+        }
+        callBack(result);
+        
+    }];
+}
 
 @end

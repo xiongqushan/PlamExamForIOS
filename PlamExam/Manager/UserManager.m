@@ -22,40 +22,40 @@ static UserManager *instance = nil;
     return instance;
 }
 
-- (void)saveUserInfo:(User *)user {
-    instance.userInfo=user;
+- (void)setUserInfo:(User *)user {
+    instance.user=user;
     
-    NSDictionary *dict = [instance.userInfo yy_modelToJSONObject];
+    NSDictionary *dict = [instance.user yy_modelToJSONObject];
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults setObject:dict forKey:kUserInfoKey];
     [userDefaults synchronize];
 }
 
 - (void)clearUserInfo {
-    instance.userInfo=nil;
+    instance.user=nil;
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     [userDefaults removeObjectForKey:kUserInfoKey];
     [userDefaults synchronize];
 }
 
 -(User*)getUserInfo{
-    if(instance.userInfo){
-        return instance.userInfo;
+    if(instance.user){
+        return instance.user;
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
     NSString * str = [userDefaults objectForKey:kUserInfoKey];
     [userDefaults synchronize];
     if (str) {
-        instance.userInfo=[User yy_modelWithJSON:str];
+        instance.user=[User yy_modelWithJSON:str];
     }
     else{
-        instance.userInfo=nil;
+        instance.user=nil;
     }
-    return instance.userInfo;
+    return instance.user;
 }
 
 - (BOOL)isLogin {
-    if(instance.userInfo){
+    if(instance.user){
         return true;
     }
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
@@ -63,7 +63,7 @@ static UserManager *instance = nil;
     [userDefaults synchronize];
     
     if (str) {
-        instance.userInfo=[User yy_modelWithJSON:str];
+        instance.user=[User yy_modelWithJSON:str];
         return YES;
     }else {
         return NO;
