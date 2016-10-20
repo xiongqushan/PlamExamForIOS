@@ -76,7 +76,7 @@
             if (httpResult.HttpResult.Code == 1) {
                 
                 User *user = httpResult.Data;
-                [[UserManager shareInstance] saveUserInfo:user];
+                [[UserManager shareInstance] setUserInfo:user];
                 
                 HZTabBarController *tabBar = [[HZTabBarController alloc] init];
                 [self presentViewController:tabBar animated:NO completion:nil];
