@@ -18,7 +18,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    ReportView *reportView = [[ReportView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, kScreenSizeHeight - 64 - 40)];
+    ReportView *reportView = [[ReportView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, kScreenSizeHeight - 64 - 55)];
     reportView.dataArr = self.dataArr;
     [self.view addSubview:reportView];
 }

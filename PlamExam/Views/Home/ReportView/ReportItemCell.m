@@ -22,10 +22,21 @@
 }
 
 - (void)showDataWithModel:(CheckResult *)result {
-    self.titleLabel.text = result.CheckIndexName;
-    self.valueLabel.text = result.ResultValue;
-    self.refLabel.text = result.TextRef;
-    self.unitLabel.text = result.Unit;
+    
+    if (result.LowValueRef.length && result.Unit.length) {
+        self.valueLabel.hidden = NO;
+        self.unitLabel.hidden = NO;
+        self.titleLabel.text = result.CheckIndexName;
+        self.valueLabel.text = result.ResultValue;
+        self.refLabel.text = [NSString stringWithFormat:@"参考范围:%@",result.LowValueRef];
+        self.unitLabel.text = [NSString stringWithFormat:@"单位:%@",result.Unit];
+    }else {
+        self.valueLabel.hidden = YES;
+        self.unitLabel.hidden = YES;
+        self.titleLabel.text = result.CheckIndexName;
+        self.refLabel.text = result.ResultValue;
+    }
+    
 }
 
 @end

@@ -10,4 +10,6 @@
 
 @interface ReportExceptionsViewController : BaseViewController
 
+@property (nonatomic, strong) NSMutableArray *dataArr;
+
 @end

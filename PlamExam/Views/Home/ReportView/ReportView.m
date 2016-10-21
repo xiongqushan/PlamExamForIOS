@@ -11,6 +11,7 @@
 #import "ReportInfo.h"
 #import "UIColor+Utils.h"
 #import "UIView+Utils.h"
+#import "SummaryFormatCell.h"
 
 #define kleftViewWidth 150
 
@@ -64,12 +65,14 @@
 }
 
 - (void)setUpTableView {
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
+  //  self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height)];
    // self.tableView.separatorStyle = UITableViewCellSelectionStyleNone;
+    self.tableView = [[UITableView alloc] initWithFrame:self.bounds style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self addSubview:self.tableView];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReportItemCell" bundle:nil] forCellReuseIdentifier:@"ReportItemCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"SummaryFormatCell" bundle:nil] forCellReuseIdentifier:@"SummaryFormatCell"];
     
 //    self.tableView.backgroundColor = [UIColor viewBackgroundColor];
 //    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewClick)];
@@ -125,6 +128,7 @@
 //}
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
+
 - (NSInteger)numberOfSectionsInTableView:(UITableView *)tableView {
     
     return self.dataArr.count;
@@ -133,15 +137,25 @@
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
     CheckItem *items = self.dataArr[section];
+    
+//    if (items.SummaryFormat) {
+        return items.CheckResults.count + 1;
+//    }
     return items.CheckResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    
-    ReportItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportItemCell"];
     CheckItem *items = self.dataArr[indexPath.section];
-    CheckResult *result = items.CheckResults[indexPath.row];
+
+    if (items.CheckResults.count == indexPath.row) {
+        SummaryFormatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SummaryFormatCell"];
+      //  cell.summaryLabel.text = items.SummaryFormat;
+        cell.summaryLabel.text = @"小结:体重指数偏低  体重指数偏低  体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低";
+        return cell;
+    }
     
+    CheckResult *result = items.CheckResults[indexPath.row];
+    ReportItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportItemCell"];
     [cell showDataWithModel:result];
     return cell;
 
@@ -149,26 +163,46 @@
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    return 55;
+    CheckItem *items = self.dataArr[indexPath.section];
+    if (items.CheckResults.count == indexPath.row) {
+//        CGFloat cellHeight  = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:items.SummaryFormat maxWidth:kScreenSizeWidth - 30];
+        CGFloat cellHeight  = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:@"小结:体重指数偏低  体重指数偏低  体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低" maxWidth:kScreenSizeWidth - 30];
+        return cellHeight + 18;
+    }
+    
+    CGFloat valueLabelH = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:14] title:items.CheckResults[indexPath.row].ResultValue maxWidth:kScreenSizeWidth - 30];
+    CGFloat titleLableH = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:items.CheckResults[indexPath.row].CheckIndexName maxWidth:kScreenSizeWidth - 30];
+    
+    return 55 - 35 + valueLabelH + titleLableH;
 }
 
+//创建分区头视图
 - (UIView *)tableView:(UITableView *)tableView viewForHeaderInSection:(NSInteger)section {
     
     CheckItem *item = self.dataArr[section];
     
-    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, 40)];
-    headerView.backgroundColor = [UIColor lightGrayColor];
+    UIView *headerView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, 44)];
+    headerView.backgroundColor = kSetRGBColor(123, 191, 247);
     
-    UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(15, 5, 200, 30)];
-    label.text = item.CheckItemName;
-    [headerView addSubview:label];
+    UILabel *imageLabel = [[UILabel alloc] initWithFrame:CGRectMake(15, 13, 3, 18)];
+    imageLabel.backgroundColor = [UIColor whiteColor];
+    [headerView addSubview:imageLabel];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(25, 7, kScreenSizeWidth - 65, 30)];
+    titleLabel.text = item.CheckItemName;
+    titleLabel.textColor = [UIColor whiteColor];
+    titleLabel.font = [UIFont systemFontOfSize:17];
+    [headerView addSubview:titleLabel];
+    
+    UIImageView *rightImageView = [[UIImageView alloc] initWithFrame:CGRectMake(kScreenSizeWidth - 34, 12, 20, 20)];
+    rightImageView.image = [UIImage imageNamed:@"menu"];
+    [headerView addSubview:rightImageView];
     
     return headerView;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
-    return 40;
+    return 44;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -12,6 +12,7 @@
 #import "ZSType.h"
 #import "HttpRequestResult.h"
 #import "Foundation+Log.m"
+#import "BaseViewController.h"
 
 //本机  http://hz3bn04d2/ZSTJ/api/V3/
 //发布  http://hz3bn04d2:8070/api/V3/
@@ -39,8 +40,6 @@
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif
-
-#import "BaseViewController.h"
 
 //常用宏定义
 #define kScreenSizeWidth [UIScreen mainScreen].bounds.size.width

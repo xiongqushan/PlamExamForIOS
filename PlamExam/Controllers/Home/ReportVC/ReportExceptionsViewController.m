@@ -8,7 +8,9 @@
 
 #import "ReportExceptionsViewController.h"
 
-@interface ReportExceptionsViewController ()
+#define kSelectedItemViewH 44 + 30
+
+@interface ReportExceptionsViewController ()///<UITableViewDelegate, UITableViewDataSource>
 
 @end
 
@@ -16,22 +18,23 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    // Do any additional setup after loading the view.
+    
 }
+
+//- (void)setUpTableView {
+//    UITableView *tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, kScreenSizeHeight - 64 - 50 - kSelectedItemViewH) style:UITableViewStylePlain];
+//    tableView.delegate = self;
+//    tableView.dataSource = self;
+//    [self.view addSubview:tableView];
+//}
+//
+//- (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
+//    
+//}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];
     // Dispose of any resources that can be recreated.
 }
-
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
 
 @end
