@@ -40,7 +40,6 @@
 @end
 
 @implementation HomeViewController
-
 - (void)viewDidLoad {
     [super viewDidLoad];
     
@@ -51,6 +50,8 @@
     
     [self loadAdScrollViewData];
     [self setUpTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
 }
 
 - (UIView *)tableHeaderView {
@@ -92,25 +93,43 @@
 - (void)loadAdScrollViewData {
     
     User* user=[[UserManager shareInstance] getUserInfo];
-    
-    [HomeModel requestADAndNotice:user.accountId withDepartId:@"123" requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
-        
-        NSString *errorMessage = [CommonUtil networkIsSuccess:httpRequestResult];
-        if (!errorMessage) {
+    self.adDataArr=[NSMutableArray array];
+    [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        if(httpRequestResult.IsSuccess){
             if (httpRequestResult.Data.count != 0) {
-                
                 [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
                 [self setUpHeadAdScrollViewIsInternet:YES];
-            }else {
+            }
+            else {
                 [self setUpHeadAdScrollViewIsInternet:NO];
             }
-        }else {
-            [CommonUtil showHUDWithTitle:errorMessage];
+        }
+        else{
+            [self setUpHeadAdScrollViewIsInternet:NO];
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
         
     } allFinishCallback:^(BOOL isAllSuccess) {
         
+    }];
+}
+
+-(void) loadADListByNotification:(NSNotification*)notification{
+    User* user=[[UserManager shareInstance] getUserInfo];
+    self.adDataArr=[NSMutableArray array];
+    [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        if(httpRequestResult.IsSuccess){
+            if (httpRequestResult.Data.count != 0) {
+                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
+                [self setUpHeadAdScrollViewIsInternet:YES];
+            }
+            else {
+                [self setUpHeadAdScrollViewIsInternet:NO];
+            }
+        }
+        else{
+            [self setUpHeadAdScrollViewIsInternet:NO];
+        }
     }];
 }
 
@@ -286,5 +305,7 @@
     // Dispose of any resources that can be recreated.
 }
 
-
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 @end

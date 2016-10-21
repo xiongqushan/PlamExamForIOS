@@ -17,9 +17,26 @@
 
 @implementation HomeModel
 
++(void)requestADList:(NSString*)departId callBackBlock:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))callBack{
+    NSDictionary *params=@{@"DepartCode":departId};
+    [HttpHelper Post:kBannersUrl withData:params withDelegate:^(HttpRequestResult *httpRequestResult) {
+        HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *result = httpRequestResult;
+        if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
+            NSMutableArray<AdScrollerViewData*> *dataArr = [NSMutableArray array];
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+            for (NSDictionary *dict in arr) {
+                AdScrollerViewData *item = [AdScrollerViewData yy_modelWithDictionary:dict];
+                [dataArr addObject:item];
+            }
+            result.Data=dataArr;
+        }
+        callBack(result);
+    }];
+}
+
 + (void)requestADAndNotice:(NSString*)accountId withDepartId:(NSString *)departId requestADcallBack:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))requestADcallBack requestNoticeCallback:(void (^)(HttpRequestResult<NSMutableArray<Notice*> *> *httpRequestResult))requestNoticeCallback allFinishCallback:(void (^)(BOOL isAllSuccess))allFinishCallBack{
     
-    NSDictionary *param = @{@"departId":departId};
+    NSDictionary *param = @{@"DepartCode":departId};
     
     [HttpHelper Post:kBannersUrl withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
