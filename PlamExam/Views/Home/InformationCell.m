@@ -7,6 +7,7 @@
 //
 
 #import "InformationCell.h"
+#import <UIImageView+WebCache.h>
 
 @implementation InformationCell
 
@@ -22,4 +23,10 @@
     // Configure the view for the selected state
 }
 
+- (void)showDataWithModel:(NewsSimple *)model {
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:model.imgFormat] placeholderImage:[UIImage imageNamed:@"AD_default"]];
+    self.titleLabel.text = model.title;
+    self.dateLabel.text = model.timeFormat;
+
+}
 @end

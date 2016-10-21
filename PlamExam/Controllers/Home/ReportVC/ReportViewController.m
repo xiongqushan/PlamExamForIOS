@@ -40,8 +40,10 @@
     
     [ReportModel requestDetail:self.workNo withName:self.checkUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess) {
-            
+            [self.unusualDataArr addObjectsFromArray:httpRequestResult.Data.GeneralAdvices];
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
+            [self.summaryDataArr addObjectsFromArray:httpRequestResult.Data.GeneralSummarys];
+            
             [self setUpBaseUI];
         }else {
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
@@ -54,14 +56,15 @@
     NSArray *titleArr = @[@"报告异常",@"报告详情",@"异常解读"];
     
     ReportExceptionsViewController *exceptions = [[ReportExceptionsViewController alloc] init];
+    exceptions.dataArr = self.unusualDataArr;
 
     ReportDetailViewController *detail = [[ReportDetailViewController alloc] init];
     detail.dataArr = self.reportDetailDataArr;
     
     ReportAnalyViewController *analy = [[ReportAnalyViewController alloc] init];
+    analy.dataArr = self.summaryDataArr;
     
     HZSliderView *slider = [[HZSliderView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64) titleArr:titleArr controllerNameArr:@[exceptions,detail,analy]];
-    slider.titleFont = [UIFont systemFontOfSize:16];
     [self.view addSubview:slider];
 }
 

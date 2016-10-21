@@ -10,4 +10,6 @@
 
 @interface ReportAnalyViewController : BaseViewController
 
+@property (nonatomic, strong) NSMutableArray *dataArr;
+
 @end

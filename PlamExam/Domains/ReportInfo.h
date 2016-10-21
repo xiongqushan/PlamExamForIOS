@@ -22,6 +22,8 @@
 @property(nonatomic,strong) NSString *LowValueRef;
 @property(nonatomic,strong) NSString *HighValueRef;
 @property(nonatomic,assign) NSInteger *ShowIndex;
+@property(nonatomic,assign) BOOL IsAbnormalForamt;
+@property(nonatomic,strong) NSString *ValueRefFormat;
 @end
 
 @interface CheckItem : NSObject
@@ -31,6 +33,7 @@
 @property(nonatomic,strong) NSString *SalePrice;
 @property(nonatomic,assign) NSInteger CheckStateID;
 @property(nonatomic,strong) NSString *CheckUserName;
+@property(nonatomic,strong) NSString *SummaryFormat;
 @property(nonatomic,strong) NSArray<CheckResult*> *CheckResults;
 @end
 

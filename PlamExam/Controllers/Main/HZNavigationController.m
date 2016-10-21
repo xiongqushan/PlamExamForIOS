@@ -23,24 +23,14 @@
     if (self.childViewControllers.count > 0) {//push进来的不是第一个控制器
         
         UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        [button setImage:[UIImage imageNamed:@"navigationbar_pic_back_icon"] forState:UIControlStateNormal];
-        button.frame = CGRectMake(0, 0, 30, 30);
+        [button setImage:[UIImage imageNamed:@"navigation_back"] forState:UIControlStateNormal];
+        button.frame = CGRectMake(0, 0, 22, 38);
         //设置按钮上图片的偏移量
         button.imageEdgeInsets = UIEdgeInsetsMake(0, -5, 0, 0);
         //设置图片左对齐
         button.contentHorizontalAlignment = UIControlContentHorizontalAlignmentLeft;
         [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
         viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:button];
-        
-        //        UIButton *button = [UIButton buttonWithType:UIButtonTypeCustom];
-        //        [button setImage:[UIImage imageNamed:@"navigationbar_pic_back_icon"] forState:UIControlStateNormal];
-        //        [button sizeToFit];
-        //        button.imageEdgeInsets = UIEdgeInsetsMake(0, -10, 0, 0);
-        //        [button addTarget:self action:@selector(back) forControlEvents:UIControlEventTouchUpInside];
-        //        UIView *containView = [[UIView alloc] initWithFrame:button.bounds];
-        //        [containView addSubview:button];
-        //        //containView.backgroundColor = [UIColor redColor];
-        //        viewController.navigationItem.leftBarButtonItem = [[UIBarButtonItem alloc] initWithCustomView:containView];
         
         //隐藏tabBar
         viewController.hidesBottomBarWhenPushed = YES;

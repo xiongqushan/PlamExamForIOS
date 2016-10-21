@@ -10,6 +10,8 @@
 #import <WebKit/WebKit.h>
 #import "UIColor+Utils.h"
 #import "ZLCWebView.h"
+#import "NewsModel.h"
+#import "NewsInfo.h"
 
 @interface InformationViewController ()<WKNavigationDelegate,WKUIDelegate>
 
@@ -23,7 +25,19 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    [self loadData];
     [self setUpWebView];
+}
+
+- (void)loadData {
+    
+    [NewsModel requestDetail:self.Id callBackBlock:^(HttpRequestResult<NewsInfo *> *httpRequestResult) {
+        if (httpRequestResult.IsSuccess) {
+            
+        }else {
+        
+        }
+    }];
 }
 
 - (void)setUpWebView {

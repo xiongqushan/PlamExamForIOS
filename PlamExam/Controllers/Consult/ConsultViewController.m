@@ -8,41 +8,41 @@
 
 #import "ConsultViewController.h"
 #import "GFWaterView.h"
-#import "HZRecognizer.h"
-#import "HZRecognizerView.h"
+#import "ConsultDetailViewController.h"
 
-
-#define BXInputH (kScreenSizeWidth > 375 ? 210 : 200)
 @interface ConsultViewController ()
 
 @end
 
 @implementation ConsultViewController
-{
-    UITextView *_textView;
-    HZRecognizerView *_recognizer;
-    BOOL _isRecogning;
-}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     
+    [self setUpSomeUI];
 }
 
-- (void)btnClick {
+- (void)setUpSomeUI {
+    UIButton *consultBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+    consultBtn.frame = CGRectMake((kScreenSizeWidth - 122)/2, 150 + 64, 122, 122);
+    [consultBtn setImage:[UIImage imageNamed:@"consult_btn"] forState:UIControlStateNormal];
+    [consultBtn addTarget:self action:@selector(goConsult:) forControlEvents:UIControlEventTouchUpInside];
+    [self.view addSubview:consultBtn];
     
-    _isRecogning = !_isRecogning;
-    
-    if (_isRecogning) {
-        
-        [_recognizer starRecognizerResult:^(NSString *result, NSString *errorDesc) {
-            _textView.text = result;
-        }];
-    }else {
-        [_recognizer stopRecognizer];
-    }
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kScreenSizeHeight - 129 - 46, kScreenSizeWidth, 50)];
+    titleLabel.text = @"1位健康管理师将为您提供健康咨询\nloading...";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.numberOfLines = 0;
+    titleLabel.textColor = kSetRGBColor(51, 51, 51);
+    [self.view addSubview:titleLabel];
 }
 
+- (void)goConsult:(UIButton *)btn {
+    
+    ConsultDetailViewController *consult = [[ConsultDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:consult animated:YES];
+}
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

@@ -13,6 +13,7 @@
 #import "ZSType.h"
 #import "HttpRequestResult.h"
 #import "Foundation+Log.m"
+#import "BaseViewController.h"
 
 //HZ.WebAPI
 #define Distribution 4
