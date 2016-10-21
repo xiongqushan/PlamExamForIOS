@@ -9,7 +9,7 @@
 #import "HomeViewController.h"
 #import "UIColor+Utils.h"
 #import "InformationCell.h"
-#import "ConsulationViewController.h"
+#import "ConsultDetailViewController.h"
 #import "InformationViewController.h"
 #import "WZLBadgeImport.h"
 #import "HomeModel.h"
@@ -21,6 +21,8 @@
 #import "User.h"
 #import "UserManager.h"
 #import "Notice.h"
+#import "NewsModel.h"
+#import "NewsSimple.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -36,23 +38,11 @@
 @property (nonatomic, strong) UIView *adView;
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSMutableArray *adDataArr;
+@property (nonatomic, strong) NSMutableArray *newsDataArr;
 
 @end
 
 @implementation HomeViewController
-- (void)viewDidLoad {
-    [super viewDidLoad];
-    
-    //设置badgeView
-    UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
-    tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
-    [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
-    
-    [self loadAdScrollViewData];
-    [self setUpTableView];
-    
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
-}
 
 - (UIView *)tableHeaderView {
     
@@ -76,6 +66,22 @@
     return _adView;
 }
 
+- (void)viewDidLoad {
+    [super viewDidLoad];
+    
+    //设置badgeView
+    UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
+    tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
+    [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
+    
+    [self loadAdScrollViewData];
+    [self loadNewsData];
+    [self setUpTableView];
+    
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
+}
+
+#pragma mark -- 设置UI相关
 - (void)setUpTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -84,10 +90,49 @@
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;
     self.tableView.tableHeaderView = self.tableHeaderView;
-    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
+}
+
+- (void)setUpHeadAdScrollViewIsInternet:(BOOL)isInternet {
+    
+    if (isInternet) {
+        //网络请求
+        NSMutableArray *images = [NSMutableArray array];
+        for (AdScrollerViewData *data in self.adDataArr) {
+            [images addObject:data.ImageUrl];
+        }
+        
+        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
+        imageView.pauseTime = 3.0;
+        imageView.currentPageColor = [UIColor whiteColor];
+        imageView.delegate = self;
+        [self.adView addSubview:imageView];
+        
+    }else {
+        //本地请求
+        NSArray *images = @[@"AD_default"];
+        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageNamesArray:images];
+        imageView.pauseTime = 3.0;
+        imageView.currentPageColor = [UIColor whiteColor];
+        imageView.delegate = self;
+        [self.adView addSubview:imageView];
+    }
+}
+
+#pragma mark -- 网络请求相关
+- (void)loadNewsData {
+    self.newsDataArr = [NSMutableArray array];
+    
+    [NewsModel requestList:1 PageSize:4 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
+        if (httpRequestResult.IsSuccess) {
+            [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
+            [self.tableView reloadData];
+        }else {
+            [CommonUtil showHUDWithTitle:httpRequestResult.Message];
+        }
+    }];
 }
 
 - (void)loadAdScrollViewData {
@@ -103,8 +148,8 @@
             else {
                 [self setUpHeadAdScrollViewIsInternet:NO];
             }
-        }
-        else{
+            
+        }else{
             [self setUpHeadAdScrollViewIsInternet:NO];
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
@@ -133,32 +178,6 @@
     }];
 }
 
-- (void)setUpHeadAdScrollViewIsInternet:(BOOL)isInternet {
-    
-    if (isInternet) {
-        //网络请求
-        NSMutableArray *images = [NSMutableArray array];
-        for (AdScrollerViewData *data in self.adDataArr) {
-            [images addObject:data.ImageUrl];
-        }
-
-        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
-        imageView.pauseTime = 3.0;
-        imageView.currentPageColor = [UIColor whiteColor];
-        imageView.delegate = self;
-        [self.adView addSubview:imageView];
-        
-    }else {
-        //本地请求
-        NSArray *images = @[@"未加载图1"];
-        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageNamesArray:images];
-        imageView.pauseTime = 3.0;
-        imageView.currentPageColor = [UIColor whiteColor];
-        imageView.delegate = self;
-        [self.adView addSubview:imageView];
-    }
-}
-
 #pragma mark -- SZCirculationImageViewDelegate
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
@@ -171,27 +190,29 @@
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
-    return 10;
+    return self.newsDataArr.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     
+    NewsSimple *news = self.newsDataArr[indexPath.row];
     InformationCell *cell = [tableView dequeueReusableCellWithIdentifier:@"InformationCell"];
 
-    cell.titleLabel.text = @"风口上的榜单";
-    cell.contentLabel.text = @"盘点苹果精选的七大医疗领域89款明星APP";
+    [cell showDataWithModel:news];
+    
     return cell;
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 75;
+    return 89;
 }
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
+    NewsSimple *news = self.newsDataArr[indexPath.row];
     InformationViewController *information = [[InformationViewController alloc] init];
-    
+    information.Id = news.Id;
     [self.navigationController pushViewController:information animated:YES];
 }
 
@@ -200,6 +221,7 @@
     CGFloat sectionViewH = kSectionItemH + kItemSpace*2 + kInformationViewH;
     
     NSArray *arr = @[@"体检报告",@"健康咨询"];
+    NSArray *imageArr = @[@"report",@"consulation"];
     UIView *sectionHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, kScreenSizeWidth, sectionViewH)];
     sectionHeaderView.backgroundColor = kBackColor;
     for (NSInteger i = 0; i < 2; i++) {
@@ -210,7 +232,7 @@
         [view addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(itemTap:)]];
         
         UIImageView *imageView = [[UIImageView alloc] initWithFrame:CGRectMake(view.bounds.size.width/2.0 - 24, 30, 48, 48)];
-        imageView.image = [UIImage imageNamed:arr[i]];
+        imageView.image = [UIImage imageNamed:imageArr[i]];
         [view addSubview:imageView];
         
         UILabel *label = [[UILabel alloc] initWithFrame:CGRectMake(view.bounds.size.width/2.0 - 50, 30 + 48 +9, 100, 21)];
@@ -243,7 +265,7 @@
     
     UIButton *informationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     informationBtn.frame = CGRectMake(informationView.bounds.size.width - 15 - 16, 10, 16, 20);
-    [informationBtn setImage:[UIImage imageNamed:@"资讯更多"] forState:UIControlStateNormal];
+    [informationBtn setImage:[UIImage imageNamed:@"newsMore"] forState:UIControlStateNormal];
     [informationView addSubview:informationBtn];
     
     [sectionHeaderView addSubview:informationView];
@@ -270,7 +292,7 @@
         [self.navigationController pushViewController:reportList animated:YES];
     }else if (tempView.tag == kSectionItemTag + 1) {
         //健康咨询
-        ConsulationViewController *consulation = [[ConsulationViewController alloc] init];
+        ConsultDetailViewController *consulation = [[ConsultDetailViewController alloc] init];
         [self.navigationController pushViewController:consulation animated:YES];
     }
 }

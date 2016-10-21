@@ -136,21 +136,22 @@
 
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
 
+    //如果小结有数据 多插入一行cell
     CheckItem *items = self.dataArr[section];
-    
-//    if (items.SummaryFormat) {
+    if (items.SummaryFormat) {
         return items.CheckResults.count + 1;
-//    }
+    }
+    
     return items.CheckResults.count;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
     CheckItem *items = self.dataArr[indexPath.section];
 
+    //当数组个数等于滑动到cell的index 说明是小结对应的cell
     if (items.CheckResults.count == indexPath.row) {
         SummaryFormatCell *cell = [tableView dequeueReusableCellWithIdentifier:@"SummaryFormatCell"];
-      //  cell.summaryLabel.text = items.SummaryFormat;
-        cell.summaryLabel.text = @"小结:体重指数偏低  体重指数偏低  体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低";
+        cell.summaryLabel.text = [NSString stringWithFormat:@"小结:%@",items.SummaryFormat];
         return cell;
     }
     
@@ -164,15 +165,14 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     CheckItem *items = self.dataArr[indexPath.section];
+    //当数组个数等于滑动到cell的index 说明是小结对应的cell
     if (items.CheckResults.count == indexPath.row) {
-//        CGFloat cellHeight  = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:items.SummaryFormat maxWidth:kScreenSizeWidth - 30];
-        CGFloat cellHeight  = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:@"小结:体重指数偏低  体重指数偏低  体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低 体重指数偏低" maxWidth:kScreenSizeWidth - 30];
+        CGFloat cellHeight  = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:[NSString stringWithFormat:@"小结:%@",items.SummaryFormat] maxWidth:kScreenSizeWidth - 30];
         return cellHeight + 18;
     }
     
     CGFloat valueLabelH = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:14] title:items.CheckResults[indexPath.row].ResultValue maxWidth:kScreenSizeWidth - 30];
     CGFloat titleLableH = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:15] title:items.CheckResults[indexPath.row].CheckIndexName maxWidth:kScreenSizeWidth - 30];
-    
     return 55 - 35 + valueLabelH + titleLableH;
 }
 

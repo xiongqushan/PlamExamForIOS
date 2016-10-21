@@ -22,6 +22,8 @@
 		A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */; };
 		A92F20231DB9CAAA002BFB0E /* SummaryFormatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F20211DB9CAAA002BFB0E /* SummaryFormatCell.m */; };
 		A92F20241DB9CAAA002BFB0E /* SummaryFormatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F20221DB9CAAA002BFB0E /* SummaryFormatCell.xib */; };
+		A92F20281DB9F196002BFB0E /* ConsultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F20261DB9F196002BFB0E /* ConsultDetailViewController.m */; };
+		A92F20291DB9F196002BFB0E /* ConsultDetailViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F20271DB9F196002BFB0E /* ConsultDetailViewController.xib */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
 		A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549041DAF15FF0077E85C /* HZTabBarController.m */; };
 		A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549071DAF163F0077E85C /* HZNavigationController.m */; };
@@ -65,8 +67,6 @@
 		A93549991DB0B2D40077E85C /* AddressBook.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A93549981DB0B2D40077E85C /* AddressBook.framework */; };
 		A935499B1DB0B2DE0077E85C /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A935499A1DB0B2DE0077E85C /* QuartzCore.framework */; };
 		A935499D1DB0B2E70077E85C /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A935499C1DB0B2E70077E85C /* CoreGraphics.framework */; };
-		A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60C81DB4CD970024180F /* ConsulationViewController.m */; };
-		A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60C91DB4CD970024180F /* ConsulationViewController.xib */; };
 		A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60CB1DB4CD970024180F /* ConsultViewController.m */; };
 		A93C60D71DB4CE6B0024180F /* DoctorReplyCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60D51DB4CE6B0024180F /* DoctorReplyCell.m */; };
 		A93C60D81DB4CE6B0024180F /* DoctorReplyCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A93C60D61DB4CE6B0024180F /* DoctorReplyCell.xib */; };
@@ -157,6 +157,9 @@
 		A92F20201DB9CAAA002BFB0E /* SummaryFormatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryFormatCell.h; sourceTree = "<group>"; };
 		A92F20211DB9CAAA002BFB0E /* SummaryFormatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryFormatCell.m; sourceTree = "<group>"; };
 		A92F20221DB9CAAA002BFB0E /* SummaryFormatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryFormatCell.xib; sourceTree = "<group>"; };
+		A92F20251DB9F196002BFB0E /* ConsultDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultDetailViewController.h; sourceTree = "<group>"; };
+		A92F20261DB9F196002BFB0E /* ConsultDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultDetailViewController.m; sourceTree = "<group>"; };
+		A92F20271DB9F196002BFB0E /* ConsultDetailViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsultDetailViewController.xib; sourceTree = "<group>"; };
 		A93548EE1DAE50450077E85C /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		A93548EF1DAE50450077E85C /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
 		A93549031DAF15FF0077E85C /* HZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZTabBarController.h; sourceTree = "<group>"; };
@@ -228,9 +231,6 @@
 		A93549981DB0B2D40077E85C /* AddressBook.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AddressBook.framework; path = System/Library/Frameworks/AddressBook.framework; sourceTree = SDKROOT; };
 		A935499A1DB0B2DE0077E85C /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 		A935499C1DB0B2E70077E85C /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		A93C60C71DB4CD970024180F /* ConsulationViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsulationViewController.h; sourceTree = "<group>"; };
-		A93C60C81DB4CD970024180F /* ConsulationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsulationViewController.m; sourceTree = "<group>"; };
-		A93C60C91DB4CD970024180F /* ConsulationViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ConsulationViewController.xib; sourceTree = "<group>"; };
 		A93C60CA1DB4CD970024180F /* ConsultViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ConsultViewController.h; sourceTree = "<group>"; };
 		A93C60CB1DB4CD970024180F /* ConsultViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ConsultViewController.m; sourceTree = "<group>"; };
 		A93C60D41DB4CE6B0024180F /* DoctorReplyCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorReplyCell.h; sourceTree = "<group>"; };
@@ -556,9 +556,9 @@
 			children = (
 				A93C60CA1DB4CD970024180F /* ConsultViewController.h */,
 				A93C60CB1DB4CD970024180F /* ConsultViewController.m */,
-				A93C60C71DB4CD970024180F /* ConsulationViewController.h */,
-				A93C60C81DB4CD970024180F /* ConsulationViewController.m */,
-				A93C60C91DB4CD970024180F /* ConsulationViewController.xib */,
+				A92F20251DB9F196002BFB0E /* ConsultDetailViewController.h */,
+				A92F20261DB9F196002BFB0E /* ConsultDetailViewController.m */,
+				A92F20271DB9F196002BFB0E /* ConsultDetailViewController.xib */,
 				A9C92D2A1DB718DE00034DA5 /* CommentViewController.h */,
 				A9C92D2B1DB718DE00034DA5 /* CommentViewController.m */,
 				A9C92D2C1DB718DE00034DA5 /* CommentViewController.xib */,
@@ -949,7 +949,6 @@
 				A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */,
 				A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */,
 				A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */,
-				A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */,
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
 				A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */,
 				A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */,
@@ -959,6 +958,7 @@
 				A93C60E01DB4CEA40024180F /* UserTextCell.xib in Resources */,
 				A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */,
 				A935492A1DAF37890077E85C /* LoginViewController.xib in Resources */,
+				A92F20291DB9F196002BFB0E /* ConsultDetailViewController.xib in Resources */,
 				A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */,
 				A935495C1DAF866D0077E85C /* HeaderView.xib in Resources */,
 				A92F20241DB9CAAA002BFB0E /* SummaryFormatCell.xib in Resources */,
@@ -1071,7 +1071,6 @@
 				A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */,
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
-				A93C60CC1DB4CD970024180F /* ConsulationViewController.m in Sources */,
 				A5A01EA91DB8A888006C64E0 /* NewsSimple.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
@@ -1084,6 +1083,7 @@
 				A93549541DAF72140077E85C /* SwitchItem.m in Sources */,
 				A9C92D341DB71AAB00034DA5 /* HYBStarEvaluationView.m in Sources */,
 				A93549531DAF72140077E85C /* SettingItem.m in Sources */,
+				A92F20281DB9F196002BFB0E /* ConsultDetailViewController.m in Sources */,
 				A9BBAD601DAA336000BAF4D1 /* main.m in Sources */,
 				A9DB5A8D1DB0E930000BEDF4 /* GFWaterView.m in Sources */,
 				A93549501DAF72140077E85C /* GroupItem.m in Sources */,
