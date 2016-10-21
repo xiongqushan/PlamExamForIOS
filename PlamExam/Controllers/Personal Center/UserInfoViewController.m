@@ -9,6 +9,8 @@
 #import "UserInfoViewController.h"
 #import "BaseSetting.h"
 #import "IconCell.h"
+#import "User.h"
+#import "UserManager.h"
 
 @interface UserInfoViewController ()
 
@@ -27,9 +29,11 @@
 
 - (void)createItemsData {
     
+    User *user = [[UserManager shareInstance] getUserInfo];
+    
     SettingItem *set = [SettingItem itemWithTitle:nil];
-    LabelItem *label = [LabelItem itemWithTitle:@"姓名" subTitle:@"倩倩" withImage:nil];
-    LabelItem *label2 = [LabelItem itemWithTitle:@"手机号" subTitle:@"15601818531" withImage:nil];
+    LabelItem *label = [LabelItem itemWithTitle:@"姓名" subTitle:user.realName withImage:nil];
+    LabelItem *label2 = [LabelItem itemWithTitle:@"手机号" subTitle:user.mobile withImage:nil];
     GroupItem *group = [[GroupItem alloc] init];
     group.items = @[set,label,label2];
     [self.dataArr addObject:group];

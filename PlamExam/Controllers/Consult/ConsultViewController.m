@@ -26,26 +26,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    //创建测试语音识别测试
-   // [self createTest];
     
-}
-
-- (void)createTest {
-    UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
-    btn.frame = CGRectMake(100, 100, 80, 50);
-    [btn setTitle:@"测试" forState:UIControlStateNormal];
-    btn.backgroundColor = [UIColor redColor];
-    [btn addTarget:self action:@selector(btnClick) forControlEvents:UIControlEventTouchUpInside];
-    [self.view addSubview:btn];
-    
-    UITextView *textView = [[UITextView alloc] initWithFrame:CGRectMake(30, 450, kScreenSizeWidth - 60, 100)];
-    [self.view addSubview:textView];
-    _textView = textView;
-    
-    _recognizer = [[HZRecognizerView alloc] initWithFrame:CGRectMake(0, 200, kScreenSizeWidth, BXInputH)];
-    _recognizer.backgroundColor = [UIColor whiteColor];
-    [self.view addSubview:_recognizer];
 }
 
 - (void)btnClick {
