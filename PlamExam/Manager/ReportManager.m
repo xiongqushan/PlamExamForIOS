@@ -26,11 +26,15 @@ static ReportManager *instance = nil;
         return;
     }
     instance.reports=[NSMutableArray<ReportSimple*> array];
+    NSMutableArray<NSString*>*localArr=[[NSMutableArray<NSString*> alloc] init];
     for (ReportSimple *report in reports) {
         [instance.reports addObject:report];
+        NSString *localStr=[report yy_modelToJSONString];
+        [localArr addObject:localStr];
     }
+    
     NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-    [userDefaults setObject:instance.reports forKey:kReportListKey];
+    [userDefaults setObject:localArr forKey:kReportListKey];
     [userDefaults synchronize];
 }
 
@@ -40,7 +44,9 @@ static ReportManager *instance = nil;
         NSString * str = [userDefaults objectForKey:kReportListKey];
         [userDefaults synchronize];
         if (str) {
-            instance.reports=[NSMutableArray<ReportSimple*> yy_modelWithJSON:str];
+             //NSArray<NSString*> *localArr= [str yy_modelToJSONObject];
+            
+           // instance.reports=[NSMutableArray<ReportSimple*> yy_modelWithJSON:str];
         }
     }
     return instance.reports;
