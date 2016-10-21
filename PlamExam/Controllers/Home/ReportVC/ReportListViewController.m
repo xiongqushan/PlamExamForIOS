@@ -56,6 +56,7 @@
     User *user = [[UserManager shareInstance] getUserInfo];
     [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
         [hud hide:YES];
+
         if(httpRequestResult.IsSuccess){
             NSArray<ReportSimple*>*reports=httpRequestResult.Data;
             if(!reports){
@@ -73,6 +74,7 @@
             }
         }
         else{
+
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
         }
 
@@ -84,12 +86,20 @@
     view.backgroundColor = [UIColor whiteColor];
     
     UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(0, 0, 200, 40);
+    addBtn.frame = CGRectMake(0, 0, 32, 32);
     addBtn.center = view.center;
-    [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
-    [addBtn setBackgroundColor:[UIColor grayColor]];
+   // [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
+    [addBtn setImage:[UIImage imageNamed:@"addReport"] forState:UIControlStateNormal];
     [addBtn addTarget:self action:@selector(addReport) forControlEvents:UIControlEventTouchUpInside];
     [view addSubview:addBtn];
+    
+    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 30)];
+    titleLabel.center = CGPointMake(view.center.x, view.center.y+40);
+    titleLabel.text = @"添加报告";
+    titleLabel.textAlignment = NSTextAlignmentCenter;
+    titleLabel.font = [UIFont systemFontOfSize:19];
+    titleLabel.textColor = kSetRGBColor(178, 178, 178);
+    [view addSubview:titleLabel];
     
     [self.view addSubview:view];
 }

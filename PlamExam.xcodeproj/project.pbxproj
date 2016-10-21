@@ -18,6 +18,8 @@
 		A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EAE1DB8AF31006C64E0 /* NewsModel.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
+		A92F201E1DB9A6CE002BFB0E /* ReportListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */; };
+		A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */; };
 		A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A93548EF1DAE50450077E85C /* NSArray+Util.m */; };
 		A93549051DAF15FF0077E85C /* HZTabBarController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549041DAF15FF0077E85C /* HZTabBarController.m */; };
 		A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93549071DAF163F0077E85C /* HZNavigationController.m */; };
@@ -147,6 +149,9 @@
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
 		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
+		A92F201B1DB9A6CE002BFB0E /* ReportListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListCell.h; sourceTree = "<group>"; };
+		A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListCell.m; sourceTree = "<group>"; };
+		A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportListCell.xib; sourceTree = "<group>"; };
 		A93548EE1DAE50450077E85C /* NSArray+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSArray+Util.h"; sourceTree = "<group>"; };
 		A93548EF1DAE50450077E85C /* NSArray+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSArray+Util.m"; sourceTree = "<group>"; };
 		A93549031DAF15FF0077E85C /* HZTabBarController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZTabBarController.h; sourceTree = "<group>"; };
@@ -695,6 +700,9 @@
 				A99C3CD91DB8C486002FE8A3 /* ReportItemCell.h */,
 				A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */,
 				A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */,
+				A92F201B1DB9A6CE002BFB0E /* ReportListCell.h */,
+				A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */,
+				A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */,
 			);
 			path = ReportView;
 			sourceTree = "<group>";
@@ -930,6 +938,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				A9ED1F021DB86D82003C1F00 /* AddReportViewController.xib in Resources */,
+				A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */,
 				A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */,
 				A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */,
 				A93C60CD1DB4CD970024180F /* ConsulationViewController.xib in Resources */,
@@ -1046,6 +1055,7 @@
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
 				A9C92D131DB6277A00034DA5 /* HomeAdManager.m in Sources */,
 				A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */,
+				A92F201E1DB9A6CE002BFB0E /* ReportListCell.m in Sources */,
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
 				A9C92D1A1DB7065900034DA5 /* BatchRequestParam.m in Sources */,
 				A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */,
