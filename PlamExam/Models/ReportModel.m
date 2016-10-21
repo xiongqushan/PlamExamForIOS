@@ -41,9 +41,6 @@
         HttpRequestResult<ReportBatch *> *result = httpRequestResult;
         if(httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
             result.Data = [ReportBatch yy_modelWithJSON:result.HttpResult.Result];
-            NSString* aa=result.Data.CheckUnitCode;
-            ReportSimple *rrr= result.Data.Reports[0];
-            NSString* aaaaaa= rrr.CheckUnitCode;
         }
         callBack(result);
         

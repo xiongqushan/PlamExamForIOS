@@ -56,16 +56,20 @@
     User *user = [[UserManager shareInstance] getUserInfo];
     [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
         [hud hide:YES];
-        
-        if (httpRequestResult.IsSuccess) {
+
+        if(httpRequestResult.IsSuccess){
+            [[ReportManager shareInstance] setReportList:httpRequestResult.Data];
             if (httpRequestResult.Data.count == 0) {
                 //显示添加体检报告界面
                 [self showAddReportView];
-            }else {
+            }
+            else {
                 self.dataArr = [NSMutableArray arrayWithArray:httpRequestResult.Data];
                 [self.tableView reloadData];
             }
-        }else {
+        }
+        else{
+
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
         }
 
