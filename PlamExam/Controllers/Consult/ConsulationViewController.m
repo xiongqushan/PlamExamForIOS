@@ -22,6 +22,7 @@
 #import "UserManager.h"
 #import "CommentViewController.h"
 #import "ReportListViewController.h"
+#import <UIImageView+WebCache.h>
 
 @interface ConsulationViewController ()
 @property (weak, nonatomic) IBOutlet UITableView *tableView;
@@ -46,6 +47,7 @@
 
 @implementation ConsulationViewController
 
+
 - (CGFloat)previousTextViewHeight {
     if (_previousTextViewHeight == 0) {
         _previousTextViewHeight = self.textView.frame.size.height;
@@ -57,7 +59,7 @@
     if (!_doctorInfoView) {
         _doctorInfoView = [[UIView alloc] init];
         _doctorInfoView.frame = CGRectMake(0, kNavigationBarH, kScreenSizeWidth, kDoctorFloatViewH);
-        _doctorInfoView.backgroundColor = [UIColor redColor];
+        _doctorInfoView.backgroundColor = [UIColor clearColor];
         [self.view addSubview:_doctorInfoView];
     }
     return _doctorInfoView;
@@ -83,9 +85,6 @@
     //获取聊天记录
     [self loadChatData];
     
-    DoctorInfoView *infoView = [[[NSBundle mainBundle] loadNibNamed:@"DoctorInfoView" owner:self options:nil] lastObject];
-    infoView.frame = self.doctorInfoView.bounds;
-    [self.doctorInfoView addSubview:infoView];
     
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kSetRGBColor(242, 242, 242);
@@ -100,25 +99,19 @@
     
 }
 
+- (void)setUpDoctorInfoWithModel:(Doctor *)doctor {
+    
+    DoctorInfoView *infoView = [[[NSBundle mainBundle] loadNibNamed:@"DoctorInfoView" owner:self options:nil] lastObject];
+    infoView.frame = self.doctorInfoView.bounds;
+    infoView.nameLabel.text = doctor.realName;
+    infoView.descriptionLabel.text = doctor.speciality;
+    [infoView.iconImageView sd_setImageWithURL:[NSURL URLWithString:doctor.imageSrc] placeholderImage:[UIImage imageNamed:@"default"]];
+    [self.doctorInfoView addSubview:infoView];
+}
+
 //获取聊天记录
 - (void)loadChatData {
     self.dataArr = [NSMutableArray array];
-    
-//    [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<NSMutableArray *> *httpResult) {
-//        if (httpResult.IsHttpSuccess) {
-//            if (httpResult.HttpResult.Code == 1) {
-//                NSLog(@"_____%@",httpResult.Data.description);
-//                self.dataArr = httpResult.Data;
-//                [self.dataArr addObjectsFromArray:httpResult.Data];
-//                [self.tableView reloadData];
-//                [self scrollToBottom:NO];
-//            }else {
-//                [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
-//            }
-//        }else {
-//            [CommonUtil showHUDWithTitle:httpResult.HttpMessage];
-//        }
-//    }];
     
     NSString* accountId=[[UserManager shareInstance] getUserInfo].accountId;
     
@@ -129,42 +122,59 @@
                 [self.dataArr addObjectsFromArray:httpRequestResult.Data];
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
-            }else {
-                [CommonUtil showHUDWithTitle:httpRequestResult.Message];
             }
             
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
             //获取健管师Id
             if (httpRequestResult.IsSuccess) {
-                
-            }else {
-                
+                [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
             }
         } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
-            
             if (httpRequestResult.IsSuccess) {
-                
-            }else {
-            
+                [[DoctorManager shareInstance] setDoctors:httpRequestResult.Data];
             }
         } allFinishCallback:^(BOOL isAllSuccess) {
-            
+            if (isAllSuccess) {
+                Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+                [self setUpDoctorInfoWithModel:doctor];
+            }else {
+                [CommonUtil showHUDWithTitle:@"部分数据请求失败"];
+            }
         }];
     }
     else if (![[DoctorManager shareInstance] existDoctorId]){
         [ChatModel requestChatDataAndDoctorId:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
-            
+            //获取聊天记录
+            if (httpRequestResult.IsSuccess) {
+                [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+                [self.tableView reloadData];
+                [self scrollToBottom:NO];
+            }
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
-            if(httpRequestResult.IsHttpSuccess){
+            if (httpRequestResult.Message) {
                 [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
             }
         } allFinishCallback:^(BOOL isAllSuccess) {
-            
+            if (isAllSuccess) {
+                Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+                [self setUpDoctorInfoWithModel:doctor];
+            }else {
+                [CommonUtil showHUDWithTitle:@"部分数据请求失败"];
+            }
         }];
     }
     else{
         [ChatModel requestChatDataWithAccountId:accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+            Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+            [self setUpDoctorInfoWithModel:doctor];
             
+            if (httpRequestResult.IsSuccess) {
+                [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+                [self.tableView reloadData];
+                [self scrollToBottom:NO];
+            }else {
+                [CommonUtil showHUDWithTitle:httpRequestResult.Message];
+            }
         }];
     }
 }
@@ -321,7 +331,6 @@
     frame.origin.y = kNavigationBarH;
     self.doctorInfoView.frame = frame;
         
-
     //修改tableView的frame
     CGRect tableViewFrame = self.tableView.frame;
     tableViewFrame.origin.y = kNavigationBarH + kDoctorFloatViewH;
