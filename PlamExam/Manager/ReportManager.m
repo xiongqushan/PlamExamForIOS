@@ -41,19 +41,23 @@ static ReportManager *instance = nil;
 -(NSMutableArray<ReportSimple *> *)getReportList{
     if(instance.reports==nil){
         NSUserDefaults *userDefaults = [NSUserDefaults standardUserDefaults];
-        NSString * str = [userDefaults objectForKey:kReportListKey];
+        NSMutableArray<NSString*>* localArr = [userDefaults objectForKey:kReportListKey];
         [userDefaults synchronize];
-        if (str) {
-             //NSArray<NSString*> *localArr= [str yy_modelToJSONObject];
-            
-           // instance.reports=[NSMutableArray<ReportSimple*> yy_modelWithJSON:str];
+        if (localArr) {
+            instance.reports=[[NSMutableArray<ReportSimple*> alloc] init];
+            for(NSString* localStr in localArr){
+                ReportSimple *reportSimple=[ReportSimple yy_modelWithJSON:localStr];
+                [instance.reports addObject:reportSimple];
+            }
         }
     }
     return instance.reports;
 }
 
 -(BOOL)exist{
-    return [self getReportList]!=nil;
+    [self getReportList];
+    BOOL exist=self.reports!=nil;
+    return exist;
 }
 
 -(void)clear{

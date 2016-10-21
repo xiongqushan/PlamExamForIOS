@@ -58,7 +58,12 @@
         [hud hide:YES];
 
         if(httpRequestResult.IsSuccess){
-            [[ReportManager shareInstance] setReportList:httpRequestResult.Data];
+            NSArray<ReportSimple*>*reports=httpRequestResult.Data;
+            if(!reports){
+                reports=[[NSArray<ReportSimple*> alloc] init];
+            }
+            [[ReportManager shareInstance] setReportList:reports];
+            
             if (httpRequestResult.Data.count == 0) {
                 //显示添加体检报告界面
                 [self showAddReportView];

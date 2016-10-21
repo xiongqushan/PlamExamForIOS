@@ -9,13 +9,11 @@
 #ifndef PlamExam_Prefix_h
 #define PlamExam_Prefix_h
 
+#import "BaseViewController.h"
 #import "ZSType.h"
 #import "HttpRequestResult.h"
 #import "Foundation+Log.m"
 #import "BaseViewController.h"
-
-//本机  http://hz3bn04d2/ZSTJ/api/V3/
-//发布  http://hz3bn04d2:8070/api/V3/
 
 //HZ.WebAPI
 #define Distribution 3
@@ -48,5 +46,7 @@
 
 #define kFontColor kSetRGBColor(51,51,51)
 #define kNavigationBarH 64   
+
+#define kChangeDepartKVOKey @"ChangeDepartKVO"
 
 #endif /* PlamExam_Prefix_h */

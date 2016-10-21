@@ -11,6 +11,7 @@
 #import "AdScrollerViewData.h"
 #import "Notice.h"
 @interface HomeModel : NSObject
++(void)requestADList:(NSString*)departId callBackBlock:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))callBack;
 
 //获取广告滚动视图数据
 + (void)requestADAndNotice:(NSString*)accountId withDepartId:(NSString *)departId requestADcallBack:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))requestADcallBack requestNoticeCallback:(void (^)(HttpRequestResult<NSMutableArray<Notice*> *> *httpRequestResult))requestNoticeCallback allFinishCallback:(void (^)(BOOL isAllSuccess))allFinishCallBack;
