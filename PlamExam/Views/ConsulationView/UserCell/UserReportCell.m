@@ -13,6 +13,8 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
+    [self.iconImageView setRoundWithRadius:23];
+    [self.chatBgView setRound];
 }
 
 - (void)setSelected:(BOOL)selected animated:(BOOL)animated {
@@ -21,8 +23,14 @@
     // Configure the view for the selected state
 }
 
-- (void)showDataWithModel:(CheckResult *)result {
+- (void)showDataWithModel:(ChatData *)chatData {
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    NSArray *arr = [chatData.AppendInfo componentsSeparatedByString:@";"];
+    self.departmentNameLabel.text = arr[2];
+    self.reportDateLabel.text = arr[3];
+    self.sendMessageDateLabel.text = chatData.Date;
+    self.contentLabel.text = chatData.Content;
 }
 
 @end

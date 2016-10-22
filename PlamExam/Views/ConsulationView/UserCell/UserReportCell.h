@@ -8,6 +8,7 @@
 
 #import <UIKit/UIKit.h>
 #import "ReportInfo.h"
+#import "ChatData.h"
 
 @interface UserReportCell : UITableViewCell
 @property (weak, nonatomic) IBOutlet UIView *chatBgView;
@@ -17,6 +18,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *reportDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *contentLabel;
 
-- (void)showDataWithModel:(CheckResult *)result;
+- (void)showDataWithModel:(ChatData *)chatData;
 
 @end

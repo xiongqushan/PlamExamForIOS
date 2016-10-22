@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 #import "HttpRequestResult.h"
 
 @interface CommonUtil : NSObject

@@ -166,15 +166,20 @@
     }];
 }
 
-+(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<ChatData *> *))callBack{
++(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<NSMutableArray<ChatData*> *> *))callBack{
     
     NSDictionary *param = @{@"AccountId":accountId,@"Type":@(kReportConsultType),@"ConsultContent":content,@"CheckUnitCode":checkUnitCode,@"WorkNo":workNo,@"CheckUnitName":checkUnitName,@"ReportDate":reportDate};
     [HttpHelper Post:kSendForReportURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
-        HttpRequestResult<ChatData *> *result = httpRequestResult;
+        HttpRequestResult<NSMutableArray<ChatData*>*> *result = httpRequestResult;
         if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
-            NSString *data = httpRequestResult.HttpResult.Result;
-            result.Data = [ChatData yy_modelWithJSON:data];
+            NSMutableArray<ChatData*> *dataArr = [NSMutableArray array];
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+            for (NSDictionary *dict in arr) {
+                ChatData *item = [ChatData yy_modelWithDictionary:dict];
+                [dataArr addObject:item];
+            }
+            result.Data = dataArr;
         }
         callBack(result);
         

@@ -16,10 +16,12 @@
 #import "CommonUtil.h"
 #import "DoctorReplyCell.h"
 #import "UserTextCell.h"
+#import "UserReportCell.h"
 #import "ChatModel.h"
 #import "ChatData.h"
 #import "DoctorManager.h"
 #import "UserManager.h"
+#import "User.h"
 #import "CommentViewController.h"
 #import "ReportListViewController.h"
 #import <UIImageView+WebCache.h>
@@ -38,7 +40,6 @@
 
 @property (nonatomic, strong) UIView *doctorInfoView;   //健管师简介View
 @property (nonatomic, strong) HZRecognizerView *recordView;    //语音识别View
-@property (nonatomic, strong) NSMutableArray *dataArr;
 
 @property (nonatomic, assign) CGFloat previousTextViewHeight;
 @property (nonatomic, assign) CGFloat contentOffsetY;
@@ -79,24 +80,45 @@
     [super viewDidLoad];
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
-
+    
+    //self.fromReportArr = [NSMutableArray array];
     
     [self.textView setRound];
-    //获取聊天记录
-    [self loadChatData];
-    
-    
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kSetRGBColor(242, 242, 242);
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
     [self.tableView registerNib:[UINib nibWithNibName:@"DoctorReplyCell" bundle:nil] forCellReuseIdentifier:@"DoctorReplyCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"UserTextCell" bundle:nil] forCellReuseIdentifier:@"UserTextCell"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"UserReportCell" bundle:nil] forCellReuseIdentifier:@"UserReportCell"];
     
     //监听键盘弹出
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
     //监听键盘收起
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+}
+
+- (void)viewWillAppear:(BOOL)animated {
+    [super viewWillAppear:animated];
+    
+    if (self.fromReportArr.count != 0) {
+        self.dataArr=[NSMutableArray<ChatData*> array];
+        //有值
+        [self.dataArr removeAllObjects];
+        [self.dataArr addObjectsFromArray:self.fromReportArr];
+        [self.fromReportArr removeAllObjects];
+
+        [self.tableView reloadData];
+        [self scrollToBottom:YES];
+        
+    }else{
+        //没有值， 需要判断有没有实例
+        if (!self.dataArr) {
+            [self loadChatData];
+        }else {
+            
+        }
+    }
 }
 
 - (void)setUpDoctorInfoWithModel:(Doctor *)doctor {
@@ -112,14 +134,22 @@
 //获取聊天记录
 - (void)loadChatData {
     self.dataArr = [NSMutableArray array];
+    MBProgressHUD *hud = [CommonUtil createHUD];
     
     NSString* accountId=[[UserManager shareInstance] getUserInfo].accountId;
     
     if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
-        [ChatModel requestChatDataAndDoctorIdAndDoctorList:@"sample string 1" chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+        [ChatModel requestChatDataAndDoctorIdAndDoctorList:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
             //获取聊天记录
             if (httpRequestResult.IsSuccess) {
+                if(!self.dataArr){
+                    self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
+                }
+                else{
+                    [self.dataArr removeAllObjects];
+                }
                 [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+                
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
             }
@@ -134,6 +164,7 @@
                 [[DoctorManager shareInstance] setDoctors:httpRequestResult.Data];
             }
         } allFinishCallback:^(BOOL isAllSuccess) {
+            hud.hidden = YES;
             if (isAllSuccess) {
                 Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
                 [self setUpDoctorInfoWithModel:doctor];
@@ -143,10 +174,17 @@
         }];
     }
     else if (![[DoctorManager shareInstance] existDoctorId]){
-        [ChatModel requestChatDataAndDoctorId:@"sample string 1" chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+        [ChatModel requestChatDataAndDoctorId:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
             //获取聊天记录
             if (httpRequestResult.IsSuccess) {
+                if(!self.dataArr){
+                    self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
+                }
+                else{
+                    [self.dataArr removeAllObjects];
+                }
                 [self.dataArr addObjectsFromArray:httpRequestResult.Data];
+                
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
             }
@@ -164,11 +202,19 @@
         }];
     }
     else{
-        [ChatModel requestChatDataWithAccountId:@"sample string 1" callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+        [ChatModel requestChatDataWithAccountId:accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+           
+            hud.hidden = YES;
             Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
             [self setUpDoctorInfoWithModel:doctor];
             
             if (httpRequestResult.IsSuccess) {
+                if(!self.dataArr){
+                    self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
+                }
+                else{
+                    [self.dataArr removeAllObjects];
+                }
                 [self.dataArr addObjectsFromArray:httpRequestResult.Data];
                 [self.tableView reloadData];
                 [self scrollToBottom:NO];
@@ -239,17 +285,22 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
-//    //ChatData *model = self.dataArr[indexPath.row];
-//    cell.textLabel.text = [NSString stringWithFormat:@"%@，第%ld行",@"测试数据",indexPath.row];
-//    return cell;
+
     ChatData *chatData = self.dataArr[indexPath.row];
     if ([chatData.SourceType integerValue] == 1) {
-        //用户发送的消息
-        UserTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTextCell"];
-        [cell showDataWithModel:chatData];
-        return cell;
-        
+        //用户的消息
+        if ([chatData.Type integerValue] == kReportConsultType) {
+            //体检报告
+            UserReportCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserReportCell"];
+            [cell showDataWithModel:chatData];
+            return cell;
+        }else {
+            //普通文字
+            UserTextCell *cell = [tableView dequeueReusableCellWithIdentifier:@"UserTextCell"];
+            [cell showDataWithModel:chatData];
+            return cell;
+        }
+
     }else {
         //健管师发送的消息
         DoctorReplyCell *cell = [tableView dequeueReusableCellWithIdentifier:@"DoctorReplyCell"];
@@ -261,8 +312,12 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ChatData *chatData = self.dataArr[indexPath.row];
-    return chatData.textCellHeight;
- //   return 50;
+    if ([chatData.Type integerValue] == kReportConsultType) {
+        return chatData.reportCellHeight;
+    }else {
+        return chatData.textCellHeight;
+    }
+    
 }
 
 #pragma mark --UIScrollerViewDelegate
@@ -349,8 +404,9 @@
         self.textView.text = @"";
         return;
     }
+    User *user = [[UserManager shareInstance] getUserInfo];
     
-    [ChatModel sendMessageWithAccountId:@"sample string 1" type:type consultContent:text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
+    [ChatModel sendMessageWithAccountId:user.accountId type:type consultContent:text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
 
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
@@ -395,7 +451,7 @@
         //把textView的内容封装到model中，并添加到可变数组
         NSString *textStr = textView.text;
         
-        [self sendMessage:textStr type:3];
+        [self sendMessage:textStr type:1];
         return NO;
     }
     

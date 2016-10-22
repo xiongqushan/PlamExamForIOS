@@ -10,6 +10,11 @@
 #import "ReportItemCell.h"
 #import "ReportInfo.h"
 #import "UIColor+Utils.h"
+#import "ChatModel.h"
+#import "CommonUtil.h"
+#import "UserManager.h"
+#import "ConsultDetailViewController.h"
+#import "ReportListViewController.h"
 
 #define kSelectedItemViewH (44 + 15)
 
@@ -17,7 +22,8 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
-@property (nonatomic, copy) NSString *selectedStr;
+
+@property (nonatomic, strong) NSMutableArray *chatDataArr;
 
 @end
 
@@ -26,11 +32,11 @@
     BOOL _isAllSelected;
 }
 
-- (NSString *)selectedStr {
-    if (!_selectedStr) {
-        _selectedStr = [NSString string];
+- (NSMutableArray *)chatDataArr {
+    if (!_chatDataArr) {
+        _chatDataArr = [NSMutableArray array];
     }
-    return _selectedStr;
+    return _chatDataArr;
 }
 
 - (NSMutableArray *)selectedItems {
@@ -94,16 +100,54 @@
         _isAllSelected = NO;
         [btn setTitle:@"选择异常项咨询" forState:UIControlStateNormal];
         NSArray *rows = [self.tableView indexPathsForSelectedRows];
+        NSString *resultStr = @"";
         for (NSIndexPath *indexPath in rows) {
-            NSLog(@"______row:%ld",indexPath.row);
             
             CheckResult *result = self.dataArr[indexPath.row];
             NSString *reportItemStr = [NSString stringWithFormat:@"[%@:%@]",result.CheckIndexName,result.ResultValue];
-            [self.selectedStr stringByAppendingString:[NSString stringWithFormat:@"%@\n",reportItemStr]];
+            resultStr = [resultStr stringByAppendingString:[NSString stringWithFormat:@"%@\n",reportItemStr]];
         }
         
-        NSLog(@"_______finallStr:%@",self.selectedStr);
+        //删除最后的\n
+        resultStr = [resultStr substringToIndex:resultStr.length - 1];
+        NSLog(@"_______finallStr:%@",resultStr);
+        
+        MBProgressHUD *hud = [CommonUtil createHUD];
+        NSString *accountId = [[UserManager shareInstance] getUserInfo].accountId;
+        [ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpResult) {
+            
+            hud.hidden = YES;
+            if (httpResult.IsSuccess) {
+                //数据请求成功 传数据进入咨询界面
+                [self.chatDataArr addObjectsFromArray:httpResult.Data];
+                [self goChatView];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.Message];
+            }
+        }];
+        
     }
+}
+
+- (void)goChatView {
+    ConsultDetailViewController *consultController;
+    for(UIViewController *vc in self.navigationController.viewControllers) {
+        if ([vc isKindOfClass:[ConsultDetailViewController class]]) {
+            consultController=(ConsultDetailViewController *)vc;
+            break;
+        }
+    }
+    if(!consultController){
+        consultController=[[ConsultDetailViewController alloc] init];
+        consultController.fromReportArr = [NSMutableArray arrayWithArray:self.chatDataArr];
+        [self.navigationController pushViewController:consultController animated:YES];
+    }
+    else{
+        consultController.fromReportArr = [NSMutableArray arrayWithArray:self.chatDataArr];
+        [self.navigationController popToViewController:consultController animated:YES];
+    }
+    
+    
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource

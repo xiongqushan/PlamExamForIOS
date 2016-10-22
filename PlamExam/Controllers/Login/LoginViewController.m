@@ -14,7 +14,7 @@
 #import "UserManager.h"
 #import "UserModel.h"
 #import <YYModel.h>
-#import <MBProgressHUD.h>
+#import "MBProgressHUD.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;

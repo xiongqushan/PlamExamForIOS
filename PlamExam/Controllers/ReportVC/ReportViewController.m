@@ -19,8 +19,7 @@
 @property (nonatomic, strong) NSMutableArray *analyDataArr;
 @property (nonatomic, strong) NSMutableArray *unusualDataArr;
 
-@property (nonatomic, copy) NSString *departmentName;
-@property (nonatomic, copy) NSString *reportDate;
+@property (nonatomic, strong) ReportInfo *reportInfo;
 
 @end
 
@@ -41,12 +40,10 @@
 
 - (void)loadReportDetailData {
     
-    [ReportModel requestDetail:self.workNo withName:self.checkUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
+    [ReportModel requestDetail:self.report.WorkNo withName:self.report.CheckUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess) {
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
             
-            self.departmentName = httpRequestResult.Data.CheckUnitName;
-            self.reportDate = httpRequestResult.Data.ReportDate;
             //获取异常项数据
             for (CheckItem *item in self.reportDetailDataArr) {
                 for (CheckResult *result in item.CheckResults) {
@@ -58,6 +55,7 @@
             
             [self.analyDataArr addObjectsFromArray:httpRequestResult.Data.GeneralAdvices];
             
+            self.reportInfo = httpRequestResult.Data;
             [self setUpBaseUI];
         }else {
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
@@ -71,8 +69,8 @@
     
     ReportExceptionsViewController *exceptions = [[ReportExceptionsViewController alloc] init];
     exceptions.dataArr = self.unusualDataArr;
-    exceptions.reportDate = self.reportDate;
-    exceptions.departmentName = self.departmentName;
+    exceptions.report = self.reportInfo;
+    exceptions.navigationController = self.navigationController;
 
     ReportDetailViewController *detail = [[ReportDetailViewController alloc] init];
     detail.dataArr = self.reportDetailDataArr;

@@ -50,4 +50,7 @@
 #define kChangeDepartKVOKey @"ChangeDepartKVO"
 #define kReportConsultType 3
 
+#define kReportVcName @"ReportVc"
+#define kConsultVcName @"ConsultVc"
+
 #endif /* PlamExam_Prefix_h */
