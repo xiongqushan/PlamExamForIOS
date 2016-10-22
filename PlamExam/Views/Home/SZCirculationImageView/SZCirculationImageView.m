@@ -86,17 +86,29 @@
     self.centerImageView = [[UIImageView alloc]initWithFrame:CGRectMake(W, 0, W, H)];
     self.rightImageView = [[UIImageView alloc]initWithFrame:CGRectMake(W * 2, 0, W, H)];
     
-    [self setupImage];
-    
     [self.imageScrollView addSubview:self.leftImageView];
     [self.imageScrollView addSubview:self.centerImageView];
     [self.imageScrollView addSubview:self.rightImageView];
     
-    [self addSubview:self.titleView];
-    [self startTimer];
+    [self setupImage];
     
+    [self addSubview:self.titleView];
+    
+    [self startTimer];
+
     UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(clickImage:)];
     [self addGestureRecognizer:tap];
+}
+
+-(void)datasourceChangeNotify:(NSArray<NSString*>*)imageArr{
+    if(!imageArr || [imageArr count]<1){
+        return;
+    }
+    self.imagesArray = imageArr;
+    self.index=0;
+    [self setupImage];
+    [self closeTimer];
+    [self startTimer];
 }
 
 - (void)setupImage {

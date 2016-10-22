@@ -81,5 +81,5 @@ typedef NS_ENUM(NSInteger, SZTitleViewStatus){
 - (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andTitles:(NSArray *)titles;
 - (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage;
 
-
+-(void)datasourceChangeNotify:(NSArray<NSString*>*)imageArr;
 @end

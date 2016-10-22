@@ -47,15 +47,14 @@
             }
             
             [[ReportManager shareInstance] setReportList:reports];
-            /*if(![[[UserManager shareInstance] getUserInfo].departId isEqual:httpRequestResult.Data.CheckUnitCode]){
+            if(![[[UserManager shareInstance] getUserInfo].departId isEqual:httpRequestResult.Data.CheckUnitCode]){
                 User *user= [[UserManager shareInstance] getUserInfo];
                 user.departId=httpRequestResult.Data.CheckUnitCode;
                 user.departName=httpRequestResult.Data.DepartName;
                 [[UserManager shareInstance] setUserInfo:user];
                 
                 [[NSNotificationCenter defaultCenter] postNotificationName:kChangeDepartKVOKey object:nil];
-            }*/
-            [[NSNotificationCenter defaultCenter] postNotificationName:kChangeDepartKVOKey object:nil];
+            }
             if (self.reloadReportList) {
                 self.reloadReportList(httpRequestResult.Data.Reports);
             }
