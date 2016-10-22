@@ -48,5 +48,6 @@
 #define kNavigationBarH 64   
 
 #define kChangeDepartKVOKey @"ChangeDepartKVO"
+#define kReportConsultType 3
 
 #endif /* PlamExam_Prefix_h */

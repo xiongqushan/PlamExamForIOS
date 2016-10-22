@@ -76,34 +76,10 @@ typedef NS_ENUM(NSInteger, SZTitleViewStatus){
 @property (nonatomic, strong) UIColor *titleColor;
 
 
-/**
- *  初始化
- *
- *  @param frame
- *  @param array 图片名数组
- *  @param placeImage 加载失败时占位图
- *  @param titles 标题数组
- *
- *  @return
- */
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles;
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array;
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andTitles:(NSArray *)titles;
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage;
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles;
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array;
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andTitles:(NSArray *)titles;
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage;
 
-/**
- *  初始化
- *
- *  @param frame frame
- *  @param array 图片地址数组
- *  @param placeImage 加载失败时占位图
- *  @param titles 标题数组
- *
- *  @return
- */
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles;
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array;
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andTitles:(NSArray *)titles;
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage;
 
 @end

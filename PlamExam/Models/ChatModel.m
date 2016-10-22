@@ -19,6 +19,7 @@
 #define kCommentURL @"Consult/Comment"
 #define kDoctorIdUrl @"User/DoctorId"
 #define kDoctorListUrl @"User/Doctors"
+#define kSendForReportURL @"Consult/SendForReport"
 @implementation ChatModel
 
 //获取聊天记录
@@ -159,6 +160,21 @@
         if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
             NSString *data = httpRequestResult.HttpResult.Result;
             result.Data = data;
+        }
+        callBack(result);
+        
+    }];
+}
+
++(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<ChatData *> *))callBack{
+    
+    NSDictionary *param = @{@"AccountId":accountId,@"Type":@(kReportConsultType),@"ConsultContent":content,@"CheckUnitCode":checkUnitCode,@"WorkNo":workNo,@"CheckUnitName":checkUnitName,@"ReportDate":reportDate};
+    [HttpHelper Post:kSendForReportURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
+        
+        HttpRequestResult<ChatData *> *result = httpRequestResult;
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
+            NSString *data = httpRequestResult.HttpResult.Result;
+            result.Data = [ChatData yy_modelWithJSON:data];
         }
         callBack(result);
         

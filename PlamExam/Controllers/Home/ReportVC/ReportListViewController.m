@@ -127,7 +127,7 @@
     ReportSimple *report = self.dataArr[indexPath.row];
     
     cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@  机构:%@",report.CustomerName,report.ReportName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDate];
+    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDateFormat];
     
     return cell;
 }
