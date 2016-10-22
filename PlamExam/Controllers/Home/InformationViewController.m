@@ -25,8 +25,14 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     [self loadData];
     [self setUpWebView];
+}
+
+- (void)share {
+    
 }
 
 - (void)loadData {
@@ -103,11 +109,7 @@
 
 - (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
     
-    
-    
     if ([keyPath isEqualToString:@"estimatedProgress"]) {
-        
-        
         
         if (object ==_wKWebView) {
             
@@ -116,9 +118,7 @@
             [self.progressView setProgress:self.wKWebView.estimatedProgress animated:YES];
             
             if(_wKWebView.estimatedProgress >=1.0f) {
-                
-                
-                
+            
                 [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
                     
                     [self.progressView setAlpha:0.0f];
@@ -128,59 +128,14 @@
                     [self.progressView setProgress:0.0f animated:NO];
                     
                 }];
-                
-                
-                
             }
             
-        }
-        
-        else
-            
-        {
-            
-            [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-            
-        }
-        
-        
-        
+        }else
+            {
+                [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
+            }
     }
-    
 }
-
-//- (void)setLoadCount:(NSUInteger)loadCount {
-//    _loadCount = loadCount;
-//    
-//    if (loadCount == 0) {
-//        self.progressView.hidden = YES;
-//        [self.progressView setProgress:0 animated:NO];
-//    }else {
-//        self.progressView.hidden = NO;
-//        CGFloat oldP = self.progressView.progress;
-//        CGFloat newP = (1.0 - oldP) / (loadCount + 1) + oldP;
-//        if (newP > 0.95) {
-//            newP = 0.95;
-//        }
-//        [self.progressView setProgress:newP animated:YES];
-//        
-//    }
-//}
-//
-//// 页面开始加载时调用
-//- (void)webView:(WKWebView *)webView didStartProvisionalNavigation:(WKNavigation *)navigation {
-//    self.loadCount ++;
-//}
-//
-//// 内容返回时
-//- (void)webView:(WKWebView *)webView didCommitNavigation:(WKNavigation *)navigation {
-//    self.loadCount --;
-//}
-////失败
-//- (void)webView:(WKWebView *)webView didFailNavigation: (null_unspecified WKNavigation *)navigation withError:(NSError *)error {
-//    self.loadCount --;
-//    NSLog(@"%@",error);
-//}
 
 - (void)dealloc {
     [self.wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];

@@ -14,7 +14,7 @@
     CGFloat _cellHeight;
 }
 
-- (CGFloat)cellHeight {
+- (CGFloat)textCellHeight {
     if (!_cellHeight) {
         NSString *content = self.Content;
         

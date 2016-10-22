@@ -19,6 +19,9 @@
 @property (nonatomic, strong) NSMutableArray *analyDataArr;
 @property (nonatomic, strong) NSMutableArray *unusualDataArr;
 
+@property (nonatomic, copy) NSString *departmentName;
+@property (nonatomic, copy) NSString *reportDate;
+
 @end
 
 @implementation ReportViewController
@@ -41,6 +44,9 @@
     [ReportModel requestDetail:self.workNo withName:self.checkUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess) {
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
+            
+            self.departmentName = httpRequestResult.Data.CheckUnitName;
+            self.reportDate = httpRequestResult.Data.ReportDate;
             //获取异常项数据
             for (CheckItem *item in self.reportDetailDataArr) {
                 for (CheckResult *result in item.CheckResults) {
@@ -65,6 +71,8 @@
     
     ReportExceptionsViewController *exceptions = [[ReportExceptionsViewController alloc] init];
     exceptions.dataArr = self.unusualDataArr;
+    exceptions.reportDate = self.reportDate;
+    exceptions.departmentName = self.departmentName;
 
     ReportDetailViewController *detail = [[ReportDetailViewController alloc] init];
     detail.dataArr = self.reportDetailDataArr;

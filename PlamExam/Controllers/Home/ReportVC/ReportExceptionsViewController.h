@@ -12,4 +12,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 
+@property (nonatomic, copy) NSString *departmentName;
+@property (nonatomic, copy) NSString *reportDate;
+
 @end

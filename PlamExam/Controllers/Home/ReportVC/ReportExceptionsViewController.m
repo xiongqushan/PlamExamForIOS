@@ -17,12 +17,20 @@
 
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
+@property (nonatomic, copy) NSString *selectedStr;
 
 @end
 
 @implementation ReportExceptionsViewController
 {
     BOOL _isAllSelected;
+}
+
+- (NSString *)selectedStr {
+    if (!_selectedStr) {
+        _selectedStr = [NSString string];
+    }
+    return _selectedStr;
 }
 
 - (NSMutableArray *)selectedItems {
@@ -88,8 +96,13 @@
         NSArray *rows = [self.tableView indexPathsForSelectedRows];
         for (NSIndexPath *indexPath in rows) {
             NSLog(@"______row:%ld",indexPath.row);
-            [self.selectedItems addObject:self.dataArr[indexPath.row]];
+            
+            CheckResult *result = self.dataArr[indexPath.row];
+            NSString *reportItemStr = [NSString stringWithFormat:@"[%@:%@]",result.CheckIndexName,result.ResultValue];
+            [self.selectedStr stringByAppendingString:[NSString stringWithFormat:@"%@\n",reportItemStr]];
         }
+        
+        NSLog(@"_______finallStr:%@",self.selectedStr);
     }
 }
 
