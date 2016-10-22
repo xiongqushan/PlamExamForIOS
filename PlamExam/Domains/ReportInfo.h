@@ -68,6 +68,7 @@
 @property(nonatomic,strong) NSString *Birthday;
 @property(nonatomic,strong) NSString *RegDate;
 @property(nonatomic,strong) NSString *ReportDate;
+@property(nonatomic,strong) NSString *ReportDateFormat;
 @property(nonatomic,strong) NSString *Age;
 @property(nonatomic,strong) NSString *CommitUserName;
 @property(nonatomic,strong) NSString *WorkNo;

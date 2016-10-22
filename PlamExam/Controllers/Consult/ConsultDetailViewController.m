@@ -261,7 +261,7 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     
     ChatData *chatData = self.dataArr[indexPath.row];
-    return chatData.cellHeight;
+    return chatData.textCellHeight;
  //   return 50;
 }
 
@@ -350,7 +350,7 @@
         return;
     }
     
-    [ChatModel sendMessageWithAccountId:@"sample string 1" type:type consultContent:self.textView.text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
+    [ChatModel sendMessageWithAccountId:@"sample string 1" type:type consultContent:text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
 
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
@@ -358,7 +358,7 @@
                 
                 ChatData *sendData = [[ChatData alloc] init];
                 sendData.SourceType = @"1";
-                sendData.Content = self.textView.text;
+                sendData.Content = text;
                 sendData.Type = [NSString stringWithFormat:@"%ld",type];
                 
                 [self.dataArr addObject:sendData];
@@ -395,7 +395,7 @@
         //把textView的内容封装到model中，并添加到可变数组
         NSString *textStr = textView.text;
         
-        [self sendMessage:textStr type:2];
+        [self sendMessage:textStr type:3];
         return NO;
     }
     
