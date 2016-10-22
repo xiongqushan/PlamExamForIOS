@@ -36,49 +36,44 @@
 
 + (void)requestADAndNotice:(NSString*)accountId withDepartId:(NSString *)departId requestADcallBack:(void (^)(HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *httpRequestResult))requestADcallBack requestNoticeCallback:(void (^)(HttpRequestResult<NSMutableArray<Notice*> *> *httpRequestResult))requestNoticeCallback allFinishCallback:(void (^)(BOOL isAllSuccess))allFinishCallBack{
     
-    NSDictionary *param = @{@"DepartCode":departId};
+    HttpCallbackDelegate getADCallback=^(HttpRequestResult *httpRequestResult) {
+        HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *result=httpRequestResult;
+        if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
+            NSMutableArray<AdScrollerViewData*> *dataArr = [NSMutableArray array];
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+            for (NSDictionary *dict in arr) {
+                AdScrollerViewData *item = [AdScrollerViewData yy_modelWithDictionary:dict];
+                [dataArr addObject:item];
+            }
+            result.Data=dataArr;
+        }
+        if(requestADcallBack){
+            requestADcallBack(result);
+        }
+    };
     
-    [HttpHelper Post:kBannersUrl withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
-        
-        HttpCallbackDelegate getADCallback=^(HttpRequestResult *httpRequestResult) {
-            HttpRequestResult<NSMutableArray<AdScrollerViewData*> *> *result=httpRequestResult;
-            if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
-                NSMutableArray<AdScrollerViewData*> *dataArr = [NSMutableArray array];
-                NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-                for (NSDictionary *dict in arr) {
-                    AdScrollerViewData *item = [AdScrollerViewData yy_modelWithDictionary:dict];
-                    [dataArr addObject:item];
-                }
-                result.Data=dataArr;
+    HttpCallbackDelegate getNoticeCallback=^(HttpRequestResult *httpRequestResult) {
+        HttpRequestResult<NSMutableArray<Notice*> *> *result=httpRequestResult;
+        if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
+            NSMutableArray<Notice*> *dataArr = [NSMutableArray array];
+            NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
+            for (NSDictionary *dict in arr) {
+                Notice *item = [Notice yy_modelWithDictionary:dict];
+                [dataArr addObject:item];
             }
-            if(requestADcallBack){
-                requestADcallBack(result);
-            }
-        };
-        
-        HttpCallbackDelegate getNoticeCallback=^(HttpRequestResult *httpRequestResult) {
-            HttpRequestResult<NSMutableArray<Notice*> *> *result=httpRequestResult;
-            if(result.IsHttpSuccess && httpRequestResult.HttpResult.Code>0){
-                NSMutableArray<Notice*> *dataArr = [NSMutableArray array];
-                NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-                for (NSDictionary *dict in arr) {
-                    Notice *item = [Notice yy_modelWithDictionary:dict];
-                    [dataArr addObject:item];
-                }
-                result.Data=dataArr;
-            }
-            if(requestNoticeCallback){
-                requestNoticeCallback(result);
-            }
-        };
-        
-        NSMutableArray *batchParam=[[NSMutableArray alloc] init];
-        BatchRequestParam *adParam= [[BatchRequestParam alloc] initWithPath:kBannersUrl andParam:@{@"DepartId":departId} andCallback:getADCallback];
-        BatchRequestParam *noticeParam=[[BatchRequestParam alloc] initWithPath:kNoticeUrl andParam:@{@"AccountId":accountId} andCallback:getNoticeCallback];
-        [batchParam addObject:adParam];
-        [batchParam addObject:noticeParam];
-        [[[HttpBatchRequestHelper alloc] init] batchPost:batchParam withFinishRequest:allFinishCallBack];
-    }];
+            result.Data=dataArr;
+        }
+        if(requestNoticeCallback){
+            requestNoticeCallback(result);
+        }
+    };
+    
+    NSMutableArray *batchParam=[[NSMutableArray alloc] init];
+    BatchRequestParam *adParam= [[BatchRequestParam alloc] initWithPath:kBannersUrl andParam:@{@"DepartCode":departId} andCallback:getADCallback];
+    BatchRequestParam *noticeParam=[[BatchRequestParam alloc] initWithPath:kNoticeUrl andParam:@{@"AccountId":accountId} andCallback:getNoticeCallback];
+    [batchParam addObject:adParam];
+    [batchParam addObject:noticeParam];
+    [[[HttpBatchRequestHelper alloc] init] batchPost:batchParam withFinishRequest:allFinishCallBack];
     
 }
 

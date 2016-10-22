@@ -44,22 +44,22 @@
     @throw [NSException exceptionWithName:@"初始化方法" reason:@"请使用 initWithFrame: withImageName(URL)sArray: 初始化" userInfo:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array {
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array {
     
-    return [self initWithFrame:frame andImageNamesArray:array andPlaceImage:nil];
+    return [self initWithFrame:frame andImageSourcePathArray:array andPlaceImage:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage {
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage {
     
-    return [self initWithFrame:frame andImageNamesArray:array andPlaceImage:placeImage andTitles:nil];
+    return [self initWithFrame:frame andImageSourcePathArray:array andPlaceImage:placeImage andTitles:nil];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andTitles:(NSArray *)titles {
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andTitles:(NSArray *)titles {
     
-    return [self initWithFrame:frame andImageNamesArray:array andPlaceImage:nil andTitles:titles];
+    return [self initWithFrame:frame andImageSourcePathArray:array andPlaceImage:nil andTitles:titles];
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andImageNamesArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles {
+- (instancetype)initWithFrame:(CGRect)frame andImageSourcePathArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles {
     
  //   NSAssert(array.count > 2, @"图片的数量不能少于3张");
     if (titles != nil || titles.count > 0) {
@@ -68,7 +68,7 @@
     self = [super initWithFrame:frame];
     if (self) {
         self.index = 0;
-        self.isURL = NO;
+        //self.isURL = NO;
         self.placeImage = placeImage;
         self.imagesArray = array;
         self.titleArray = titles;
@@ -77,38 +77,6 @@
     return self;
 }
 
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array {
-    
-    return [self initWithFrame:frame andImageURLsArray:array andPlaceImage:nil];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage {
-    
-    return [self initWithFrame:frame andImageURLsArray:array andPlaceImage:placeImage andTitles:nil];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andTitles:(NSArray *)titles {
-    
-    return [self initWithFrame:frame andImageURLsArray:array andPlaceImage:nil andTitles:titles];
-}
-
-- (instancetype)initWithFrame:(CGRect)frame andImageURLsArray:(NSArray *)array andPlaceImage:(UIImage *)placeImage andTitles:(NSArray *)titles {
-    
-    //NSAssert(array.count > 2, @"图片的数量不能少于3张");
-    if (titles != nil || titles.count > 0) {
-        NSAssert(array.count == titles.count, @"图片和名称数组数量不对应");
-    }
-    self = [super initWithFrame:frame];
-    if (self) {
-        self.index = 0;
-        self.isURL = YES;
-        self.placeImage = placeImage;
-        self.imagesArray = array;
-        self.titleArray = titles;
-        [self setupLayout];
-    }
-    return self;
-}
 
 #pragma mark - private method
 
@@ -132,21 +100,33 @@
 }
 
 - (void)setupImage {
-    
-    if (self.isURL) {
-        [self.centerImageView sd_setImageWithURL:[self pathToURL:self.index] placeholderImage:self.placeImage];
-        [self.leftImageView sd_setImageWithURL:[self pathToURL:self.index-1>=0?self.index-1:self.imagesArray.count-1] placeholderImage:self.placeImage];
-        [self.rightImageView sd_setImageWithURL:[self pathToURL:self.index+1 <=self.imagesArray.count-1?self.index+1:0] placeholderImage:self.placeImage];
+    NSString *sourcePath=self.imagesArray[self.index];
+    if([self isInternetImageSource:sourcePath]){
+        NSURL *url=[NSURL URLWithString:sourcePath];
+        [self.centerImageView sd_setImageWithURL:url placeholderImage:self.placeImage];
     }
-    else {
-        self.centerImageView.image
-        = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imagesArray[self.index]]]];
-        self.leftImageView.image
-        = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imagesArray[self.index-1>=0?self.index-1:self.imagesArray.count-1]]]];
-        self.rightImageView.image
-        = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",self.imagesArray[self.index+1 <=self.imagesArray.count-1?self.index+1:0]]]];
+    else{
+        self.centerImageView.image = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",sourcePath]]];
     }
     
+    
+    sourcePath=self.imagesArray[self.index-1>=0?self.index-1:self.imagesArray.count-1];
+    if([self isInternetImageSource:sourcePath]){
+        NSURL *url=[NSURL URLWithString:sourcePath];
+        [self.leftImageView sd_setImageWithURL:url placeholderImage:self.placeImage];
+    }
+    else{
+        self.leftImageView.image = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",sourcePath]]];
+    }
+    
+    sourcePath=self.imagesArray[self.index+1 <=self.imagesArray.count-1?self.index+1:0];
+    if([self isInternetImageSource:sourcePath]){
+        NSURL *url=[NSURL URLWithString:sourcePath];
+        [self.rightImageView sd_setImageWithURL:url placeholderImage:self.placeImage];
+    }
+    else{
+        self.rightImageView.image = [self addImage:[UIImage imageNamed:[NSString stringWithFormat:@"%@",sourcePath]]];
+    }
 }
 
 
@@ -230,10 +210,21 @@
     [self addSubview:self.titleView];
 }
 
+-(BOOL)isInternetImageSource:(NSString*)sourcePath{
+    if([[sourcePath lowercaseString] containsString:@"http:"] || [[sourcePath lowercaseString] containsString:@"https:"]){
+        return true;
+    }
+    return false;
+}
+
 #pragma mark - timer
 
 - (void)startTimer
 {
+    if(!self.imagesArray || [self.imagesArray count]<=1){
+        return;
+    }
+    
     if(self.timer == nil){
         
         self.timer = [NSTimer scheduledTimerWithTimeInterval:self.pauseTime target:self selector:@selector(timerStart) userInfo:nil repeats:YES];

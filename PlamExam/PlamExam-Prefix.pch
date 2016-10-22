@@ -16,7 +16,7 @@
 #import "BaseViewController.h"
 
 //HZ.WebAPI
-#define Distribution 4
+#define Distribution 3
 
 #if Distribution==1 //gao debugger
 #define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"

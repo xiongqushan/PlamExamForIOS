@@ -39,7 +39,7 @@
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSMutableArray *adDataArr;
 @property (nonatomic, strong) NSMutableArray *newsDataArr;
-
+@property (nonatomic,assign)BOOL isCurrentShowDefaultAd;
 @end
 
 @implementation HomeViewController
@@ -68,7 +68,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    
+    self.adDataArr=[NSMutableArray array];
     //设置badgeView
     UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
     tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
@@ -95,31 +95,22 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 
-- (void)setUpHeadAdScrollViewIsInternet:(BOOL)isInternet {
-    
-    if (isInternet) {
-        //网络请求
-        NSMutableArray *images = [NSMutableArray array];
-        for (AdScrollerViewData *data in self.adDataArr) {
-            [images addObject:data.ImageUrl];
-        }
-        
-        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageURLsArray:images];
-        imageView.pauseTime = 3.0;
-        imageView.currentPageColor = [UIColor whiteColor];
-        imageView.delegate = self;
-        [self.adView addSubview:imageView];
-        
-    }else {
-        //本地请求
-        NSArray *images = @[@"AD_default"];
-        SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageNamesArray:images];
-        imageView.pauseTime = 3.0;
-        imageView.currentPageColor = [UIColor whiteColor];
-        imageView.delegate = self;
-        [self.adView addSubview:imageView];
+-(void)showUpHeadAd{
+    NSMutableArray *images = [NSMutableArray array];
+    for (AdScrollerViewData *data in self.adDataArr) {
+        [images addObject:data.ImageUrl];
     }
+    SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageSourcePathArray:images];
+    imageView.pauseTime = 3.0;
+    imageView.currentPageColor = [UIColor whiteColor];
+    imageView.delegate = self;
+    NSArray *views=[self.adView subviews];
+    for (UIView *view in views) {
+        [view removeFromSuperview];
+    }
+    [self.adView addSubview:imageView];
 }
+
 
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
@@ -138,19 +129,20 @@
 - (void)loadAdScrollViewData {
     
     User* user=[[UserManager shareInstance] getUserInfo];
-    self.adDataArr=[NSMutableArray array];
-    [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+    [HomeModel requestADAndNotice:user.accountId withDepartId:@"bjbr001" requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
         if(httpRequestResult.IsSuccess){
             if (httpRequestResult.Data.count != 0) {
+                [self.adDataArr removeAllObjects];
                 [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
-                [self setUpHeadAdScrollViewIsInternet:YES];
+                [self showUpHeadAd];
+                //[self setUpHeadAdScrollViewIsInternet:YES];
             }
             else {
-                [self setUpHeadAdScrollViewIsInternet:NO];
+                //[self setUpHeadAdScrollViewIsInternet:NO];
             }
             
         }else{
-            [self setUpHeadAdScrollViewIsInternet:NO];
+            //[self setUpHeadAdScrollViewIsInternet:NO];
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
         
@@ -161,19 +153,20 @@
 
 -(void) loadADListByNotification:(NSNotification*)notification{
     User* user=[[UserManager shareInstance] getUserInfo];
-    self.adDataArr=[NSMutableArray array];
     [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
         if(httpRequestResult.IsSuccess){
             if (httpRequestResult.Data.count != 0) {
+                [self.adDataArr removeAllObjects];
                 [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
-                [self setUpHeadAdScrollViewIsInternet:YES];
+                [self showUpHeadAd];
+                //[self setUpHeadAdScrollViewIsInternet:YES];
             }
             else {
-                [self setUpHeadAdScrollViewIsInternet:NO];
+                //[self setUpHeadAdScrollViewIsInternet:NO];
             }
         }
         else{
-            [self setUpHeadAdScrollViewIsInternet:NO];
+            //[self setUpHeadAdScrollViewIsInternet:NO];
         }
     }];
 }
@@ -182,10 +175,11 @@
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
     AdScrollerViewData *data = self.adDataArr[index];
-    
-    InformationViewController *information = [[InformationViewController alloc] init];
-    information.loadUrl = data.LinkUrl;
-    [self.navigationController pushViewController:information animated:YES];
+    if(data.LinkUrl!=nil && ![data.LinkUrl isEqualToString:@""]){
+        InformationViewController *information = [[InformationViewController alloc] init];
+        information.loadUrl = data.LinkUrl;
+        [self.navigationController pushViewController:information animated:YES];
+    }
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
