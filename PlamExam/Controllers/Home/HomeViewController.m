@@ -99,8 +99,10 @@
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
     self.newsDataArr = [NSMutableArray array];
+    MBProgressHUD *hud = [CommonUtil createHUD];
     
     [NewsModel requestList:1 PageSize:4 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
+        hud.hidden = YES;
         if (httpRequestResult.IsSuccess) {
             [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
             [self.tableView reloadData];
@@ -303,6 +305,7 @@
     }else if (tempView.tag == kSectionItemTag + 1) {
         //健康咨询
         ConsultDetailViewController *consulation = [[ConsultDetailViewController alloc] init];
+        
         [self.navigationController pushViewController:consulation animated:YES];
     }
 }

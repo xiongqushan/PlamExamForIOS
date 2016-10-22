@@ -23,4 +23,12 @@
     }
     return _cellHeight;
 }
+
+- (CGFloat)reportCellHeight {
+    if (!_reportCellHeight) {
+        CGFloat height = [CommonUtil getHeightWithFont:[UIFont systemFontOfSize:14] title:self.Content maxWidth:kScreenSizeWidth - 166];
+        _reportCellHeight = height + 123 - 17;
+    }
+    return _reportCellHeight;
+}
 @end

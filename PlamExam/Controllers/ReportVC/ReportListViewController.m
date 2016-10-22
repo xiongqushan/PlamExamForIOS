@@ -137,8 +137,8 @@
     
     ReportSimple *report = self.dataArr[indexPath.row];
     ReportViewController *detail = [[ReportViewController alloc] init];
-    detail.workNo = report.WorkNo;
-    detail.checkUnitCode = report.CheckUnitCode;
+
+    detail.report = report;
     [self.navigationController pushViewController:detail animated:YES];
 }
 

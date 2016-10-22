@@ -7,10 +7,12 @@
 //
 
 #import "BaseViewController.h"
+#import "ReportSimple.h"
 
 @interface ReportViewController : BaseViewController
 
-@property (nonatomic, copy) NSString *workNo;
-@property (nonatomic, copy) NSString *checkUnitCode;
+@property (nonatomic, strong) ReportSimple *report;
+
+@property (nonatomic, copy) NSString *beforVC;
 
 @end
