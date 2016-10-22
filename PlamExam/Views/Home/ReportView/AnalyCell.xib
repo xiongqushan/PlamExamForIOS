@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.XIB" version="3.0" toolsVersion="11201" systemVersion="15G31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" colorMatched="YES">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="11161"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner"/>
+        <placeholder placeholderIdentifier="IBFirstResponder" id="-2" customClass="UIResponder"/>
+        <tableViewCell contentMode="scaleToFill" selectionStyle="default" indentationWidth="10" id="KGk-i7-Jjw" customClass="AnalyCell">
+            <rect key="frame" x="0.0" y="0.0" width="320" height="72"/>
+            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+            <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
+                <frame key="frameInset" width="320" height="71"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="eEk-5V-Slz">
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="aee-V4-1g8">
+                                <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                                <color key="textColor" red="0.20000000000000001" green="0.20000000000000001" blue="0.20000000000000001" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Y0N-nw-PQM">
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="bottom" secondItem="Y0N-nw-PQM" secondAttribute="bottom" constant="8" id="1N8-QQ-Xb7"/>
+                            <constraint firstAttribute="trailing" secondItem="Y0N-nw-PQM" secondAttribute="trailing" constant="16" id="CDt-bc-1m3"/>
+                            <constraint firstItem="Y0N-nw-PQM" firstAttribute="leading" secondItem="eEk-5V-Slz" secondAttribute="leading" constant="15" id="GKb-ma-iTG"/>
+                            <constraint firstAttribute="trailing" secondItem="aee-V4-1g8" secondAttribute="trailing" constant="16" id="MCx-i6-tao"/>
+                            <constraint firstItem="aee-V4-1g8" firstAttribute="top" secondItem="eEk-5V-Slz" secondAttribute="top" constant="10" id="nz1-9K-TRY"/>
+                            <constraint firstItem="aee-V4-1g8" firstAttribute="leading" secondItem="eEk-5V-Slz" secondAttribute="leading" constant="15" id="s95-Ej-OMA"/>
+                        </constraints>
+                    </view>
+                </subviews>
+                <constraints>
+                    <constraint firstItem="eEk-5V-Slz" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" id="GMd-jv-ZdK"/>
+                    <constraint firstItem="eEk-5V-Slz" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="9" id="MWW-Ia-CmL"/>
+                    <constraint firstAttribute="bottom" secondItem="eEk-5V-Slz" secondAttribute="bottom" constant="-1" id="k12-Eq-WWR"/>
+                    <constraint firstAttribute="trailing" secondItem="eEk-5V-Slz" secondAttribute="trailing" id="s6b-AM-WIk"/>
+                </constraints>
+            </tableViewCellContentView>
+            <color key="backgroundColor" red="0.94901960784313721" green="0.94901960784313721" blue="0.94901960784313721" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <connections>
+                <outlet property="contentLabel" destination="Y0N-nw-PQM" id="lJV-Xg-8lS"/>
+                <outlet property="nameLabel" destination="aee-V4-1g8" id="44d-GM-o67"/>
+            </connections>
+            <point key="canvasLocation" x="34" y="51"/>
+        </tableViewCell>
+    </objects>
+</document>

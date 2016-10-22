@@ -49,7 +49,7 @@
 @property(nonatomic,strong) NSString *SummaryAdvice;
 @end
 
-//
+// 报告解读
 @interface GeneralAdvice : NSObject
 @property(nonatomic,strong) NSString *AdviceCode;
 @property(nonatomic,strong) NSString *AdviceName;

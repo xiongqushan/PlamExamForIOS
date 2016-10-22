@@ -16,7 +16,7 @@
 @interface ReportViewController ()
 
 @property (nonatomic, strong) NSMutableArray *reportDetailDataArr;
-@property (nonatomic, strong) NSMutableArray *summaryDataArr;
+@property (nonatomic, strong) NSMutableArray *analyDataArr;
 @property (nonatomic, strong) NSMutableArray *unusualDataArr;
 
 @end
@@ -27,7 +27,7 @@
     [super viewDidLoad];
     
     self.reportDetailDataArr = [NSMutableArray array];
-    self.summaryDataArr = [NSMutableArray array];
+    self.analyDataArr = [NSMutableArray array];
     self.unusualDataArr = [NSMutableArray array];
     
     self.automaticallyAdjustsScrollViewInsets = NO;
@@ -40,9 +40,17 @@
     
     [ReportModel requestDetail:self.workNo withName:self.checkUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess) {
-            [self.unusualDataArr addObjectsFromArray:httpRequestResult.Data.GeneralAdvices];
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
-            [self.summaryDataArr addObjectsFromArray:httpRequestResult.Data.GeneralSummarys];
+            //获取异常项数据
+            for (CheckItem *item in self.reportDetailDataArr) {
+                for (CheckResult *result in item.CheckResults) {
+                    if (result.IsAbnormalForamt) {
+                        [self.unusualDataArr addObject:result];
+                    }
+                }
+            }
+            
+            [self.analyDataArr addObjectsFromArray:httpRequestResult.Data.GeneralAdvices];
             
             [self setUpBaseUI];
         }else {
@@ -62,7 +70,7 @@
     detail.dataArr = self.reportDetailDataArr;
     
     ReportAnalyViewController *analy = [[ReportAnalyViewController alloc] init];
-    analy.dataArr = self.summaryDataArr;
+    analy.dataArr = self.analyDataArr;
     
     HZSliderView *slider = [[HZSliderView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64) titleArr:titleArr controllerNameArr:@[exceptions,detail,analy]];
     [self.view addSubview:slider];

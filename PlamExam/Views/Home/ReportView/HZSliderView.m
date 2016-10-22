@@ -177,16 +177,17 @@
     UICollectionViewFlowLayout *flowLayout = [[UICollectionViewFlowLayout alloc] init];
     flowLayout.minimumLineSpacing = 0;
     flowLayout.minimumInteritemSpacing = 0;
-    flowLayout.itemSize = CGSizeMake(kScreenSize.width, kScreenSize.height);
+    flowLayout.itemSize = CGSizeMake(kScreenSize.width, self.bounds.size.height - kTabBarH);
     flowLayout.scrollDirection = UICollectionViewScrollDirectionHorizontal;
     
-    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, _tabBarHeight, kScreenSize.width, kScreenSize.height) collectionViewLayout:flowLayout];
+    self.collectionView = [[UICollectionView alloc] initWithFrame:CGRectMake(0, kTabBarH, kScreenSize.width, self.bounds.size.height - kTabBarH) collectionViewLayout:flowLayout];
     self.collectionView.backgroundColor = [UIColor whiteColor];
     self.collectionView.delegate = self;
     self.collectionView.dataSource = self;
     [self addSubview:self.collectionView];
     self.collectionView.pagingEnabled = YES;
     self.collectionView.bounces = NO;
+    self.collectionView.showsHorizontalScrollIndicator = NO;
     [self.collectionView registerClass:[UICollectionViewCell class] forCellWithReuseIdentifier:@"CellId"];
 }
 
