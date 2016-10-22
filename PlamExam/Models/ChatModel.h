@@ -23,5 +23,7 @@
 //发送消息
 + (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo callBackBlock:(void(^)(HttpRequestResult<NSString *> *httpResult))callBack;
 
++(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<ChatData *> *))callBack;
+
 + (void)Comment:(NSString *)accountId score:(NSString*)score content:(NSString *)content callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> *))callBack;
 @end

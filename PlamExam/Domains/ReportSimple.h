@@ -14,4 +14,5 @@
 @property(nonatomic,strong)NSString *CustomerName;
 @property(nonatomic,strong)NSString *ReportName;
 @property(nonatomic,strong)NSString *ReportDate;
+@property(nonatomic,strong)NSString *ReportDateFormat;
 @end

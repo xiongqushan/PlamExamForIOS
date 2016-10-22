@@ -31,6 +31,7 @@
 #define kItemSpace 10
 #define kSectionItemTag 101
 #define kBackColor kSetRGBColor(242, 242, 242)
+#define kDefaultADName @"AD_default"
 
 @interface HomeViewController ()<UITableViewDelegate, UITableViewDataSource, SZCirculationImageViewDelegate>
 
@@ -39,7 +40,6 @@
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSMutableArray *adDataArr;
 @property (nonatomic, strong) NSMutableArray *newsDataArr;
-@property (nonatomic,assign)BOOL isCurrentShowDefaultAd;
 @end
 
 @implementation HomeViewController
@@ -73,7 +73,8 @@
     UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
     tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
     [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
-    
+
+    //[self showDefaultAd];
     [self loadAdScrollViewData];
     [self loadNewsData];
     [self setUpTableView];
@@ -95,23 +96,6 @@
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 
--(void)showUpHeadAd{
-    NSMutableArray *images = [NSMutableArray array];
-    for (AdScrollerViewData *data in self.adDataArr) {
-        [images addObject:data.ImageUrl];
-    }
-    SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageSourcePathArray:images];
-    imageView.pauseTime = 3.0;
-    imageView.currentPageColor = [UIColor whiteColor];
-    imageView.delegate = self;
-    NSArray *views=[self.adView subviews];
-    for (UIView *view in views) {
-        [view removeFromSuperview];
-    }
-    [self.adView addSubview:imageView];
-}
-
-
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
     self.newsDataArr = [NSMutableArray array];
@@ -132,17 +116,8 @@
     [HomeModel requestADAndNotice:user.accountId withDepartId:@"bjbr001" requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
         if(httpRequestResult.IsSuccess){
             if (httpRequestResult.Data.count != 0) {
-                [self.adDataArr removeAllObjects];
-                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
-                [self showUpHeadAd];
-                //[self setUpHeadAdScrollViewIsInternet:YES];
+                [self showNewAd:httpRequestResult.Data];
             }
-            else {
-                //[self setUpHeadAdScrollViewIsInternet:NO];
-            }
-            
-        }else{
-            //[self setUpHeadAdScrollViewIsInternet:NO];
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
         
@@ -156,19 +131,57 @@
     [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
         if(httpRequestResult.IsSuccess){
             if (httpRequestResult.Data.count != 0) {
-                [self.adDataArr removeAllObjects];
-                [self.adDataArr addObjectsFromArray:httpRequestResult.Data];
-                [self showUpHeadAd];
-                //[self setUpHeadAdScrollViewIsInternet:YES];
+                [self showNewAd:httpRequestResult.Data];
             }
             else {
-                //[self setUpHeadAdScrollViewIsInternet:NO];
+                if(![self isCurrentShowDefaultAD]){
+                    [self showDefaultAd];
+                }
             }
         }
         else{
-            //[self setUpHeadAdScrollViewIsInternet:NO];
+            if(![self isCurrentShowDefaultAD]){
+                [self showDefaultAd];
+            }
         }
     }];
+}
+
+-(void)showUpHeadAd{
+    NSMutableArray *images = [NSMutableArray array];
+    for (AdScrollerViewData *data in self.adDataArr) {
+        [images addObject:data.ImageUrl];
+    }
+    SZCirculationImageView *imageView = [[SZCirculationImageView alloc] initWithFrame:self.adView.bounds andImageSourcePathArray:images];
+    imageView.pauseTime = 3.0;
+    imageView.currentPageColor = [UIColor whiteColor];
+    imageView.delegate = self;
+    NSArray *views=[self.adView subviews];
+    for (UIView *view in views) {
+        [view removeFromSuperview];
+    }
+    [self.adView addSubview:imageView];
+}
+
+-(void)showNewAd:(NSMutableArray<AdScrollerViewData*>*) adList{
+    [self.adDataArr removeAllObjects];
+    [self.adDataArr addObjectsFromArray:adList];
+    [self showUpHeadAd];
+}
+
+-(void)showDefaultAd{
+    [self.adDataArr removeAllObjects];
+    AdScrollerViewData * adItem=[[AdScrollerViewData alloc] init];
+    adItem.ImageUrl=kDefaultADName;
+    [self.adDataArr addObject:adItem];
+    [self showUpHeadAd];
+}
+
+-(BOOL)isCurrentShowDefaultAD{
+    if([self.adDataArr count]==1 && [self.adDataArr[0] isEqualToString:kDefaultADName]){
+        return YES;
+    }
+    return NO;
 }
 
 #pragma mark -- SZCirculationImageViewDelegate
