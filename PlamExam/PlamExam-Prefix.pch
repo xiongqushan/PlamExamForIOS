@@ -16,7 +16,7 @@
 #import "BaseViewController.h"
 
 //HZ.WebAPI
-#define Distribution 3
+#define Distribution 2
 
 #if Distribution==1 //gao debugger
 #define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
@@ -48,6 +48,8 @@
 #define kNavigationBarH 64   
 
 #define kChangeDepartKVOKey @"ChangeDepartKVO"
+#define kClearBadgeKVOKey @"ClearBadgeKVO"
+
 #define kReportConsultType 3
 
 #define kReportVcName @"ReportVc"

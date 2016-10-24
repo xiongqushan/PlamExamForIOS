@@ -78,6 +78,8 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kClearBadgeKVOKey object:nil];
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
@@ -529,6 +531,12 @@
     ReportListViewController *reportList = [[ReportListViewController alloc] init];
     
     [self.navigationController pushViewController:reportList animated:YES];
+}
+
+//发送消息
+- (IBAction)senMessageBtnClick:(id)sender {
+    [self sendMessage:self.textView.text type:1];
+    
 }
 
 //语音识别按钮被点击

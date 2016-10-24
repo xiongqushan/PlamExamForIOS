@@ -27,7 +27,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
-    self.navigationItem.title = @"体检报告";
+    self.navigationItem.title = @"报告列表";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"添加报告" style:UIBarButtonItemStylePlain target:self action:@selector(addReport)];
     
     [self loadReportData];
@@ -55,7 +55,7 @@
     MBProgressHUD *hud = [CommonUtil createHUD];
     User *user = [[UserManager shareInstance] getUserInfo];
     [ReportModel requestReportList:user.accountId callBackBlock:^(HttpRequestResult<NSMutableArray<ReportSimple *> *> *httpRequestResult) {
-        [hud hide:YES];
+        hud.hidden = YES;
 
         if(httpRequestResult.IsSuccess){
             NSArray<ReportSimple*>*reports=httpRequestResult.Data;

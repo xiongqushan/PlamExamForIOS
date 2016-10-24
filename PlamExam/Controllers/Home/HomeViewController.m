@@ -40,6 +40,8 @@
 @property (nonatomic, strong) UIView *tableHeaderView;
 @property (nonatomic, strong) NSMutableArray *adDataArr;
 @property (nonatomic, strong) NSMutableArray *newsDataArr;
+@property (nonatomic, strong) UITabBarItem *tabBarItem;
+
 @end
 
 @implementation HomeViewController
@@ -70,9 +72,9 @@
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
     //设置badgeView
-    UITabBarItem *tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
-    tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
-    [tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
+    self.tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
+    self.tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
+    [self.tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
 
     //[self showDefaultAd];
     [self loadAdScrollViewData];
@@ -80,6 +82,8 @@
     [self setUpTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
+    //添加监听进入咨询详情清除小圆点的通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBadgeNotification:) name:kClearBadgeKVOKey object:nil];
 }
 
 #pragma mark -- 设置UI相关
@@ -95,7 +99,32 @@
     
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
+#pragma mark -- 通知相关
 
+- (void)clearBadgeNotification:(NSNotification *)notification {
+    [self.tabBarItem clearBadge];
+}
+
+-(void) loadADListByNotification:(NSNotification*)notification{
+    User* user=[[UserManager shareInstance] getUserInfo];
+    [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        if(httpRequestResult.IsSuccess){
+            if (httpRequestResult.Data.count != 0) {
+                [self showNewAd:httpRequestResult.Data];
+            }
+            else {
+                if(![self isCurrentShowDefaultAD]){
+                    [self showDefaultAd];
+                }
+            }
+        }
+        else{
+            if(![self isCurrentShowDefaultAD]){
+                [self showDefaultAd];
+            }
+        }
+    }];
+}
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
     self.newsDataArr = [NSMutableArray array];
@@ -122,32 +151,12 @@
             }
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
-        
+
     } allFinishCallback:^(BOOL isAllSuccess) {
         
     }];
 }
 
--(void) loadADListByNotification:(NSNotification*)notification{
-    User* user=[[UserManager shareInstance] getUserInfo];
-    [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
-        if(httpRequestResult.IsSuccess){
-            if (httpRequestResult.Data.count != 0) {
-                [self showNewAd:httpRequestResult.Data];
-            }
-            else {
-                if(![self isCurrentShowDefaultAD]){
-                    [self showDefaultAd];
-                }
-            }
-        }
-        else{
-            if(![self isCurrentShowDefaultAD]){
-                [self showDefaultAd];
-            }
-        }
-    }];
-}
 
 -(void)showUpHeadAd{
     NSMutableArray *images = [NSMutableArray array];

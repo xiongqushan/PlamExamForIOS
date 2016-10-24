@@ -40,7 +40,12 @@
 
 - (void)loadReportDetailData {
     
+    MBProgressHUD *hud = [CommonUtil createHUD];
+    
     [ReportModel requestDetail:self.report.WorkNo withName:self.report.CheckUnitCode callBackBlock:^(HttpRequestResult<ReportInfo *> *httpRequestResult) {
+        
+        hud.hidden = YES;
+        
         if (httpRequestResult.IsSuccess) {
             [self.reportDetailDataArr addObjectsFromArray:httpRequestResult.Data.CheckItems];
             
