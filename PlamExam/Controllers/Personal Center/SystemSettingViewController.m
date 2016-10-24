@@ -12,7 +12,8 @@
 #import "BaseSetting.h"
 #import "User.h"
 #import "UserManager.h"
-
+#import "DoctorManager.h"
+#import "ReportManager.h"
 @interface SystemSettingViewController ()
 
 @end
@@ -61,6 +62,9 @@
     if (indexPath.section == 3) {
         //退出登录
         [[UserManager shareInstance] clearUserInfo];
+        [[DoctorManager shareInstance] clearDoctorId];
+        [[ReportManager shareInstance] clear];
+        
         LoginViewController *login = [[LoginViewController alloc] init];
         [self presentViewController:login animated:YES completion:nil];
     }

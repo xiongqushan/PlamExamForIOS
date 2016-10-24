@@ -38,7 +38,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *adView;
 @property (nonatomic, strong) UIView *tableHeaderView;
-@property (nonatomic, strong) NSMutableArray *adDataArr;
+@property (nonatomic, strong) NSMutableArray<AdScrollerViewData*> *adDataArr;
 @property (nonatomic, strong) NSMutableArray *newsDataArr;
 @property (nonatomic, strong) UITabBarItem *tabBarItem;
 
@@ -75,16 +75,17 @@
     self.tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
     self.tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
     [self.tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
-
-    //[self showDefaultAd];
+    [self setUpTableView];
+    
+    [self showDefaultAd];
     [self loadAdScrollViewData];
     [self loadNewsData];
-    [self setUpTableView];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
     //添加监听进入咨询详情清除小圆点的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBadgeNotification:) name:kClearBadgeKVOKey object:nil];
 }
+
 
 #pragma mark -- 设置UI相关
 - (void)setUpTableView {
@@ -105,26 +106,7 @@
     [self.tabBarItem clearBadge];
 }
 
--(void) loadADListByNotification:(NSNotification*)notification{
-    User* user=[[UserManager shareInstance] getUserInfo];
-    [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
-        if(httpRequestResult.IsSuccess){
-            if (httpRequestResult.Data.count != 0) {
-                [self showNewAd:httpRequestResult.Data];
-            }
-            else {
-                if(![self isCurrentShowDefaultAD]){
-                    [self showDefaultAd];
-                }
-            }
-        }
-        else{
-            if(![self isCurrentShowDefaultAD]){
-                [self showDefaultAd];
-            }
-        }
-    }];
-}
+
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
     self.newsDataArr = [NSMutableArray array];
@@ -144,9 +126,9 @@
 - (void)loadAdScrollViewData {
     
     User* user=[[UserManager shareInstance] getUserInfo];
-    [HomeModel requestADAndNotice:user.accountId withDepartId:@"bjbr001" requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+    [HomeModel requestADAndNotice:user.accountId withDepartId:user.departId requestADcallBack:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
         if(httpRequestResult.IsSuccess){
-            if (httpRequestResult.Data.count != 0) {
+            if (httpRequestResult.Data.count > 0) {
                 [self showNewAd:httpRequestResult.Data];
             }
         }
@@ -157,6 +139,26 @@
     }];
 }
 
+-(void) loadADListByNotification:(NSNotification*)notification{
+    User* user=[[UserManager shareInstance] getUserInfo];
+    [HomeModel requestADList:user.departId callBackBlock:^(HttpRequestResult<NSMutableArray<AdScrollerViewData *> *> *httpRequestResult) {
+        if(httpRequestResult.IsSuccess){
+            if (httpRequestResult.Data.count > 0) {
+                [self showNewAd:httpRequestResult.Data];
+            }
+            else {
+                if(![self isCurrentShowDefaultAD]){
+                    [self showDefaultAd];
+                }
+            }
+        }
+        else{
+            if(![self isCurrentShowDefaultAD]){
+                [self showDefaultAd];
+            }
+        }
+    }];
+}
 
 -(void)showUpHeadAd{
     NSMutableArray *images = [NSMutableArray array];
@@ -181,6 +183,9 @@
 }
 
 -(void)showDefaultAd{
+    if([self isCurrentShowDefaultAD]){
+        return;
+    }
     [self.adDataArr removeAllObjects];
     AdScrollerViewData * adItem=[[AdScrollerViewData alloc] init];
     adItem.ImageUrl=kDefaultADName;
@@ -189,7 +194,7 @@
 }
 
 -(BOOL)isCurrentShowDefaultAD{
-    if([self.adDataArr count]==1 && [self.adDataArr[0] isEqualToString:kDefaultADName]){
+    if([self.adDataArr count]==1 && [self.adDataArr[0].ImageUrl isEqualToString:kDefaultADName]){
         return YES;
     }
     return NO;

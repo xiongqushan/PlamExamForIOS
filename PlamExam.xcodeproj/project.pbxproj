@@ -107,7 +107,6 @@
 		A9C92D051DB5ED9500034DA5 /* UIView+WZLBadge.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D001DB5ED9500034DA5 /* UIView+WZLBadge.m */; };
 		A9C92D0C1DB6036600034DA5 /* AdScrollerViewData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D0B1DB6036600034DA5 /* AdScrollerViewData.m */; };
 		A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D0F1DB6114700034DA5 /* SZCirculationImageView.m */; };
-		A9C92D131DB6277A00034DA5 /* HomeAdManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D121DB6277A00034DA5 /* HomeAdManager.m */; };
 		A9C92D1A1DB7065900034DA5 /* BatchRequestParam.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D151DB7065900034DA5 /* BatchRequestParam.m */; };
 		A9C92D1B1DB7065900034DA5 /* Doctor.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D171DB7065900034DA5 /* Doctor.m */; };
 		A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92D191DB7065900034DA5 /* HttpRequestResult.m */; };
@@ -309,8 +308,6 @@
 		A9C92D0B1DB6036600034DA5 /* AdScrollerViewData.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdScrollerViewData.m; sourceTree = "<group>"; };
 		A9C92D0E1DB6114700034DA5 /* SZCirculationImageView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SZCirculationImageView.h; sourceTree = "<group>"; };
 		A9C92D0F1DB6114700034DA5 /* SZCirculationImageView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SZCirculationImageView.m; sourceTree = "<group>"; };
-		A9C92D111DB6277A00034DA5 /* HomeAdManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HomeAdManager.h; sourceTree = "<group>"; };
-		A9C92D121DB6277A00034DA5 /* HomeAdManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HomeAdManager.m; sourceTree = "<group>"; };
 		A9C92D141DB7065900034DA5 /* BatchRequestParam.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BatchRequestParam.h; sourceTree = "<group>"; };
 		A9C92D151DB7065900034DA5 /* BatchRequestParam.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BatchRequestParam.m; sourceTree = "<group>"; };
 		A9C92D161DB7065900034DA5 /* Doctor.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Doctor.h; sourceTree = "<group>"; };
@@ -553,8 +550,6 @@
 			children = (
 				A93549801DB0A5920077E85C /* UserManager.h */,
 				A93549811DB0A5920077E85C /* UserManager.m */,
-				A9C92D111DB6277A00034DA5 /* HomeAdManager.h */,
-				A9C92D121DB6277A00034DA5 /* HomeAdManager.m */,
 				A5A01E911DB73FD4006C64E0 /* DoctorManager.h */,
 				A5A01E921DB73FD4006C64E0 /* DoctorManager.m */,
 				A5A01EA41DB86945006C64E0 /* ReportManager.h */,
@@ -1103,7 +1098,6 @@
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
 				A9388DB51DBB0D2500210224 /* UserReportCell.m in Sources */,
-				A9C92D131DB6277A00034DA5 /* HomeAdManager.m in Sources */,
 				A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */,
 				A92F201E1DB9A6CE002BFB0E /* ReportListCell.m in Sources */,
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
@@ -1200,6 +1194,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
@@ -1248,6 +1243,7 @@
 				CLANG_WARN_INFINITE_RECURSION = YES;
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_SUSPICIOUS_MOVE = YES;
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
