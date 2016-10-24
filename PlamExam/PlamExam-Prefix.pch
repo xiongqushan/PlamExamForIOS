@@ -49,6 +49,8 @@
 
 #define kChangeDepartKVOKey @"ChangeDepartKVO"
 #define kRefreshConsultListKVOKey @"RefreshConsultListKVO"
+#define kClearBadgeKVOKey @"ClearBadgeKVO"
+
 #define kReportConsultType 3
 
 #define kReportVcName @"ReportVc"

@@ -414,7 +414,7 @@ static const CGFloat MBDefaultDetailsLabelFontSize = 12.f;
             
     //使用coreAnimation 进行加载动画
             [indicator removeFromSuperview];
-            UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 80, 80)];
+            UIImageView *logo = [[UIImageView alloc] initWithFrame:CGRectMake(0, 0, 50, 50)];
             logo.image = [UIImage imageNamed:@"loading"];
             
             indicator = logo;

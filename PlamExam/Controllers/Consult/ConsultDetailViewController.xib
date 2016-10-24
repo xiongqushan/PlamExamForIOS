@@ -6,7 +6,7 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <objects>
-        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConsulationViewController">
+        <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="ConsultDetailViewController">
             <connections>
                 <outlet property="placeholderLabel" destination="xGC-eg-2Rf" id="W7o-Gx-sDU"/>
                 <outlet property="reportBtn" destination="uaz-nA-ROQ" id="sEQ-cK-vnb"/>
@@ -65,6 +65,9 @@
                                 <constraint firstAttribute="width" constant="30" id="lXb-eA-pnR"/>
                             </constraints>
                             <state key="normal" image="sendMessage"/>
+                            <connections>
+                                <action selector="senMessageBtnClick:" destination="-1" eventType="touchUpInside" id="7cK-oL-inm"/>
+                            </connections>
                         </button>
                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="请输入咨询内容:" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="xGC-eg-2Rf">
                             <fontDescription key="fontDescription" type="system" pointSize="15"/>
@@ -121,7 +124,7 @@
                 <constraint firstAttribute="trailing" secondItem="APp-5q-Qxq" secondAttribute="trailing" constant="10" id="kde-nD-LXj"/>
                 <constraint firstItem="JCu-zq-4pZ" firstAttribute="top" secondItem="XeQ-Fm-9YD" secondAttribute="bottom" id="vpj-9C-llt"/>
             </constraints>
-            <point key="canvasLocation" x="33.5" y="53.5"/>
+            <point key="canvasLocation" x="-160" y="50"/>
         </view>
     </objects>
     <resources>
