@@ -20,9 +20,18 @@
     NSMutableDictionary *postDic=[[NSMutableDictionary alloc] initWithDictionary:params];
     [postDic setValue:[NSString stringWithFormat:@"%ld",(NSInteger)[[NSDate date] timeIntervalSince1970]] forKey:@"timespan"];
     
+    for(NSString *key in postDic.allKeys){
+        id value=postDic[key];
+        if([value isKindOfClass:[NSString class]]){
+            value=[value stringByAddingPercentEscapesUsingEncoding:NSUTF8StringEncoding];
+            postDic[key]= value;
+        }
+    }
+    
     AFNetworkingProxy *networkingProxy=[AFNetworkingProxy createInstance];
     NSMutableDictionary *signDic=[[NSMutableDictionary alloc] initWithDictionary:postDic];
     [signDic setValue:ApiSecret forKey:@"secret"];
+    
     /*NSArray *keys=[signDic allKeys];
     NSArray *sortedKeys=[keys sortedArrayUsingComparator:^NSComparisonResult(id  _Nonnull obj1, id  _Nonnull obj2) {
         return [obj1 compare:obj2 options:NSNumericSearch];
