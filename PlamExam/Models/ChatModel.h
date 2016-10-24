@@ -26,4 +26,6 @@
 +(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<ZSBoolType*> *))callBack;
 
 + (void)Comment:(NSString *)accountId score:(NSString*)score content:(NSString *)content callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> *))callBack;
+
++ (void)clearNotice:(NSString *)accountId type:(NSInteger)type callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> * httpRequestResult))callBack;
 @end
