@@ -40,7 +40,7 @@
     [self.view addSubview:textView];
     self.textView = textView;
     
-    UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 64 +15 + 5, kScreenSizeWidth - 50, 21)];
+    UILabel *placeholderLabel = [[UILabel alloc] initWithFrame:CGRectMake(22, 64 +15 + 8, kScreenSizeWidth - 50, 21)];
     placeholderLabel.text = @"请留下您宝贵的建议，我们将不断完善";
     placeholderLabel.textColor = kSetRGBColor(153, 153, 153);
     placeholderLabel.font = [UIFont systemFontOfSize:14];

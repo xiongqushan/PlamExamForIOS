@@ -21,6 +21,7 @@
 
 @property (nonatomic, strong) NSMutableArray *dataArr;
 @property (nonatomic, strong) UITableView *tableView;
+@property (nonatomic, strong) UIView *addReportView;
 
 @end
 
@@ -40,6 +41,7 @@
 - (void)addReport {
     AddReportViewController *addReport = [[AddReportViewController alloc] init];
     addReport.reloadReportList = ^(NSArray<ReportSimple*>* reports){
+        self.addReportView.hidden = YES;
         self.dataArr = [NSMutableArray arrayWithArray:reports];
         [self.tableView reloadData];
     };
@@ -102,6 +104,7 @@
     titleLabel.textColor = kSetRGBColor(178, 178, 178);
     [view addSubview:titleLabel];
     
+    self.addReportView = view;
     [self.view addSubview:view];
 }
 
@@ -127,14 +130,7 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
-//    
-    
-//    
-//    cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@  机构:%@",report.CustomerName,report.ReportName];
-//    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDateFormat];
-//    
-//    return cell;
+
     ReportListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportListCell"];
     ReportSimple *report = self.dataArr[indexPath.row];
     [cell showDataWithModel:report];

@@ -25,6 +25,7 @@
 #import "NewsSimple.h"
 #import "Notice.h"
 #import "AdDetailViewController.h"
+#import "NewsListViewController.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -81,7 +82,7 @@
     
     [self showDefaultAd];
     [self loadAdScrollViewData];
-    //[self loadNewsData];
+    [self loadNewsData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
     //添加监听进入咨询详情清除小圆点的通知
@@ -213,15 +214,15 @@
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
     AdScrollerViewData *data = self.adDataArr[index];
-//    if(data.LinkUrl!=nil && ![data.LinkUrl isEqualToString:@""]){
-//        AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
-//        adDetail.loadUrl = data.LinkUrl;
-//        [self.navigationController pushViewController:adDetail animated:YES];
-//    }
+    if(data.LinkUrl!=nil && ![data.LinkUrl isEqualToString:@""]){
+        AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
+        adDetail.loadUrl = data.LinkUrl;
+        [self.navigationController pushViewController:adDetail animated:YES];
+    }
     
-    AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
-    adDetail.loadUrl = data.LinkUrl;
-    [self.navigationController pushViewController:adDetail animated:YES];
+//    AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
+//    adDetail.loadUrl = data.LinkUrl;
+//    [self.navigationController pushViewController:adDetail animated:YES];
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
@@ -301,6 +302,7 @@
     
     UIButton *informationBtn = [UIButton buttonWithType:UIButtonTypeCustom];
     informationBtn.frame = CGRectMake(informationView.bounds.size.width - 15 - 16, 10, 16, 20);
+    [informationBtn addTarget:self action:@selector(goNewsList) forControlEvents:UIControlEventTouchUpInside];
     [informationBtn setImage:[UIImage imageNamed:@"newsMore"] forState:UIControlStateNormal];
     [informationView addSubview:informationBtn];
     
@@ -320,6 +322,14 @@
 
 #pragma mark -- ClickEvent
 
+//跳转资讯列表界面
+- (void)goNewsList {
+    NewsListViewController *newsList = [[NewsListViewController alloc] init];
+    
+    [self.navigationController pushViewController:newsList animated:YES];
+}
+
+//分区头视图上的View被点击
 - (void)itemTap:(UITapGestureRecognizer *)tap {
     UIView *tempView = tap.view;
     if (tempView.tag == kSectionItemTag) {

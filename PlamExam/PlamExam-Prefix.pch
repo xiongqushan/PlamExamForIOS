@@ -17,7 +17,7 @@
 
 //HZ.WebAPI
 
-#define Distribution 3
+#define Distribution 2
 
 #if Distribution==1 //gao debugger
 #define BaseURLStr @"http://hz3bn04d2/ZSTJ/api/V3/"

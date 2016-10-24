@@ -93,6 +93,11 @@
     _headerView.iconHeight.constant = yuanW;
 }
 
+#pragma mark -- UITableViewDelegate
+- (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
+    return 50;
+}
+
 #pragma mark -- 界面将要显示在界面
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];

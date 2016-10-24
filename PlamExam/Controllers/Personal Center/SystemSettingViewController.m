@@ -15,8 +15,12 @@
 #import "DoctorManager.h"
 #import "ReportManager.h"
 #import "FeedbackViewController.h"
+#import <SDImageCache.h>
 
-@interface SystemSettingViewController ()
+#define kAlertLoginOutTag 101
+#define kAlertClearCacheTag 102
+
+@interface SystemSettingViewController ()<UIAlertViewDelegate>
 
 @end
 
@@ -63,17 +67,19 @@
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
     
     if (indexPath.section == 3) {
-        //退出登录
-        [[UserManager shareInstance] clearUserInfo];
-        [[DoctorManager shareInstance] clearDoctorId];
-        [[ReportManager shareInstance] clear];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:@"确定要退出登录吗？" delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确定", nil];
+        alert.tag = kAlertLoginOutTag;
+        [alert show];
         
-        LoginViewController *login = [[LoginViewController alloc] init];
-        [self presentViewController:login animated:YES completion:nil];
     }
     
     if (indexPath.section == 2 && indexPath.row == 1) {
         //清理缓存
+        double cacheSize = [self getCacheSize];
+        NSString *message = [NSString stringWithFormat:@"清除%.2fM缓存？",cacheSize];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:nil message:message delegate:self cancelButtonTitle:@"取消" otherButtonTitles:@"确认", nil];
+        alert.tag = 102;
+        [alert show];
     }
     
     GroupItem *group = self.dataArr[indexPath.section];
@@ -83,6 +89,53 @@
         UIViewController *vc = [[item.destVcClass alloc] init];
         [self.navigationController pushViewController:vc animated:YES];
     }
+}
+
+- (void)alertView:(UIAlertView *)alertView clickedButtonAtIndex:(NSInteger)buttonIndex {
+    if (alertView.tag == kAlertLoginOutTag) {
+        //退出
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            //取消
+        }else {
+            
+            [[UserManager shareInstance] clearUserInfo];
+            [[DoctorManager shareInstance] clearDoctorId];
+            [[ReportManager shareInstance] clear];
+            
+            LoginViewController *login = [[LoginViewController alloc] init];
+            [self presentViewController:login animated:YES completion:nil];
+        }
+    }else if (alertView.tag == kAlertClearCacheTag) {
+        if (buttonIndex == alertView.cancelButtonIndex) {
+            
+        }else {
+            [self removeCacheSize];
+        }
+    }
+}
+
+- (double)getCacheSize {
+    NSInteger fileSize = [[SDImageCache sharedImageCache] getSize];
+    
+    NSString *myCache = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/MyCaches"];
+    NSDictionary *dict = [[NSFileManager defaultManager] attributesOfItemAtPath:myCache error:nil];
+    NSInteger myCacheSize = dict.fileSize;
+    
+    fileSize += myCacheSize;
+    
+    double cacheSize = fileSize/1024.0/1024.0;
+    return cacheSize;
+}
+
+- (void)removeCacheSize {
+    [[SDImageCache sharedImageCache] clearDisk];
+    [[SDImageCache sharedImageCache] clearMemory];
+    
+    NSString *myCache = [NSHomeDirectory() stringByAppendingString:@"/Library/Caches/MyCaches"];
+    [[NSFileManager defaultManager] removeItemAtPath:myCache error:nil];
+    
+    [CommonUtil showHUDWithTitle:@"缓存清除成功!"];
+    
 }
 
 - (void)didReceiveMemoryWarning {

@@ -97,6 +97,9 @@
 		A9B58B211DBDB37D0031139B /* AdDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B201DBDB37D0031139B /* AdDetailViewController.m */; };
 		A9B58B241DBDF9240031139B /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B231DBDF9240031139B /* FeedbackViewController.m */; };
 		A9B58B281DBE00E10031139B /* SystemSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B271DBE00E10031139B /* SystemSettingModel.m */; };
+		A9B58B311DBE0EB60031139B /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */; };
+		A9B58B321DBE0EB60031139B /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B58B301DBE0EB60031139B /* LaunchViewController.xib */; };
+		A9B58B351DBE28390031139B /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B341DBE28390031139B /* NewsListViewController.m */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
 		A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */; };
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
@@ -290,6 +293,11 @@
 		A9B58B231DBDF9240031139B /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		A9B58B261DBE00E10031139B /* SystemSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingModel.h; sourceTree = "<group>"; };
 		A9B58B271DBE00E10031139B /* SystemSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingModel.m; sourceTree = "<group>"; };
+		A9B58B2E1DBE0EB60031139B /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
+		A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
+		A9B58B301DBE0EB60031139B /* LaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
+		A9B58B331DBE28390031139B /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
+		A9B58B341DBE28390031139B /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		A9BBAD5B1DAA336000BAF4D1 /* PlamExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlamExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BBAD5F1DAA336000BAF4D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -460,6 +468,8 @@
 				A93C60E21DB4D3980024180F /* InformationViewController.m */,
 				A9B58B1F1DBDB37D0031139B /* AdDetailViewController.h */,
 				A9B58B201DBDB37D0031139B /* AdDetailViewController.m */,
+				A9B58B331DBE28390031139B /* NewsListViewController.h */,
+				A9B58B341DBE28390031139B /* NewsListViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -815,6 +825,9 @@
 				A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */,
 				A9BBAD6F1DAA336000BAF4D1 /* Info.plist */,
 				A9BBAD5F1DAA336000BAF4D1 /* main.m */,
+				A9B58B2E1DBE0EB60031139B /* LaunchViewController.h */,
+				A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */,
+				A9B58B301DBE0EB60031139B /* LaunchViewController.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1009,6 +1022,7 @@
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
 				A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */,
 				A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */,
+				A9B58B321DBE0EB60031139B /* LaunchViewController.xib in Resources */,
 				A935496A1DAF9D340077E85C /* IconCell.xib in Resources */,
 				A9388DB61DBB0D2500210224 /* UserReportCell.xib in Resources */,
 				A9C92D361DB71AAB00034DA5 /* star_yellow.png in Resources */,
@@ -1099,6 +1113,7 @@
 				A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */,
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A9388DB01DBB0CD700210224 /* DoctorReplyCell.m in Sources */,
+				A9B58B311DBE0EB60031139B /* LaunchViewController.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
 				A93549691DAF9D340077E85C /* IconCell.m in Sources */,
@@ -1114,6 +1129,7 @@
 				A93549651DAF8E320077E85C /* SampleRepportViewController.m in Sources */,
 				A9388DCE1DBB522300210224 /* MBProgressHUD.m in Sources */,
 				A9C92D1C1DB7065900034DA5 /* HttpRequestResult.m in Sources */,
+				A9B58B351DBE28390031139B /* NewsListViewController.m in Sources */,
 				A9DB5A8F1DB0E930000BEDF4 /* HZRecognizerView.m in Sources */,
 				A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */,
 				A9C92D051DB5ED9500034DA5 /* UIView+WZLBadge.m in Sources */,

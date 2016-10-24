@@ -18,10 +18,9 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    
     ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
-   // [webView loadURLString:self.loadUrl];
-    [webView loadURLString:@"http://www.baidu.com"];
+    [webView loadURLString:self.loadUrl];
+   // [webView loadURLString:@"http://www.baidu.com"];
     webView.delegate = self;
     [self.view addSubview:webView];
 }
