@@ -23,20 +23,11 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) NSMutableArray *selectedItems;
 
-@property (nonatomic, strong) NSMutableArray *chatDataArr;
-
 @end
 
 @implementation ReportExceptionsViewController
 {
     BOOL _isAllSelected;
-}
-
-- (NSMutableArray *)chatDataArr {
-    if (!_chatDataArr) {
-        _chatDataArr = [NSMutableArray array];
-    }
-    return _chatDataArr;
 }
 
 - (NSMutableArray *)selectedItems {
@@ -114,7 +105,8 @@
         
         MBProgressHUD *hud = [CommonUtil createHUD];
         NSString *accountId = [[UserManager shareInstance] getUserInfo].accountId;
-        [ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpResult) {
+        
+        /*[ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpResult) {
             
             hud.hidden = YES;
             if (httpResult.IsSuccess) {
@@ -124,8 +116,18 @@
             }else {
                 [CommonUtil showHUDWithTitle:httpResult.Message];
             }
-        }];
+        }];*/
         
+        [ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<ZSBoolType *> *httpResult) {
+            
+            hud.hidden = YES;
+            if (httpResult.IsSuccess) {
+                //数据请求成功 传数据进入咨询界面
+                [self goChatView];
+            }else {
+                [CommonUtil showHUDWithTitle:httpResult.Message];
+            }
+        }];
     }
 }
 
@@ -139,11 +141,10 @@
     }
     if(!consultController){
         consultController=[[ConsultDetailViewController alloc] init];
-        consultController.fromReportArr = [NSMutableArray arrayWithArray:self.chatDataArr];
         [self.navigationController pushViewController:consultController animated:YES];
     }
     else{
-        consultController.fromReportArr = [NSMutableArray arrayWithArray:self.chatDataArr];
+        [[NSNotificationCenter defaultCenter] postNotificationName:kRefreshConsultListKVOKey object:nil];
         [self.navigationController popToViewController:consultController animated:YES];
     }
     

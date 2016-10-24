@@ -19,7 +19,7 @@
 #define kCommentURL @"Consult/Comment"
 #define kDoctorIdUrl @"User/DoctorId"
 #define kDoctorListUrl @"User/Doctors"
-#define kSendForReportURL @"Consult/SendForReport"
+#define kSendReportURL @"Consult/SendReport"
 @implementation ChatModel
 
 //获取聊天记录
@@ -152,7 +152,7 @@
 }*/
 
 //发送消息
-+ (void)sendMessageWithAccountId:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo callBackBlock:(void (^)(HttpRequestResult<NSString *> *))callBack {
++ (void)sendMessage:(NSString *)accountId type:(NSInteger)type consultContent:(NSString *)content appendInfo:(NSString *)appendInfo callBackBlock:(void (^)(HttpRequestResult<NSString *> *))callBack {
     NSDictionary *param = @{@"accountId":accountId,@"type":@(type),@"consultContent":content,@"appendInfo":appendInfo};
     [HttpHelper Post:kSendMessageURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
@@ -166,20 +166,14 @@
     }];
 }
 
-+(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<NSMutableArray<ChatData*> *> *))callBack{
++(void)SendForReport:(NSString*)accountId content:(NSString*)content  checkUnitCode:(NSString*)checkUnitCode  workNo:(NSString*)workNo  checkUnitName:(NSString*)checkUnitName  reportDate:(NSString*)reportDate callBackBlock:(void (^)(HttpRequestResult<ZSBoolType*> *))callBack{
     
     NSDictionary *param = @{@"AccountId":accountId,@"Type":@(kReportConsultType),@"ConsultContent":content,@"CheckUnitCode":checkUnitCode,@"WorkNo":workNo,@"CheckUnitName":checkUnitName,@"ReportDate":reportDate};
-    [HttpHelper Post:kSendForReportURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
+    [HttpHelper Post:kSendReportURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
         
-        HttpRequestResult<NSMutableArray<ChatData*>*> *result = httpRequestResult;
+        HttpRequestResult<ZSBoolType*> *result = httpRequestResult;
         if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
-            NSMutableArray<ChatData*> *dataArr = [NSMutableArray array];
-            NSArray *arr = [NSJSONSerialization JSONObjectWithData:[httpRequestResult.HttpResult.Result dataUsingEncoding:NSUTF8StringEncoding] options:0 error:nil];
-            for (NSDictionary *dict in arr) {
-                ChatData *item = [ChatData yy_modelWithDictionary:dict];
-                [dataArr addObject:item];
-            }
-            result.Data = dataArr;
+            result.Data = [[ZSBoolType alloc] initWithValue:httpRequestResult.Data];
         }
         callBack(result);
         

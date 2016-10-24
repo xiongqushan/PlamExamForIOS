@@ -23,6 +23,7 @@
 #import "Notice.h"
 #import "NewsModel.h"
 #import "NewsSimple.h"
+#import "Notice.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -122,7 +123,14 @@
             }
         }
     } requestNoticeCallback:^(HttpRequestResult<NSMutableArray<Notice *> *> *httpRequestResult) {
-        
+        if(httpRequestResult.IsSuccess){
+            for(Notice *notice in httpRequestResult.Data){
+                if(notice.type==1){
+                    //todo add red dot
+                    break;
+                }
+            }
+        }
     } allFinishCallback:^(BOOL isAllSuccess) {
         
     }];

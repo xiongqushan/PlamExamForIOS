@@ -12,6 +12,5 @@
 
 //@property (nonatomic, assign) BOOL isReloadNetData;
 @property (nonatomic, strong) NSMutableArray<ChatData*> *dataArr;
-@property (nonatomic, strong) NSMutableArray<ChatData*> *fromReportArr;
 //-(void)setConsultDataFromReport:(NSMutableArray<ChatData>)
 @end

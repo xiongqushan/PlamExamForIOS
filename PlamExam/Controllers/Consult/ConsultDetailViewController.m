@@ -81,7 +81,7 @@
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    //self.fromReportArr = [NSMutableArray array];
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadConsultListNotification:) name:kRefreshConsultListKVOKey object:nil];
     
     [self.textView setRound];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -98,6 +98,7 @@
     
 }
 
+/*
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
@@ -120,6 +121,7 @@
         }
     }
 }
+ */
 
 - (void)setUpDoctorInfoWithModel:(Doctor *)doctor {
     
@@ -129,6 +131,10 @@
     infoView.descriptionLabel.text = doctor.speciality;
     [infoView.iconImageView sd_setImageWithURL:[NSURL URLWithString:doctor.imageSrc] placeholderImage:[UIImage imageNamed:@"default"]];
     [self.doctorInfoView addSubview:infoView];
+}
+
+-(void) loadConsultListNotification:(NSNotification*)notification{
+    [self loadChatData];
 }
 
 //获取聊天记录
@@ -406,7 +412,7 @@
     }
     User *user = [[UserManager shareInstance] getUserInfo];
     
-    [ChatModel sendMessageWithAccountId:user.accountId type:type consultContent:text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
+    [ChatModel sendMessage:user.accountId type:type consultContent:text appendInfo:@"" callBackBlock:^(HttpRequestResult<NSString *> *httpResult) {
 
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
@@ -582,5 +588,8 @@
     // Dispose of any resources that can be recreated.
 }
 
+-(void)dealloc{
+    [[NSNotificationCenter defaultCenter] removeObserver:self];
+}
 
 @end
