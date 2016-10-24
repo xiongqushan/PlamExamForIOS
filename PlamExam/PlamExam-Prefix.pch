@@ -16,15 +16,16 @@
 #import "BaseViewController.h"
 
 //HZ.WebAPI
+
 #define Distribution 3
 
 #if Distribution==1 //gao debugger
-#define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
+#define BaseURLStr @"http://hz3bn04d2/ZSTJ/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif
 #if Distribution==2 //gao publish
-#define BaseURLStr @"http://hz3bn04d2/ZSTJ/api/V3/"
+#define BaseURLStr @"http://hz3bn04d2:8070/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif

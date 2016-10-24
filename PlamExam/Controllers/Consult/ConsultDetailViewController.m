@@ -78,6 +78,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
     
     [[NSNotificationCenter defaultCenter] postNotificationName:kClearBadgeKVOKey object:nil];
     self.navigationItem.title = @"健康咨询服务";
