@@ -15,6 +15,7 @@
 #import "AddReportViewController.h"
 #import "ReportViewController.h"
 #import "ReportManager.h"
+#import "ReportListCell.h"
 
 @interface ReportListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -111,9 +112,13 @@
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
+    self.tableView.tableFooterView = [UIView new];
+    self.tableView.backgroundColor = kSetRGBColor(237, 238, 239);
+    self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
+    [self.tableView registerNib:[UINib nibWithNibName:@"ReportListCell" bundle:nil] forCellReuseIdentifier:@"ReportListCell"];
     
 }
 
@@ -122,13 +127,17 @@
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+//    UITableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:@"cellId"];
+//    
     
+//    
+//    cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@  机构:%@",report.CustomerName,report.ReportName];
+//    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDateFormat];
+//    
+//    return cell;
+    ReportListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportListCell"];
     ReportSimple *report = self.dataArr[indexPath.row];
-    
-    cell.textLabel.text = [NSString stringWithFormat:@"姓名:%@  机构:%@",report.CustomerName,report.ReportName];
-    cell.detailTextLabel.text = [NSString stringWithFormat:@"机构编号:%@ 体检号:%@ 日期:%@",report.CheckUnitCode,report.WorkNo,report.ReportDateFormat];
-    
+    [cell showDataWithModel:report];
     return cell;
 }
 
@@ -143,7 +152,7 @@
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
-    return 60;
+    return 125;
 }
 
 - (void)didReceiveMemoryWarning {

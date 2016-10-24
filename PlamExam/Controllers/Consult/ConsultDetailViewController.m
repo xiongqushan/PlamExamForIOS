@@ -88,6 +88,7 @@
     [self clearNotice];
     
     [self.textView setRound];
+    [self.tableView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewClick:)]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kSetRGBColor(242, 242, 242);
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
@@ -534,8 +535,14 @@
 
 
 #pragma mark -- 点击事件
+//tableView 被点击
+- (void)tableViewClick:(UITapGestureRecognizer *)tap {
+    [self.textView resignFirstResponder];
+}
 //评论按钮被点击  跳转
 - (IBAction)commentClick:(id)sender {
+    [self.textView resignFirstResponder];
+    
     CommentViewController *comment = [[CommentViewController alloc] init];
     
     [self.navigationController pushViewController:comment animated:YES];
@@ -543,6 +550,8 @@
 
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
+    [self.textView resignFirstResponder];
+    
     ReportListViewController *reportList = [[ReportListViewController alloc] init];
     
     [self.navigationController pushViewController:reportList animated:YES];

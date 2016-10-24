@@ -14,6 +14,8 @@
 #import "UserManager.h"
 #import "DoctorManager.h"
 #import "ReportManager.h"
+#import "FeedbackViewController.h"
+
 @interface SystemSettingViewController ()
 
 @end
@@ -37,6 +39,7 @@
     
     ArrowItem *arrow1 = [ArrowItem itemWithTitle:@"关于我们"];
     ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"意见反馈"];
+    arrow2.destVcClass = [FeedbackViewController class];
     ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新"];
     GroupItem *group1 = [[GroupItem alloc] init];
     group1.items = @[arrow1,arrow2,arrow3];
@@ -67,6 +70,18 @@
         
         LoginViewController *login = [[LoginViewController alloc] init];
         [self presentViewController:login animated:YES completion:nil];
+    }
+    
+    if (indexPath.section == 2 && indexPath.row == 1) {
+        //清理缓存
+    }
+    
+    GroupItem *group = self.dataArr[indexPath.section];
+    SettingItem *item = group.items[indexPath.row];
+    
+    if (item.destVcClass) {
+        UIViewController *vc = [[item.destVcClass alloc] init];
+        [self.navigationController pushViewController:vc animated:YES];
     }
 }
 

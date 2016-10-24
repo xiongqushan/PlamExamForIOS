@@ -39,7 +39,7 @@
     
     MBProgressHUD *hud = [CommonUtil createHUD];
     [ReportModel addReport:_user.accountId withName:self.nameTextField.text withMobile:self.phoneNumTextField.text callBackBlock:^(HttpRequestResult<ReportBatch *> *httpRequestResult) {
-        [hud hide:YES];
+        hud.hidden = YES;
         if(httpRequestResult.IsSuccess){
             NSArray<ReportSimple*>*reports=httpRequestResult.Data.Reports;
             if(!reports){

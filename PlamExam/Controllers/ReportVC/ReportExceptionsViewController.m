@@ -148,7 +148,6 @@
         [self.navigationController popToViewController:consultController animated:YES];
     }
     
-    
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
@@ -162,6 +161,21 @@
     ReportItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportItemCell"];
     cell.selectedBackgroundView = [[UIView alloc] init];
     [cell showDataWithModel:result];
+    
+//    NSLog(@"______%@",[cell subviews]);
+//    for (id obj in [cell subviews]) {
+//        if ([obj isKindOfClass:[UIControl class]]) {
+//            
+//            for (id subView in [obj subviews]) {
+//                if ([subView isKindOfClass:[UIImageView class]]) {
+//                    
+//                    UIImageView *imageView = (UIImageView *)subView;
+//                    imageView.image = [UIImage imageNamed:@"selected_cell"];
+//                }
+//            }
+//        }
+//    }
+
     return cell;
 }
 
