@@ -94,6 +94,9 @@
 		A99C3CD31DB8B7A2002FE8A3 /* HZSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CD21DB8B7A2002FE8A3 /* HZSliderView.m */; };
 		A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */; };
 		A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */; };
+		A9B58B211DBDB37D0031139B /* AdDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B201DBDB37D0031139B /* AdDetailViewController.m */; };
+		A9B58B241DBDF9240031139B /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B231DBDF9240031139B /* FeedbackViewController.m */; };
+		A9B58B281DBE00E10031139B /* SystemSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B271DBE00E10031139B /* SystemSettingModel.m */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
 		A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */; };
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
@@ -281,6 +284,12 @@
 		A99C3CD91DB8C486002FE8A3 /* ReportItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportItemCell.h; sourceTree = "<group>"; };
 		A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportItemCell.m; sourceTree = "<group>"; };
 		A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportItemCell.xib; sourceTree = "<group>"; };
+		A9B58B1F1DBDB37D0031139B /* AdDetailViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AdDetailViewController.h; sourceTree = "<group>"; };
+		A9B58B201DBDB37D0031139B /* AdDetailViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AdDetailViewController.m; sourceTree = "<group>"; };
+		A9B58B221DBDF9240031139B /* FeedbackViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FeedbackViewController.h; sourceTree = "<group>"; };
+		A9B58B231DBDF9240031139B /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
+		A9B58B261DBE00E10031139B /* SystemSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingModel.h; sourceTree = "<group>"; };
+		A9B58B271DBE00E10031139B /* SystemSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingModel.m; sourceTree = "<group>"; };
 		A9BBAD5B1DAA336000BAF4D1 /* PlamExam.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PlamExam.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		A9BBAD5F1DAA336000BAF4D1 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
@@ -405,6 +414,7 @@
 		A93548B01DAB973B0077E85C /* Models */ = {
 			isa = PBXGroup;
 			children = (
+				A9B58B251DBE00C60031139B /* Mine */,
 				A9C92D061DB6023100034DA5 /* Home */,
 				A93549831DB0A8890077E85C /* UserModel.h */,
 				A93549841DB0A8890077E85C /* UserModel.m */,
@@ -448,6 +458,8 @@
 				A935490D1DAF193D0077E85C /* HomeViewController.m */,
 				A93C60E11DB4D3980024180F /* InformationViewController.h */,
 				A93C60E21DB4D3980024180F /* InformationViewController.m */,
+				A9B58B1F1DBDB37D0031139B /* AdDetailViewController.h */,
+				A9B58B201DBDB37D0031139B /* AdDetailViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -464,6 +476,8 @@
 				A93549611DAF8E0E0077E85C /* SystemSettingViewController.m */,
 				A93549631DAF8E320077E85C /* SampleRepportViewController.h */,
 				A93549641DAF8E320077E85C /* SampleRepportViewController.m */,
+				A9B58B221DBDF9240031139B /* FeedbackViewController.h */,
+				A9B58B231DBDF9240031139B /* FeedbackViewController.m */,
 			);
 			path = "Personal Center";
 			sourceTree = "<group>";
@@ -532,7 +546,6 @@
 		A935496B1DAFA8430077E85C /* HomeView */ = {
 			isa = PBXGroup;
 			children = (
-				A99C3CCD1DB8B655002FE8A3 /* ReportView */,
 				A9C92D0D1DB6114700034DA5 /* SZCirculationImageView */,
 				A9C92CE01DB5C0AE00034DA5 /* ZLCWebView */,
 				A935496C1DAFA8610077E85C /* ADScrollView.h */,
@@ -642,6 +655,7 @@
 		A9411B291DAA3E7B00B69967 /* Views */ = {
 			isa = PBXGroup;
 			children = (
+				A99C3CCD1DB8B655002FE8A3 /* ReportView */,
 				A9C92D2F1DB71AAB00034DA5 /* HYBStarEvaluationView */,
 				A9C92CE41DB5D55000034DA5 /* CommonView */,
 				A9610D741DB491100062CE93 /* ConsulationView */,
@@ -745,7 +759,17 @@
 				A9388DA21DBA367C00210224 /* AnalyCell.m */,
 				A9388DA31DBA367C00210224 /* AnalyCell.xib */,
 			);
-			path = ReportView;
+			name = ReportView;
+			path = Home/ReportView;
+			sourceTree = "<group>";
+		};
+		A9B58B251DBE00C60031139B /* Mine */ = {
+			isa = PBXGroup;
+			children = (
+				A9B58B261DBE00E10031139B /* SystemSettingModel.h */,
+				A9B58B271DBE00E10031139B /* SystemSettingModel.m */,
+			);
+			path = Mine;
 			sourceTree = "<group>";
 		};
 		A9BBAD521DAA336000BAF4D1 = {
@@ -1083,6 +1107,7 @@
 				A92F20231DB9CAAA002BFB0E /* SummaryFormatCell.m in Sources */,
 				A9C92CE71DB5D5E000034DA5 /* HZBadgeView.m in Sources */,
 				A9C92D3C1DB7974600034DA5 /* HomeModel.m in Sources */,
+				A9B58B241DBDF9240031139B /* FeedbackViewController.m in Sources */,
 				A93549751DB0780A0077E85C /* InformationCell.m in Sources */,
 				A9388DC51DBB40B900210224 /* AddReportViewController.m in Sources */,
 				A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */,
@@ -1106,11 +1131,13 @@
 				A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */,
 				A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */,
 				A935495B1DAF866D0077E85C /* HeaderView.m in Sources */,
+				A9B58B211DBDB37D0031139B /* AdDetailViewController.m in Sources */,
 				A5A01EA91DB8A888006C64E0 /* NewsSimple.m in Sources */,
 				A9DB5A731DB0DD70000BEDF4 /* User.m in Sources */,
 				A93548F01DAE50450077E85C /* NSArray+Util.m in Sources */,
 				A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */,
 				A93549201DAF2B320077E85C /* UIButton+countDown.m in Sources */,
+				A9B58B281DBE00E10031139B /* SystemSettingModel.m in Sources */,
 				A5A01EA61DB86945006C64E0 /* ReportManager.m in Sources */,
 				A9388DAA1DBB0CD000210224 /* UserTextCell.m in Sources */,
 				A935495F1DAF8DCD0077E85C /* UserInfoViewController.m in Sources */,

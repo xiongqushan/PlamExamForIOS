@@ -86,6 +86,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadConsultListNotification:) name:kRefreshConsultListKVOKey object:nil];
     
     [self.textView setRound];
+    [self.tableView addGestureRecognizer:[[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewClick:)]];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     self.tableView.backgroundColor = kSetRGBColor(242, 242, 242);
     [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
@@ -98,6 +99,7 @@
     //监听键盘收起
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillHide:) name:UIKeyboardWillHideNotification object:nil];
     
+    [self loadChatData];
 }
 
 /*
@@ -525,8 +527,14 @@
 
 
 #pragma mark -- 点击事件
+//tableView 被点击
+- (void)tableViewClick:(UITapGestureRecognizer *)tap {
+    [self.textView resignFirstResponder];
+}
 //评论按钮被点击  跳转
 - (IBAction)commentClick:(id)sender {
+    [self.textView resignFirstResponder];
+    
     CommentViewController *comment = [[CommentViewController alloc] init];
     
     [self.navigationController pushViewController:comment animated:YES];
@@ -534,6 +542,8 @@
 
 //体检报告按钮被点击
 - (IBAction)reportBtnClick:(id)sender {
+    [self.textView resignFirstResponder];
+    
     ReportListViewController *reportList = [[ReportListViewController alloc] init];
     
     [self.navigationController pushViewController:reportList animated:YES];

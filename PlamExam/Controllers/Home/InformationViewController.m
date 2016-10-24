@@ -13,11 +13,7 @@
 #import "NewsModel.h"
 #import "NewsInfo.h"
 
-@interface InformationViewController ()<WKNavigationDelegate,WKUIDelegate>
-
-@property (nonatomic, strong) WKWebView *wKWebView;
-@property (nonatomic, strong) UIProgressView *progressView;
-@property (nonatomic, assign) NSUInteger loadCount;
+@interface InformationViewController ()<ZLCWebViewDelegate>
 
 @end
 
@@ -26,7 +22,8 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     
-    self.navigationController.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
+    self.navigationItem.title = @"资讯";
+    self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
     [self loadData];
     [self setUpWebView];
 }
@@ -48,97 +45,30 @@
 
 - (void)setUpWebView {
     
-//    WKWebView *webView = [[WKWebView alloc] initWithFrame:self.view.bounds];
-////    dispatch_async(dispatch_get_global_queue(0, 0), ^{
-////        [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
-////    });
-//    [webView loadRequest:[NSURLRequest requestWithURL:[NSURL URLWithString:@"http://article.h5.ihaozhuo.com/1475216088834.html"]]];
-//
-//    webView.UIDelegate = self;
-//    webView.navigationDelegate = self;
-//    webView.backgroundColor = [UIColor whiteColor];
-//    webView.scrollView.backgroundColor = [UIColor grayColor];
-//    [self.view addSubview:webView];
-//    [webView addObserver:self forKeyPath:@"estimatedProgress" options:NSKeyValueObservingOptionNew context:nil];
-//    
-//    self.wKWebView = webView;
     ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
 
-   // [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
+    [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
+    webView.delegate = self;
     [webView loadURLString:self.loadUrl];
     
     [self.view addSubview:webView];
     
 }
 
-- (UIProgressView *)progressView {
-    if (!_progressView) {
-        _progressView = [[UIProgressView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, 5)];
-        _progressView.trackTintColor = [UIColor grayColor];
-        _progressView.progressTintColor = [UIColor orangeColor];
-        
-        [self.view addSubview:_progressView];
-    }
-    return _progressView;
+- (void)zlcwebViewDidStartLoad:(ZLCWebView *)webview {
+    NSLog(@"页面开始加载");
 }
 
-//- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-//    
-//    if ([keyPath isEqualToString:@"loading"]) {
-//        
-//    } else if ([keyPath isEqualToString:@"title"]) {
-//        self.title = self.wKWebView.title;
-//    } else if ([keyPath isEqualToString:@"URL"]) {
-//        
-//    } else if ([keyPath isEqualToString:@"estimatedProgress"]) {
-//        
-//        self.progressView.progress = self.wKWebView.estimatedProgress;
-//    }
-//    
-//    if (object == self.wKWebView && [keyPath isEqualToString:@"estimatedProgress"]) {
-//        CGFloat newprogress = [[change objectForKey:NSKeyValueChangeNewKey] doubleValue];
-//        if (newprogress == 1) {
-//            self.progressView.hidden = YES;
-//            [self.progressView setProgress:0 animated:NO];
-//        }else {
-//            self.progressView.hidden = NO;
-//            [self.progressView setProgress:newprogress animated:YES];
-//        }
-//    }
-//}
-
-- (void)observeValueForKeyPath:(NSString *)keyPath ofObject:(id)object change:(NSDictionary *)change context:(void *)context {
-    
-    if ([keyPath isEqualToString:@"estimatedProgress"]) {
-        
-        if (object ==_wKWebView) {
-            
-            [self.progressView setAlpha:1.0f];
-            
-            [self.progressView setProgress:self.wKWebView.estimatedProgress animated:YES];
-            
-            if(_wKWebView.estimatedProgress >=1.0f) {
-            
-                [UIView animateWithDuration:0.3 delay:0.3 options:UIViewAnimationOptionCurveEaseOut animations:^{
-                    
-                    [self.progressView setAlpha:0.0f];
-                    
-                } completion:^(BOOL finished) {
-                    
-                    [self.progressView setProgress:0.0f animated:NO];
-                    
-                }];
-            }
-            
-        }else
-            {
-                [super observeValueForKeyPath:keyPath ofObject:object change:change context:context];
-            }
-    }
+- (void)zlcwebView:(ZLCWebView *)webview shouldStartLoadWithURL:(NSURL *)URL {
+    NSLog(@"截取到URL:%@",URL);
 }
 
-- (void)dealloc {
-    [self.wKWebView removeObserver:self forKeyPath:@"estimatedProgress"];
+- (void)zlcwebView:(ZLCWebView *)webview didFinishLoadingURL:(NSURL *)URL {
+    NSLog(@"页面加载完成");
+}
+
+- (void)zlcwebView:(ZLCWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error {
+    NSLog(@"加载出现错误");
 }
 
 - (void)didReceiveMemoryWarning {

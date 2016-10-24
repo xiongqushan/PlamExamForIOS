@@ -24,6 +24,7 @@
 #import "NewsModel.h"
 #import "NewsSimple.h"
 #import "Notice.h"
+#import "AdDetailViewController.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -212,11 +213,15 @@
 - (void)circulationImageView:(UIView *)circulationImageView didSelectIndex:(NSInteger)index {
     NSLog(@"_______%ld",index);
     AdScrollerViewData *data = self.adDataArr[index];
-    if(data.LinkUrl!=nil && ![data.LinkUrl isEqualToString:@""]){
-        InformationViewController *information = [[InformationViewController alloc] init];
-        information.loadUrl = data.LinkUrl;
-        [self.navigationController pushViewController:information animated:YES];
-    }
+//    if(data.LinkUrl!=nil && ![data.LinkUrl isEqualToString:@""]){
+//        AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
+//        adDetail.loadUrl = data.LinkUrl;
+//        [self.navigationController pushViewController:adDetail animated:YES];
+//    }
+    
+    AdDetailViewController *adDetail = [[AdDetailViewController alloc] init];
+    adDetail.loadUrl = data.LinkUrl;
+    [self.navigationController pushViewController:adDetail animated:YES];
 }
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
