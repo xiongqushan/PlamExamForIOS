@@ -80,11 +80,12 @@
     [super viewDidLoad];
     self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
     
-    [[NSNotificationCenter defaultCenter] postNotificationName:kClearBadgeKVOKey object:nil];
     self.navigationItem.title = @"健康咨询服务";
     self.automaticallyAdjustsScrollViewInsets = NO;
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadConsultListNotification:) name:kRefreshConsultListKVOKey object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kClearBadgeKVOKey object:nil];
+    [self clearNotice];
     
     [self.textView setRound];
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
@@ -233,6 +234,12 @@
             }
         }];
     }
+}
+
+-(void)clearNotice{
+    [ChatModel clearNotice:[[UserManager shareInstance] getUserInfo].accountId type:1 callBackBlock:^(HttpRequestResult<ZSBoolType *> * httpRequestResult) {
+        
+    }];
 }
 
 #pragma mark -- 监听键盘的触发事件

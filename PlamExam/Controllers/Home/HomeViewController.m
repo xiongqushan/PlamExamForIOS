@@ -80,7 +80,7 @@
     
     [self showDefaultAd];
     [self loadAdScrollViewData];
-    //[self loadNewsData];
+    [self loadNewsData];
     
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
     //添加监听进入咨询详情清除小圆点的通知

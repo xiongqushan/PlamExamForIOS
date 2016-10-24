@@ -20,6 +20,7 @@
 #define kDoctorIdUrl @"User/DoctorId"
 #define kDoctorListUrl @"User/Doctors"
 #define kSendReportURL @"Consult/SendReport"
+#define kClearNoticeURL @"Consult/RemoveInform"
 @implementation ChatModel
 
 //获取聊天记录
@@ -187,6 +188,19 @@
         HttpRequestResult<ZSBoolType *> *result = httpRequestResult;
         if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
             result.Data = [[ZSBoolType alloc] initWithValue:[httpRequestResult.HttpResult.Result boolValue]];
+        }
+        callBack(result);
+        
+    }];
+}
+
++ (void)clearNotice:(NSString *)accountId type:(NSInteger)type callBackBlock:(void (^)(HttpRequestResult<ZSBoolType *> * httpRequestResult))callBack {
+    NSDictionary *param = @{@"accountId":accountId,@"type":@(type)};
+    [HttpHelper Post:kClearNoticeURL withData:param withDelegate:^(HttpRequestResult *httpRequestResult) {
+        
+        HttpRequestResult<ZSBoolType *> *result = httpRequestResult;
+        if (httpRequestResult.IsHttpSuccess && httpRequestResult.HttpResult.Code>0) {
+            result.Data = [[ZSBoolType alloc] initWithValue:httpRequestResult.HttpResult.Result];
         }
         callBack(result);
         
