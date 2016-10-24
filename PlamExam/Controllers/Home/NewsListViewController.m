@@ -23,9 +23,13 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.navigationItem.title = @"健康资讯";
+    [self loadNewsData];
+    [self setUpTableView];
 }
 
 - (void)setUpTableView {
+    self.automaticallyAdjustsScrollViewInsets = NO;
+    
     self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64) style:UITableViewStylePlain];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
@@ -34,15 +38,19 @@
     [self.view addSubview:self.tableView];
 }
 
-//- (void)loadNewsData {
-//    [NewsModel requestList:1 PageSize:20 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
-//        if (httpRequestResult.IsSuccess) {
-//            httpRequestResult.Data;
-//        }else {
-//            
-//        }
-//    }];
-//}
+- (void)loadNewsData {
+    
+    self.newsDataArr = [NSMutableArray array];
+    
+    [NewsModel requestList:1 PageSize:20 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
+        if (httpRequestResult.IsSuccess) {
+            [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
+            [self.tableView reloadData];
+        }else {
+            [CommonUtil showHUDWithTitle:httpRequestResult.Message];
+        }
+    }];
+}
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSorce 
 - (NSInteger) tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
@@ -56,11 +64,13 @@
     return cell;
 }
 
+- (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
+    [tableView deselectRowAtIndexPath:indexPath animated:YES];
+}
+
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
     return 89;
 }
-
-
 
 - (void)didReceiveMemoryWarning {
     [super didReceiveMemoryWarning];

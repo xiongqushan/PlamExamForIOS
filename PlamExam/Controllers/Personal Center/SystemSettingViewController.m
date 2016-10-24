@@ -15,6 +15,7 @@
 #import "DoctorManager.h"
 #import "ReportManager.h"
 #import "FeedbackViewController.h"
+#import "DisclaimerViewController.h"
 #import <SDImageCache.h>
 
 #define kAlertLoginOutTag 101
@@ -50,6 +51,7 @@
     [self.dataArr addObject:group1];
     
     ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明"];
+    arrow4.destVcClass = [DisclaimerViewController class];
     LabelItem *label = [LabelItem itemWithTitle:@"清理缓存"];
     GroupItem *group2 = [[GroupItem alloc] init];
     group2.items = @[arrow4, label];

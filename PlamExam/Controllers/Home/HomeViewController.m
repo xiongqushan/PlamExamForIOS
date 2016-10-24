@@ -74,10 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
-    //设置badgeView
-    self.tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
-    self.tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
-    [self.tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
+
     [self setUpTableView];
     
     [self showDefaultAd];
@@ -140,6 +137,11 @@
             for(Notice *notice in httpRequestResult.Data){
                 if(notice.type==1){
                     //todo add red dot
+                    //设置badgeView
+                    self.tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
+                    self.tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
+                    [self.tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
+                    
                     break;
                 }
             }
