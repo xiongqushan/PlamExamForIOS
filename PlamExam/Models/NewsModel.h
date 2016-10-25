@@ -13,4 +13,9 @@
 +(void)requestDetail:(NSInteger)Id callBackBlock:(void (^)(HttpRequestResult<NewsInfo *> *httpRequestResult))callBack;
 
 +(void)requestList:(NSInteger)pageIndex PageSize:(NSInteger)pageSize callBackBlock:(void (^)(HttpRequestResult<NSArray<NewsSimple*> *> *httpRequestResult))callBack;
+
++(void)resaveNewsListFromDB:(NSString*)accountId newsList:(NSArray<NewsSimple*>*)newsList;
+
++(NSArray<NewsSimple*>*)getNewsListFromDB:(NSString*)accountId;
+
 @end

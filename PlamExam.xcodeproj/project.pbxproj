@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		A515348E1DBE37F4005C62B0 /* SqliteHelper.m in Sources */ = {isa = PBXBuildFile; fileRef = A515348D1DBE37F4005C62B0 /* SqliteHelper.m */; };
+		A51534901DBEFD15005C62B0 /* plamexam.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = A515348F1DBEFD15005C62B0 /* plamexam.sqlite */; };
 		A5A01E931DB73FD4006C64E0 /* DoctorManager.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E921DB73FD4006C64E0 /* DoctorManager.m */; };
 		A5A01E991DB79AF4006C64E0 /* ReportSimple.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E981DB79AF4006C64E0 /* ReportSimple.m */; };
 		A5A01E9C1DB79BA4006C64E0 /* ReportModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01E9B1DB79BA4006C64E0 /* ReportModel.m */; };
@@ -140,6 +142,9 @@
 /* Begin PBXFileReference section */
 		22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = "libPods-PlamExam.a"; sourceTree = BUILT_PRODUCTS_DIR; };
 		45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-PlamExam.release.xcconfig"; path = "Pods/Target Support Files/Pods-PlamExam/Pods-PlamExam.release.xcconfig"; sourceTree = "<group>"; };
+		A515348C1DBE37F4005C62B0 /* SqliteHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SqliteHelper.h; sourceTree = "<group>"; };
+		A515348D1DBE37F4005C62B0 /* SqliteHelper.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SqliteHelper.m; sourceTree = "<group>"; };
+		A515348F1DBEFD15005C62B0 /* plamexam.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = plamexam.sqlite; sourceTree = "<group>"; };
 		A5A01E911DB73FD4006C64E0 /* DoctorManager.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorManager.h; sourceTree = "<group>"; };
 		A5A01E921DB73FD4006C64E0 /* DoctorManager.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorManager.m; sourceTree = "<group>"; };
 		A5A01E971DB79AF4006C64E0 /* ReportSimple.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportSimple.h; sourceTree = "<group>"; };
@@ -718,6 +723,8 @@
 				A9C92D221DB7069600034DA5 /* HttpBatchRequestHelper.m */,
 				A9C92D231DB7069600034DA5 /* HttpHelper.h */,
 				A9C92D241DB7069600034DA5 /* HttpHelper.m */,
+				A515348C1DBE37F4005C62B0 /* SqliteHelper.h */,
+				A515348D1DBE37F4005C62B0 /* SqliteHelper.m */,
 			);
 			path = Utils;
 			sourceTree = "<group>";
@@ -790,6 +797,7 @@
 		A9B58B3D1DBE34000031139B /* Source */ = {
 			isa = PBXGroup;
 			children = (
+				A515348F1DBEFD15005C62B0 /* plamexam.sqlite */,
 				A9B58B3E1DBE341A0031139B /* disclaimer.html */,
 			);
 			path = Source;
@@ -1040,6 +1048,7 @@
 				A935496A1DAF9D340077E85C /* IconCell.xib in Resources */,
 				A9388DB61DBB0D2500210224 /* UserReportCell.xib in Resources */,
 				A9C92D361DB71AAB00034DA5 /* star_yellow.png in Resources */,
+				A51534901DBEFD15005C62B0 /* plamexam.sqlite in Resources */,
 				A9C92D351DB71AAB00034DA5 /* star_gray.png in Resources */,
 				A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */,
 				A935492A1DAF37890077E85C /* LoginViewController.xib in Resources */,
@@ -1126,6 +1135,7 @@
 			files = (
 				A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */,
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
+				A515348E1DBE37F4005C62B0 /* SqliteHelper.m in Sources */,
 				A9388DB01DBB0CD700210224 /* DoctorReplyCell.m in Sources */,
 				A9B58B311DBE0EB60031139B /* LaunchViewController.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
