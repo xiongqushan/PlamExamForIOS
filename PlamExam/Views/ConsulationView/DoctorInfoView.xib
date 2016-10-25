@@ -66,7 +66,7 @@
                 <outlet property="iconImageView" destination="MAt-qL-RSK" id="LSc-1B-mhT"/>
                 <outlet property="nameLabel" destination="lxM-We-2yK" id="p4c-VS-Uyx"/>
             </connections>
-            <point key="canvasLocation" x="106.5" y="-245"/>
+            <point key="canvasLocation" x="66" y="-245"/>
         </view>
     </objects>
     <resources>

@@ -24,23 +24,12 @@
     
     self.navigationItem.title = @"资讯";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-    [self loadData];
+   // [self loadData];
     [self setUpWebView];
 }
 
 - (void)share {
     
-}
-
-- (void)loadData {
-    
-    [NewsModel requestDetail:self.Id callBackBlock:^(HttpRequestResult<NewsInfo *> *httpRequestResult) {
-        if (httpRequestResult.IsSuccess) {
-            
-        }else {
-        
-        }
-    }];
 }
 
 - (void)setUpWebView {

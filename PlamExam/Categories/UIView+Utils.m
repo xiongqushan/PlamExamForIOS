@@ -13,6 +13,11 @@
 
 static UIGestureRecognizer *_tap;
 
+- (void)setBorder {
+    self.layer.borderWidth = 0.5;
+    self.layer.borderColor = kSetRGBColor(170, 170, 170).CGColor;
+}
+
 - (void)setRound {
     self.layer.masksToBounds = YES;
     self.layer.cornerRadius = 5;

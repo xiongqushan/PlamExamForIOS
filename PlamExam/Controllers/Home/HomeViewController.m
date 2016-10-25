@@ -63,7 +63,6 @@
 - (UIView *)adView {
     
     if (!_adView) {
-        
         _adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.tableHeaderView.bounds.size.width - 20, self.tableHeaderView.bounds.size.height - 20)];
         _adView.backgroundColor = [UIColor lightGrayColor];
         
@@ -74,6 +73,12 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
+    
+    
+//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
+//    //self.navigationController.navigationBar.tintColor = kSetRGBColor(51, 51, 51);
+//    NSDictionary *navBarTitleTextAttributes = @{NSForegroundColorAttributeName:kSetRGBColor(51, 51, 51),NSFontAttributeName:[UIFont boldSystemFontOfSize:18]};
+//    [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleTextAttributes];
 
     [self setUpTableView];
     
@@ -98,6 +103,15 @@
     self.tableView.tableHeaderView = self.tableHeaderView;
     [self.view addSubview:self.tableView];
     
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadNewsData];
+        [self loadAdScrollViewData];
+    }];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+   // header.stateLabel.hidden = YES;
+    self.tableView.mj_header = header;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 #pragma mark -- 通知相关
@@ -117,6 +131,8 @@
         if (httpRequestResult.IsSuccess) {
             [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
             [self.tableView reloadData];
+            
+            [self.tableView.mj_header endRefreshing];
         }else {
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
         }

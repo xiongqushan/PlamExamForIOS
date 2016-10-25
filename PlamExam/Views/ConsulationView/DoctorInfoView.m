@@ -7,6 +7,7 @@
 //
 
 #import "DoctorInfoView.h"
+#import <UIImageView+WebCache.h>
 
 @implementation DoctorInfoView
 
@@ -16,4 +17,9 @@
     self.frame = CGRectMake(0, 64, kScreenSizeWidth, 70);
 }
 
+- (void)showDataWithModel:(Doctor *)doctor {
+    self.nameLabel.text = doctor.realName;
+    self.descriptionLabel.text = doctor.speciality;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:doctor.imageSrc] placeholderImage:[UIImage imageNamed:@"default"]];
+}
 @end

@@ -47,6 +47,9 @@
 @end
 
 @implementation ConsultDetailViewController
+{
+    
+}
 
 
 - (CGFloat)previousTextViewHeight {
@@ -133,9 +136,7 @@
     
     DoctorInfoView *infoView = [[[NSBundle mainBundle] loadNibNamed:@"DoctorInfoView" owner:self options:nil] lastObject];
     infoView.frame = self.doctorInfoView.bounds;
-    infoView.nameLabel.text = doctor.realName;
-    infoView.descriptionLabel.text = doctor.speciality;
-    [infoView.iconImageView sd_setImageWithURL:[NSURL URLWithString:doctor.imageSrc] placeholderImage:[UIImage imageNamed:@"default"]];
+    [infoView showDataWithModel:doctor];
     [self.doctorInfoView addSubview:infoView];
 }
 

@@ -20,4 +20,6 @@
 
 - (void)removeErrorView;
 
+- (void)setBorder;
+
 @end

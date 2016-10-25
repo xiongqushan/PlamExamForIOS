@@ -17,7 +17,7 @@
                 <subviews>
                     <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="zxS-3z-6Sw">
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="0gJ-eN-go9">
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="default" translatesAutoresizingMaskIntoConstraints="NO" id="0gJ-eN-go9">
                                 <constraints>
                                     <constraint firstAttribute="width" constant="100" id="WAa-7Q-65c"/>
                                     <constraint firstAttribute="height" constant="69" id="xlG-Gu-eKc"/>
