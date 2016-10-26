@@ -7,11 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "Doctor.h"
 
 @interface DoctorInfoView : UIView
 
 @property (weak, nonatomic) IBOutlet UIImageView *iconImageView;
 @property (weak, nonatomic) IBOutlet UILabel *nameLabel;
 @property (weak, nonatomic) IBOutlet UILabel *descriptionLabel;
+
+- (void)showDataWithModel:(Doctor *)doctor;
 
 @end

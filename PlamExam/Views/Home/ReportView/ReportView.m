@@ -71,6 +71,7 @@
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     [self addSubview:self.tableView];
+    self.tableView.tableFooterView = [[UIView alloc] init];
     self.tableView.backgroundColor = [UIColor colorWithHex:0xF2F2F2];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReportItemCell" bundle:nil] forCellReuseIdentifier:@"ReportItemCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"SummaryFormatCell" bundle:nil] forCellReuseIdentifier:@"SummaryFormatCell"];

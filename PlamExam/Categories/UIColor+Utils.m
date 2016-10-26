@@ -24,7 +24,7 @@
 }
 
 + (UIColor *)navigationBarColor {
-    return [UIColor colorWithRed:39/255.0f green:135/255.0f blue:239/255.0f alpha:1.0];
+    return [UIColor colorWithRed:40/255.0f green:134/255.0f blue:238/255.0f alpha:1.0];
 }
 
 + (UIColor *)viewBackgroundColor {

@@ -30,12 +30,20 @@
     [self.view addSubview:consultBtn];
     
     UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, kScreenSizeHeight - 129 - 46, kScreenSizeWidth, 50)];
-    titleLabel.text = @"1位健康管理师将为您提供健康咨询\nloading...";
+    titleLabel.text = @"1位健康管理师将为您提供健康咨询\n点击上方按钮进入咨询";
     titleLabel.textAlignment = NSTextAlignmentCenter;
     titleLabel.numberOfLines = 0;
     titleLabel.textColor = kSetRGBColor(51, 51, 51);
     [self.view addSubview:titleLabel];
+    
+   // [self performSelector:@selector(changeView) withObject:self afterDelay:3];
 }
+
+//- (void)changeView {
+//    ConsultDetailViewController *consult = [[ConsultDetailViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:consult animated:YES];
+//}
 
 - (void)goConsult:(UIButton *)btn {
     

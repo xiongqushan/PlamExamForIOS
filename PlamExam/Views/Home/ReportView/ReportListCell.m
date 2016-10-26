@@ -29,10 +29,13 @@
     self.selectionStyle = UITableViewCellSelectionStyleNone;
 
     UIImage *image = [UIImage imageNamed:@"reportListCellBg"];
-    self.reportListCellBg.image = [image stretchableImageWithLeftCapWidth:150 topCapHeight:40];
+    self.reportListCellBg.image = [image stretchableImageWithLeftCapWidth:150 topCapHeight:60];
+//    UIEdgeInsets insets = UIEdgeInsetsMake(40, 100, 40, 100);
+//    image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
+//    self.reportListCellBg.image = image;
     
     self.logoImageView.image = [UIImage imageNamed:@"departmentLogo"];
-    self.departmentNameLabel.text = report.CustomerName;
+    self.departmentNameLabel.text = report.ReportName;
     self.reportDateLabel.text = report.ReportDateFormat;
 }
 

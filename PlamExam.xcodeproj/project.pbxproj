@@ -92,20 +92,18 @@
 		A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D761DB491100062CE93 /* DoctorInfoView.m */; };
 		A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9610D781DB491270062CE93 /* DoctorInfoView.xib */; };
 		A99C3CD01DB8B65F002FE8A3 /* ReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */; };
-		A99C3CD31DB8B7A2002FE8A3 /* HZSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CD21DB8B7A2002FE8A3 /* HZSliderView.m */; };
 		A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */; };
 		A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */; };
 		A9B58B211DBDB37D0031139B /* AdDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B201DBDB37D0031139B /* AdDetailViewController.m */; };
 		A9B58B241DBDF9240031139B /* FeedbackViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B231DBDF9240031139B /* FeedbackViewController.m */; };
 		A9B58B281DBE00E10031139B /* SystemSettingModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B271DBE00E10031139B /* SystemSettingModel.m */; };
-		A9B58B311DBE0EB60031139B /* LaunchViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */; };
-		A9B58B321DBE0EB60031139B /* LaunchViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9B58B301DBE0EB60031139B /* LaunchViewController.xib */; };
 		A9B58B351DBE28390031139B /* NewsListViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B341DBE28390031139B /* NewsListViewController.m */; };
 		A9B58B381DBE2FEF0031139B /* DisclaimerViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A9B58B371DBE2FEF0031139B /* DisclaimerViewController.m */; };
 		A9B58B3F1DBE341A0031139B /* disclaimer.html in Resources */ = {isa = PBXBuildFile; fileRef = A9B58B3E1DBE341A0031139B /* disclaimer.html */; };
 		A9BBAD601DAA336000BAF4D1 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BBAD5F1DAA336000BAF4D1 /* main.m */; };
 		A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */; };
 		A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */; };
+		A9BFE6741DBF09A100467977 /* HZSliderView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9BFE6731DBF09A100467977 /* HZSliderView.m */; };
 		A9C92CD91DB4EFA500034DA5 /* ChatModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CD81DB4EFA500034DA5 /* ChatModel.m */; };
 		A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CDB1DB4F05200034DA5 /* ChatData.m */; };
 		A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9C92CE21DB5C0AE00034DA5 /* ZLCWebView.m */; };
@@ -287,8 +285,6 @@
 		A9610D781DB491270062CE93 /* DoctorInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorInfoView.xib; sourceTree = "<group>"; };
 		A99C3CCE1DB8B65F002FE8A3 /* ReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportView.h; sourceTree = "<group>"; };
 		A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportView.m; sourceTree = "<group>"; };
-		A99C3CD11DB8B7A2002FE8A3 /* HZSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZSliderView.h; sourceTree = "<group>"; };
-		A99C3CD21DB8B7A2002FE8A3 /* HZSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZSliderView.m; sourceTree = "<group>"; };
 		A99C3CD91DB8C486002FE8A3 /* ReportItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportItemCell.h; sourceTree = "<group>"; };
 		A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportItemCell.m; sourceTree = "<group>"; };
 		A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportItemCell.xib; sourceTree = "<group>"; };
@@ -298,9 +294,6 @@
 		A9B58B231DBDF9240031139B /* FeedbackViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = FeedbackViewController.m; sourceTree = "<group>"; };
 		A9B58B261DBE00E10031139B /* SystemSettingModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SystemSettingModel.h; sourceTree = "<group>"; };
 		A9B58B271DBE00E10031139B /* SystemSettingModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SystemSettingModel.m; sourceTree = "<group>"; };
-		A9B58B2E1DBE0EB60031139B /* LaunchViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = LaunchViewController.h; sourceTree = "<group>"; };
-		A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = LaunchViewController.m; sourceTree = "<group>"; };
-		A9B58B301DBE0EB60031139B /* LaunchViewController.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = LaunchViewController.xib; sourceTree = "<group>"; };
 		A9B58B331DBE28390031139B /* NewsListViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NewsListViewController.h; sourceTree = "<group>"; };
 		A9B58B341DBE28390031139B /* NewsListViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NewsListViewController.m; sourceTree = "<group>"; };
 		A9B58B361DBE2FEF0031139B /* DisclaimerViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DisclaimerViewController.h; sourceTree = "<group>"; };
@@ -311,6 +304,8 @@
 		A9BBAD6A1DAA336000BAF4D1 /* Images.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Images.xcassets; sourceTree = "<group>"; };
 		A9BBAD6D1DAA336000BAF4D1 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		A9BBAD6F1DAA336000BAF4D1 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		A9BFE6721DBF09A100467977 /* HZSliderView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HZSliderView.h; sourceTree = "<group>"; };
+		A9BFE6731DBF09A100467977 /* HZSliderView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = HZSliderView.m; sourceTree = "<group>"; };
 		A9C92CD71DB4EFA500034DA5 /* ChatModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatModel.h; sourceTree = "<group>"; };
 		A9C92CD81DB4EFA500034DA5 /* ChatModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ChatModel.m; sourceTree = "<group>"; };
 		A9C92CDA1DB4F05200034DA5 /* ChatData.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ChatData.h; sourceTree = "<group>"; };
@@ -472,12 +467,12 @@
 			children = (
 				A935490C1DAF193D0077E85C /* HomeViewController.h */,
 				A935490D1DAF193D0077E85C /* HomeViewController.m */,
-				A93C60E11DB4D3980024180F /* InformationViewController.h */,
-				A93C60E21DB4D3980024180F /* InformationViewController.m */,
 				A9B58B1F1DBDB37D0031139B /* AdDetailViewController.h */,
 				A9B58B201DBDB37D0031139B /* AdDetailViewController.m */,
 				A9B58B331DBE28390031139B /* NewsListViewController.h */,
 				A9B58B341DBE28390031139B /* NewsListViewController.m */,
+				A93C60E11DB4D3980024180F /* InformationViewController.h */,
+				A93C60E21DB4D3980024180F /* InformationViewController.m */,
 			);
 			path = Home;
 			sourceTree = "<group>";
@@ -764,10 +759,10 @@
 		A99C3CCD1DB8B655002FE8A3 /* ReportView */ = {
 			isa = PBXGroup;
 			children = (
+				A9BFE6721DBF09A100467977 /* HZSliderView.h */,
+				A9BFE6731DBF09A100467977 /* HZSliderView.m */,
 				A99C3CCE1DB8B65F002FE8A3 /* ReportView.h */,
 				A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */,
-				A99C3CD11DB8B7A2002FE8A3 /* HZSliderView.h */,
-				A99C3CD21DB8B7A2002FE8A3 /* HZSliderView.m */,
 				A92F201B1DB9A6CE002BFB0E /* ReportListCell.h */,
 				A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */,
 				A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */,
@@ -846,9 +841,6 @@
 				A9BBAD6C1DAA336000BAF4D1 /* LaunchScreen.storyboard */,
 				A9BBAD6F1DAA336000BAF4D1 /* Info.plist */,
 				A9BBAD5F1DAA336000BAF4D1 /* main.m */,
-				A9B58B2E1DBE0EB60031139B /* LaunchViewController.h */,
-				A9B58B2F1DBE0EB60031139B /* LaunchViewController.m */,
-				A9B58B301DBE0EB60031139B /* LaunchViewController.xib */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -1043,7 +1035,6 @@
 				A93549761DB0780A0077E85C /* InformationCell.xib in Resources */,
 				A9BBAD6E1DAA336000BAF4D1 /* LaunchScreen.storyboard in Resources */,
 				A9BBAD6B1DAA336000BAF4D1 /* Images.xcassets in Resources */,
-				A9B58B321DBE0EB60031139B /* LaunchViewController.xib in Resources */,
 				A9B58B3F1DBE341A0031139B /* disclaimer.html in Resources */,
 				A935496A1DAF9D340077E85C /* IconCell.xib in Resources */,
 				A9388DB61DBB0D2500210224 /* UserReportCell.xib in Resources */,
@@ -1137,7 +1128,6 @@
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A515348E1DBE37F4005C62B0 /* SqliteHelper.m in Sources */,
 				A9388DB01DBB0CD700210224 /* DoctorReplyCell.m in Sources */,
-				A9B58B311DBE0EB60031139B /* LaunchViewController.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
 				A93549691DAF9D340077E85C /* IconCell.m in Sources */,
@@ -1159,7 +1149,6 @@
 				A9C92D051DB5ED9500034DA5 /* UIView+WZLBadge.m in Sources */,
 				A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */,
 				A9C92CE31DB5C0AE00034DA5 /* ZLCWebView.m in Sources */,
-				A99C3CD31DB8B7A2002FE8A3 /* HZSliderView.m in Sources */,
 				A93549561DAF72140077E85C /* SettingCell.m in Sources */,
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
 				A9388DB51DBB0D2500210224 /* UserReportCell.m in Sources */,
@@ -1204,6 +1193,7 @@
 				A93549081DAF163F0077E85C /* HZNavigationController.m in Sources */,
 				A9C92D0C1DB6036600034DA5 /* AdScrollerViewData.m in Sources */,
 				A9388DC71DBB40B900210224 /* ReportAnalyViewController.m in Sources */,
+				A9BFE6741DBF09A100467977 /* HZSliderView.m in Sources */,
 				A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */,
 				A99C3CD01DB8B65F002FE8A3 /* ReportView.m in Sources */,
 				A9C92D101DB6114700034DA5 /* SZCirculationImageView.m in Sources */,
@@ -1340,6 +1330,8 @@
 			baseConfigurationReference = FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1352,6 +1344,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Debug;
 		};
@@ -1360,6 +1354,8 @@
 			baseConfigurationReference = 45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
 				ENABLE_BITCODE = NO;
 				FRAMEWORK_SEARCH_PATHS = (
@@ -1372,6 +1368,8 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				PROVISIONING_PROFILE = "";
+				PROVISIONING_PROFILE_SPECIFIER = "";
 			};
 			name = Release;
 		};

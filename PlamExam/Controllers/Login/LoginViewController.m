@@ -40,7 +40,7 @@
     [UserModel requestVerifyCode:self.phoneTextField.text CallbackDelegate:^(HttpRequestResult<NSString *> *httpResult) {
        // [hud hideAnimated:YES];
 
-        [hud hide:YES];
+        hud.hidden = YES;
         
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
@@ -58,6 +58,11 @@
     
 }
 
+//用户许可协议
+- (IBAction)agreement:(id)sender {
+    
+}
+
 //登录
 - (IBAction)login:(id)sender {
     if (self.verCodeTextField.text.length == 0) {
@@ -70,7 +75,7 @@
     [UserModel requestLoginData:self.phoneTextField.text verifyCode:self.verCodeTextField.text callback:^(HttpRequestResult<User *> *httpResult) {
 
       //  [hud hideAnimated:YES];
-        [hud hide:YES];
+        hud.hidden = YES;
         
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {

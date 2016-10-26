@@ -64,7 +64,6 @@
 - (UIView *)adView {
     
     if (!_adView) {
-        
         _adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.tableHeaderView.bounds.size.width - 20, self.tableHeaderView.bounds.size.height - 20)];
         _adView.backgroundColor = [UIColor lightGrayColor];
         
@@ -76,7 +75,6 @@
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
     self.newsDataArr = [NSMutableArray array];
-    
     [self setUpTableView];
     
     [self showDefaultAd];
@@ -101,6 +99,15 @@
     self.tableView.tableHeaderView = self.tableHeaderView;
     [self.view addSubview:self.tableView];
     
+    MJRefreshNormalHeader *header = [MJRefreshNormalHeader headerWithRefreshingBlock:^{
+        [self loadNewsData];
+        [self loadAdScrollViewData];
+    }];
+    header.automaticallyChangeAlpha = YES;
+    header.lastUpdatedTimeLabel.hidden = YES;
+   // header.stateLabel.hidden = YES;
+    self.tableView.mj_header = header;
+    
     [self.tableView registerNib:[UINib nibWithNibName:@"InformationCell" bundle:nil] forCellReuseIdentifier:@"InformationCell"];
 }
 #pragma mark -- 通知相关
@@ -121,6 +128,8 @@
             [self.newsDataArr removeAllObjects];
             [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
             [self.tableView reloadData];
+            
+            [self.tableView.mj_header endRefreshing];
             [NewsModel resaveNewsListFromDB:user.Id newsList:httpRequestResult.Data];
         }else {
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];

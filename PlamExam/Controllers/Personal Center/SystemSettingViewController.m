@@ -37,22 +37,22 @@
 - (void) createItemData {
     User *user = [[UserManager shareInstance] getUserInfo];
     
-    LabelItem *label0 = [LabelItem itemWithTitle:@"手机号码" subTitle:user.mobile withImage:nil];
+    LabelItem *label0 = [LabelItem itemWithTitle:@"手机号码" subTitle:user.mobile withImage:[UIImage imageNamed:@"phone"]];
     GroupItem *group0 = [[GroupItem alloc] init];
     group0.items = @[label0];
     [self.dataArr addObject:group0];
     
-    ArrowItem *arrow1 = [ArrowItem itemWithTitle:@"关于我们"];
-    ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"意见反馈"];
+    ArrowItem *arrow1 = [ArrowItem itemWithTitle:@"关于我们" withImage:[UIImage imageNamed:@"about"]];
+    ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"意见反馈" withImage:[UIImage imageNamed:@"feedback"]];
     arrow2.destVcClass = [FeedbackViewController class];
-    ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新"];
+    ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新" withImage:[UIImage imageNamed:@"checkUpdate"]];
     GroupItem *group1 = [[GroupItem alloc] init];
     group1.items = @[arrow1,arrow2,arrow3];
     [self.dataArr addObject:group1];
     
-    ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明"];
+    ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明" withImage:[UIImage imageNamed:@"disclaimer"]];
     arrow4.destVcClass = [DisclaimerViewController class];
-    LabelItem *label = [LabelItem itemWithTitle:@"清理缓存"];
+    LabelItem *label = [LabelItem itemWithTitle:@"清理缓存" withImage:[UIImage imageNamed:@"clearCache"]];
     GroupItem *group2 = [[GroupItem alloc] init];
     group2.items = @[arrow4, label];
     [self.dataArr addObject:group2];

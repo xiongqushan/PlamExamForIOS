@@ -14,7 +14,6 @@
 #import "UserManager.h"
 #import "CommonUtil.h"
 #import "iflyMSC/IFlyMSC.h"
-#import "LaunchViewController.h"
 
 #define kIflyAppId @"5800754f" //讯飞AppId
 
@@ -41,6 +40,7 @@
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
     
+    [NSThread sleepForTimeInterval:2.0];
     //配置控件外观
     [self setUpControlUI];
     
@@ -50,15 +50,13 @@
     
     /**************** 初始化根视图 *******************/
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
-    LaunchViewController *launch = [[LaunchViewController alloc] init];
-    self.window.rootViewController = launch;
 
-//    UIViewController *rootVc = [[HZTabBarController alloc] init];
-//    if (![[UserManager shareInstance] isLogin]) {
-//        rootVc = [[LoginViewController alloc] init];
-//    }
-//    
-//    self.window.rootViewController = rootVc;
+    UIViewController *rootVc = [[HZTabBarController alloc] init];
+    if (![[UserManager shareInstance] isLogin]) {
+        rootVc = [[LoginViewController alloc] init];
+    }
+    
+    self.window.rootViewController = rootVc;
     
     [self.window makeKeyAndVisible];
     return YES;

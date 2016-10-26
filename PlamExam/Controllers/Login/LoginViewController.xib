@@ -91,6 +91,33 @@
                         <action selector="login:" destination="-1" eventType="touchUpInside" id="8YT-zK-dPW"/>
                     </connections>
                 </button>
+                <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="32y-Sh-QFq">
+                    <subviews>
+                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="注册登录即表示您同意我们的" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Q4n-Bh-6Cb">
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="calibratedRGB"/>
+                            <nil key="highlightedColor"/>
+                        </label>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="t4P-Tr-apO">
+                            <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                            <state key="normal" title="[掌上体检用户许可协议]">
+                                <color key="titleColor" red="0.15686274509803921" green="0.52549019607843139" blue="0.93333333333333335" alpha="1" colorSpace="calibratedRGB"/>
+                            </state>
+                            <connections>
+                                <action selector="agreement:" destination="-1" eventType="touchUpInside" id="clA-mo-AL5"/>
+                            </connections>
+                        </button>
+                    </subviews>
+                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                    <constraints>
+                        <constraint firstItem="t4P-Tr-apO" firstAttribute="top" secondItem="32y-Sh-QFq" secondAttribute="top" constant="3" id="JdC-gL-y86"/>
+                        <constraint firstItem="Q4n-Bh-6Cb" firstAttribute="top" secondItem="32y-Sh-QFq" secondAttribute="top" constant="9" id="bdi-zh-Kjz"/>
+                        <constraint firstAttribute="width" constant="297" id="f1d-8g-scb"/>
+                        <constraint firstAttribute="trailing" secondItem="t4P-Tr-apO" secondAttribute="trailing" constant="5" id="gS4-ay-0zE"/>
+                        <constraint firstItem="Q4n-Bh-6Cb" firstAttribute="leading" secondItem="32y-Sh-QFq" secondAttribute="leading" id="vv8-l4-XQF"/>
+                        <constraint firstAttribute="height" constant="38" id="yQ1-98-23Y"/>
+                    </constraints>
+                </view>
             </subviews>
             <color key="backgroundColor" red="0.94901960780000005" green="0.94901960780000005" blue="0.94901960780000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
             <constraints>
@@ -101,6 +128,7 @@
                 <constraint firstItem="wg1-4R-yj5" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="5cg-FM-a0o"/>
                 <constraint firstItem="knP-w2-XbR" firstAttribute="top" secondItem="jTD-Sc-9qc" secondAttribute="bottom" constant="74" id="83K-MQ-QNp"/>
                 <constraint firstItem="Ftb-EK-3ig" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="87W-Cg-eUC"/>
+                <constraint firstItem="32y-Sh-QFq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="8oe-6n-WHK"/>
                 <constraint firstItem="W0X-21-pBv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="76" id="E3t-YN-elC"/>
                 <constraint firstAttribute="trailing" secondItem="BRE-AX-RhK" secondAttribute="trailing" constant="43" id="Hvz-Mf-h2A"/>
                 <constraint firstAttribute="trailing" secondItem="eWf-dB-6qM" secondAttribute="trailing" constant="43" id="JVb-Zn-FEc"/>
@@ -113,13 +141,14 @@
                 <constraint firstItem="eWf-dB-6qM" firstAttribute="top" secondItem="oyM-Lg-cy4" secondAttribute="bottom" constant="45" id="Z5V-Lw-fEr"/>
                 <constraint firstItem="oyM-Lg-cy4" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="doR-et-eTZ"/>
                 <constraint firstItem="knP-w2-XbR" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="42" id="e6X-ff-fBd"/>
+                <constraint firstAttribute="bottom" secondItem="32y-Sh-QFq" secondAttribute="bottom" id="gZE-1P-2kj"/>
                 <constraint firstAttribute="trailing" secondItem="Ftb-EK-3ig" secondAttribute="trailing" constant="44" id="ghG-II-oH8"/>
                 <constraint firstItem="W0X-21-pBv" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="rI8-tc-Gvt"/>
                 <constraint firstAttribute="bottom" secondItem="Ah2-cU-Glr" secondAttribute="bottom" id="uAa-Dc-WaI"/>
                 <constraint firstItem="eWf-dB-6qM" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="wFz-aU-jXq"/>
                 <constraint firstItem="jTD-Sc-9qc" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" id="wWh-xj-w0k"/>
             </constraints>
-            <point key="canvasLocation" x="33" y="53"/>
+            <point key="canvasLocation" x="32.5" y="52.5"/>
         </view>
     </objects>
     <resources>
