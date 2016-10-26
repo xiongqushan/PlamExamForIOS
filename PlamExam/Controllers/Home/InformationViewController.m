@@ -13,6 +13,8 @@
 #import "NewsModel.h"
 #import "NewsInfo.h"
 
+#define kInformationDetail @"http://hz3bn04d2:8060/Examination.html#/exam/%ld"
+
 @interface InformationViewController ()<ZLCWebViewDelegate>
 
 @end
@@ -36,7 +38,7 @@
     
     ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
 
-    [webView loadURLString:@"http://article.h5.ihaozhuo.com/1475216088834.html"];
+    [webView loadURLString:[NSString stringWithFormat:kInformationDetail,_Id]];
     webView.delegate = self;
     [webView loadURLString:self.loadUrl];
     

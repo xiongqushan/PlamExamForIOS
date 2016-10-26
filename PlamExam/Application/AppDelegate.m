@@ -35,7 +35,9 @@
     
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSForegroundColorAttributeName:[UIColor tabBarColor]} forState:UIControlStateSelected];
     [[UITabBarItem appearance] setTitleTextAttributes:@{NSFontAttributeName:[UIFont systemFontOfSize:11]} forState:UIControlStateNormal];
-    [[UITabBar appearance] setBackgroundImage:[UIImage imageNamed:@"tabbar_background"]];
+    [[UITabBar appearance] setBarTintColor:[UIColor whiteColor]];
+    [UITabBar appearance].translucent = NO;  //取消tabBar的透明效果
+    
 }
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {

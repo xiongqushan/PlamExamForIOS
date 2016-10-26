@@ -44,7 +44,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         self.backgroundColor = [UIColor redColor];
         
         if(self.wkWebView) {
-            [self.wkWebView setFrame:frame];
+            [self.wkWebView setFrame:self.bounds];
             [self.wkWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
             [self.wkWebView setNavigationDelegate:self];
             [self.wkWebView setUIDelegate:self];
@@ -53,14 +53,14 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
             [self.wkWebView.scrollView setAlwaysBounceVertical:YES];
             
             self.wkWebView.backgroundColor = [UIColor whiteColor];
-            self.wkWebView.scrollView.backgroundColor = [UIColor lightGrayColor];
+            self.wkWebView.scrollView.backgroundColor = kSetRGBColor(200, 200, 200);
             
             [self addSubview:self.wkWebView];
             //self.wkWebView.scrollView.bounces = NO;
             [self.wkWebView addObserver:self forKeyPath:NSStringFromSelector(@selector(estimatedProgress)) options:0 context:KINWebBrowserContext];
         }
         else  {
-            [self.uiWebView setFrame:frame];
+            [self.uiWebView setFrame:self.bounds];
             [self.uiWebView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleHeight];
             [self.uiWebView setDelegate:self];
             [self.uiWebView setMultipleTouchEnabled:YES];
@@ -72,12 +72,9 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
         }
         
         
-        
-        
-        
         self.progressView = [[UIProgressView alloc] initWithProgressViewStyle:UIProgressViewStyleDefault];
         [self.progressView setTrackTintColor:[UIColor colorWithWhite:1.0f alpha:0.0f]];
-        [self.progressView setFrame:CGRectMake(0, 64, self.frame.size.width, self.progressView.frame.size.height)];
+        [self.progressView setFrame:CGRectMake(0, 0, self.frame.size.width, self.progressView.frame.size.height)];
         [self.progressView setAutoresizingMask:UIViewAutoresizingFlexibleWidth | UIViewAutoresizingFlexibleTopMargin];
         
         

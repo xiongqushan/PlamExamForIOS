@@ -10,4 +10,6 @@
 
 @interface DisclaimerViewController : BaseViewController
 
+@property (nonatomic, copy) NSString *navTitle;
+
 @end

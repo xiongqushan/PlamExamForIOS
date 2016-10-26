@@ -15,6 +15,7 @@
 #import "UserModel.h"
 #import <YYModel.h>
 #import "MBProgressHUD.h"
+#import "DisclaimerViewController.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -60,7 +61,9 @@
 
 //用户许可协议
 - (IBAction)agreement:(id)sender {
-    
+    DisclaimerViewController *disclaimer = [[DisclaimerViewController alloc] init];
+    disclaimer.navTitle = @"用户许可协议";
+    [self presentViewController:disclaimer animated:YES completion:nil];
 }
 
 //登录

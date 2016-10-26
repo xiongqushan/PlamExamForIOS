@@ -29,17 +29,18 @@
 @implementation PersonalViewController
 {
     HeaderView *_headerView;
-    UILabel *_nameLabel;
-    UIImageView *_iconImage;
+    UIView *_tableHeaderView;
+//    UILabel *_nameLabel;
+//    UIImageView *_iconImage;
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
-   
+    
     [self setUpBaseUI];
     [self createItemData];
-
+    
 }
 
 - (void)createItemData {
@@ -63,15 +64,19 @@
     self.navigationItem.title = nil;
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH + 10, 0, 0, 0);
+    User *user = [[UserManager shareInstance] getUserInfo];
+    
+    self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
     HeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil] lastObject];
     headerView.backgroundColor = [UIColor navigationBarColor];
-    headerView.frame = CGRectMake(0, -kHeaderViewH - 10, kScreenSizeWidth, kHeaderViewH - 10);
+    headerView.frame = CGRectMake(0, -kHeaderViewH, kScreenSizeWidth, kHeaderViewH);
     [headerView.iconBtn setRoundWithRadius:50];
     [headerView.iconBtn addTarget:self action:@selector(iconClick) forControlEvents:UIControlEventTouchUpInside];
-    headerView.nameLabel.text = [[UserManager shareInstance] getUserInfo].realName;
-    _headerView = headerView;
+    headerView.nameLabel.text = user.realName;
+    
     [self.tableView insertSubview:headerView atIndex:0];
+    
+    _headerView = headerView;
     
 }
 
@@ -79,19 +84,20 @@
     //头像被点击
 }
 
-- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-    CGFloat updateY = scrollView.contentOffset.y;
-    _headerView.frame = CGRectMake(0, updateY, kScreenSizeWidth, - updateY);
-    
-    updateY += kHeaderViewH;
-    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(kHeaderViewH - 64);
-    CGFloat yuanW = MAX(MinIconWH, MaxIconWH - reduceW);
-    
-    _headerView.iconBtn.layer.cornerRadius = yuanW/2.0;
-    
-    _headerView.iconWidth.constant = yuanW;
-    _headerView.iconHeight.constant = yuanW;
-}
+//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+//    CGFloat updateY = scrollView.contentOffset.y;
+//    NSLog(@"________updateY:%f",updateY);
+//    _headerView.frame = CGRectMake(0, updateY, kScreenSizeWidth, - updateY);
+//    
+//    updateY += kHeaderViewH;
+//    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(kHeaderViewH - 64);
+//    CGFloat yuanW = MAX(MinIconWH, MaxIconWH - reduceW);
+//    
+//    _headerView.iconBtn.layer.cornerRadius = yuanW/2.0;
+//    
+//    _headerView.iconWidth.constant = yuanW;
+//    _headerView.iconHeight.constant = yuanW;
+//}
 
 #pragma mark -- UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -101,16 +107,14 @@
 #pragma mark -- 界面将要显示在界面
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
-
-    [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha = 0;
+    
+    [self.navigationController setNavigationBarHidden:YES animated:YES];
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [UIView animateWithDuration:0.25 animations:^{
-        [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha = 1.0;
-    }];
+    [self.navigationController setNavigationBarHidden:NO animated:YES];
     
 }
 

@@ -81,6 +81,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.view.backgroundColor = kSetRGBColor(242, 242, 242);
     self.dataArr=[[NSMutableArray<ChatData*> alloc] init];
     
     self.navigationItem.title = @"健康咨询服务";

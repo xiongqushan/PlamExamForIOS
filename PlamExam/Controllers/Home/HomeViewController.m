@@ -74,12 +74,6 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
-    
-    
-//    self.navigationController.navigationBar.barTintColor = [UIColor whiteColor];
-//    //self.navigationController.navigationBar.tintColor = kSetRGBColor(51, 51, 51);
-//    NSDictionary *navBarTitleTextAttributes = @{NSForegroundColorAttributeName:kSetRGBColor(51, 51, 51),NSFontAttributeName:[UIFont boldSystemFontOfSize:18]};
-//    [self.navigationController.navigationBar setTitleTextAttributes:navBarTitleTextAttributes];
 
     [self setUpTableView];
     
