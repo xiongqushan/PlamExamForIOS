@@ -38,6 +38,7 @@
 
 @implementation CommentViewController
 
+//提交评价
 - (IBAction)submitComment:(id)sender {
     [self.textView resignFirstResponder];
     
@@ -69,7 +70,6 @@
             [CommonUtil showHUDWithTitle:httpResult.Message];
         }
     }];
-    
 }
 
 - (NSMutableArray *)commitTagsArr {
@@ -85,10 +85,12 @@
     [self initUI];
     [self setUpCommentTagBtn];
     
+    //注册关于键盘的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillHiden:) name:UIKeyboardWillHideNotification object:nil];
 }
 
+//键盘显示
 - (void)kbWillShow:(NSNotification *)note {
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -96,6 +98,7 @@
     }];
 }
 
+//键盘隐藏
 - (void)kbWillHiden:(NSNotification *)note {
     
     [UIView animateWithDuration:0.25 animations:^{
@@ -103,6 +106,7 @@
     }];
 }
 
+//设置评价标签的样式
 - (void)setUpCommentTagBtn {
     [self.firstBtn setBorder];
     [self.secondBtn setBorder];
@@ -112,6 +116,7 @@
     [self.textView setBorder];
 }
 
+//初始化一些控件的样式
 - (void)initUI {
     self.automaticallyAdjustsScrollViewInsets = NO;
     

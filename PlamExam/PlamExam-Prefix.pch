@@ -16,7 +16,7 @@
 
 //HZ.WebAPI
 
-#define Distribution 2
+#define Distribution 5
 
 #if Distribution==1 //gao debugger
 #define BaseURLStr @"http://hz3bn04d2/ZSTJ/api/V3/"
@@ -35,6 +35,11 @@
 #endif
 #if Distribution==4 //liu debugger
 #define BaseURLStr @"http://hzdjl89j92:25007/api/V3/"
+#define HttpBasicKey @"HZ_PME_API_V1"
+#define ApiSecret @"1!2@3#4$5%6^"
+#endif
+#if Distribution==5 //test
+#define BaseURLStr @"http://10.50.50.14:142/api/V3/"
 #define HttpBasicKey @"HZ_PME_API_V1"
 #define ApiSecret @"1!2@3#4$5%6^"
 #endif

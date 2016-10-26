@@ -26,6 +26,7 @@
 #import "Notice.h"
 #import "AdDetailViewController.h"
 #import "NewsListViewController.h"
+#import "NewsModel.h"
 
 #define kAdViewH 230*kScreenSizeWidth/375
 #define kSectionItemW kScreenSizeWidth/2.0
@@ -89,6 +90,7 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
     //添加监听进入咨询详情清除小圆点的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBadgeNotification:) name:kClearBadgeKVOKey object:nil];
+    
 }
 
 
@@ -123,16 +125,20 @@
 
 #pragma mark -- 网络请求相关
 - (void)loadNewsData {
-    self.newsDataArr = [NSMutableArray array];
-    MBProgressHUD *hud = [CommonUtil createHUD];
+    User* user=[[UserManager shareInstance] getUserInfo];
+    NSArray<NewsSimple*> *newList= [NewsModel getNewsListFromDB:user.Id];
+    [self.newsDataArr addObjectsFromArray:newList];
+    [self.tableView reloadData];
     
+    self.newsDataArr = [NSMutableArray array];
     [NewsModel requestList:1 PageSize:4 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
-        hud.hidden = YES;
-        if (httpRequestResult.IsSuccess) {
+        if (httpRequestResult.IsSuccess && httpRequestResult.Data.count>0) {
+            [self.newsDataArr removeAllObjects];
             [self.newsDataArr addObjectsFromArray:httpRequestResult.Data];
             [self.tableView reloadData];
             
             [self.tableView.mj_header endRefreshing];
+            [NewsModel resaveNewsListFromDB:user.Id newsList:httpRequestResult.Data];
         }else {
             [CommonUtil showHUDWithTitle:httpRequestResult.Message];
         }

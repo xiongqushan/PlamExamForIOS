@@ -9,6 +9,9 @@
 #import "NewsModel.h"
 #import "HttpHelper.h"
 #import <YYModel.h>
+#import "SqliteHelper.h"
+#import "FMDatabase.h"
+#import "FMDatabaseAdditions.h"
 
 #define kNewsDetailUrl @"Home/MsgInfo"
 #define kNewsListUrl @"Home/Msgs"
@@ -44,6 +47,52 @@
         callBack(result);
         
     }];
+}
+
++(void)resaveNewsListFromDB:(NSString*)accountId newsList:(NSArray<NewsSimple*>*)newsList{
+    FMDatabase *fmDataBase= [SqliteHelper getDBInstance:accountId];
+    @try {
+        [fmDataBase beginTransaction];
+        [fmDataBase executeUpdateWithFormat:@"delete from newsinfo"];
+        for (NewsSimple *news in newsList) {
+            [fmDataBase executeUpdateWithFormat:@"INSERT INTO newsinfo (title,imgFormat,timeFormat,descriptions) VALUES (%@,%@,%@,%@)",news.title,news.imgFormat,news.timeFormat,news.descriptions];
+        }
+        [fmDataBase commit];
+    }
+    @catch (NSException *exception) {
+        
+    }
+    @finally {
+        [fmDataBase close];
+    }
+}
+
++(NSArray<NewsSimple*>*)getNewsListFromDB:(NSString*)accountId{
+    NSMutableArray<NewsSimple*> *arr= [[NSMutableArray<NewsSimple*> alloc] init];
+    FMDatabase *fmDataBase=[SqliteHelper getDBInstance:accountId];
+    @try{
+        FMResultSet *rs= [fmDataBase executeQueryWithFormat:@"select * from newsinfo"];
+        while ([rs next]) {
+            NSInteger identity= [rs intForColumn:@"Id"];
+            NSString* title= [rs stringForColumn:@"title"];
+            NSString* img= [rs stringForColumn:@"imgFormat"];
+            NSString* time=[rs stringForColumn:@"timeFormat"];
+            NSString* descri=[rs stringForColumn:@"descriptions"];
+            NewsSimple* newsItem= [[NewsSimple alloc] init];
+            newsItem.Id=identity;
+            newsItem.title=title;
+            newsItem.imgFormat=img;
+            newsItem.timeFormat=time;
+            newsItem.descriptions=descri;
+            [arr addObject:newsItem];
+        }
+    }
+    @catch (NSException *exception) {
+    }
+    @finally {
+        [fmDataBase close];
+    }
+    return arr;
 }
 
 @end
