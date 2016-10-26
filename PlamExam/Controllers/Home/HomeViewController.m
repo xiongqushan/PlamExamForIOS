@@ -74,6 +74,7 @@
 - (void)viewDidLoad {
     [super viewDidLoad];
     self.adDataArr=[NSMutableArray array];
+    self.newsDataArr = [NSMutableArray array];
 
     [self setUpTableView];
     
@@ -123,8 +124,6 @@
     NSArray<NewsSimple*> *newList= [NewsModel getNewsListFromDB:user.Id];
     [self.newsDataArr addObjectsFromArray:newList];
     [self.tableView reloadData];
-    
-    self.newsDataArr = [NSMutableArray array];
     [NewsModel requestList:1 PageSize:4 callBackBlock:^(HttpRequestResult<NSArray<NewsSimple *> *> *httpRequestResult) {
         if (httpRequestResult.IsSuccess && httpRequestResult.Data.count>0) {
             [self.newsDataArr removeAllObjects];
