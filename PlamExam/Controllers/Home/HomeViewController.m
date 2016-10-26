@@ -64,12 +64,14 @@
 - (UIView *)adView {
     
     if (!_adView) {
-        _adView = [[UIView alloc] initWithFrame:CGRectMake(10, 10, self.tableHeaderView.bounds.size.width - 20, self.tableHeaderView.bounds.size.height - 20)];
+        _adView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableHeaderView.bounds.size.width, self.tableHeaderView.bounds.size.height)];
         _adView.backgroundColor = [UIColor lightGrayColor];
         
     }
     return _adView;
 }
+
+
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -93,7 +95,7 @@
 - (void)setUpTableView {
     self.automaticallyAdjustsScrollViewInsets = NO;
     
-    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64 - 49) style:UITableViewStylePlain];
+    self.tableView = [[UITableView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kScreenSizeHeight - 64 - 49) style:UITableViewStyleGrouped];
     self.tableView.delegate = self;
     self.tableView.dataSource = self;
     self.tableView.showsVerticalScrollIndicator = NO;

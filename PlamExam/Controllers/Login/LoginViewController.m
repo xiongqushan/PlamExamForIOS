@@ -16,6 +16,7 @@
 #import <YYModel.h>
 #import "MBProgressHUD.h"
 #import "DisclaimerViewController.h"
+#import "JPUSHService.h"
 
 @interface LoginViewController ()
 @property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
@@ -46,7 +47,7 @@
         if (httpResult.IsHttpSuccess) {
             if (httpResult.HttpResult.Code == 1) {
                 NSLog(@"______%@",httpResult.Data);
-                [self.verCodeBtn startWithTime:30 title:@"获取验证码" countDownTitle:@"重新获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
+                [self.verCodeBtn startWithTime:60 title:@"获取验证码" countDownTitle:@"重新获取" mainColor:[UIColor clearColor] countColor:[UIColor clearColor]];
             }else {
                 [CommonUtil showHUDWithTitle:httpResult.HttpResult.Message];
             }
@@ -55,8 +56,6 @@
         }
     }];
     
-
-    
 }
 
 //用户许可协议
@@ -64,6 +63,11 @@
     DisclaimerViewController *disclaimer = [[DisclaimerViewController alloc] init];
     disclaimer.navTitle = @"用户许可协议";
     [self presentViewController:disclaimer animated:YES completion:nil];
+}
+
+- (void)setAlias:(int)iResCode tags:(NSSet *)tags alias:(NSString *)alias {
+    
+    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
 }
 
 //登录
@@ -85,6 +89,17 @@
                 
                 User *user = httpResult.Data;
                 [[UserManager shareInstance] setUserInfo:user];
+                
+                //绑定别名
+                [JPUSHService setTags:nil alias:user.accountId fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                    if (iResCode == 0) {
+                        [CommonUtil showHUDWithTitle:@"绑定成功"];
+                    }else {
+                        [CommonUtil showHUDWithTitle:[NSString stringWithFormat:@"绑定失败，%d",iResCode]];
+                    }
+                    
+                    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags , iAlias);
+                }];
                 
                 HZTabBarController *tabBar = [[HZTabBarController alloc] init];
                 [self presentViewController:tabBar animated:NO completion:nil];

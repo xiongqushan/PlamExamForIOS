@@ -45,7 +45,7 @@
                 </textField>
                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="BRE-AX-RhK">
                     <constraints>
-                        <constraint firstAttribute="width" constant="85" id="QR4-a6-cQp"/>
+                        <constraint firstAttribute="width" constant="90" id="QR4-a6-cQp"/>
                         <constraint firstAttribute="height" constant="30" id="RFH-qa-AEz"/>
                     </constraints>
                     <fontDescription key="fontDescription" type="system" pointSize="16"/>
@@ -130,7 +130,7 @@
                 <constraint firstItem="Ftb-EK-3ig" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" constant="44" id="87W-Cg-eUC"/>
                 <constraint firstItem="32y-Sh-QFq" firstAttribute="centerX" secondItem="i5M-Pr-FkT" secondAttribute="centerX" constant="1" id="8oe-6n-WHK"/>
                 <constraint firstItem="W0X-21-pBv" firstAttribute="top" secondItem="i5M-Pr-FkT" secondAttribute="top" constant="76" id="E3t-YN-elC"/>
-                <constraint firstAttribute="trailing" secondItem="BRE-AX-RhK" secondAttribute="trailing" constant="43" id="Hvz-Mf-h2A"/>
+                <constraint firstAttribute="trailing" secondItem="BRE-AX-RhK" secondAttribute="trailing" constant="38" id="Hvz-Mf-h2A"/>
                 <constraint firstAttribute="trailing" secondItem="eWf-dB-6qM" secondAttribute="trailing" constant="43" id="JVb-Zn-FEc"/>
                 <constraint firstAttribute="trailing" secondItem="knP-w2-XbR" secondAttribute="trailing" constant="42" id="Ka8-YN-3Js"/>
                 <constraint firstItem="Ah2-cU-Glr" firstAttribute="leading" secondItem="i5M-Pr-FkT" secondAttribute="leading" id="QW8-Sf-Wqq"/>

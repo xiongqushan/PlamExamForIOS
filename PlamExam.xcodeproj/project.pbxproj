@@ -88,6 +88,12 @@
 		A93C60CE1DB4CD970024180F /* ConsultViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60CB1DB4CD970024180F /* ConsultViewController.m */; };
 		A93C60E31DB4D3980024180F /* InformationViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A93C60E21DB4D3980024180F /* InformationViewController.m */; };
 		A9411B261DAA3DB800B69967 /* AppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = A9411B251DAA3DB800B69967 /* AppDelegate.m */; };
+		A94FE3231DC08DCF00EB98D2 /* jpush-ios-2.2.0.a in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE3211DC08DCF00EB98D2 /* jpush-ios-2.2.0.a */; };
+		A94FE3251DC08DFC00EB98D2 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE3241DC08DFC00EB98D2 /* CFNetwork.framework */; };
+		A94FE3271DC08E0600EB98D2 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE3261DC08E0600EB98D2 /* CoreFoundation.framework */; };
+		A94FE3291DC08E5500EB98D2 /* Security.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE3281DC08E5500EB98D2 /* Security.framework */; };
+		A94FE32B1DC08E7400EB98D2 /* UserNotifications.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE32A1DC08E7400EB98D2 /* UserNotifications.framework */; };
+		A94FE32D1DC08E8100EB98D2 /* libresolv.tbd in Frameworks */ = {isa = PBXBuildFile; fileRef = A94FE32C1DC08E8100EB98D2 /* libresolv.tbd */; };
 		A9610D481DB109D60062CE93 /* ZSType.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D471DB109D60062CE93 /* ZSType.m */; };
 		A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D761DB491100062CE93 /* DoctorInfoView.m */; };
 		A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9610D781DB491270062CE93 /* DoctorInfoView.xib */; };
@@ -278,6 +284,14 @@
 		A93C60E21DB4D3980024180F /* InformationViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InformationViewController.m; sourceTree = "<group>"; };
 		A9411B241DAA3DB800B69967 /* AppDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppDelegate.h; sourceTree = "<group>"; };
 		A9411B251DAA3DB800B69967 /* AppDelegate.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppDelegate.m; sourceTree = "<group>"; };
+		A94FE3211DC08DCF00EB98D2 /* jpush-ios-2.2.0.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; path = "jpush-ios-2.2.0.a"; sourceTree = "<group>"; };
+		A94FE3221DC08DCF00EB98D2 /* JPUSHService.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = JPUSHService.h; sourceTree = "<group>"; };
+		A94FE3241DC08DFC00EB98D2 /* CFNetwork.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CFNetwork.framework; path = System/Library/Frameworks/CFNetwork.framework; sourceTree = SDKROOT; };
+		A94FE3261DC08E0600EB98D2 /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
+		A94FE3281DC08E5500EB98D2 /* Security.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Security.framework; path = System/Library/Frameworks/Security.framework; sourceTree = SDKROOT; };
+		A94FE32A1DC08E7400EB98D2 /* UserNotifications.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UserNotifications.framework; path = System/Library/Frameworks/UserNotifications.framework; sourceTree = SDKROOT; };
+		A94FE32C1DC08E8100EB98D2 /* libresolv.tbd */ = {isa = PBXFileReference; lastKnownFileType = "sourcecode.text-based-dylib-definition"; name = libresolv.tbd; path = usr/lib/libresolv.tbd; sourceTree = SDKROOT; };
+		A94FE32E1DC08F4000EB98D2 /* PlamExam.entitlements */ = {isa = PBXFileReference; lastKnownFileType = text.plist.entitlements; path = PlamExam.entitlements; sourceTree = "<group>"; };
 		A9610D461DB109D60062CE93 /* ZSType.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ZSType.h; sourceTree = "<group>"; };
 		A9610D471DB109D60062CE93 /* ZSType.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ZSType.m; sourceTree = "<group>"; };
 		A9610D751DB491100062CE93 /* DoctorInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoView.h; sourceTree = "<group>"; };
@@ -372,13 +386,19 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				A94FE32D1DC08E8100EB98D2 /* libresolv.tbd in Frameworks */,
+				A94FE32B1DC08E7400EB98D2 /* UserNotifications.framework in Frameworks */,
+				A94FE3291DC08E5500EB98D2 /* Security.framework in Frameworks */,
+				A93549911DB0B2A00077E85C /* CoreTelephony.framework in Frameworks */,
+				A94FE3271DC08E0600EB98D2 /* CoreFoundation.framework in Frameworks */,
+				A94FE3251DC08DFC00EB98D2 /* CFNetwork.framework in Frameworks */,
 				A935499D1DB0B2E70077E85C /* CoreGraphics.framework in Frameworks */,
 				A935499B1DB0B2DE0077E85C /* QuartzCore.framework in Frameworks */,
 				A93549991DB0B2D40077E85C /* AddressBook.framework in Frameworks */,
+				A94FE3231DC08DCF00EB98D2 /* jpush-ios-2.2.0.a in Frameworks */,
 				A93549971DB0B2BB0077E85C /* CoreLocation.framework in Frameworks */,
 				A93549951DB0B2B30077E85C /* UIKit.framework in Frameworks */,
 				A93549931DB0B2AC0077E85C /* AudioToolbox.framework in Frameworks */,
-				A93549911DB0B2A00077E85C /* CoreTelephony.framework in Frameworks */,
 				A935498F1DB0B2940077E85C /* Foundation.framework in Frameworks */,
 				A935498D1DB0B2880077E85C /* SystemConfiguration.framework in Frameworks */,
 				A935498B1DB0B2730077E85C /* AVFoundation.framework in Frameworks */,
@@ -727,6 +747,12 @@
 		A9411B2C1DAA409500B69967 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				A94FE32C1DC08E8100EB98D2 /* libresolv.tbd */,
+				A94FE32A1DC08E7400EB98D2 /* UserNotifications.framework */,
+				A94FE3281DC08E5500EB98D2 /* Security.framework */,
+				A94FE3261DC08E0600EB98D2 /* CoreFoundation.framework */,
+				A94FE3241DC08DFC00EB98D2 /* CFNetwork.framework */,
+				A94FE3201DC08DCF00EB98D2 /* Lib */,
 				A935499C1DB0B2E70077E85C /* CoreGraphics.framework */,
 				A935499A1DB0B2DE0077E85C /* QuartzCore.framework */,
 				A93549981DB0B2D40077E85C /* AddressBook.framework */,
@@ -742,6 +768,15 @@
 				22204DB0422D3F1446E34FFB /* libPods-PlamExam.a */,
 			);
 			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		A94FE3201DC08DCF00EB98D2 /* Lib */ = {
+			isa = PBXGroup;
+			children = (
+				A94FE3211DC08DCF00EB98D2 /* jpush-ios-2.2.0.a */,
+				A94FE3221DC08DCF00EB98D2 /* JPUSHService.h */,
+			);
+			path = Lib;
 			sourceTree = "<group>";
 		};
 		A9610D741DB491100062CE93 /* ConsulationView */ = {
@@ -819,6 +854,7 @@
 		A9BBAD5D1DAA336000BAF4D1 /* PlamExam */ = {
 			isa = PBXGroup;
 			children = (
+				A94FE32E1DC08F4000EB98D2 /* PlamExam.entitlements */,
 				A9411B231DAA3DA200B69967 /* Application */,
 				A935489F1DAB95E10077E85C /* Domains */,
 				A93548B01DAB973B0077E85C /* Models */,
@@ -1002,6 +1038,11 @@
 						CreatedOnToolsVersion = 8.0;
 						DevelopmentTeam = T5NFTEJZU4;
 						ProvisioningStyle = Automatic;
+						SystemCapabilities = {
+							com.apple.Push = {
+								enabled = 1;
+							};
+						};
 					};
 				};
 			};
@@ -1330,6 +1371,7 @@
 			baseConfigurationReference = FAD7AE538DED5CCD686F6757 /* Pods-PlamExam.debug.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlamExam/PlamExam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
@@ -1342,10 +1384,15 @@
 				INFOPLIST_FILE = PlamExam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Lib";
 			};
 			name = Debug;
 		};
@@ -1354,6 +1401,7 @@
 			baseConfigurationReference = 45A42BDB1C47DC7D62247F14 /* Pods-PlamExam.release.xcconfig */;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
+				CODE_SIGN_ENTITLEMENTS = PlamExam/PlamExam.entitlements;
 				CODE_SIGN_IDENTITY = "iPhone Distribution";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
@@ -1366,10 +1414,15 @@
 				INFOPLIST_FILE = PlamExam/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 8.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"$(PROJECT_DIR)/Lib",
+				);
 				PRODUCT_BUNDLE_IDENTIFIER = com.ihaozuo.plamExam;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE = "";
 				PROVISIONING_PROFILE_SPECIFIER = "";
+				USER_HEADER_SEARCH_PATHS = "$(SRCROOT)/Lib";
 			};
 			name = Release;
 		};

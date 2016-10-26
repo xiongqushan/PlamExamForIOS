@@ -30,16 +30,15 @@
 {
     HeaderView *_headerView;
     UIView *_tableHeaderView;
-//    UILabel *_nameLabel;
-//    UIImageView *_iconImage;
+
 }
 
 - (void)viewDidLoad {
     [super viewDidLoad];
     // Do any additional setup after loading the view.
     
-    [self setUpBaseUI];
     [self createItemData];
+    [self setUpBaseUI];
     
 }
 
@@ -67,15 +66,16 @@
     User *user = [[UserManager shareInstance] getUserInfo];
     
     self.tableView.contentInset = UIEdgeInsetsMake(kHeaderViewH, 0, 0, 0);
+    _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, -kHeaderViewH, kScreenSizeWidth, kHeaderViewH)];
+    [self.tableView insertSubview:_tableHeaderView atIndex:0];
+    
     HeaderView *headerView = [[[NSBundle mainBundle] loadNibNamed:@"HeaderView" owner:self options:nil] lastObject];
     headerView.backgroundColor = [UIColor navigationBarColor];
-    headerView.frame = CGRectMake(0, -kHeaderViewH, kScreenSizeWidth, kHeaderViewH);
+    headerView.frame = CGRectMake(0, 0, kScreenSizeWidth, kHeaderViewH);
     [headerView.iconBtn setRoundWithRadius:50];
     [headerView.iconBtn addTarget:self action:@selector(iconClick) forControlEvents:UIControlEventTouchUpInside];
     headerView.nameLabel.text = user.realName;
-    
-    [self.tableView insertSubview:headerView atIndex:0];
-    
+    [_tableHeaderView addSubview:headerView];
     _headerView = headerView;
     
 }
@@ -84,20 +84,20 @@
     //头像被点击
 }
 
-//- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
-//    CGFloat updateY = scrollView.contentOffset.y;
-//    NSLog(@"________updateY:%f",updateY);
-//    _headerView.frame = CGRectMake(0, updateY, kScreenSizeWidth, - updateY);
-//    
-//    updateY += kHeaderViewH;
-//    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(kHeaderViewH - 64);
-//    CGFloat yuanW = MAX(MinIconWH, MaxIconWH - reduceW);
-//    
-//    _headerView.iconBtn.layer.cornerRadius = yuanW/2.0;
-//    
-//    _headerView.iconWidth.constant = yuanW;
-//    _headerView.iconHeight.constant = yuanW;
-//}
+- (void)scrollViewDidScroll:(UIScrollView *)scrollView {
+    CGFloat updateY = scrollView.contentOffset.y;
+    NSLog(@"________updateY:%f",updateY);
+    _tableHeaderView.frame = CGRectMake(0, updateY, kScreenSizeWidth, - updateY);
+    
+    updateY += kHeaderViewH;
+    CGFloat reduceW = updateY * (MaxIconWH - MinIconWH)/(kHeaderViewH - 64);
+    CGFloat yuanW = MAX(MinIconWH, MaxIconWH - reduceW);
+    
+    _headerView.iconBtn.layer.cornerRadius = yuanW/2.0;
+    
+    _headerView.iconWidth.constant = yuanW;
+    _headerView.iconHeight.constant = yuanW;
+}
 
 #pragma mark -- UITableViewDelegate
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -108,13 +108,16 @@
 - (void)viewWillAppear:(BOOL)animated {
     [super viewWillAppear:animated];
     
-    [self.navigationController setNavigationBarHidden:YES animated:YES];
+    [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha = 0.0;
+
 }
 
 - (void)viewWillDisappear:(BOOL)animated {
     [super viewWillDisappear:animated];
     
-    [self.navigationController setNavigationBarHidden:NO animated:YES];
+    [UIView animateWithDuration:0.25 animations:^{
+        [[self.navigationController.navigationBar subviews] objectAtIndex:0].alpha = 1.0;
+    }];
     
 }
 

@@ -41,7 +41,8 @@
 - (void)addReport {
     AddReportViewController *addReport = [[AddReportViewController alloc] init];
     addReport.reloadReportList = ^(NSArray<ReportSimple*>* reports){
-        self.addReportView.hidden = YES;
+      //  self.addReportView.hidden = YES;
+        [self.addReportView removeFromSuperview];
         self.dataArr = [NSMutableArray arrayWithArray:reports];
         [self.tableView reloadData];
     };
@@ -51,6 +52,9 @@
 - (void)loadReportData {
     if([[ReportManager shareInstance] exist]){
         self.dataArr = [NSMutableArray arrayWithArray:[[ReportManager shareInstance] getReportList]];
+        if (self.dataArr.count == 0) {
+            [self showAddReportView];
+        }
         [self.tableView reloadData];
         return;
     }
