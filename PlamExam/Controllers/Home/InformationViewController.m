@@ -13,7 +13,7 @@
 #import "NewsModel.h"
 #import "NewsInfo.h"
 
-#define kInformationDetail @"http://hz3bn04d2:8060/Examination.html#/exam/%ld"
+#define kInformationDetail @"http://hzswvajgs01:100/Examination.html#/exam/%ld/2"
 
 @interface InformationViewController ()<ZLCWebViewDelegate>
 
