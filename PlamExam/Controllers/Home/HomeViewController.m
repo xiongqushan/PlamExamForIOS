@@ -28,7 +28,9 @@
 #import "NewsListViewController.h"
 #import "NewsModel.h"
 
-#define kAdViewH 230*kScreenSizeWidth/375
+#define kAdViewH 200*kScreenSizeWidth/375
+#define kAppointmentViewH 70*kScreenSizeWidth/375
+
 #define kSectionItemW kScreenSizeWidth/2.0
 #define kSectionItemH 132
 #define kInformationViewH 40
@@ -42,6 +44,7 @@
 @property (nonatomic, strong) UITableView *tableView;
 @property (nonatomic, strong) UIView *adView;
 @property (nonatomic, strong) UIView *tableHeaderView;
+@property (nonatomic, strong) UIView *appointmentView;  //体检预约  挂号预约  风险评估所在的view
 @property (nonatomic, strong) NSMutableArray<AdScrollerViewData*> *adDataArr;
 @property (nonatomic, strong) NSMutableArray *newsDataArr;
 @property (nonatomic, strong) UITabBarItem *tabBarItem;
@@ -53,10 +56,11 @@
 - (UIView *)tableHeaderView {
     
     if (!_tableHeaderView) {
-        _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH)];
+        _tableHeaderView = [[UIView alloc] initWithFrame:CGRectMake(0, 64, kScreenSizeWidth, kAdViewH + kAppointmentViewH)];
         _tableHeaderView.backgroundColor = [UIColor whiteColor];
         
         [_tableHeaderView addSubview:self.adView];
+        [_tableHeaderView addSubview:self.appointmentView];
     }
     return _tableHeaderView;
 }
@@ -64,14 +68,46 @@
 - (UIView *)adView {
     
     if (!_adView) {
-        _adView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableHeaderView.bounds.size.width, self.tableHeaderView.bounds.size.height)];
+        _adView = [[UIView alloc] initWithFrame:CGRectMake(0, 0, self.tableHeaderView.bounds.size.width, kAdViewH)];
         _adView.backgroundColor = [UIColor lightGrayColor];
         
     }
     return _adView;
 }
 
-
+- (UIView *)appointmentView {
+    if (!_appointmentView) {
+        _appointmentView = [[UIView alloc] initWithFrame:CGRectMake(0, kAdViewH, kScreenSizeWidth, kAppointmentViewH)];
+        _appointmentView.backgroundColor = [UIColor whiteColor];
+        
+       // CGFloat itemsSpace = (kScreenSizeWidth - 70*3 - 80)/2;
+        NSArray *titleArr = @[@"体检预约",@"挂号预约",@"风险评估"];
+        NSArray *imageNameArr = @[@"exam_appointment",@"register_appointment",@"risk_assessment"];
+        CGFloat itemSpace = (kScreenSizeWidth - kAppointmentViewH*3)/4;
+        for (NSInteger i = 0; i < 3; i++) {
+           
+            UIView *view = [[UIView alloc] initWithFrame:CGRectMake(40 + (kAppointmentViewH+itemSpace)*i, 0, kAppointmentViewH, kAppointmentViewH)];
+            view.backgroundColor = [UIColor whiteColor];
+            [_appointmentView addSubview:view];
+            
+            UIButton *btn = [UIButton buttonWithType:UIButtonTypeCustom];
+            btn.frame = CGRectMake((kAppointmentViewH-30)/2.0, 10, 30, 29);
+            [btn setImage:[UIImage imageNamed:imageNameArr[i]] forState:UIControlStateNormal];
+            [view addSubview:btn];
+            
+            UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 43, kAppointmentViewH, 20)];
+            titleLabel.text = titleArr[i];
+            titleLabel.textColor = kSetRGBColor(102, 102, 102);
+            titleLabel.font = [UIFont systemFontOfSize:15];
+            titleLabel.textAlignment = NSTextAlignmentCenter;
+            [view addSubview:titleLabel];
+            
+        }
+        
+    }
+    
+    return _appointmentView;
+}
 
 - (void)viewDidLoad {
     [super viewDidLoad];
@@ -337,6 +373,10 @@
 - (CGFloat)tableView:(UITableView *)tableView heightForHeaderInSection:(NSInteger)section {
     
     return kSectionItemH + kItemSpace*2 + kInformationViewH;;
+}
+
+- (CGFloat)tableView:(UITableView *)tableView heightForFooterInSection:(NSInteger)section {
+    return 1;
 }
 
 #pragma mark -- ClickEvent

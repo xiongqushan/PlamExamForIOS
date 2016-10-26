@@ -65,11 +65,6 @@
     [self presentViewController:disclaimer animated:YES completion:nil];
 }
 
-- (void)setAlias:(int)iResCode tags:(NSSet *)tags alias:(NSString *)alias {
-    
-    NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, tags , alias);
-}
-
 //登录
 - (IBAction)login:(id)sender {
     if (self.verCodeTextField.text.length == 0) {
