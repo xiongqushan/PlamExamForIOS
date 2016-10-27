@@ -40,11 +40,6 @@
     
     __weak typeof(self) weakSelf = self;
     //显示分享面板
-//    [UMSocialUIManager showShareMenuViewInView:nil sharePlatformSelectionBlock:^(UMSocialShareSelectionView *shareSelectionView, NSIndexPath *indexPath, UMSocialPlatformType platformType) {
-//        [weakSelf disMissShareMenuView];
-//        [weakSelf shareDataWithPlatform:platformType];
-//        
-//    }];
     [UMSocialUIManager showShareMenuViewInWindowWithPlatformSelectionBlock:^(UMShareMenuSelectionView *shareSelectionView, UMSocialPlatformType platformType) {
         
         [weakSelf shareTextToPlatformType:platformType];
