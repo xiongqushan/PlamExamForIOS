@@ -67,11 +67,7 @@
 
 //登录
 - (IBAction)login:(id)sender {
-    if (self.verCodeTextField.text.length == 0) {
-        [CommonUtil showHUDWithTitle:@"请输入验证码"];
-        return;
-    }
-   // [UserManager saveUserInfo];
+
     MBProgressHUD *hud = [CommonUtil createHUD];
     
     [UserModel requestLoginData:self.phoneTextField.text verifyCode:self.verCodeTextField.text callback:^(HttpRequestResult<User *> *httpResult) {
@@ -85,12 +81,15 @@
                 User *user = httpResult.Data;
                 [[UserManager shareInstance] setUserInfo:user];
                 
+                //将accountId中的‘-’替换成‘_’
+                NSString *aliasStr = [user.accountId stringByReplacingOccurrencesOfString:@"-" withString:@"_"];
+               // NSLog(@"_______aliasStr:%@",aliasStr);
                 //绑定别名
-                [JPUSHService setTags:nil alias:user.accountId fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
+                [JPUSHService setTags:nil alias:aliasStr fetchCompletionHandle:^(int iResCode, NSSet *iTags, NSString *iAlias) {
                     if (iResCode == 0) {
-                        [CommonUtil showHUDWithTitle:@"绑定成功"];
+                        //[CommonUtil showHUDWithTitle:@"绑定成功"];
                     }else {
-                        [CommonUtil showHUDWithTitle:[NSString stringWithFormat:@"绑定失败，%d",iResCode]];
+                        //[CommonUtil showHUDWithTitle:[NSString stringWithFormat:@"绑定失败，%d",iResCode]];
                     }
                     
                     NSLog(@"rescode: %d, \ntags: %@, \nalias: %@\n", iResCode, iTags , iAlias);
@@ -112,6 +111,7 @@
     [super viewDidLoad];
     
     self.view.backgroundColor = [UIColor whiteColor];
+    self.loginBtn.enabled = NO;
     
     //监听键盘显示通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(kbWillShow:) name:UIKeyboardWillShowNotification object:nil];
@@ -139,6 +139,29 @@
     }
 }
 
+//监听textField 改变
+- (IBAction)textFieldDidChange:(id)sender {
+    UITextField *textField = (UITextField *)sender;
+    
+    if (textField == self.phoneTextField) {
+        if (textField.text.length > 11) {
+            textField.text = [textField.text substringToIndex:11];
+        }
+    }
+    
+    if (textField == self.verCodeTextField) {
+        if (textField.text.length > 4) {
+            textField.text = [textField.text substringToIndex:4];
+        }
+    }
+    
+    if (self.phoneTextField.text.length == 11 && self.verCodeTextField.text.length == 4) {
+        self.loginBtn.enabled = YES;
+    }else {
+        self.loginBtn.enabled = NO;
+    }
+    
+}
 
 - (void)touchesBegan:(NSSet<UITouch *> *)touches withEvent:(UIEvent *)event {
     [self.phoneTextField resignFirstResponder];

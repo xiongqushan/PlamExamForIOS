@@ -27,9 +27,10 @@
 #import "AdDetailViewController.h"
 #import "NewsListViewController.h"
 #import "NewsModel.h"
+#import "AppDelegate.h"
 
-#define kAdViewH 200*kScreenSizeWidth/375
-#define kAppointmentViewH 70*kScreenSizeWidth/375
+#define kAdViewH 200
+#define kAppointmentViewH 70
 
 #define kSectionItemW kScreenSizeWidth/2.0
 #define kSectionItemH 132
@@ -123,7 +124,26 @@
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(loadADListByNotification:) name:kChangeDepartKVOKey object:nil];
     //添加监听进入咨询详情清除小圆点的通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(clearBadgeNotification:) name:kClearBadgeKVOKey object:nil];
+    //监听添加小红点通知
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadgeNotification:) name:kAddBadgeKVOKey object:nil];
     
+    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goConsult:) name:kGoConsulationNote object:nil];
+    
+    AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
+    if (app.isNotification) {
+        NSLog(@"_______YES!!!!!!");
+    }else {
+        NSLog(@"_______NO!!!!!!");
+    }
+}
+
+- (void)goConsult:(NSNotification *)note {
+    
+    [self.navigationController popToRootViewControllerAnimated:NO];
+    //健康咨询
+    ConsultDetailViewController *consulation = [[ConsultDetailViewController alloc] init];
+    
+    [self.navigationController pushViewController:consulation animated:YES];
 }
 
 
@@ -153,6 +173,13 @@
 
 - (void)clearBadgeNotification:(NSNotification *)notification {
     [self.tabBarItem clearBadge];
+}
+
+- (void)addBadgeNotification:(NSNotification *)notification {
+    //设置badgeView
+    self.tabBarItem = [[[self.tabBarController tabBar] items] objectAtIndex:1];
+    self.tabBarItem.badgeCenterOffset = CGPointMake(0, 5);
+    [self.tabBarItem showBadgeWithStyle:WBadgeStyleRedDot value:0 animationType:WBadgeAnimTypeNone];
 }
 
 

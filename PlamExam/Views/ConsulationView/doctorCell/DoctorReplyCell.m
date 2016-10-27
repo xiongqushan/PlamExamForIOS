@@ -7,6 +7,7 @@
 //
 
 #import "DoctorReplyCell.h"
+#import <UIImageView+WebCache.h>
 
 @implementation DoctorReplyCell
 
@@ -24,10 +25,11 @@
 }
 
 - (void)showDataWithModel:(ChatData *)chatData {
-    self.selectionStyle = UITableViewCellSelectionStyleNone;
     
+    self.selectionStyle = UITableViewCellSelectionStyleNone;
     self.contentLabel.text = chatData.Content;
     self.dateLabel.text = chatData.Date;
+    [self.iconImageView sd_setImageWithURL:[NSURL URLWithString:chatData.DoctorHeaderImage] placeholderImage:[UIImage imageNamed:@"default"]];
 }
 
 @end

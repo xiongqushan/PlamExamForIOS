@@ -8,7 +8,8 @@
 
 #import "ChatData.h"
 #import "CommonUtil.h"
-
+#import "DoctorManager.h"
+#import "Doctor.h"
 @implementation ChatData
 {
     CGFloat _cellHeight;
@@ -30,5 +31,9 @@
         _reportCellHeight = height + 123 - 17;
     }
     return _reportCellHeight;
+}
+-(NSString *)DoctorHeaderImage{
+    Doctor *doctor= [[DoctorManager shareInstance] getDoctor:self.DoctorId.integerValue];
+    return doctor.imageSrc;
 }
 @end

@@ -58,7 +58,7 @@
         content = [temp stringByAppendingString:self.textView.text];
     }
     
-    [ChatModel Comment:user.accountId score:[NSString stringWithFormat:@"%f",_HYBStarView.actualScore] content:content callBackBlock:^(HttpRequestResult<ZSBoolType *> *httpResult) {
+    [ChatModel Comment:user.accountId score:[NSString stringWithFormat:@"%d",(int)_HYBStarView.actualScore] content:content callBackBlock:^(HttpRequestResult<ZSBoolType *> *httpResult) {
         if (httpResult.IsSuccess) {
             
             if (httpResult.Data.Value) {

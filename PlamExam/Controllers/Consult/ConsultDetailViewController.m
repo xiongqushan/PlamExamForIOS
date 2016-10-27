@@ -35,6 +35,7 @@
 @property (weak, nonatomic) IBOutlet UIButton *sendBtn;
 @property (weak, nonatomic) IBOutlet UILabel *placeholderLabel;
 
+@property (weak, nonatomic) IBOutlet NSLayoutConstraint *tableViewTopConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarBottomConstraint;
 @property (weak, nonatomic) IBOutlet NSLayoutConstraint *toolBarHeightConstraint;
 
@@ -50,7 +51,6 @@
 {
     
 }
-
 
 - (CGFloat)previousTextViewHeight {
     if (_previousTextViewHeight == 0) {
@@ -154,6 +154,7 @@
     
     if(![[DoctorManager shareInstance] existDoctorId] && ![[DoctorManager shareInstance] existDoctorList]){
         [ChatModel requestChatDataAndDoctorIdAndDoctorList:accountId chatDataCallback:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpRequestResult) {
+
             //获取聊天记录
             if (httpRequestResult.IsSuccess) {
                 if(!self.dataArr){
@@ -171,7 +172,9 @@
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
             //获取健管师Id
             if (httpRequestResult.IsSuccess) {
+
                 [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
+
             }
         } doctorListCallback:^(HttpRequestResult<NSMutableArray<Doctor *> *> *httpRequestResult) {
             if (httpRequestResult.IsSuccess) {
@@ -203,12 +206,14 @@
                 [self scrollToBottom:NO];
             }
         } doctorIdCallback:^(HttpRequestResult<ZSIntType *> *httpRequestResult) {
-            if (httpRequestResult.Message) {
+            if (httpRequestResult.IsSuccess) {
                 [[DoctorManager shareInstance] setCurrentDoctorId:httpRequestResult.Data.Value];
             }
         } allFinishCallback:^(BOOL isAllSuccess) {
+            hud.hidden = YES;
             if (isAllSuccess) {
                 Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+                [self updateDoctorId:self.dataArr];
                 [self setUpDoctorInfoWithModel:doctor];
             }else {
                 [CommonUtil showHUDWithTitle:@"部分数据请求失败"];
@@ -220,6 +225,8 @@
            
             hud.hidden = YES;
             Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+            [self updateDoctorId:httpRequestResult.Data];
+            
             [self setUpDoctorInfoWithModel:doctor];
             
             if (httpRequestResult.IsSuccess) {
@@ -239,6 +246,19 @@
     }
 }
 
+- (void)updateDoctorId:(NSArray *)chatDataArr {
+    Doctor *doctor = [[DoctorManager shareInstance] getCurrentDoctor];
+    
+    ChatData *chat = [chatDataArr lastObject];
+    
+    if (([chat.SourceType integerValue] == 2) &&
+        ([chat.DoctorId integerValue] != doctor.Id)
+        ) {
+        
+        [[DoctorManager shareInstance] setCurrentDoctorId:[chat.DoctorId integerValue]];
+    }
+}
+
 -(void)clearNotice{
     [ChatModel clearNotice:[[UserManager shareInstance] getUserInfo].accountId type:1 callBackBlock:^(HttpRequestResult<ZSBoolType *> * httpRequestResult) {
         
@@ -250,8 +270,9 @@
 - (void)kbWillShow:(NSNotification *)note {
     
     self.voiceBtn.selected = NO;
-    [self.recordView stopRecognizer];
-    
+    if (self.recordView.isRecognizing) {
+        [self.recordView stopRecognizer];
+    }
     //1.获取键盘高度
     //1.1获取键盘结束时候的位置
     CGRect kbEndFrame = [note.userInfo[UIKeyboardFrameEndUserInfoKey] CGRectValue];
@@ -383,42 +404,36 @@
 
 //隐藏用户信息View
 - (void) hiddenUserInfoView {
+    
+    self.tableViewTopConstraint.constant = 84;
+    
     [UIView animateWithDuration:0.4 animations:^{
-    CGRect frame = self.doctorInfoView.frame;
-    frame.origin.y = - (kDoctorFloatViewH - 20 - 64);
-    self.doctorInfoView.frame = frame;
+        CGRect frame = self.doctorInfoView.frame;
+        frame.origin.y = - (kDoctorFloatViewH - 20 - 64);
+        self.doctorInfoView.frame = frame;
         
-
-    //修改tableView的frame
-    CGRect tableViewFrame = self.tableView.frame;
-    tableViewFrame.origin.y = kNavigationBarH + 20;
-    tableViewFrame.size.height = kScreenSizeHeight - kToolBarH - kNavigationBarH -20;
-    self.tableView.frame = tableViewFrame;
+        //修改tableView的frame
+        [self.view layoutIfNeeded];
     }];
-
-  //  _userViewIsHidden = YES;
 }
 
 //显示用户信息View
 - (void)showUserInfoView {
+    self.tableViewTopConstraint.constant = 164;
+    
     [UIView animateWithDuration:0.4 animations:^{
-    CGRect frame = self.doctorInfoView.frame;
-    frame.origin.y = kNavigationBarH;
-    self.doctorInfoView.frame = frame;
+        CGRect frame = self.doctorInfoView.frame;
+        frame.origin.y = kNavigationBarH;
+        self.doctorInfoView.frame = frame;
         
-    //修改tableView的frame
-    CGRect tableViewFrame = self.tableView.frame;
-    tableViewFrame.origin.y = kNavigationBarH + kDoctorFloatViewH;
-    tableViewFrame.size.height = kScreenSizeHeight - kNavigationBarH - kToolBarH - kDoctorFloatViewH;
-    self.tableView.frame = tableViewFrame;
+        //修改tableView的frame
+        [self.view layoutIfNeeded];
     }];
-
-   // _userViewIsHidden = NO;
 }
 
 #pragma mark -- 发送消息
 - (void)sendMessage:(NSString *)text type:(NSInteger)type{
-    
+    self.textView.text = @"";
     if ([CommonUtil isBlankString:text]) {
         [CommonUtil showHUDWithTitle:@"不能发送空白消息"];
         self.textView.text = @"";

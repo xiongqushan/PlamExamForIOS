@@ -15,6 +15,7 @@
 #import "CommonUtil.h"
 #import "iflyMSC/IFlyMSC.h"
 #import "JPUSHService.h"
+#import <UMSocialCore/UMSocialCore.h>
 
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #import <UserNotifications/UserNotifications.h>
@@ -23,6 +24,7 @@
 #define kIflyAppId @"5800754f" //讯飞AppId
 #define kJPushAppId @"750c95297adeffc03b5439cb"  //极光推送AppId
 #define kChannelId @"App Stroe"
+#define kUMSocialAppKey @"580afbb63eae254280002824" //友盟appKey
 
 @interface AppDelegate ()<JPUSHRegisterDelegate>
 
@@ -31,6 +33,8 @@
 @implementation AppDelegate
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions {
+    
+    
     
     [NSThread sleepForTimeInterval:2.0];
     //配置控件外观
@@ -43,6 +47,9 @@
     //配置极光推送
     [self setUpJPushWithOptions:launchOptions];
     
+    //配置友盟分享
+    [self setUpUMSocial];
+    
     /**************** 初始化根视图 *******************/
     self.window = [[UIWindow alloc] initWithFrame:[UIScreen mainScreen].bounds];
     
@@ -54,6 +61,8 @@
     self.window.rootViewController = rootVc;
     
     [self.window makeKeyAndVisible];
+    
+
     return YES;
 }
 
@@ -74,6 +83,34 @@
     
 }
 
+//配置友盟分享
+- (void)setUpUMSocial {
+    //打开调试日志
+    [[UMSocialManager defaultManager] openLog:YES];
+    
+    //设置友盟appKey
+    [[UMSocialManager defaultManager] setUmSocialAppkey:kUMSocialAppKey];
+    
+    //设置新浪微博的appKey和appSecret
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"436196584" appSecret:@"e7e5b817ca06547ef20f3a9c5bd4f650" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
+    //设置QQ
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105708851" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    //设置QQ空间
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:@"1105708851" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+    //设置微信
+    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx35e5655ba6776765" appSecret:@"a01938c93230a27b338cf5bece21adea" redirectURL:@"http://mobile.umeng.com/social"];
+}
+
+- (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
+    BOOL result = [[UMSocialManager defaultManager] handleOpenURL:url];
+    if (!result) {
+        
+    }
+    
+    return result;
+}
+
+//配置极光推送
 - (void) setUpJPushWithOptions:(NSDictionary *)launchOptions {
     
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
@@ -142,11 +179,16 @@
 #pragma mark -- iOS10程序在前台收到通知之后调用的方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     
-    
+    NSLog(@"_______1234");
+    [[NSNotificationCenter defaultCenter] postNotificationName:kAddBadgeKVOKey object:nil];
 }
 #pragma mark -- ios10程序在后台收到通知调用的方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
+    
+   // [[NSNotificationCenter defaultCenter] postNotificationName:kAddBadgeKVOKey object:nil];
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGoConsulationNote object:nil];
+    self.isNotification = YES;
 }
 #endif
 

@@ -75,59 +75,7 @@
     self.tableView.backgroundColor = [UIColor colorWithHex:0xF2F2F2];
     [self.tableView registerNib:[UINib nibWithNibName:@"ReportItemCell" bundle:nil] forCellReuseIdentifier:@"ReportItemCell"];
     [self.tableView registerNib:[UINib nibWithNibName:@"SummaryFormatCell" bundle:nil] forCellReuseIdentifier:@"SummaryFormatCell"];
-    
-//    self.tableView.backgroundColor = [UIColor viewBackgroundColor];
-//    UITapGestureRecognizer *tap = [[UITapGestureRecognizer alloc] initWithTarget:self action:@selector(tableViewClick)];
-//    _tap = tap;
-//    
-//    if (!(self.dataArr.count == 0)) {
-//        //添加浮动按钮
-//        UIButton *floatBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-//        [floatBtn setBackgroundImage:[UIImage imageNamed:@"floatingBtn"] forState:UIControlStateNormal];
-//        floatBtn.frame = CGRectMake(self.bounds.size.width - 80, self.bounds.size.height - 140, 44, 44);
-//        [floatBtn addTarget:self action:@selector(floatBtnClick:) forControlEvents:UIControlEventTouchUpInside];
-//        [self addSubview:floatBtn];
-//        _floatBtn = floatBtn;
-//    }
-
 }
-
-//#pragma mark -- 浮动按钮被点击
-//- (void)floatBtnClick:(UIButton *)btn {
-//    
-//    _isShowLeftView = !_isShowLeftView;
-//    if (_isShowLeftView) {
-//        //显示左侧列表
-//        //获取tableView的偏移量
-//        CGPoint offset = self.tableView.contentOffset;
-//        NSIndexPath *tableViewIndexPath = [self.tableView indexPathForRowAtPoint:offset];
-//        NSIndexPath *selectedIndexPath = [NSIndexPath indexPathForRow:tableViewIndexPath.section inSection:0];
-//        [self.leftTableView selectRowAtIndexPath:selectedIndexPath animated:NO scrollPosition:UITableViewScrollPositionBottom];
-//
-//        [UIView animateWithDuration:0.25 animations:^{
-//            self.tableView.frame = CGRectMake(kleftViewWidth, 0, self.bounds.size.width, self.bounds.size.height);
-//            btn.transform = CGAffineTransformRotate(btn.transform, -M_PI_4);
-//        }];
-//        
-//        [self.tableView addGestureRecognizer: _tap];
-//        
-//    }else {
-//        [UIView animateWithDuration:0.25 animations:^{
-//            self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-//            btn.transform = CGAffineTransformRotate(btn.transform, M_PI_4);
-//        }];
-//        [self.tableView removeGestureRecognizer:_tap];
-//    }
-//}
-//
-//- (void)tableViewClick {
-//    _isShowLeftView = NO;
-//    [UIView animateWithDuration:0.25 animations:^{
-//        self.tableView.frame = CGRectMake(0, 0, self.bounds.size.width, self.bounds.size.height);
-//        _floatBtn.transform = CGAffineTransformRotate(_floatBtn.transform, M_PI_4);
-//    }];
-//    [self.tableView removeGestureRecognizer:_tap];
-//}
 
 #pragma mark -- UITableViewDelegate && UITableViewDataSource
 
@@ -244,13 +192,16 @@
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     if (tableView == self.leftTableView) {
         _isShowLeftView = NO;
+        [self.tableView removeGestureRecognizer:_tap];
+        
         [UIView animateWithDuration:0.25 animations:^{
             self.tableView.frame = self.bounds;
-            //_floatBtn.transform = CGAffineTransformRotate(_floatBtn.transform, M_PI_4);
+            
         }];
         
         NSIndexPath *indexPath2 = [NSIndexPath indexPathForRow:0 inSection:indexPath.row];
         [self.tableView scrollToRowAtIndexPath:indexPath2 atScrollPosition:UITableViewScrollPositionTop animated:YES];
+        
     }
     
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
@@ -272,7 +223,7 @@
             self.tableView.frame = CGRectMake(kleftViewWidth, 0, self.bounds.size.width, self.bounds.size.height);
         }];
         
-        [self.tableView addGestureRecognizer: _tap];
+        [self.tableView addGestureRecognizer:_tap];
         
     }else {
         [UIView animateWithDuration:0.25 animations:^{

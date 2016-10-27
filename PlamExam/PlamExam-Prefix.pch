@@ -16,6 +16,8 @@
 
 //HZ.WebAPI
 
+// 13651646955 朱凤琴
+
 #define Distribution 5
 
 #if Distribution==1 //gao debugger
@@ -55,6 +57,8 @@
 #define kChangeDepartKVOKey @"ChangeDepartKVO"
 #define kRefreshConsultListKVOKey @"RefreshConsultListKVO"
 #define kClearBadgeKVOKey @"ClearBadgeKVO"
+#define kAddBadgeKVOKey @"AddBadgeKVO"
+#define kGoConsulationNote @"GoConsulationVC"
 
 #define kReportConsultType 3
 

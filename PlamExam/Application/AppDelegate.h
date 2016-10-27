@@ -12,5 +12,6 @@
 
 @property (strong, nonatomic) UIWindow *window;
 
+@property (nonatomic, assign) BOOL isNotification;
 @end
 

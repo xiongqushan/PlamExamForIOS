@@ -12,6 +12,7 @@
                 <outlet property="reportBtn" destination="uaz-nA-ROQ" id="sEQ-cK-vnb"/>
                 <outlet property="sendBtn" destination="rQA-EL-i11" id="YzO-6L-3Hw"/>
                 <outlet property="tableView" destination="XeQ-Fm-9YD" id="Qhn-4e-oV4"/>
+                <outlet property="tableViewTopConstraint" destination="4MO-D0-Ed4" id="lGY-RX-OD0"/>
                 <outlet property="textView" destination="x7D-1s-VeF" id="2Sq-22-lhu"/>
                 <outlet property="toolBar" destination="JCu-zq-4pZ" id="NwY-nf-lyZ"/>
                 <outlet property="toolBarBottomConstraint" destination="h5j-SJ-2uK" id="4Ed-oN-XEg"/>
@@ -96,6 +97,7 @@
                 </view>
                 <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" style="plain" separatorStyle="default" rowHeight="44" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="XeQ-Fm-9YD">
                     <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    <color key="sectionIndexBackgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
                     <connections>
                         <outlet property="dataSource" destination="-1" id="5WD-fg-a3T"/>
                         <outlet property="delegate" destination="-1" id="Ga3-cd-3qg"/>

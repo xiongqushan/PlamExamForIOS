@@ -11,6 +11,7 @@
 #import "InformationCell.h"
 #import "NewsSimple.h"
 #import <MJRefresh.h>
+#import "InformationViewController.h"
 
 @interface NewsListViewController ()<UITableViewDelegate, UITableViewDataSource>
 
@@ -90,6 +91,11 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     [tableView deselectRowAtIndexPath:indexPath animated:YES];
+    NewsSimple *new = self.newsDataArr[indexPath.row];
+    
+    InformationViewController *info = [[InformationViewController alloc] init];
+    info.Id = new.Id;
+    [self.navigationController pushViewController:info animated:YES];
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,7 +10,7 @@
 
 @interface InformationViewController : BaseViewController
 
-@property (nonatomic, copy) NSString *loadUrl;
+//@property (nonatomic, copy) NSString *loadUrl;
 @property (nonatomic, assign) NSInteger Id;
 
 @end

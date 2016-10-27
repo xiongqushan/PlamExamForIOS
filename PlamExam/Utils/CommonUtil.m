@@ -64,7 +64,7 @@
     HUD.mode = MBProgressHUDModeText;
     HUD.removeFromSuperViewOnHide = YES;
     HUD.label.text = title;
-    [HUD hideAnimated:YES afterDelay:3];
+    [HUD hideAnimated:YES afterDelay:2];
 }
 
 //传入最大宽度 得到高度

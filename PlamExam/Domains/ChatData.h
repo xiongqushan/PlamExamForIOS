@@ -17,7 +17,7 @@
 @property (nonatomic, copy) NSString *AppendInfo;
 @property (nonatomic, copy) NSString *Content;
 @property (nonatomic, copy) NSString *Date;
-
+@property(nonatomic,strong)NSString* DoctorHeaderImage;
 @property (nonatomic, assign) CGFloat textCellHeight;
 @property (nonatomic, assign) CGFloat reportCellHeight;
 

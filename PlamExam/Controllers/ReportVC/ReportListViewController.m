@@ -41,8 +41,9 @@
 - (void)addReport {
     AddReportViewController *addReport = [[AddReportViewController alloc] init];
     addReport.reloadReportList = ^(NSArray<ReportSimple*>* reports){
-      //  self.addReportView.hidden = YES;
-        [self.addReportView removeFromSuperview];
+        
+        self.addReportView.hidden = YES;
+       // [self.addReportView removeFromSuperview];
         self.dataArr = [NSMutableArray arrayWithArray:reports];
         [self.tableView reloadData];
     };
@@ -53,9 +54,11 @@
     if([[ReportManager shareInstance] exist]){
         self.dataArr = [NSMutableArray arrayWithArray:[[ReportManager shareInstance] getReportList]];
         if (self.dataArr.count == 0) {
-            [self showAddReportView];
+            self.addReportView.hidden = NO;
+        }else {
+            [self.tableView reloadData];
         }
-        [self.tableView reloadData];
+        
         return;
     }
     
@@ -65,17 +68,17 @@
         hud.hidden = YES;
 
         if(httpRequestResult.IsSuccess){
-            NSArray<ReportSimple*>*reports=httpRequestResult.Data;
-            if(!reports){
-                reports=[[NSArray<ReportSimple*> alloc] init];
-            }
-            [[ReportManager shareInstance] setReportList:reports];
             
             if (httpRequestResult.Data.count == 0) {
                 //显示添加体检报告界面
-                [self showAddReportView];
+                self.addReportView.hidden = NO;
             }
             else {
+                NSArray<ReportSimple*>*reports=httpRequestResult.Data;
+                if(!reports){
+                    reports=[[NSArray<ReportSimple*> alloc] init];
+                }
+                [[ReportManager shareInstance] setReportList:reports];
                 self.dataArr = [NSMutableArray arrayWithArray:httpRequestResult.Data];
                 [self.tableView reloadData];
             }
@@ -88,29 +91,38 @@
     }];
 }
 
-- (void)showAddReportView {
-    UIView *view = [[UIView alloc] initWithFrame:self.view.bounds];
-    view.backgroundColor = [UIColor whiteColor];
+- (UIView *)addReportView {
+    if (!_addReportView) {
+        _addReportView = [[UIView alloc] initWithFrame:self.view.bounds];
+        _addReportView.backgroundColor = [UIColor whiteColor];
+        
+        UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
+        addBtn.frame = CGRectMake(0, 0, 32, 32);
+        addBtn.center = _addReportView.center;
+        // [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
+        [addBtn setImage:[UIImage imageNamed:@"addReport"] forState:UIControlStateNormal];
+        [addBtn addTarget:self action:@selector(addReport) forControlEvents:UIControlEventTouchUpInside];
+        [_addReportView addSubview:addBtn];
+        
+        UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 30)];
+        titleLabel.center = CGPointMake(_addReportView.center.x, _addReportView.center.y+40);
+        titleLabel.text = @"添加报告";
+        titleLabel.textAlignment = NSTextAlignmentCenter;
+        titleLabel.font = [UIFont systemFontOfSize:19];
+        titleLabel.textColor = kSetRGBColor(178, 178, 178);
+        [_addReportView addSubview:titleLabel];
+        
+        [self.view addSubview:self.addReportView];
+        
+    }
     
-    UIButton *addBtn = [UIButton buttonWithType:UIButtonTypeCustom];
-    addBtn.frame = CGRectMake(0, 0, 32, 32);
-    addBtn.center = view.center;
-   // [addBtn setTitle:@"添加体检报告" forState:UIControlStateNormal];
-    [addBtn setImage:[UIImage imageNamed:@"addReport"] forState:UIControlStateNormal];
-    [addBtn addTarget:self action:@selector(addReport) forControlEvents:UIControlEventTouchUpInside];
-    [view addSubview:addBtn];
-    
-    UILabel *titleLabel = [[UILabel alloc] initWithFrame:CGRectMake(0, 0, 300, 30)];
-    titleLabel.center = CGPointMake(view.center.x, view.center.y+40);
-    titleLabel.text = @"添加报告";
-    titleLabel.textAlignment = NSTextAlignmentCenter;
-    titleLabel.font = [UIFont systemFontOfSize:19];
-    titleLabel.textColor = kSetRGBColor(178, 178, 178);
-    [view addSubview:titleLabel];
-    
-    self.addReportView = view;
-    [self.view addSubview:view];
+    return _addReportView;
 }
+
+//- (void)showAddReportView {
+//
+//    [self.view addSubview:self.addReportView];
+//}
 
 - (void) setUpTableView {
     
