@@ -66,9 +66,8 @@
         
             [[ReportManager shareInstance] setReportList:reports];
             if([reports count]>0){
-                
                 NSString *newReportId=[reports lastObject].CheckUnitCode;
-                if(![[[UserManager shareInstance] getUserInfo].departId isEqual:newReportId]){
+                if(![[[UserManager shareInstance] getUserInfo].departId isEqualToString:newReportId]){
                     User *user= [[UserManager shareInstance] getUserInfo];
                     user.departId=httpRequestResult.Data.CheckUnitCode;
                     user.departName=httpRequestResult.Data.DepartName;

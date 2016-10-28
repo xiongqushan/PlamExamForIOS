@@ -20,8 +20,6 @@
 		A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */ = {isa = PBXBuildFile; fileRef = A5A01EAE1DB8AF31006C64E0 /* NewsModel.m */; };
 		A5C66BDE1DAD40240049B275 /* NSString+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BDD1DAD40240049B275 /* NSString+Util.m */; };
 		A5C66BE11DAD40980049B275 /* NSData+Util.m in Sources */ = {isa = PBXBuildFile; fileRef = A5C66BE01DAD40980049B275 /* NSData+Util.m */; };
-		A92F201E1DB9A6CE002BFB0E /* ReportListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */; };
-		A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */; };
 		A92F20231DB9CAAA002BFB0E /* SummaryFormatCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F20211DB9CAAA002BFB0E /* SummaryFormatCell.m */; };
 		A92F20241DB9CAAA002BFB0E /* SummaryFormatCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A92F20221DB9CAAA002BFB0E /* SummaryFormatCell.xib */; };
 		A92F20281DB9F196002BFB0E /* ConsultDetailViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = A92F20261DB9F196002BFB0E /* ConsultDetailViewController.m */; };
@@ -117,6 +115,8 @@
 		A9610D481DB109D60062CE93 /* ZSType.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D471DB109D60062CE93 /* ZSType.m */; };
 		A9610D771DB491100062CE93 /* DoctorInfoView.m in Sources */ = {isa = PBXBuildFile; fileRef = A9610D761DB491100062CE93 /* DoctorInfoView.m */; };
 		A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */ = {isa = PBXBuildFile; fileRef = A9610D781DB491270062CE93 /* DoctorInfoView.xib */; };
+		A98542091DC3677D00936758 /* ReportListCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A98542071DC3677D00936758 /* ReportListCell.xib */; };
+		A985420A1DC3677D00936758 /* ReportListCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A98542081DC3677D00936758 /* ReportListCell.m */; };
 		A99C3CD01DB8B65F002FE8A3 /* ReportView.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */; };
 		A99C3CDC1DB8C486002FE8A3 /* ReportItemCell.m in Sources */ = {isa = PBXBuildFile; fileRef = A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */; };
 		A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */; };
@@ -191,9 +191,6 @@
 		A5C66BDD1DAD40240049B275 /* NSString+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSString+Util.m"; sourceTree = "<group>"; };
 		A5C66BDF1DAD40980049B275 /* NSData+Util.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSData+Util.h"; sourceTree = "<group>"; };
 		A5C66BE01DAD40980049B275 /* NSData+Util.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSData+Util.m"; sourceTree = "<group>"; };
-		A92F201B1DB9A6CE002BFB0E /* ReportListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListCell.h; sourceTree = "<group>"; };
-		A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListCell.m; sourceTree = "<group>"; };
-		A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportListCell.xib; sourceTree = "<group>"; };
 		A92F20201DB9CAAA002BFB0E /* SummaryFormatCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SummaryFormatCell.h; sourceTree = "<group>"; };
 		A92F20211DB9CAAA002BFB0E /* SummaryFormatCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = SummaryFormatCell.m; sourceTree = "<group>"; };
 		A92F20221DB9CAAA002BFB0E /* SummaryFormatCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = SummaryFormatCell.xib; sourceTree = "<group>"; };
@@ -358,6 +355,9 @@
 		A9610D751DB491100062CE93 /* DoctorInfoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DoctorInfoView.h; sourceTree = "<group>"; };
 		A9610D761DB491100062CE93 /* DoctorInfoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DoctorInfoView.m; sourceTree = "<group>"; };
 		A9610D781DB491270062CE93 /* DoctorInfoView.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = DoctorInfoView.xib; sourceTree = "<group>"; };
+		A98542061DC3677D00936758 /* ReportListCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportListCell.h; sourceTree = "<group>"; };
+		A98542071DC3677D00936758 /* ReportListCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = ReportListCell.xib; sourceTree = "<group>"; };
+		A98542081DC3677D00936758 /* ReportListCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportListCell.m; sourceTree = "<group>"; };
 		A99C3CCE1DB8B65F002FE8A3 /* ReportView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportView.h; sourceTree = "<group>"; };
 		A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ReportView.m; sourceTree = "<group>"; };
 		A99C3CD91DB8C486002FE8A3 /* ReportItemCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ReportItemCell.h; sourceTree = "<group>"; };
@@ -970,13 +970,13 @@
 		A99C3CCD1DB8B655002FE8A3 /* ReportView */ = {
 			isa = PBXGroup;
 			children = (
+				A98542061DC3677D00936758 /* ReportListCell.h */,
+				A98542081DC3677D00936758 /* ReportListCell.m */,
+				A98542071DC3677D00936758 /* ReportListCell.xib */,
 				A9BFE6721DBF09A100467977 /* HZSliderView.h */,
 				A9BFE6731DBF09A100467977 /* HZSliderView.m */,
 				A99C3CCE1DB8B65F002FE8A3 /* ReportView.h */,
 				A99C3CCF1DB8B65F002FE8A3 /* ReportView.m */,
-				A92F201B1DB9A6CE002BFB0E /* ReportListCell.h */,
-				A92F201C1DB9A6CE002BFB0E /* ReportListCell.m */,
-				A92F201D1DB9A6CE002BFB0E /* ReportListCell.xib */,
 				A99C3CD91DB8C486002FE8A3 /* ReportItemCell.h */,
 				A99C3CDA1DB8C486002FE8A3 /* ReportItemCell.m */,
 				A99C3CDB1DB8C486002FE8A3 /* ReportItemCell.xib */,
@@ -1247,7 +1247,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				A94FE35F1DC0B7AD00EB98D2 /* TencentOpenApi_IOS_Bundle.bundle in Resources */,
-				A92F201F1DB9A6CE002BFB0E /* ReportListCell.xib in Resources */,
 				A9C92D2E1DB718DE00034DA5 /* CommentViewController.xib in Resources */,
 				A99C3CDD1DB8C486002FE8A3 /* ReportItemCell.xib in Resources */,
 				A9388DC61DBB40B900210224 /* AddReportViewController.xib in Resources */,
@@ -1266,6 +1265,7 @@
 				A9610D791DB491270062CE93 /* DoctorInfoView.xib in Resources */,
 				A935492A1DAF37890077E85C /* LoginViewController.xib in Resources */,
 				A92F20291DB9F196002BFB0E /* ConsultDetailViewController.xib in Resources */,
+				A98542091DC3677D00936758 /* ReportListCell.xib in Resources */,
 				A9388DAB1DBB0CD000210224 /* UserTextCell.xib in Resources */,
 				A9DB5A8B1DB0E930000BEDF4 /* edit_voiceinput@2x.png in Resources */,
 				A9388DB11DBB0CD700210224 /* DoctorReplyCell.xib in Resources */,
@@ -1350,6 +1350,7 @@
 				A5A01EAF1DB8AF31006C64E0 /* NewsModel.m in Sources */,
 				A9C92CDC1DB4F05200034DA5 /* ChatData.m in Sources */,
 				A515348E1DBE37F4005C62B0 /* SqliteHelper.m in Sources */,
+				A985420A1DC3677D00936758 /* ReportListCell.m in Sources */,
 				A9388DB01DBB0CD700210224 /* DoctorReplyCell.m in Sources */,
 				A93549291DAF37890077E85C /* LoginViewController.m in Sources */,
 				A93549821DB0A5920077E85C /* UserManager.m in Sources */,
@@ -1378,7 +1379,6 @@
 				A93549711DAFAA040077E85C /* NSTimer+Addition.m in Sources */,
 				A9388DB51DBB0D2500210224 /* UserReportCell.m in Sources */,
 				A935490E1DAF193D0077E85C /* HomeViewController.m in Sources */,
-				A92F201E1DB9A6CE002BFB0E /* ReportListCell.m in Sources */,
 				A935491A1DAF1DF40077E85C /* UIColor+Utils.m in Sources */,
 				A9388DC81DBB40B900210224 /* ReportDetailViewController.m in Sources */,
 				A9C92D1A1DB7065900034DA5 /* BatchRequestParam.m in Sources */,
@@ -1482,6 +1482,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = dwarf;
@@ -1531,6 +1532,7 @@
 				CLANG_WARN_SUSPICIOUS_MOVES = YES;
 				CLANG_WARN_UNREACHABLE_CODE = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				CODE_SIGN_IDENTITY = "iPhone Developer";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				COPY_PHASE_STRIP = NO;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
@@ -1558,7 +1560,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PlamExam/PlamExam.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
 				ENABLE_BITCODE = NO;
@@ -1593,7 +1595,7 @@
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_ENTITLEMENTS = PlamExam/PlamExam.entitlements;
-				CODE_SIGN_IDENTITY = "iPhone Distribution";
+				CODE_SIGN_IDENTITY = "";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				DEVELOPMENT_TEAM = T5NFTEJZU4;
 				ENABLE_BITCODE = NO;

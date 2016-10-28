@@ -27,7 +27,7 @@
 
 @implementation ReportExceptionsViewController
 {
-    BOOL _isAllSelected;
+    BOOL _isSelected;
 }
 
 - (NSMutableArray *)selectedItems {
@@ -75,22 +75,28 @@
 
 - (void)selectedItem:(UIButton *)btn {
     
-    if (!_isAllSelected) {
-        _isAllSelected = YES;
+    if (!_isSelected) {
+        _isSelected = YES;
         
         self.tableView.editing = YES;
         self.tableView.allowsMultipleSelectionDuringEditing = YES;
         [btn setTitle:@"咨询" forState:UIControlStateNormal];
-        for (NSInteger i = 0; i < self.dataArr.count; i++) {
-            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
-            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
-            [self changeCellEditingStyleColor:indexPath];
-        }
+//        for (NSInteger i = 0; i < self.dataArr.count; i++) {
+//            NSIndexPath *indexPath = [NSIndexPath indexPathForRow:i inSection:0];
+//            [self.tableView selectRowAtIndexPath:indexPath animated:YES scrollPosition:UITableViewScrollPositionTop];
+//            [self changeCellEditingStyleColor:indexPath];
+//        }
     
     }else {
-        _isAllSelected = NO;
-        [btn setTitle:@"选择异常项咨询" forState:UIControlStateNormal];
+        
         NSArray *rows = [self.tableView indexPathsForSelectedRows];
+        if (rows.count == 0) {
+            [CommonUtil showHUDWithTitle:@"请至少选择一项"];
+            return;
+        }
+        
+        _isSelected = NO;
+        [btn setTitle:@"选择异常项咨询" forState:UIControlStateNormal];
         NSString *resultStr = @"";
         for (NSIndexPath *indexPath in rows) {
             
@@ -105,18 +111,6 @@
         
         MBProgressHUD *hud = [CommonUtil createHUD];
         NSString *accountId = [[UserManager shareInstance] getUserInfo].accountId;
-        
-        /*[ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<NSMutableArray<ChatData *> *> *httpResult) {
-            
-            hud.hidden = YES;
-            if (httpResult.IsSuccess) {
-                //数据请求成功 传数据进入咨询界面
-                [self.chatDataArr addObjectsFromArray:httpResult.Data];
-                [self goChatView];
-            }else {
-                [CommonUtil showHUDWithTitle:httpResult.Message];
-            }
-        }];*/
         
         [ChatModel SendForReport:accountId content:resultStr checkUnitCode:self.report.CheckUnitCode workNo:self.report.WorkNo checkUnitName:self.report.CheckUnitName reportDate:self.report.ReportDateFormat callBackBlock:^(HttpRequestResult<ZSBoolType *> *httpResult) {
             
@@ -159,23 +153,15 @@
     
     CheckResult *result = self.dataArr[indexPath.row];
     ReportItemCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportItemCell"];
+    
+    [cell showDataWithModel:result];
+//    NSString *cellId = [NSString stringWithFormat:@"CellId%ld",indexPath.row];
+//    ReportItemCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+//    if (!cell) {
+//        cell = [[[NSBundle mainBundle] loadNibNamed:@"ReportItemCell" owner:self options:nil] lastObject];
+//    }
     cell.selectedBackgroundView = [[UIView alloc] init];
     [cell showDataWithModel:result];
-    
-//    NSLog(@"______%@",[cell subviews]);
-//    for (id obj in [cell subviews]) {
-//        if ([obj isKindOfClass:[UIControl class]]) {
-//            
-//            for (id subView in [obj subviews]) {
-//                if ([subView isKindOfClass:[UIImageView class]]) {
-//                    
-//                    UIImageView *imageView = (UIImageView *)subView;
-//                    imageView.image = [UIImage imageNamed:@"selected_cell"];
-//                }
-//            }
-//        }
-//    }
-
     return cell;
 }
 
@@ -193,7 +179,7 @@
 
 - (void)tableView:(UITableView *)tableView didSelectRowAtIndexPath:(NSIndexPath *)indexPath {
     
-    [self changeCellEditingStyleColor:indexPath];
+   // [self changeCellEditingStyleColor:indexPath];
 }
 
 - (void)changeCellEditingStyleColor:(NSIndexPath *)indexPath {
@@ -207,6 +193,8 @@
                     
                     UIImageView *imageView = (UIImageView *)subView;
                     imageView.image = [UIImage imageNamed:@"selected_cell"];
+                  //  imageView.backgroundColor = [UIColor redColor];
+                    
                 }
             }
         }

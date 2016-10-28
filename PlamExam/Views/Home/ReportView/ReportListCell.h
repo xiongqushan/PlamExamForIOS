@@ -13,7 +13,6 @@
 @property (weak, nonatomic) IBOutlet UILabel *reportDateLabel;
 @property (weak, nonatomic) IBOutlet UILabel *departmentNameLabel;
 @property (weak, nonatomic) IBOutlet UIImageView *reportListCellBg;
-@property (weak, nonatomic) IBOutlet UIImageView *logoImageView;
 
 - (void)showDataWithModel:(ReportSimple *)report;
 

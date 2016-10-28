@@ -73,7 +73,12 @@
         self.imagesArray = array;
         self.titleArray = titles;
         [self setupLayout];
+        
+        if (array.count == 1) {
+            [self.pageControl removeFromSuperview];
+        }
     }
+
     return self;
 }
 

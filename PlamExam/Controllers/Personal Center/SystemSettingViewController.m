@@ -45,9 +45,9 @@
     ArrowItem *arrow1 = [ArrowItem itemWithTitle:@"关于我们" withImage:[UIImage imageNamed:@"about"]];
     ArrowItem *arrow2 = [ArrowItem itemWithTitle:@"意见反馈" withImage:[UIImage imageNamed:@"feedback"]];
     arrow2.destVcClass = [FeedbackViewController class];
-    ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新" withImage:[UIImage imageNamed:@"checkUpdate"]];
+    //ArrowItem *arrow3 = [ArrowItem itemWithTitle:@"检查更新" withImage:[UIImage imageNamed:@"checkUpdate"]];
     GroupItem *group1 = [[GroupItem alloc] init];
-    group1.items = @[arrow1,arrow2,arrow3];
+    group1.items = @[arrow1,arrow2];
     [self.dataArr addObject:group1];
     
     ArrowItem *arrow4 = [ArrowItem itemWithTitle:@"免责声明" withImage:[UIImage imageNamed:@"disclaimer"]];

@@ -13,7 +13,7 @@
 - (void)awakeFromNib {
     [super awakeFromNib];
     // Initialization code
-    [self.logoImageView setRoundWithRadius:36];
+    
     [self.reportListCellBg setRound];
     
 }
@@ -34,7 +34,6 @@
 //    image = [image resizableImageWithCapInsets:insets resizingMode:UIImageResizingModeStretch];
 //    self.reportListCellBg.image = image;
     
-    self.logoImageView.image = [UIImage imageNamed:@"departmentLogo"];
     self.departmentNameLabel.text = report.ReportName;
     self.reportDateLabel.text = report.ReportDateFormat;
 }

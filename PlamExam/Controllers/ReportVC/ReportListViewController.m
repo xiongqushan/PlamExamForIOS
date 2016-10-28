@@ -136,8 +136,7 @@
     self.tableView.separatorStyle = UITableViewCellSeparatorStyleNone;
     [self.view addSubview:self.tableView];
     
-    [self.tableView registerClass:[UITableViewCell class] forCellReuseIdentifier:@"cellId"];
-    [self.tableView registerNib:[UINib nibWithNibName:@"ReportListCell" bundle:nil] forCellReuseIdentifier:@"ReportListCell"];
+   // [self.tableView registerNib:[UINib nibWithNibName:@"ReportListId" bundle:nil] forCellReuseIdentifier:@"ReportListId"];
     
 }
 
@@ -147,8 +146,18 @@
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
 
-    ReportListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportListCell"];
+//    ReportListCell *cell = [tableView dequeueReusableCellWithIdentifier:@"ReportListId"];
     ReportSimple *report = self.dataArr[indexPath.row];
+//    [cell showDataWithModel:report];
+//    return cell;
+    
+    static NSString *cellId = @"CellId";
+    ReportListCell *cell = [tableView dequeueReusableCellWithIdentifier:cellId];
+    
+    if (!cell) {
+        cell = [[[NSBundle mainBundle] loadNibNamed:@"ReportListCell" owner:self options:nil] lastObject];
+    }
+    
     [cell showDataWithModel:report];
     return cell;
 }
