@@ -28,7 +28,9 @@
 
 - (void)zlcwebViewDidStartLoad:(ZLCWebView *)webview {
     NSLog(@"页面开始加载");
-    _hud = [CommonUtil createHUD];
+    
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
+   
 }
 
 - (void)zlcwebView:(ZLCWebView *)webview shouldStartLoadWithURL:(NSURL *)URL {
@@ -37,12 +39,14 @@
 
 - (void)zlcwebView:(ZLCWebView *)webview didFinishLoadingURL:(NSURL *)URL {
     NSLog(@"页面加载完成");
-    _hud.hidden = YES;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   
 }
 
 - (void)zlcwebView:(ZLCWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error {
     NSLog(@"加载出现错误");
-    _hud.hidden = YES;
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
+   
 }
 
 - (void)didReceiveMemoryWarning {

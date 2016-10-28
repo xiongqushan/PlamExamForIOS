@@ -13,5 +13,4 @@
 
 + (void)showShareMenuViewInWindowWithPlatformSelectionBlock:(UMSocialSharePlatformSelectionBlock)sharePlatformSelectionBlock;
 
-
 @end

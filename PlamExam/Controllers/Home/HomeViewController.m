@@ -112,6 +112,7 @@
 
 - (void)viewDidLoad {
     [super viewDidLoad];
+    self.navigationItem.title = @"掌上体检";
     self.adDataArr=[NSMutableArray array];
     self.newsDataArr = [NSMutableArray array];
 
@@ -127,7 +128,7 @@
     //监听添加小红点通知
     [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(addBadgeNotification:) name:kAddBadgeKVOKey object:nil];
     
-    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goConsult:) name:kGoConsulationNote object:nil];
+//    [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(goConsult:) name:kGoConsulationNote object:nil];
     
     AppDelegate *app = (AppDelegate *)[[UIApplication sharedApplication] delegate];
     if (app.isNotification) {
@@ -137,14 +138,14 @@
     }
 }
 
-- (void)goConsult:(NSNotification *)note {
-    
-    [self.navigationController popToRootViewControllerAnimated:NO];
-    //健康咨询
-    ConsultDetailViewController *consulation = [[ConsultDetailViewController alloc] init];
-    
-    [self.navigationController pushViewController:consulation animated:YES];
-}
+//- (void)goConsult:(NSNotification *)note {
+//    
+//    [self.navigationController popToRootViewControllerAnimated:NO];
+//    //健康咨询
+//    ConsultDetailViewController *consulation = [[ConsultDetailViewController alloc] init];
+//    
+//    [self.navigationController pushViewController:consulation animated:YES];
+//}
 
 
 #pragma mark -- 设置UI相关
@@ -331,7 +332,7 @@
     
     NewsSimple *news = self.newsDataArr[indexPath.row];
     InformationViewController *information = [[InformationViewController alloc] init];
-    information.Id = news.Id;
+    information.news = news;
     [self.navigationController pushViewController:information animated:YES];
 }
 

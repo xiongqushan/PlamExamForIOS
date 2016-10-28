@@ -95,10 +95,13 @@
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Sina appKey:@"436196584" appSecret:@"e7e5b817ca06547ef20f3a9c5bd4f650" redirectURL:@"http://sns.whalecloud.com/sina2/callback"];
     //设置QQ
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_QQ appKey:@"1105708851" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
-    //设置QQ空间
-    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:@"1105708851" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
+//    //设置QQ空间
+//    [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_Qzone appKey:@"1105708851" appSecret:nil redirectURL:@"http://mobile.umeng.com/social"];
     //设置微信
     [[UMSocialManager defaultManager] setPlaform:UMSocialPlatformType_WechatSession appKey:@"wx35e5655ba6776765" appSecret:@"a01938c93230a27b338cf5bece21adea" redirectURL:@"http://mobile.umeng.com/social"];
+    
+    [[UMSocialManager defaultManager] removePlatformProviderWithPlatformType:UMSocialPlatformType_WechatFavorite];
+    [[UMSocialManager defaultManager] removePlatformProviderWithPlatformType:UMSocialPlatformType_Qzone];
 }
 
 - (BOOL)application:(UIApplication *)application handleOpenURL:(NSURL *)url {
@@ -153,42 +156,51 @@
     [JPUSHService registerDeviceToken:deviceToken];
 }
 
+- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
+    //Optional
+    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
+}
+
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo {
     
     // Required,For systems with less than or equal to iOS6
     [JPUSHService handleRemoteNotification:userInfo];
 }
 
+//如果App状态为正在前台或者点击通知栏的通知消息  苹果的回调函数将被调用
 - (void)application:(UIApplication *)application didReceiveRemoteNotification:(NSDictionary *)userInfo fetchCompletionHandler:(void (^)(UIBackgroundFetchResult))completionHandler {
+    NSLog(@"_____%s",__FUNCTION__);
+    
+    // IOS 7 Support Required
+    if (application.applicationState == UIApplicationStateActive) {
+        //如果应用在前台  在这里执行
+        [[NSNotificationCenter defaultCenter] postNotificationName:kAddBadgeKVOKey object:nil];
+    }
+    
+    //如果在后台 在这里执行
+    [JPUSHService handleRemoteNotification:userInfo];
+    completionHandler(UIBackgroundFetchResultNewData);
+    
+    [[NSNotificationCenter defaultCenter] postNotificationName:kGoConsulationNote object:nil];
     
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
-    // IOS 7 Support Required
-    [JPUSHService handleRemoteNotification:userInfo];
-    NSLog(@"__________UserInfo:%@",userInfo);
-    NSDictionary *aps = userInfo[@"aps"];
-    [CommonUtil showHUDWithTitle:aps[@"alert"]];
-    
-    completionHandler(UIBackgroundFetchResultNewData);
+
 }
 
-- (void)application:(UIApplication *)application didFailToRegisterForRemoteNotificationsWithError:(NSError *)error {
-    //Optional
-    NSLog(@"did Fail To Register For Remote Notifications With Error: %@", error);
-}
 #ifdef NSFoundationVersionNumber_iOS_9_x_Max
 #pragma mark -- iOS10程序在前台收到通知之后调用的方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center willPresentNotification:(UNNotification *)notification withCompletionHandler:(void (^)(NSInteger))completionHandler {
     
-    NSLog(@"_______1234");
+    
     [[NSNotificationCenter defaultCenter] postNotificationName:kAddBadgeKVOKey object:nil];
+    
+    completionHandler(UNNotificationPresentationOptionBadge|UNNotificationPresentationOptionSound|UNNotificationPresentationOptionAlert);
 }
 #pragma mark -- ios10程序在后台收到通知调用的方法
 - (void)jpushNotificationCenter:(UNUserNotificationCenter *)center didReceiveNotificationResponse:(UNNotificationResponse *)response withCompletionHandler:(void (^)())completionHandler {
     [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
     
-   // [[NSNotificationCenter defaultCenter] postNotificationName:kAddBadgeKVOKey object:nil];
     [[NSNotificationCenter defaultCenter] postNotificationName:kGoConsulationNote object:nil];
-    self.isNotification = YES;
 }
 #endif
 
@@ -225,11 +237,15 @@
 - (void)applicationDidEnterBackground:(UIApplication *)application {
     // Use this method to release shared resources, save user data, invalidate timers, and store enough application state information to restore your application to its current state in case it is terminated later.
     // If your application supports background execution, this method is called instead of applicationWillTerminate: when the user quits.
+    
+    [[UIApplication sharedApplication] setApplicationIconBadgeNumber:0];
 }
 
 
 - (void)applicationWillEnterForeground:(UIApplication *)application {
     // Called as part of the transition from the background to the active state; here you can undo many of the changes made on entering the background.
+    
+    [application setApplicationIconBadgeNumber:0];
 }
 
 

@@ -12,30 +12,31 @@
             <rect key="frame" x="0.0" y="0.0" width="375" height="150"/>
             <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
             <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="KGk-i7-Jjw" id="H2p-sc-9uM">
-                <frame key="frameInset" width="375" height="150"/>
+                <frame key="frameInset" width="375" height="149"/>
                 <autoresizingMask key="autoresizingMask"/>
                 <subviews>
                     <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="reportListCellBg" translatesAutoresizingMaskIntoConstraints="NO" id="pVV-Xe-xLu"/>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pKR-0a-pj9">
-                        <fontDescription key="fontDescription" type="system" pointSize="16"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="18"/>
                         <nil key="textColor"/>
                         <nil key="highlightedColor"/>
                     </label>
                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QqR-Wq-LD6">
-                        <fontDescription key="fontDescription" type="system" pointSize="13"/>
+                        <fontDescription key="fontDescription" type="system" pointSize="15"/>
                         <color key="textColor" red="0.40000000000000002" green="0.40000000000000002" blue="0.40000000000000002" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <nil key="highlightedColor"/>
                     </label>
                 </subviews>
                 <constraints>
-                    <constraint firstItem="pKR-0a-pj9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="L8U-jY-Ttc"/>
-                    <constraint firstItem="pKR-0a-pj9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="63" id="U4C-DQ-G9i"/>
+                    <constraint firstItem="pKR-0a-pj9" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="5gh-ea-I9n"/>
+                    <constraint firstItem="QqR-Wq-LD6" firstAttribute="centerX" secondItem="pKR-0a-pj9" secondAttribute="centerX" id="Az1-cx-8a4"/>
+                    <constraint firstAttribute="bottom" secondItem="QqR-Wq-LD6" secondAttribute="bottom" constant="42" id="ITf-cc-PKG"/>
                     <constraint firstAttribute="trailing" secondItem="pVV-Xe-xLu" secondAttribute="trailing" constant="15" id="Vj2-IS-9KT"/>
                     <constraint firstAttribute="bottom" secondItem="pVV-Xe-xLu" secondAttribute="bottom" id="blw-65-cOA"/>
-                    <constraint firstItem="QqR-Wq-LD6" firstAttribute="top" secondItem="pKR-0a-pj9" secondAttribute="bottom" constant="4.5" id="cg8-v2-oqp"/>
                     <constraint firstItem="pVV-Xe-xLu" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="20" id="k29-Aa-SAf"/>
-                    <constraint firstItem="QqR-Wq-LD6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="rkd-FR-15r"/>
+                    <constraint firstItem="QqR-Wq-LD6" firstAttribute="centerX" secondItem="H2p-sc-9uM" secondAttribute="centerX" id="r1g-7m-uUf"/>
                     <constraint firstItem="pVV-Xe-xLu" firstAttribute="leading" secondItem="H2p-sc-9uM" secondAttribute="leading" constant="15" id="wfH-O9-CCr"/>
+                    <constraint firstItem="pKR-0a-pj9" firstAttribute="top" secondItem="H2p-sc-9uM" secondAttribute="top" constant="63" id="yw7-nx-Ebt"/>
                 </constraints>
             </tableViewCellContentView>
             <color key="backgroundColor" red="0.92941176470588238" green="0.93333333333333335" blue="0.93725490196078431" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>

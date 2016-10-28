@@ -16,7 +16,7 @@
 #import "UMSocialUIManager.h"
 
 #define kInformationDetail @"http://hz3bn04d2:7200/Examination.html#/exam/%ld/2"
-
+#define kShareNewsUrl @"http://hz3bn04d2:7200/Examination.html#/exam/%ld/1"
 @interface InformationViewController ()<ZLCWebViewDelegate>
 
 @end
@@ -31,7 +31,7 @@
     
     self.navigationItem.title = @"资讯";
     self.navigationItem.rightBarButtonItem = [[UIBarButtonItem alloc] initWithTitle:@"分享" style:UIBarButtonItemStylePlain target:self action:@selector(share)];
-   // [self loadData];
+    
     [self setUpWebView];
 }
 
@@ -50,8 +50,11 @@
 {
     //创建分享消息对象
     UMSocialMessageObject *messageObject = [UMSocialMessageObject messageObject];
-    //设置文本
-    messageObject.text = @"社会化组件UShare将各大社交平台接入您的应用，快速武装App。";
+    
+    //设置分享网页
+    UMShareWebpageObject *shareObject = [UMShareWebpageObject shareObjectWithTitle:self.news.title descr:self.news.descriptions thumImage:self.news.imgFormat];
+    shareObject.webpageUrl = [NSString stringWithFormat:kShareNewsUrl,self.news.Id];
+    messageObject.shareObject = shareObject;
     
     //调用分享接口
     [[UMSocialManager defaultManager] shareToPlatform:platformType messageObject:messageObject currentViewController:self completion:^(id data, NSError *error) {
@@ -84,9 +87,8 @@
     
     ZLCWebView *webView = [[ZLCWebView alloc] initWithFrame:self.view.bounds];
 
-    [webView loadURLString:[NSString stringWithFormat:kInformationDetail,_Id]];
+    [webView loadURLString:[NSString stringWithFormat:kInformationDetail,self.news.Id]];
     webView.delegate = self;
-    //[webView loadURLString:self.loadUrl];
     
     [self.view addSubview:webView];
     
@@ -95,20 +97,24 @@
 - (void)zlcwebViewDidStartLoad:(ZLCWebView *)webview {
     NSLog(@"页面开始加载");
     _hud = [CommonUtil createHUD];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = YES;
 }
 
 - (void)zlcwebView:(ZLCWebView *)webview shouldStartLoadWithURL:(NSURL *)URL {
     NSLog(@"截取到URL:%@",URL);
+    
 }
 
 - (void)zlcwebView:(ZLCWebView *)webview didFinishLoadingURL:(NSURL *)URL {
     NSLog(@"页面加载完成");
-    _hud.hidden = YES;
+    [_hud hideAnimated:YES];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)zlcwebView:(ZLCWebView *)webview didFailToLoadURL:(NSURL *)URL error:(NSError *)error {
     NSLog(@"加载出现错误");
-    _hud.hidden = YES;
+    [_hud hideAnimated:YES];
+    [UIApplication sharedApplication].networkActivityIndicatorVisible = NO;
 }
 
 - (void)didReceiveMemoryWarning {

@@ -45,26 +45,6 @@
 		<dict>
 			<key>CFBundleTypeRole</key>
 			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>qzoneScheme</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>mqzone</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
-			<key>CFBundleURLName</key>
-			<string>tencentApiIdentifier</string>
-			<key>CFBundleURLSchemes</key>
-			<array>
-				<string>tencent1105708851.content</string>
-			</array>
-		</dict>
-		<dict>
-			<key>CFBundleTypeRole</key>
-			<string>Editor</string>
 			<key>CFBundleURLSchemes</key>
 			<array>
 				<string>wx35e5655ba6776765</string>

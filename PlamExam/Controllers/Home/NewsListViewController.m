@@ -94,7 +94,8 @@
     NewsSimple *new = self.newsDataArr[indexPath.row];
     
     InformationViewController *info = [[InformationViewController alloc] init];
-    info.Id = new.Id;
+    
+    info.news = new;
     [self.navigationController pushViewController:info animated:YES];
 }
 

@@ -53,7 +53,7 @@ static void *KINWebBrowserContext = &KINWebBrowserContext;
             [self.wkWebView.scrollView setAlwaysBounceVertical:YES];
             
             self.wkWebView.backgroundColor = [UIColor whiteColor];
-            self.wkWebView.scrollView.backgroundColor = kSetRGBColor(200, 200, 200);
+            self.wkWebView.scrollView.backgroundColor = kSetRGBColor(240, 240, 240);
             
             [self addSubview:self.wkWebView];
             //self.wkWebView.scrollView.bounces = NO;

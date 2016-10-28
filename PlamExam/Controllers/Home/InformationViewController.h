@@ -7,10 +7,10 @@
 //
 
 #import "BaseViewController.h"
+#import "NewsSimple.h"
 
 @interface InformationViewController : BaseViewController
 
-//@property (nonatomic, copy) NSString *loadUrl;
-@property (nonatomic, assign) NSInteger Id;
+@property (nonatomic, strong) NewsSimple *news;
 
 @end
